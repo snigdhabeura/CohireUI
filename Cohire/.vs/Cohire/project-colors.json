@@ -1,5 +1,11 @@
 {
   "Version": 1,
-  "ProjectMap": {},
-  "NextColorIndex": 0
+  "ProjectMap": {
+    "16e74029-876a-4823-bbd0-b162625cf053": {
+      "ProjectGuid": "16e74029-876a-4823-bbd0-b162625cf053",
+      "DisplayName": "Cohire",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
 }
