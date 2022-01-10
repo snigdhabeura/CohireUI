@@ -1,4 +1,5 @@
 ﻿using Cohire.Model.PostJob;
+using Cohire.Models.MasterData;
 using CohireAPI.PostJobs.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,9 @@ namespace Cohire.Controllers
             var host = _httpContextAccessor.HttpContext.Request;
             URL=host.Scheme + "://" + host.Host.Value;
         }
+
+        #region-----------------Job Feed-------------------------------
+
         [Route("getjobs")]
         [HttpPost]
         public async Task<JsonResult> JobFeed()
@@ -39,15 +43,9 @@ namespace Cohire.Controllers
             
             return new JsonResult("");
         }
+        #endregion
 
-        [Route("getroles")]
-        [HttpGet]
-        public async Task<JsonResult> GetRoles()
-        {
-            var data = await PostJobDB.Instance.GetRolls();
-            return new JsonResult(data);
-        }
-
+        #region------------MasterDataLoad---------------------------------
         [Route("getskills")]
         [HttpGet]
         public async Task<JsonResult> GetSkills(string prefix)
@@ -58,17 +56,43 @@ namespace Cohire.Controllers
 
         [Route("getquestions")]
         [HttpGet]
-        public async Task<JsonResult> GetQuestions(string prefix)
+        public async Task<JsonResult> GetQuestions()
         {
             var data = await PostJobDB.Instance.GetQuestion();
             return new JsonResult(data);
         }
 
+        [Route("getjobcategory")]
+        [HttpGet]
+        public async Task<JsonResult> GetJob_Category()
+        {
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_Category");
+            return new JsonResult(data);
+        }
+        [Route("jobemploymentType")]
+        [HttpGet]
+        public async Task<JsonResult> Job_EmploymentType()
+        {
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_EmploymentType");
+            return new JsonResult(data);
+        }
+        [Route("getjobexpernice")]
+        [HttpGet]
+        public async Task<JsonResult> Job_Expernice()
+        {
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_Expernice");
+            return new JsonResult(data);
+        }
+
+
+        #endregion
+
+        #region----------------JobPost Insert - Update - Get -----------------------
         [Route("post")]
         [HttpPost]
         public async Task<JsonResult> PostJob([FromForm] PostJobModel postJobModel)
         {
-            
+            string serachInstance = String.Empty;
             Guid jobID = System.Guid.NewGuid();
             string ChJobID = "CHJ" + jobID.ToString().Substring(0, 6);
             ViewPostJobModel postJobviewModels = new ViewPostJobModel();
@@ -76,7 +100,17 @@ namespace Cohire.Controllers
             postJobviewModels.ChJobID = ChJobID;
             postJobviewModels.RoleId = postJobModel.RoleId;
             postJobviewModels.PostedByID = postJobModel.PostedByID;
+            postJobviewModels.PostedByName = "Shiva";
+            postJobviewModels.Jobtitle = postJobModel.Jobtitle;
+            postJobviewModels.CategoryID = postJobModel.CategoryID;
+            postJobviewModels.Category_Name = postJobModel.Category_Name;
+            postJobviewModels.ExperienceID = postJobModel.ExperienceID;
+            postJobviewModels.Experience_Name = postJobModel.Experience_Name;
+            postJobviewModels.EmploymenttypeID = postJobModel.EmploymenttypeID;
+            postJobviewModels.Employmenttype_Name = postJobModel.Employmenttype_Name;
+            postJobviewModels.Salaryrange = postJobModel.Salaryrange;
             postJobviewModels.JobDescription = postJobModel.JobDescription;
+            
             List<string> result;
             if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
             {
@@ -97,6 +131,17 @@ namespace Cohire.Controllers
                     result.Add(x);
                 });
                 postJobviewModels.Skills = result;
+            }
+            if (!string.IsNullOrEmpty(postJobModel.city))
+            {
+                result = new List<string>();
+                string[] city = postJobModel.city.Split(',');
+                city.ToList().ForEach(x =>
+                {
+                    serachInstance = serachInstance + "-"+ x;
+                    result.Add(x);
+                });
+                postJobviewModels.city = result;
             }
             List<PostJobFiles> Filesresult = new List<PostJobFiles>();
             foreach (var file in postJobModel.JobFiles)
@@ -119,9 +164,10 @@ namespace Cohire.Controllers
                 });
             }
             postJobviewModels.JobFiles = Filesresult;
+            
             var json = JsonConvert.SerializeObject(postJobviewModels);
-            string serachInstance = postJobModel.RoleId.ToLower() + "-" + postJobModel.Skills.ToLower();
-            var Is_insert =await PostJobDB.Instance.CreateJobPublic(jobID.ToString(), ChJobID, postJobModel.PostedByID, json, serachInstance);
+            serachInstance = serachInstance+"-"+postJobModel.RoleId.ToLower() + "-" + postJobModel.Skills.ToLower();
+            var Is_insert =await PostJobDB.Instance.CreateJobPublic(jobID.ToString(), ChJobID, postJobModel.PostedByID, json, serachInstance, postJobviewModels.CategoryID, postJobviewModels.EmploymenttypeID, postJobviewModels.ExperienceID, postJobModel.city);
             return new JsonResult(json);
         }
         [Route("update")]
@@ -133,6 +179,15 @@ namespace Cohire.Controllers
             postJobviewModels.ChJobID = postJobModel.ChJobID;
             postJobviewModels.RoleId = postJobModel.RoleId;
             postJobviewModels.PostedByID = postJobModel.PostedByID;
+            postJobviewModels.PostedByName = "Shiva";
+            postJobviewModels.Jobtitle = postJobModel.Jobtitle;
+            postJobviewModels.CategoryID = postJobModel.CategoryID;
+            postJobviewModels.Category_Name = postJobModel.Category_Name;
+            postJobviewModels.ExperienceID = postJobModel.ExperienceID;
+            postJobviewModels.Experience_Name = postJobModel.Experience_Name;
+            postJobviewModels.EmploymenttypeID = postJobModel.EmploymenttypeID;
+            postJobviewModels.Employmenttype_Name = postJobModel.Employmenttype_Name;
+            postJobviewModels.Salaryrange = postJobModel.Salaryrange;
             postJobviewModels.JobDescription = postJobModel.JobDescription;
             List<string> result;
             if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
@@ -154,6 +209,16 @@ namespace Cohire.Controllers
                     result.Add(x);
                 });
                 postJobviewModels.Skills = result;
+            }
+            if (!string.IsNullOrEmpty(postJobModel.city))
+            {
+                result = new List<string>();
+                string[] city = postJobModel.city.Split(',');
+                city.ToList().ForEach(x =>
+                {
+                    result.Add(x);
+                });
+                postJobviewModels.city = result;
             }
             List<PostJobFiles> Filesresult = new List<PostJobFiles>();
             foreach (var file in postJobModel.JobFiles)
@@ -196,5 +261,6 @@ namespace Cohire.Controllers
             var Is_insert = await PostJobDB.Instance.UpdateJobPublic(postJobModel.ChJobID, json, serachInstance);
             return new JsonResult(json);
         }
+        #endregion
     }
 }

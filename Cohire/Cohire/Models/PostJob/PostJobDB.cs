@@ -28,7 +28,7 @@ namespace Cohire.Model.PostJob
                 }
             }
         }
-        public async Task<string> CreateJobPublic(string JobID, string ChJobID, string PostedByID, string JobJson, string SearchInstance)
+        public async Task<string> CreateJobPublic(string JobID, string ChJobID, string PostedByID, string JobJson, string SearchInstance,int CategoryId,int EmploymentId,int ExperineceId,string city)
         {
             SqlConnection azureSQLDb = null;
             try
@@ -39,11 +39,15 @@ namespace Cohire.Model.PostJob
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
                     SqlCommand cmd = new SqlCommand("[dbo].[CreateJobForPublic]", azureSQLDb);
+                    cmd.Parameters.Add("@CategoryId", SqlDbType.Int).Value = CategoryId;
+                    cmd.Parameters.Add("@EmploymentId", SqlDbType.Int).Value = EmploymentId;
+                    cmd.Parameters.Add("@ExperineceId", SqlDbType.Int).Value = ExperineceId;
                     cmd.Parameters.Add("@JobID", SqlDbType.VarChar).Value = JobID;
                     cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = ChJobID;
                     cmd.Parameters.Add("@PostedByID", SqlDbType.VarChar).Value = PostedByID;
                     cmd.Parameters.Add("@JobJson", SqlDbType.VarChar).Value = JobJson;
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
+                    cmd.Parameters.Add("@city", SqlDbType.VarChar).Value = city;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted=await cmd.ExecuteNonQueryAsync();
                     return Is_inserted.ToString();
@@ -140,31 +144,7 @@ namespace Cohire.Model.PostJob
             }
             finally { azureSQLDb.Close(); }
         }
-        public async Task<List<string>> GetRolls()
-        {
-            SqlConnection azureSQLDb = null;
-            List<string> data = null;
-            try
-            {
-                if (!string.IsNullOrEmpty(skill))
-                {
-                    using (azureSQLDb = new SqlConnection(connectionString))
-                    {
-                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
-                            azureSQLDb.Open();
-                        SqlCommand cmd = new SqlCommand("Select RoleName from [dbo].[Role_Master]", azureSQLDb);
-                        var skilldata = await cmd.ExecuteScalarAsync();
-                        data = JsonConvert.DeserializeObject<List<string>>(skilldata.ToString());
-                        data = data.Where(x => x.Contains(skill, StringComparison.OrdinalIgnoreCase)).ToList();
-                    }
-                }
-                return data;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally { azureSQLDb.Close(); }
-        }
+
+
     }
 }
