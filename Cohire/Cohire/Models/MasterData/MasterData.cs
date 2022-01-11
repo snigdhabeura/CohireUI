@@ -6,6 +6,24 @@ using System.Threading.Tasks;
 
 namespace Cohire.Models.MasterData
 {
+
+    public class Job_Category
+    {
+        public int CategoryId { get;set;}   
+        public string Category_Name { get;set;}
+    }
+    public class Job_EmploymentType
+    {
+        public int EmploymentId { get; set; }
+        public string Employment_Type { get; set; }
+    }
+    public class Job_Expernice
+    {
+        public int ExperineceId { get; set; }
+        public string Exp_Range { get; set; }
+    }
+
+
     public class Masterdataoperation
     {
         private static Masterdataoperation instance = null;
@@ -27,10 +45,9 @@ namespace Cohire.Models.MasterData
             }
         }
 
-        public async Task<string> GetMasterDataAsync(string tableName)
+        public async Task<List<T>>GetMasterDataAsync<T>(string tableName)
         {
             SqlConnection azureSQLDb = null;
-            string data = null;
             try
             {
                 if (!string.IsNullOrEmpty(tableName))
@@ -39,17 +56,25 @@ namespace Cohire.Models.MasterData
                     {
                         if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                             azureSQLDb.Open();
-                        SqlCommand cmd = new SqlCommand(""+ tableName + "", azureSQLDb);
-                        data = (string)await cmd.ExecuteScalarAsync();
+                            SqlCommand cmd = new SqlCommand(""+ tableName + "", azureSQLDb);
+                            var data = (string)await cmd.ExecuteScalarAsync();
+                        var result = JsonConvert.DeserializeObject<List<T>>(data);
+                        return result;
                     }
                 }
-                return data;
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {
-                throw;
+                return null;
             }
-            finally { azureSQLDb.Close(); }
+            finally 
+            { 
+                azureSQLDb.Close();
+            }
         }
     }
 }

@@ -66,21 +66,21 @@ namespace Cohire.Controllers
         [HttpGet]
         public async Task<JsonResult> GetJob_Category()
         {
-            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_Category");
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync<Job_Category>("GetJob_Category");
             return new JsonResult(data);
         }
         [Route("jobemploymentType")]
         [HttpGet]
         public async Task<JsonResult> Job_EmploymentType()
         {
-            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_EmploymentType");
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync<Job_EmploymentType>("GetJob_EmploymentType");
             return new JsonResult(data);
         }
         [Route("getjobexpernice")]
         [HttpGet]
         public async Task<JsonResult> Job_Expernice()
         {
-            var data = await Masterdataoperation.Instance.GetMasterDataAsync("GetJob_Expernice");
+            var data = await Masterdataoperation.Instance.GetMasterDataAsync<Job_Expernice>("GetJob_Expernice");
             return new JsonResult(data);
         }
 
@@ -143,32 +143,36 @@ namespace Cohire.Controllers
                 });
                 postJobviewModels.city = result;
             }
-            List<PostJobFiles> Filesresult = new List<PostJobFiles>();
-            foreach (var file in postJobModel.JobFiles)
+            if(postJobModel.JobFiles!=null)
             {
-                var uploadDirecotroy = "JobFiles\\";
-                var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
-                if (!Directory.Exists(uploadPath))
-                    Directory.CreateDirectory(uploadPath);
-                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                var filePath = Path.Combine(uploadPath, fileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                List<PostJobFiles> Filesresult = new List<PostJobFiles>();
+                foreach (var file in postJobModel.JobFiles)
                 {
-                    await file.CopyToAsync(stream);
+                    var uploadDirecotroy = "JobFiles\\";
+                    var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
+                    if (!Directory.Exists(uploadPath))
+                        Directory.CreateDirectory(uploadPath);
+                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadPath, fileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    Filesresult.Add(new PostJobFiles
+                    {
+                        filetype = fileName.Split('.')[1],
+                        fileurl = URL + "/JobFiles/" + fileName,
+                        filename = fileName
+                    });
                 }
-                Filesresult.Add(new PostJobFiles
-                {
-                    filetype = fileName.Split('.')[1],
-                    fileurl = URL + "/JobFiles/" + fileName,
-                    filename= fileName
-                });
+                postJobviewModels.JobFiles = Filesresult;
             }
-            postJobviewModels.JobFiles = Filesresult;
+            
             
             var json = JsonConvert.SerializeObject(postJobviewModels);
             serachInstance = serachInstance+"-"+postJobModel.RoleId.ToLower() + "-" + postJobModel.Skills.ToLower();
             var Is_insert =await PostJobDB.Instance.CreateJobPublic(jobID.ToString(), ChJobID, postJobModel.PostedByID, json, serachInstance, postJobviewModels.CategoryID, postJobviewModels.EmploymenttypeID, postJobviewModels.ExperienceID, postJobModel.city);
-            return new JsonResult(json);
+            return new JsonResult(postJobviewModels);
         }
         [Route("update")]
         [HttpPost]
@@ -221,24 +225,27 @@ namespace Cohire.Controllers
                 postJobviewModels.city = result;
             }
             List<PostJobFiles> Filesresult = new List<PostJobFiles>();
-            foreach (var file in postJobModel.JobFiles)
+            if (postJobModel.JobFiles != null)
             {
-                var uploadDirecotroy = "JobFiles\\";
-                var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
-                if (!Directory.Exists(uploadPath))
-                    Directory.CreateDirectory(uploadPath);
-                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                var filePath = Path.Combine(uploadPath, fileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                foreach (var file in postJobModel.JobFiles)
                 {
-                    await file.CopyToAsync(stream);
+                    var uploadDirecotroy = "JobFiles\\";
+                    var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
+                    if (!Directory.Exists(uploadPath))
+                        Directory.CreateDirectory(uploadPath);
+                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadPath, fileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    Filesresult.Add(new PostJobFiles
+                    {
+                        filetype = fileName.Split('.')[1],
+                        fileurl = URL + "/JobFiles/" + fileName,
+                        filename = fileName
+                    });
                 }
-                Filesresult.Add(new PostJobFiles
-                {
-                    filetype = fileName.Split('.')[1],
-                    fileurl = URL + "/JobFiles/" + fileName,
-                    filename = fileName
-                });
             }
             if (!string.IsNullOrEmpty(postJobModel.presentjobfiles))
             {
@@ -259,7 +266,7 @@ namespace Cohire.Controllers
             var json = JsonConvert.SerializeObject(postJobviewModels);
             string serachInstance = postJobModel.RoleId.ToLower() + "-" + postJobModel.Skills.ToLower();
             var Is_insert = await PostJobDB.Instance.UpdateJobPublic(postJobModel.ChJobID, json, serachInstance);
-            return new JsonResult(json);
+            return new JsonResult(postJobviewModels);
         }
         #endregion
     }
