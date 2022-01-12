@@ -1,4 +1,5 @@
 ﻿using Cohire.Model.PostJob;
+using Cohire.Models.JobFeed;
 using Cohire.Models.MasterData;
 using CohireAPI.PostJobs.Model;
 using Microsoft.AspNetCore.Hosting;
@@ -37,11 +38,11 @@ namespace Cohire.Controllers
         #region-----------------Job Feed-------------------------------
 
         [Route("getjobs")]
-        [HttpPost]
+        [HttpGet]
         public async Task<JsonResult> JobFeed()
         {
-            
-            return new JsonResult("");
+            var data = JobFeeds.Instance.GetJobFeeds();
+            return new JsonResult(data);
         }
         #endregion
 
