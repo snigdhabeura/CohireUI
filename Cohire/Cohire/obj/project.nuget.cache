@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XxVM7FJGLAs0xb0SG0c/GwCDl18mFN208F9vu4NLPqEsysjGNn8DDACGSCgI+94QW9cO/bwL9jJ811himUh62g==",
+  "dgSpecHash": "2H+oRoxrYcGcsF1t+c+nfwcxd/2hJZAa+HfRY2C02URLgTT+4aWJujDBFb1DOWMmsjOhvDR+af+WqlUoQCDZ5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj",
   "expectedPackageFiles": [
@@ -13,8 +13,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CohireAPI.PostJobs.Model;
 
 namespace Cohire.Model.PostJob
 {
@@ -28,7 +29,7 @@ namespace Cohire.Model.PostJob
                 }
             }
         }
-        public async Task<string> CreateJobPublic(string JobID, string ChJobID, string PostedByID, string JobJson, string SearchInstance,int CategoryId,int EmploymentId,int ExperineceId,string city)
+        public async Task<string> CreateJobPublic(ViewPostJobModel viewPostJobModel,string JobJson,string SearchInstance,string city)
         {
             SqlConnection azureSQLDb = null;
             try
@@ -39,15 +40,18 @@ namespace Cohire.Model.PostJob
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
                     SqlCommand cmd = new SqlCommand("[dbo].[CreateJobForPublic]", azureSQLDb);
-                    cmd.Parameters.Add("@CategoryId", SqlDbType.Int).Value = CategoryId;
-                    cmd.Parameters.Add("@EmploymentId", SqlDbType.Int).Value = EmploymentId;
-                    cmd.Parameters.Add("@ExperineceId", SqlDbType.Int).Value = ExperineceId;
-                    cmd.Parameters.Add("@JobID", SqlDbType.VarChar).Value = JobID;
-                    cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = ChJobID;
-                    cmd.Parameters.Add("@PostedByID", SqlDbType.VarChar).Value = PostedByID;
+                    cmd.Parameters.Add("@CategoryId", SqlDbType.Int).Value = viewPostJobModel.CategoryID;
+                    cmd.Parameters.Add("@EmploymentId", SqlDbType.Int).Value = viewPostJobModel.EmploymenttypeID;
+                    cmd.Parameters.Add("@ExperineceId", SqlDbType.Int).Value = viewPostJobModel.ExperienceID;
+                    cmd.Parameters.Add("@JobID", SqlDbType.VarChar).Value = viewPostJobModel.JobId.ToString();
+                    cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = viewPostJobModel.ChJobID;
+                    cmd.Parameters.Add("@PostedByID", SqlDbType.VarChar).Value = viewPostJobModel.PostedByID;
                     cmd.Parameters.Add("@JobJson", SqlDbType.VarChar).Value = JobJson;
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
                     cmd.Parameters.Add("@city", SqlDbType.VarChar).Value = city;
+                    cmd.Parameters.Add("@Is_Job", SqlDbType.Bit).Value = viewPostJobModel.Is_Job;
+                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = viewPostJobModel.Ip_Address;
+                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = viewPostJobModel.Device_Type;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted=await cmd.ExecuteNonQueryAsync();
                     return Is_inserted.ToString();
@@ -56,7 +60,7 @@ namespace Cohire.Model.PostJob
             catch (Exception ex)
             {
 
-                return ex.Message + "||" + ex.StackTrace;
+                return "";
             }
             finally
             {
@@ -65,7 +69,7 @@ namespace Cohire.Model.PostJob
 
         }
 
-        public async Task<string> UpdateJobPublic(string ChJobID, string JobJson, string SearchInstance)
+        public async Task<string> UpdateJobPublic(string ChJobID, string JobJson, string SearchInstance,string Ip_Address,string Device_Type,bool Is_job,string PostedByID)
         {
             SqlConnection azureSQLDb = null;
             try
@@ -78,6 +82,10 @@ namespace Cohire.Model.PostJob
                     cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = ChJobID;
                     cmd.Parameters.Add("@JobJson", SqlDbType.VarChar).Value = JobJson;
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
+                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = Ip_Address;
+                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = Device_Type;
+                    cmd.Parameters.Add("@Is_Job", SqlDbType.Bit).Value = Is_job;
+                    cmd.Parameters.Add("@PostedByID", SqlDbType.VarChar).Value = PostedByID;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_updated = await cmd.ExecuteNonQueryAsync();
                     return Is_updated.ToString();
@@ -87,7 +95,7 @@ namespace Cohire.Model.PostJob
             catch (Exception ex)
             {
 
-                return ex.Message + "||" + ex.StackTrace;
+                return "";
             }
             finally
             {
@@ -144,7 +152,7 @@ namespace Cohire.Model.PostJob
             }
             finally { azureSQLDb.Close(); }
         }
-
+       
 
     }
 }

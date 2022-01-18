@@ -27,7 +27,7 @@ namespace Cohire.Models.JobFeed
                 }
             }
         }
-        public  List<string> GetJobFeeds()
+        public  List<string> GetJobFeeds(string jobID="")
         {
             List<string> vs = new List<string>();   
                SqlConnection azureSQLDb = null;
@@ -37,9 +37,20 @@ namespace Cohire.Models.JobFeed
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
+                    if(!string.IsNullOrEmpty(jobID))
+                    {
+                        string query = "select JobJson from JobPost  where ChJobID='"+ jobID + "'";
+                        SqlCommand cmd = new SqlCommand(query, azureSQLDb);
+                        var data = cmd.ExecuteScalar().ToString();
+                        vs.Add(data);
+                    }
+                    else
+                    {
                         SqlCommand cmd = new SqlCommand("SELECT job = STUFF(( SELECT '|' + JobJson FROM [JobPost]   order by CreatedDate desc FOR XML PATH('') ), 1, 1, '')", azureSQLDb);
-                        var data =  cmd.ExecuteScalar().ToString();
+                        var data = cmd.ExecuteScalar().ToString();
                         vs = data.Split('|').ToList();
+                    }
+                        
                         return vs;
                 }
             }

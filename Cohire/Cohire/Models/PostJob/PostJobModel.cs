@@ -23,6 +23,9 @@ namespace CohireAPI.PostJobs.Model
         public string JobDescription { get; set; }  
         public string Skills { get; set; }
         public string JobQuestions{ get; set; }
+        public bool Is_Job { get; set; }
+        public string Ip_Address { get; set; }
+        public string Device_Type { get; set; }
         public List<IFormFile> JobFiles { get; set; }
 
     }
@@ -46,6 +49,9 @@ namespace CohireAPI.PostJobs.Model
         public string JobDescription { get; set; }
         public string Skills { get; set; }
         public string JobQuestions { get; set; }
+        public bool Is_Job { get; set; }
+        public string Ip_Address { get; set; }
+        public string Device_Type { get; set; }
         public List<IFormFile> JobFiles { get; set; }
         public string presentjobfiles { get; set; }
     }
@@ -65,6 +71,9 @@ namespace CohireAPI.PostJobs.Model
         public string Employmenttype_Name { get; set; }
         public string Salaryrange { get; set; }
         public string JobDescription { get; set; }
+        public bool Is_Job { get; set; }
+        public string Ip_Address { get; set; }
+        public string Device_Type { get; set; }
         public List<string> city { get; set; }
         public List<string> Skills { get; set; }
         public List<string> JobQuestions { get; set; }
