@@ -1,5 +1,6 @@
 ﻿using Cohire.Model.PostJob;
 using Cohire.Models.JobFeed;
+using Cohire.Models.JobFeedList;
 using Cohire.Models.MasterData;
 using Cohire.Models.Response_Model;
 using CohireAPI.PostJobs.Model;
@@ -37,13 +38,14 @@ namespace Cohire.Controllers
         }
 
         #region-----------------Job Feed-------------------------------
-
+       
         [Route("getjobs")]
         [HttpGet]
         public async Task<JsonResult> JobFeed()
         {
             var data = JobFeeds.Instance.GetJobFeeds();
-            return new JsonResult(data);
+            var myDeserializedClass = JsonConvert.DeserializeObject <List<JobFeedList>>(data);
+            return new JsonResult(myDeserializedClass);
         }
         #endregion
 
@@ -335,7 +337,7 @@ namespace Cohire.Controllers
                 var data = JobFeeds.Instance.GetJobFeeds(jobId);
                 api_Response.Is_Error = false;
                 api_Response.Status_Code = StatusCodes.Status200OK;
-                api_Response.data = JsonConvert.DeserializeObject<ViewPostJobModel>(data.FirstOrDefault());
+                api_Response.data = JsonConvert.DeserializeObject<ViewPostJobModel>(data);
                 return new JsonResult(api_Response);
             }
             catch(Exception ex)

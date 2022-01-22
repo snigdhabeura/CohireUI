@@ -41,8 +41,6 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cs
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Cohire.exe
@@ -75,4 +73,6 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorTargetAssemblyInfo.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.Views.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CopyComplete
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache

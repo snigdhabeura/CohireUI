@@ -27,9 +27,9 @@ namespace Cohire.Models.JobFeed
                 }
             }
         }
-        public  List<string> GetJobFeeds(string jobID="")
+        public  string GetJobFeeds()
         {
-            List<string> vs = new List<string>();   
+              
                SqlConnection azureSQLDb = null;
             try
             {
@@ -37,21 +37,44 @@ namespace Cohire.Models.JobFeed
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
-                    if(!string.IsNullOrEmpty(jobID))
-                    {
-                        string query = "select JobJson from JobPost  where ChJobID='"+ jobID + "'";
+                        string query = "SELECT job = '['+STUFF(( SELECT ',' + JobJson FROM [JobPost]   order by CreatedDate desc FOR XML PATH('') ), 1, 1,'')+']'";
                         SqlCommand cmd = new SqlCommand(query, azureSQLDb);
                         var data = cmd.ExecuteScalar().ToString();
-                        vs.Add(data);
+                        return data;
+                     
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                azureSQLDb.Close();
+            }
+        }
+
+        public string GetJobFeeds(string jobID)
+        {
+
+            SqlConnection azureSQLDb = null;
+            try
+            {
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    if (!string.IsNullOrEmpty(jobID))
+                    {
+                        string query = "select JobJson from JobPost  where ChJobID='" + jobID + "'";
+                        SqlCommand cmd = new SqlCommand(query, azureSQLDb);
+                        var data = cmd.ExecuteScalar().ToString();
+                        return data;
                     }
                     else
                     {
-                        SqlCommand cmd = new SqlCommand("SELECT job = STUFF(( SELECT '|' + JobJson FROM [JobPost]   order by CreatedDate desc FOR XML PATH('') ), 1, 1, '')", azureSQLDb);
-                        var data = cmd.ExecuteScalar().ToString();
-                        vs = data.Split('|').ToList();
+                        return null;
                     }
-                        
-                        return vs;
                 }
             }
             catch (Exception ex)
