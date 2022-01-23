@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "ProfilePage";
+}
+@{
+    Context.Request.Cookies.TryGetValue("Username", out string value);
+}
+<h1>Hi @Html.Raw(value), Welcome to cohyre. This is your ProfilePage.</h1>
+

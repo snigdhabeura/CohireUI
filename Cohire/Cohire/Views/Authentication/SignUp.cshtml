@@ -1,0 +1,214 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if (ViewBag.ID == "L")
+{
+
+
+<table>
+        <tr class="signup">
+            <td> Full Name</td>
+            <td> <input type="text" id="fullname" oninput="RemoveErrorMesage('fullname')" /><br /><label style="color:red" id="fullname_err"></label></td>
+        </tr>
+        <tr class="signup">
+            <td> Email/Mobile no</td>
+            <td> <input type="text" id="email" oninput="RemoveErrorMesage('email')" /> <br /><label style="color:red" id="email_err"></label></td>
+        </tr>
+        <tr class="signup">
+            <td> Password</td>
+            <td> <input type="text" id="password" oninput="RemoveErrorMesage('password')" /><br /><label style="color:red" id="password_err"></label> </td>
+        </tr>
+        <tr class="signup">
+            <td> Confirm Password</td>
+            <td> <input type="text" id="cpassword" oninput="verifyPassword();RemoveErrorMesage('cpassword')" /> <br /><label style="color:red" id="cpassword_err"></label></td>
+        </tr>
+        <tr class="signup">
+            <td></td>
+            <td><input type="button" id="signupbtn" value="SignUp" onclick="VerifySignUp()" /><input type="hidden" id="hdn_profileId" /></td>
+        </tr>
+        <tr class="signup_nxt" style="display:none">
+            <td>Enter OTP</td>
+            <td>
+                <input type="text" id="signup_otp" oninput="RemoveErrorMesage('signup_otp')" />
+                <br /><label id="otp_confirm" style="color:green"></label>
+                <br /><label style="color:red" id="signup_otp_err"></label>
+            </td>
+        </tr>
+        <tr class="signup_nxt" style="display:none">
+            <td><input type="button" id="resent_otp" value="ResendOTP" onclick="ResendOTP()" /></td>
+            <td><input type="button" id="verifbtn" value="Verify" onclick="VerifyOTP()" /></td>
+        </tr>
+    </table>  }
+            else
+            {
+                <form method="post" action="/Authentication/SignIn">
+                    <table>
+                        <tr>
+                            <td>Email/Mobile Number</td>
+                            <td><input type="text" id="Email" name="Email" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="text" id="Password" name="Password" required/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit">SignIn</button></td>
+                        </tr>
+                    </table>
+                </form>
+            }
+
+
+
+<script>
+    function VerifySignUp() {
+        debugger;
+        var Is_error = 0;
+        if ($("#fullname").val() == '') {
+            $("#fullname_err").html("Full name required"); Is_error = 1;
+        }
+        if ($("#email").val() == '') {
+            $("#email_err").html("Email/Mobile number required"); Is_error = 1;
+        } else {
+            var Is_email = validateEmail($("#email").val());
+            var Is_mobile = validatePhone($("#email").val());
+            if (Is_email == false && Is_mobile == false) {
+                $("#email_err").html("Please enter a valid Email/Mobile number"); Is_error = 1;
+            }
+        }
+        if ($("#password").val() == '') {
+            $("#password_err").html("Password required"); Is_error = 1;
+        }
+        if ($("#cpassword").val() == '') {
+            $("#cpassword_err").html("Confirm password required"); Is_error = 1;
+        }
+        if ($("#password").val() != $("#cpassword").val()) {
+            $("#cpassword_err").html("Password does not match"); Is_error = 1;
+        } else {
+            $("#cpassword_err").html("");
+        }
+        if (Is_error == 0) {
+            var FullName = $("#fullname").val();
+            var Email = '';
+            var Mobile = '';
+            var Password = $("#password").val();
+            if (Is_email == true) {
+                $("#otp_confirm").html("Otp has been send to your email");
+                Email = $("#email").val();
+            }
+            if (Is_mobile == true) {
+                $("#otp_confirm").html("Otp has been send to your mobile number");
+                Mobile = $("#email").val();
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "/Authentication/SignUp",
+                data: { FullName: FullName, Email: Email, Mobile: Mobile, Password: Password },
+                dataType: "json",
+                success: function (resultData) {
+                    debugger;
+                    if (resultData.is_error == true) {
+                        alert(resultData.errormsg);
+                    } else {
+                        $("#hdn_profileId").val(resultData.profileID);
+                        $(".signup").hide();
+                        $(".signup_nxt").show();
+                    }
+                }
+            });
+        }
+    }
+
+    function verifyPassword() {
+        debugger;
+        if ($("#password").val() != $("#cpassword").val()) {
+            $("#cpassword_err").html("Password does not match");
+        } else {
+            $("#cpassword_err").html("");
+        }
+    }
+
+    function RemoveErrorMesage(id) {
+        if ($("#" + id + "").val() != '') {
+            if (id == 'cpassword') {
+                if ($("#password").val() != $("#cpassword").val()) {
+                    $("#cpassword_err").html("Password does not match"); Is_error = 1;
+                } else {
+                    $("#cpassword_err").html("");
+                }
+            } else {
+                $("#" + id + "_err").html("");
+            }
+
+        }
+    }
+
+    function validateEmail(email) {
+        var emailRegex = /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return emailRegex.test(email);
+    }
+
+    function validatePhone(phone) {
+        //Validates the phone number
+        var phoneRegex = /^(\+91-|\+91|0)?\d{10}$/; // Change this regex based on requirement
+        return phoneRegex.test(phone);
+    }
+
+    function VerifyOTP() {
+        $("#otp_confirm").html('');
+        $("#signup_otp_err").html('');
+        $.ajax({
+            type: 'POST',
+            url: "/Authentication/VerifyOTP",
+            data: { CHProfileID: $("#hdn_profileId").val(), OTP: $("#signup_otp").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                if (resultData.is_error == true) {
+                    $("#signup_otp_err").html(resultData.errormsg);
+                } else {
+                    $("#otp_confirm").html(resultData.errormsg);
+                    location.href = "/Authentication/ProfilePage";
+                }
+            }
+        });
+    }
+    function ResendOTP() {
+        var Email = '';
+        var Mobile = '';
+        var Is_email = validateEmail($("#email").val());
+        var Is_mobile = validatePhone($("#email").val());
+        if (Is_email == true) {
+            $("#otp_confirm").html("");
+            Email = $("#email").val();
+        }
+        if (Is_mobile == true) {
+            $("#otp_confirm").html("");
+            Mobile = $("#email").val();
+        }
+        $("#otp_confirm").html("");
+        $.ajax({
+            type: 'POST',
+            url: "/Authentication/ResenOTP",
+            data: { Email: Email, Mobile: Mobile, CHProfileID: $("#hdn_profileId").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                if (resultData.is_error == true) {
+                    $("#signup_otp_err").html(resultData.errormsg);
+                } else {
+                    if (Is_email == true) {
+                        $("#otp_confirm").html("Otp has been sent to your email");
+                    }
+                    if (Is_mobile == true) {
+                        $("#otp_confirm").html("Otp has been sent to your mobile number");
+                    }
+                }
+            }
+        });
+    }
+</script>
