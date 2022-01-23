@@ -74,6 +74,7 @@ namespace CohireAPI.PostJobs.Model
         public bool Is_Job { get; set; }
         public string Ip_Address { get; set; }
         public string Device_Type { get; set; }
+        public string CreatedDate { get; set; }
         public List<string> city { get; set; }
         public List<string> Skills { get; set; }
         public List<string> JobQuestions { get; set; }

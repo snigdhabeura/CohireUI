@@ -52,7 +52,7 @@ namespace Cohire.Controllers
         #region------------MasterDataLoad---------------------------------
         [Route("getskills")]
         [HttpGet]
-        public async Task<JsonResult> GetSkills(string prefix)
+        public async Task<JsonResult> GetSkills(string prefix)//atleast 2 char
         {
             var data =await PostJobDB.Instance.GetSkills(prefix);
             return new JsonResult(data);
@@ -121,6 +121,7 @@ namespace Cohire.Controllers
                 postJobviewModels.Is_Job = postJobModel.Is_Job;
                 postJobviewModels.Device_Type = postJobModel.Device_Type;
                 postJobviewModels.Ip_Address = postJobModel.Ip_Address;
+                postJobviewModels.CreatedDate = DateTime.Now.ToString("dd MMMM yyyy");
                 List<string> result;
                 if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
                 {
