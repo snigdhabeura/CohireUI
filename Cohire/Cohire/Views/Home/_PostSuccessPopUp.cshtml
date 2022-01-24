@@ -1,0 +1,32 @@
+﻿@model CohireAPI.PostJobs.Model.PostJobModel
+
+<div class="modal-dialog modal-lg" id="postModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 p-4 border-0">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                <a href="#" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" data-bs-target="#postModal">arrow_back_ios_new</a>
+                @*<h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>*@
+                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">your post sucessfully posted </span></h5>
+
+            </div>
+
+
+
+            <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
+                <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
+                </div>
+                <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75" data-bs-dismiss="modal">
+                    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16"></span>Cancel</a>
+                </div>
+                <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#commentModal1">
+                    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16">send</span>Post</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
