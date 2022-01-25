@@ -54,7 +54,7 @@ namespace Cohire
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Authentication}/{action=SignUp}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
