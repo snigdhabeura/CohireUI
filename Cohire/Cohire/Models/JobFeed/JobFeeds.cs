@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Linq;
+using Cohire.Models.CommonOperation;
+
 namespace Cohire.Models.JobFeed
 {
     public class JobFeeds
@@ -21,7 +23,7 @@ namespace Cohire.Models.JobFeed
                     if (instance == null)
                     {
                         instance = new JobFeeds();
-                        connectionString = "Server=.;Database=Cohire;Integrated Security=true;MultipleActiveResultSets=true;";
+                        connectionString = GetConnectionString.Instance.ReturnConnectionString();
                     }
                     return instance;
                 }

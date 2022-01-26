@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CohireAPI.PostJobs.Model;
+using Cohire.Models.CommonOperation;
 
 namespace Cohire.Model.PostJob
 {
@@ -23,7 +24,7 @@ namespace Cohire.Model.PostJob
                     if (instance == null)
                     {
                         instance = new PostJobDB();
-                        connectionString= "Server=.;Database=Cohire;Integrated Security=true;MultipleActiveResultSets=true;";
+                        connectionString = GetConnectionString.Instance.ReturnConnectionString();
                     }
                     return instance;
                 }
@@ -153,6 +154,6 @@ namespace Cohire.Model.PostJob
             finally { azureSQLDb.Close(); }
         }
        
-
+        
     }
 }

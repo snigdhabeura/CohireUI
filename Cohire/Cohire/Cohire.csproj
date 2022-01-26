@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\JobFiles\" />
+    <Folder Include="wwwroot\ApplyJobResume\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -26,8 +28,24 @@ namespace Cohire.Models.CommonOperation
     public class CommonOP
     {
 
+        private static CommonOP instance = null;
+        private static readonly object padlock = new object();
 
-       public bool SendEmail(string toemail,string subject,string body)
+        public static CommonOP Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new CommonOP();
+                    }
+                    return instance;
+                }
+            }
+        }
+        public bool SendEmail(string toemail,string subject,string body)
        {
 
         System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
@@ -97,6 +115,75 @@ namespace Cohire.Models.CommonOperation
             }
             return sMSRoot;
            
+        }
+
+
+        public List<T> ConvertDataTable<T>(DataTable dt)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T item = GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
+        private static T GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
+        }
+
+     
+    }
+    public class GetConnectionString
+    {
+        private static GetConnectionString instance = null;
+        private static readonly object padlock = new object();
+        
+        public static GetConnectionString Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new GetConnectionString();
+                    }
+                    return instance;
+                }
+            }
+        }
+
+        public string ReturnConnectionString()
+        {
+            string connectionstring = string.Empty;
+            string username = "";
+            string password = "";
+            string Server = ".";
+            string dataBase = "Cohire";
+            if(!string.IsNullOrEmpty(username))
+            {
+                connectionstring = "Server=" + Server + ";Database=" + dataBase + ";User ID="+ username + ";Password="+ password + ";MultipleActiveResultSets=true;";
+            }
+            else
+            {
+                connectionstring = "Server=" + Server + ";Database=" + dataBase + ";Integrated Security=true;MultipleActiveResultSets=true;";
+            }
+            return connectionstring;
         }
     }
 }

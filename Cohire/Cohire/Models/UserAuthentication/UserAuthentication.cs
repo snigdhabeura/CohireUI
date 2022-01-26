@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Cohire.Models.CommonOperation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -44,7 +45,7 @@ namespace Cohire.Models.UserAuthentication
                     if (instance == null)
                     {
                         instance = new UserAuthentication();
-                        connectionString = "Server=.;Database=Cohire;Integrated Security=true;MultipleActiveResultSets=true;";
+                        connectionString = GetConnectionString.Instance.ReturnConnectionString();
                     }
                     return instance;
                 }
@@ -59,9 +60,17 @@ namespace Cohire.Models.UserAuthentication
             {
                 if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                     azureSQLDb.Open();
-                SqlCommand cmd = new SqlCommand("insert into dbo.User_Authentication (CHProfileID,FullName,Email,Mobile,OTP,Password,OTP_Message)values('" + CHProfileID+ "','" + FullName + "','" + Email + "','" + Mobile + "','" + OTP + "','" + Password + "','"+ OTP_Message + "')", azureSQLDb);
-                Is_insert = (string)await cmd.ExecuteScalarAsync();
-                
+                SqlCommand cmd = new SqlCommand("dbo.Register_user_Profile", azureSQLDb);
+                cmd.Parameters.Add("@CHProfileID", SqlDbType.VarChar).Value = CHProfileID;
+                cmd.Parameters.Add("@FullName", SqlDbType.VarChar).Value = FullName;
+                cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(Email)? Email:null;
+                cmd.Parameters.Add("@Mobile", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(Mobile) ? Mobile : null;
+                cmd.Parameters.Add("@OTP", SqlDbType.VarChar).Value = OTP;
+                cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = Password;
+                cmd.Parameters.Add("@OTP_Message", SqlDbType.VarChar).Value = OTP_Message;
+                cmd.CommandType = CommandType.StoredProcedure;
+                Is_insert = cmd.ExecuteScalarAsync().GetAwaiter().GetResult().ToString();
+
             }
             return Is_insert;
         }
@@ -84,7 +93,10 @@ namespace Cohire.Models.UserAuthentication
                     }
                     else
                     {
-                        cmd = new SqlCommand("select * from User_Authentication where CHProfileID='" + CHProfileID + "' and OTP='" + OTP + "' FOR JSON AUTO", azureSQLDb);
+                        cmd = new SqlCommand("dbo.Verify_user_Profile", azureSQLDb);
+                        cmd.Parameters.Add("@CHProfileID", SqlDbType.VarChar).Value = CHProfileID;
+                        cmd.Parameters.Add("@OTP", SqlDbType.VarChar).Value = OTP;
+                        cmd.CommandType = CommandType.StoredProcedure;
                     }
                     var Is_inserted = await cmd.ExecuteScalarAsync();
                     if(Is_inserted==null)
@@ -121,7 +133,14 @@ namespace Cohire.Models.UserAuthentication
                         cmd = new SqlCommand("select * from User_Authentication where Password='" + passwword + "' and Email='" + email + "' FOR JSON AUTO", azureSQLDb);
                     
                     var Is_inserted = await cmd.ExecuteScalarAsync();
-                    SigupModel = JsonConvert.DeserializeObject<List<SigupModel>>(Is_inserted.ToString()).FirstOrDefault();
+                    if(Is_inserted==null)
+                    {
+                        SigupModel = null;
+                    }
+                    else
+                    {
+                        SigupModel = JsonConvert.DeserializeObject<List<SigupModel>>(Is_inserted.ToString()).FirstOrDefault();
+                    }
 
                 }
             }
@@ -131,6 +150,79 @@ namespace Cohire.Models.UserAuthentication
                 SigupModel = null;
             }
             return SigupModel;
+        }
+
+        public async Task<Sigupresponse>SendTempPassword(string email,string mobile)
+        {
+            Sigupresponse sigupresponse = new Sigupresponse();
+            try
+            {
+               
+                SqlConnection azureSQLDb = null;
+                SqlCommand cmd;
+                CommonOP commonOP = new CommonOP();
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    cmd = new SqlCommand("dbo.SendTemporaryPassword", azureSQLDb);
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(email) ? email : null;
+                    cmd.Parameters.Add("@Mobile", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(mobile) ? mobile : null;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    var Is_inserted = await cmd.ExecuteScalarAsync();
+                    sigupresponse.Is_error = false;
+                    if (Is_inserted.ToString() == "0")
+                    {
+                        if (!string.IsNullOrEmpty(email))
+                        { sigupresponse.Is_error = true;  sigupresponse.errormsg = "Given email not exist"; }
+                        if (!string.IsNullOrEmpty(mobile))
+                        { sigupresponse.Is_error = true;  sigupresponse.errormsg = "Given mobile number not exist"; }
+
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(email))
+                        {
+
+                            var response = commonOP.SendEmail(email, "SignupOTP", "Your new temporary password:  " + Is_inserted + "");
+                            if (response != true)
+                            {
+                                sigupresponse.Is_error = true;
+                                sigupresponse.errormsg = "password can't send to your email";
+                            }
+                            else
+                            {
+                                sigupresponse.errormsg = "password has been sent to your email";
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        if (!string.IsNullOrEmpty(mobile))
+                        {
+
+                            var response = commonOP.sendSMS("Your new temporary password:  " + Is_inserted + "", mobile);
+                            if (response.status == "failure")
+                            {
+                                sigupresponse.Is_error = true;
+                                sigupresponse.errormsg = "password can't send to your mobile";
+                            }
+                            else
+                            {
+                                sigupresponse.errormsg = "password has been sent to your mobile";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                sigupresponse.Is_error = true;
+                sigupresponse.errormsg = "Something went wrong";
+            }
+            return sigupresponse;
         }
     }
 }

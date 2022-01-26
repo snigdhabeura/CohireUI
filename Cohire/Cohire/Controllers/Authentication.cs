@@ -16,13 +16,6 @@ namespace Cohire.Controllers
             return View();
         }
         
-        [HttpGet]
-        public IActionResult SignUp(string id="")
-        {
-            ViewBag.ID = id;
-            return View();
-        }
-
         [HttpPost]
         public JsonResult SignUp(SigupModel sigupModel)
         {
@@ -38,28 +31,74 @@ namespace Cohire.Controllers
                 string message = "";
                 if (!string.IsNullOrEmpty(sigupModel.Email))
                 {
-                    message = "Your verififcation OTP:<b>" + OTP + "</b>";
-                       var response = commonOP.SendEmail(sigupModel.Email, "SignupOTP", message);
-                    if(response!=true)
+                    message = "Your verififcation OTP: <b>" + OTP + "</b>";
+                    if (sigupresponse.Is_error == false)
                     {
-                        sigupresponse.Is_error = true;
-                        sigupresponse.errormsg = "OTP can't send to your email";
+                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message);
+                        if(data.Result.ToString()=="-1")
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "Email already exist!!";
+                        }
+                        else if(data.Result.ToString() == "")
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "Something went wrong,please try agian";
+                        }
+                        else
+                        {
+                            var response = commonOP.SendEmail(sigupModel.Email, "SignupOTP", message);
+                            if (response != true)
+                            {
+                                sigupresponse.Is_error = true;
+                                sigupresponse.errormsg = "OTP can't send to your email";
+                            }
+                            else
+                            {
+                                sigupresponse.errormsg = "OTP has been sent to your email";
+                            }
+                        }
                     }
+                    
                 }
-                if(!string.IsNullOrEmpty(sigupModel.Mobile))
+                else if(!string.IsNullOrEmpty(sigupModel.Mobile))
                 {
                     message = "Hi, Your verififcation OTP : " + OTP + "";
-                    var response= commonOP.sendSMS("Hi, Your verififcation OTP : " + OTP + "", sigupModel.Mobile);
-                    if (response.status == "failure")
+                    if (sigupresponse.Is_error == false)
                     {
-                        sigupresponse.Is_error = true;
-                        sigupresponse.errormsg = "OTP can't send to your mobile number";
+                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message);
+                        if (data.Result.ToString() == "-1")
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "Mobile number already exist!!";
+                        }
+                        else if (data.Result.ToString() == "")
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "Something went wrong,please try agian";
+                        }
+                        else
+                        {
+                            var response = commonOP.sendSMS("Your verififcation OTP: " + OTP + "", sigupModel.Mobile);
+                            if (response.status == "failure")
+                            {
+                                sigupresponse.Is_error = true;
+                                sigupresponse.errormsg = "OTP can't send to your mobile";
+                            }
+                            else
+                            {
+                                sigupresponse.errormsg = "OTP has been sent to your mobile";
+                            }
+                        }
                     }
+                    
                 }
-                if(sigupresponse.Is_error==false)
+                else
                 {
-                   var data= UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message);
+                    sigupresponse.Is_error = true;
+                    sigupresponse.errormsg = "Something went wrong,please try agian";
                 }
+                
             }
             catch (Exception ex)
             {
@@ -79,24 +118,27 @@ namespace Cohire.Controllers
             {
                 var data = UserAuthentication.Instance.ResendOTPAsync(sigupModel.CHProfileID,"");
                 sigupresponse.Is_error = false;
-                if (!string.IsNullOrEmpty(data.Result.Email))
+                if(data!=null)
                 {
-                   
-                    var response = commonOP.SendEmail(sigupModel.Email, "SignupOTP", data.Result.OTP_Message);
-                    if (response != true)
+                    if (!string.IsNullOrEmpty(data.Result.Email))
                     {
-                        sigupresponse.Is_error = true;
-                        sigupresponse.errormsg = "OTP can't send to your email";
+
+                        var response = commonOP.SendEmail(data.Result.Email, "SignupOTP", data.Result.OTP_Message);
+                        if (response != true)
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "OTP can't send to your email";
+                        }
                     }
-                }
-                if (!string.IsNullOrEmpty(data.Result.Mobile))
-                {
-                    
-                    var response = commonOP.sendSMS("Hi, Your verififcation OTP : " + data.Result.OTP_Message + "", sigupModel.Mobile);
-                    if (response.status == "failure")
+                    if (!string.IsNullOrEmpty(data.Result.Mobile))
                     {
-                        sigupresponse.Is_error = true;
-                        sigupresponse.errormsg = "OTP can't send to your mobile number";
+
+                        var response = commonOP.sendSMS("Hi, Your verififcation OTP : " + data.Result.OTP_Message + "", data.Result.Mobile);
+                        if (response.status == "failure")
+                        {
+                            sigupresponse.Is_error = true;
+                            sigupresponse.errormsg = "OTP can't send to your mobile number";
+                        }
                     }
                 }
             }
@@ -146,15 +188,15 @@ namespace Cohire.Controllers
         {
             Response.Cookies.Delete("UserID");
             Response.Cookies.Delete("Username");
-            return RedirectToAction("SignUp");
+            return RedirectToAction("Index", "Home");
         }
        
         [HttpPost]
-        public ActionResult SignIn(SigupModel sigupModel)
+        public JsonResult SignIn(SigupModel sigupModel)
         {
            
             var data = UserAuthentication.Instance.Login(sigupModel.Email, sigupModel.Password);
-            if(data!=null)
+            if(data.Result!=null)
             {
                 Response.Cookies.Delete("UserID");
                 Response.Cookies.Delete("Username");
@@ -162,11 +204,11 @@ namespace Cohire.Controllers
                 options.Expires = DateTime.Now.AddHours(1);
                 Response.Cookies.Append("UserID", data.Result.CHProfileID);
                 Response.Cookies.Append("Username", data.Result.FullName);
-                return RedirectToAction("ProfilePage");
+                return Json(data.Result);
             }
             else
             {
-                return RedirectToAction("SignUp", new { id = "" });
+                return Json("0");
             }
             
         }
@@ -175,6 +217,12 @@ namespace Cohire.Controllers
         public IActionResult ProfilePage()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult SendPassword(string Email,string Password)
+        {
+            return Json(UserAuthentication.Instance.SendTempPassword(Email, Password).Result);
         }
     }
 }
