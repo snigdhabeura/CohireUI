@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Cohire.Models.CommonOperation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -38,7 +39,7 @@ namespace Cohire.Models.MasterData
                     if (instance == null)
                     {
                         instance = new Masterdataoperation();
-                        connectionString = "Server=.;Database=Cohire;Integrated Security=true;MultipleActiveResultSets=true;";
+                        connectionString = GetConnectionString.Instance.ReturnConnectionString();
                     }
                     return instance;
                 }

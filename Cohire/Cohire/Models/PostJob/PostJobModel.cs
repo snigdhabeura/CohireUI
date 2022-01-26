@@ -95,5 +95,49 @@ namespace CohireAPI.PostJobs.Model
         public string fileurl { get; set; }
         public string Is_Delete { get; set; }
     }
+    public class ApplyJobGetModel
+    {
+        public string CHProfileID { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string ChJobID { get; set; }
+        public string JobJson { get; set; }
+        public List<string>JobQuestion { get; set; }
+    }
+
+    public class ApplyJobSubMit
+    {
+        public string CHProfileID { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string ChJobID { get; set; }
+        public string ApplyJobJson { get; set; }
+        public IFormFile ResumeFile { get; set; }
+        public string  ResumeFileUrl { get; set; }
+        public List<ApplyJobQuestionAnswer> applyJobQuestionAnswers { get; set; }
+        public bool Is_termAccept { get; set; }
+
+    }
+    public class ApplyJobSubMitinsert
+    {
+        public string CH_ApllyJobID { get; set; }
+        public string CHProfileID { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string ChJobID { get; set; }
+        public string ApplyJobJson { get; set; }
+        public string ResumeFileUrl { get; set; }
+        public string applyJobQuestionAnswers { get; set; }
+        public bool Is_termAccept { get; set; }
+
+    }
+    public class ApplyJobQuestionAnswer
+    {
+        public string Question { get; set; }
+        public string Answer { get; set; }
+    }
 
 }
