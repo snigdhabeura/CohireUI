@@ -801,7 +801,7 @@ a:hover {
 .pxp-header-container {
     display: flex;
     align-items: center;
-    height: 80px;
+    height: 50px;
     justify-content: space-between;
     flex-wrap: wrap;
 }
@@ -811,7 +811,7 @@ a:hover {
     transition-property: height;
 }
 .pxp-header.pxp-bigger.pxp-is-sticky .pxp-header-container {
-    height: 80px;
+    height: 50px;
 }
 .pxp-logo > a {
     color: var(--pxpTextColor);

@@ -32,9 +32,42 @@
       <link href="~/css/style.css" rel="stylesheet">
       <!-- Material Icons -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+          <!-- Jquery Js -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <!-- Bootstrap Bundle Js -->
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Custom Js -->
+      <script src="js/custom.js"></script>
+      <!-- Slick Js -->
+      <script src="vendor/slick/slick/slick.min.js"></script>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/main.js"></script>
+    @RenderSection("Scripts", required: false)
 </head>
 <body>
-    <header>
+
+            <div class="pxp-header-container bg-white top-osahan-nav-tab">
+               
+                <div class="pxp-logo">
+                    <a href="index.html" class="text-decoration-none">
+                                <img src="~/Img/Logo1.jpg" class="img-fluid logo" alt="brand-logo">
+                            </a>
+                    <a href="index.html" class="pxp-animate">Co<span style="color: var(--pxpMainColor)">H</span>ire</a>
+                </div>
+                <nav class="pxp-user-nav d-none d-sm-flex">
+                                                  <a class="btn rounded-pill  pxp-nav-btn" data-bs-toggle="modal" href="#pxp-signin-modal" role="button">Sign in</a>
+                </nav>
+            </div>
+   
+
        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UI_Cohire</a>
@@ -54,7 +87,6 @@
                 </div>
             </div>
         </nav>*@
-    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -66,23 +98,6 @@
             &copy; 2022 - UI_Cohire - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-          <!-- Jquery Js -->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <!-- Bootstrap Bundle Js -->
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Custom Js -->
-      <script src="js/custom.js"></script>
-      <!-- Slick Js -->
-      <script src="vendor/slick/slick/slick.min.js"></script>
-
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/main.js"></script>
-    @RenderSection("Scripts", required: false)
+  
 </body>
 </html>
