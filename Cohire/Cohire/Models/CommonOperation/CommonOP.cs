@@ -6,8 +6,11 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -72,6 +75,27 @@ namespace Cohire.Models.CommonOperation
                 return false;
         }
     }
+        public bool SendEmailGoDady(string toemail, string subject, string body)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage("no-reply@cohyre.com", toemail);
+                mail.Subject = subject;
+                mail.IsBodyHtml = true;
+                mail.Body = body;
+                SmtpClient client = new SmtpClient("smtpout.asia.secureserver.net");
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("no-reply@cohyre.com", "M@ster007");
+                client.Port = 80;
+                client.Send(mail);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         public SMSRoot sendSMS(string msg,string MobileNumber)
         {
@@ -146,7 +170,61 @@ namespace Cohire.Models.CommonOperation
             return obj;
         }
 
-     
+        public string Encrypt(string clearText)
+        {
+            string EncryptionKey = "MAKV2SPBNI99212";
+            byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    clearText = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return clearText;
+        }
+
+        public string RandomString()
+        {
+            int size = 6;
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            return Encrypt(builder.ToString());
+        }
+
+        public string GetUserIP()
+        {
+            string dataObjects = string.Empty;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://ipinfo.io/");
+            string urlParameters = "?token=c74e2bd432e4f1";
+            // Add an Accept header for JSON format.
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // List data response.
+            HttpResponseMessage response = client.GetAsync(urlParameters).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response body.
+                dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll  
+            }
+            return dataObjects;
+        }
     }
     public class GetConnectionString
     {
