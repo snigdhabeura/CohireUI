@@ -134,6 +134,7 @@ namespace Cohire.Models.UserAuthentication
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
+
                    
                     cmd = new SqlCommand("Authenticate_User", azureSQLDb);
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(email) ? email : null;
