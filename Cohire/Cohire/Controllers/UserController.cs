@@ -46,7 +46,7 @@ namespace Cohire.Controllers
         public IActionResult Index(PostJobModel postModel)
         {
 
-            var listOfFiles = new PostJobController(Environment, _logger, null).PostJob(postModel);
+            //var listOfFiles = new PostJobController(Environment, _logger, null).PostJob(postModel);
 
            
             ViewBag.Msg = "Ok";

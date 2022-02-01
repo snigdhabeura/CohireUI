@@ -1,13 +1,21 @@
 ﻿<div class="bg-white p-4 feed-item rounded-4 shadow-sm mb-3 faq-page">
-    <div class="mb-3">
+    
+    <div class="row justify-content-center">
+        <div class="d-flex flex-column h-600">
+                                <div class="mb-3">
         <h5 class="lead fw-bold text-body mb-0">ADD Screening Questions ?</h5>
     </div>
-    <div class="row justify-content-center">
+                             
+                            </div>
         <div class="col-lg-12">
             <form action="profile.html">
-             
-                    <div class="form-floating mb-1 d-flex align-items-cente"">
-                        <select class="form-select  rounded-5" id="Category" data-live-search="true" aria-label="Floating label select example">
+                <div class="input-group mb-4 shadow-sm rounded-4 overflow-hidden py-2 bg-white" id="ADDQns">
+                                    @*<span class="input-group-text material-icons border-0 bg-white text-primary">account_circle</span>*@
+                                    <input type="text" class="form-control border-0 fw-light ps-1" placeholder=" ADD Screening Questions ? ">
+                                    <a href="#" class="text-decoration-none input-group-text bg-white border-0 material-icons text-primary">add_circle</a>
+                                </div>
+                    <div class="form-floating mb-1 d-flex align-items-cente">
+                        <select class="form-select  rounded-5" id="Category1" data-live-search="true" aria-label="Floating label select example">
                             <option>Select a category</option>
                             <option>Marketing &amp; Communication</option>
                             <option>Software Engineering</option>
@@ -21,7 +29,7 @@
                             <option>Human Resources</option>
                             <option>Customer Service</option>
                         </select>
-                        <label for="Category">Category</label>
+                        <label for="Category1">Category</label>
                        </div>
                         <div class="form-floating mb-1 d-flex align-items-center">
                             <input type="text" class="form-control rounded-5" id="floatingBirth" value="01/12/21" placeholder="DATE OF BIRTH">
@@ -32,8 +40,8 @@
                             <label for="floatingEmail">EMAIL</label>
                         </div>
                         <div class="form-floating mb-1 d-flex align-items-center">
-                            <input type="password" class="form-control rounded-5" id="floatingPass" placeholder="password" value="12345678">
-                            <label for="floatingPass">PASSWORD</label>
+                            <input type="text" class="form-control rounded-5" id="Comment" placeholder="Comment" value="">
+                            <label for="Comment">Comment</label>
                         </div>
                        
                         <div class="d-grid">
