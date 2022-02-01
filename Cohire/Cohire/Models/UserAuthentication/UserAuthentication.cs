@@ -134,13 +134,14 @@ namespace Cohire.Models.UserAuthentication
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
+
                    
                     cmd = new SqlCommand("Authenticate_User", azureSQLDb);
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(email) ? email : null;
                     cmd.Parameters.Add("@Mobile", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(mobile) ? mobile : null;
                     cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = Ip_Address;
                     cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = DeviceType;
-                    cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value =CommonOP.Instance.Encrypt(passwword);
+                    cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value =passwword;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted = await cmd.ExecuteScalarAsync();
                     if(string.IsNullOrEmpty(Is_inserted.ToString()))
