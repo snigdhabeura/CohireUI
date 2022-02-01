@@ -144,7 +144,7 @@ namespace Cohire.Models.UserAuthentication
                     cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value =passwword;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted = await cmd.ExecuteScalarAsync();
-                    if(string.IsNullOrEmpty(Is_inserted.ToString()))
+                    if(string.IsNullOrEmpty(Convert.ToString(Is_inserted)))
                     {
                         SigupModel = null;
                     }
