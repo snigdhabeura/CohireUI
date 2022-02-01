@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UI_Cohire</title>
-     <link rel="shortcut icon" href="~/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/images/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
@@ -15,77 +15,91 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
 
-      <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Vogel - Social Network & Community HTML Template</title>
-      <meta name="description" content="Vogel - Social Network & Community HTML Template" />
-      <meta name="keywords" content="bootstrap5, e-learning, forum, games, online course, Social Community, social events, social feed, social media, social media template, social network html, social sharing, twitter" />
-      <!-- Bootstrap CSS -->
-      <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Slich Slider -->
-      <link href="~/vendor/slick/slick/slick.css" rel="stylesheet">
-      <link href="~/vendor/slick/slick/slick-theme.css" rel="stylesheet">
-      <!-- Icofont -->
-      <link href="~/vendor/icofont/icofont.min.css" rel="stylesheet">
-      <!-- Font Icons -->
-      <link href="~/vendor/icons/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-      <!-- Custom Css -->
-      <link href="~/css/style.css" rel="stylesheet">
-      <!-- Material Icons -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Vogel - Social Network & Community HTML Template</title>
+    <meta name="description" content="Vogel - Social Network & Community HTML Template" />
+    <meta name="keywords" content="bootstrap5, e-learning, forum, games, online course, Social Community, social events, social feed, social media, social media template, social network html, social sharing, twitter" />
+    <!-- Bootstrap CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Slich Slider -->
+    <link href="~/vendor/slick/slick/slick.css" rel="stylesheet">
+    <link href="~/vendor/slick/slick/slick-theme.css" rel="stylesheet">
+    <!-- Icofont -->
+    <link href="~/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <!-- Font Icons -->
+    <link href="~/vendor/icons/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom Css -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Jquery Js -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <script src="js/custom.js"></script>
+    <!-- Slick Js -->
+    <script src="vendor/slick/slick/slick.min.js"></script>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/main.js"></script>
+    @RenderSection("Scripts", required: false)
 </head>
 <body>
-    <header>
-       @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UI_Cohire</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
-    </header>
+
+    <div class="pxp-header-container bg-white top-osahan-nav-tab">
+
+        <div class="pxp-logo">
+            <a href="index.html" class="text-decoration-none">
+                <img src="~/Img/Logo1.jpg" class="img-fluid logo" alt="brand-logo">
+            </a>
+            <a href="index.html" class="pxp-animate">Co<span style="color: var(--pxpMainColor)">H</span>ire</a>
+        </div>
+        @{
+            Context.Request.Cookies.TryGetValue("Username", out string value);
+        }
+        @if (!string.IsNullOrEmpty(value))
+        {
+          @*  <nav class="pxp-user-nav d-none d-sm-flex">
+               <a href="Javascript:void(0)" class="btn rounded-pill pxp-nav-btn">@value</a>
+                <a class="btn rounded-pill  pxp-nav-btn" href="/Authentication/SignOut" role="button">Sign out</a>
+            </nav>
+*@
+            <nav class="pxp-user-nav pxp-on-light" style="padding-right: 8%;">
+                        
+                        <div class="pxp-user-nav-dropdown"> @*dropdown*@
+                            <a href="index.html" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="pxp-user-nav-avatar pxp-cover" style="background-image: url(images/ph-small.jpg);"></div>
+                                <div class="pxp-user-nav-name d-none d-md-block">@value</div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" style="">
+                                <li><a class="dropdown-item" href="candidate-dashboard.html">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="candidate-dashboard-profile.html">Edit profile</a></li>
+                                <li> <a class="dropdown-item" href="/Authentication/SignOut" role="button">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+        }
+        else
+        {
+            <nav class="pxp-user-nav d-none d-sm-flex">
+                <a class="btn rounded-pill  pxp-nav-btn" data-bs-toggle="modal" href="#pxp-signin-modal" role="button">Sign in</a>
+            </nav>
+        }
+
+    </div>
+
+
     <div class="container">
         <main role="main" class="pb-3">
-            <header class="pxp-header">
-                <div class="pxp-container">
-                    <div class="pxp-header-container">
-                        <div class="pxp-logo">
-                            <a href="index.html" class="pxp-animate">Co<span style="color: var(--pxpMainColor)">H</span>ire</a>
-                        </div>
-
-                        @{
-                            Context.Request.Cookies.TryGetValue("Username", out string value);
-                        }
-                        @if (!string.IsNullOrEmpty(value))
-                        {
-                            <nav class="pxp-user-nav d-none d-sm-flex">
-                                <a href="Javascript:void(0)" class="btn rounded-pill pxp-nav-btn">@value</a>
-                                <a class="btn rounded-pill  pxp-nav-btn" href="/Authentication/SignOut" role="button">Sign out</a>
-                            </nav>
-                        }
-                        else
-                        {
-                            <nav class="pxp-user-nav d-none d-sm-flex">
-                                @*<a href="company-dashboard-new-job.html" class="btn rounded-pill pxp-nav-btn">Post a Job</a>*@
-                                <a class="btn rounded-pill  pxp-nav-btn" data-bs-toggle="modal" href="#pxp-signin-modal" role="button">Sign in</a>
-                            </nav>
-                        }
-
-                    </div>
-                </div>
-            </header>
-            <div id="SignIn">
+             <div id="SignIn">
                 @Html.Partial("_SignIn");
             </div>
             @RenderBody()
@@ -97,23 +111,7 @@
             &copy; 2022 - UI_Cohire - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-          <!-- Jquery Js -->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <!-- Bootstrap Bundle Js -->
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Custom Js -->
-      <script src="js/custom.js"></script>
-      <!-- Slick Js -->
-      <script src="vendor/slick/slick/slick.min.js"></script>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/main.js"></script>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
+

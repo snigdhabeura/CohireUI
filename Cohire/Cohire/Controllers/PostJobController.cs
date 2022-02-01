@@ -94,7 +94,7 @@ namespace Cohire.Controllers
         #region----------------JobPost Insert - Update - Get -----------------------
         [Route("post")]
         [HttpPost]
-        public async Task<JsonResult> PostJob([FromForm] PostJobModel postJobModel)
+        public async Task<JsonResult> PostJob(PostJobModel postJobModel)
         {
             Api_Response<ViewPostJobModel> api_Response = new Api_Response<ViewPostJobModel>();
             try
