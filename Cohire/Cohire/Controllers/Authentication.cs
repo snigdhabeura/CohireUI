@@ -20,10 +20,10 @@ namespace Cohire.Controllers
         public JsonResult SignUp(SigupModel sigupModel)
         {
             Sigupresponse sigupresponse = new Sigupresponse();
-            CommonOP commonOP = new CommonOP();
             try
             {
-                Guid jobID = System.Guid.NewGuid();
+                sigupModel.Ip_Address = CommonOP.Instance.GetUserIP();
+               Guid jobID = System.Guid.NewGuid();
                 string OTP = "VF" + jobID.ToString().Substring(0, 4);
                 string ProfileID = "CHPF" + jobID.ToString().Substring(0, 4);
                 sigupresponse.ProfileID = ProfileID;
@@ -34,7 +34,7 @@ namespace Cohire.Controllers
                     message = "Your verififcation OTP: <b>" + OTP + "</b>";
                     if (sigupresponse.Is_error == false)
                     {
-                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message);
+                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message, sigupModel.Ip_Address, sigupModel.DeviceType);
                         if(data.Result.ToString()=="-1")
                         {
                             sigupresponse.Is_error = true;
@@ -47,7 +47,7 @@ namespace Cohire.Controllers
                         }
                         else
                         {
-                            var response = commonOP.SendEmail(sigupModel.Email, "SignupOTP", message);
+                            var response = CommonOP.Instance.SendEmailGoDady(sigupModel.Email, "SignupOTP", message);
                             if (response != true)
                             {
                                 sigupresponse.Is_error = true;
@@ -66,7 +66,7 @@ namespace Cohire.Controllers
                     message = "Hi, Your verififcation OTP : " + OTP + "";
                     if (sigupresponse.Is_error == false)
                     {
-                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message);
+                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message, sigupModel.Ip_Address, sigupModel.DeviceType);
                         if (data.Result.ToString() == "-1")
                         {
                             sigupresponse.Is_error = true;
@@ -79,7 +79,7 @@ namespace Cohire.Controllers
                         }
                         else
                         {
-                            var response = commonOP.sendSMS("Your verififcation OTP: " + OTP + "", sigupModel.Mobile);
+                            var response = CommonOP.Instance.sendSMS("Your verififcation OTP: " + OTP + "", sigupModel.Mobile);
                             if (response.status == "failure")
                             {
                                 sigupresponse.Is_error = true;
@@ -123,7 +123,7 @@ namespace Cohire.Controllers
                     if (!string.IsNullOrEmpty(data.Result.Email))
                     {
 
-                        var response = commonOP.SendEmail(data.Result.Email, "SignupOTP", data.Result.OTP_Message);
+                        var response = commonOP.SendEmailGoDady(data.Result.Email, "SignupOTP", data.Result.OTP_Message);
                         if (response != true)
                         {
                             sigupresponse.Is_error = true;
@@ -194,8 +194,9 @@ namespace Cohire.Controllers
         [HttpPost]
         public JsonResult SignIn(SigupModel sigupModel)
         {
-           
-            var data = UserAuthentication.Instance.Login(sigupModel.Email, sigupModel.Password);
+            sigupModel.Ip_Address = CommonOP.Instance.GetUserIP();
+            CommonOP.Instance.GetUserIP();
+            var data = UserAuthentication.Instance.Login(sigupModel.Email, sigupModel.Password, sigupModel.Mobile, sigupModel.Ip_Address, sigupModel.DeviceType);
             if(data.Result!=null)
             {
                 Response.Cookies.Delete("UserID");

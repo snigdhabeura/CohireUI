@@ -34,7 +34,6 @@ C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Coh
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CopyComplete
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.AssemblyReference.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfoInputs.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfo.cs
@@ -446,3 +445,4 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.AssemblyReference.cache

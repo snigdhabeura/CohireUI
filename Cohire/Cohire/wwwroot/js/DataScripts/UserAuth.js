@@ -50,6 +50,11 @@ function VerifySignUp() {
         $("#pxp-signup-password_err").addClass('errClass');
         $("#pxp-signup-password_err").html("Password required"); Is_error = 1; $("#signup_body").show();
         $("#modal_loader").hide();
+    } else {
+        var Is_PasswordValid = validatePassword($("#pxp-signup-password").val());
+        if (Is_PasswordValid != true) {
+            Is_error = 1;
+        }
     }
 
     if (Is_error == 0) {
@@ -65,11 +70,21 @@ function VerifySignUp() {
             $("#otp_confirm").html("Otp has been send to your mobile number");
             Mobile = $("#pxp-signup-email").val();
         }
-
+        var Ip_Address = '';
+        var Is_Mobile = '';
+        //$.get("https://ipinfo.io?token=c74e2bd432e4f1", function (response) {
+        //    debugger;
+        //    Ip_Address = response.ip;
+        //}, "json");
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            Is_Mobile = "Mobile";
+        } else {
+            Is_Mobile = "PC";
+        }
         $.ajax({
             type: 'POST',
             url: "/Authentication/SignUp",
-            data: { FullName: FullName, Email: Email, Mobile: Mobile, Password: Password },
+            data: { FullName: FullName, Email: Email, Mobile: Mobile, Password: Password, Ip_Address: Ip_Address, DeviceType: Is_Mobile },
             dataType: "json",
             success: function (resultData) {
                 debugger;
@@ -260,10 +275,20 @@ function VerifySignIn() {
         if (Is_mobile == true) {
             Mobile = $("#pxp-signin-email").val();
         }
+        var Ip_Address = '';
+        var Is_Mobile = '';
+        //$.get("https://ipinfo.io", function (response) {
+        //    Ip_Address = response.ip;
+        //}, "json");
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            Is_Mobile = "Mobile";
+        } else {
+            Is_Mobile = "PC";
+        }
         $.ajax({
             type: 'POST',
             url: "/Authentication/SignIn",
-            data: { Email: Email, Mobile: Mobile, Password: Password },
+            data: { Email: Email, Mobile: Mobile, Password: Password, Ip_Address: Ip_Address, DeviceType: Is_Mobile },
             dataType: "json",
             success: function (resultData) {
                 debugger;
@@ -276,3 +301,58 @@ function VerifySignIn() {
         });
     }
 }
+
+
+/////////Region Password Validations
+
+
+function checklower(value) {
+    return /[a-z]/.test(value);
+};
+function checkupper (value) {
+    return /[A-Z]/.test(value);
+};
+function checkdigit(value) {
+    return /[0-9]/.test(value);
+};
+
+
+function validatePassword()
+{
+    debugger;
+    var password = $("#pxp-signup-password").val();
+    var Is_PasswordValid = true;
+
+    
+    $("#pxp-signup-password_err").html('');
+    if (checklower(password) != true) {
+        Is_PasswordValid = false;
+        $("#pxp-signup-password_err").addClass('errClass');
+        $("#pxp-signup-password_err").html('Need atleast 1 lowercase alphabet'); return Is_PasswordValid;
+    }
+    else if (checkupper(password) != true) {
+        Is_PasswordValid = false;
+        $("#pxp-signup-password_err").addClass('errClass');
+        $("#pxp-signup-password_err").html('Need atleast 1 uppercase alphabet'); return Is_PasswordValid;
+    }
+    else if (checkdigit(password) != true) {
+        Is_PasswordValid = false;
+        $("#pxp-signup-password_err").addClass('errClass');
+        $("#pxp-signup-password_err").html('Need atleast 1 digit'); return Is_PasswordValid;
+    }
+    else if (password.length > 10) {
+        Is_PasswordValid = false;
+        $("#pxp-signup-password_err").addClass('errClass');
+        $("#pxp-signup-password_err").html('Maximum password length is 10'); return Is_PasswordValid;
+    }
+    else if (password.length < 6) {
+        Is_PasswordValid = false;
+        $("#pxp-signup-password_err").addClass('errClass');
+        $("#pxp-signup-password_err").html('Minimum password length is 6'); return Is_PasswordValid;
+    }
+    else {
+        return Is_PasswordValid;
+    }
+
+}
+////////////////////
