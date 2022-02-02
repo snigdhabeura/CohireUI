@@ -42,12 +42,12 @@
                             </a>
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <div>
-                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".Applybtn" role="button">Apply</a>
+                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".ApplyModal" role="button">Apply</a>
                                     @*                                <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span>Apply</span></a>
                                     *@
                                 </div>
                                 <div>
-                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".ApplyModal" role="button">Refer</a>
+                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".ReferModal" role="button">Refer</a>
                                     @*                                <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span>Refer</span></a>
                                     *@
                                 </div>
@@ -263,11 +263,11 @@
 
 
             </div>
-           @* <div class="modal-header border-0 p-1">
+            @* <div class="modal-header border-0 p-1">
                 <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
                 <h4 style="text-align:center;font-weight:bold">Apply</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
-            </div>*@
+                </div>*@
 
             <div class="modal-body p-0">
                 <div class="row py-3 gy-3 m-0 ApplyPannel1">
@@ -293,7 +293,57 @@
                     </div>
                 </div>
                 <div class="row py-3 gy-3 m-0 ApplyPannel2 collapse">
-                    <div class="row">
+                    <div class="col">
+                        <div class="d-flex flex-column h-600" style="padding-right:10%">
+                            <h4 style="text-align:center;font-weight:bold">Screening Questions</h4>
+                            <div class="form-floating mb-1 d-flex align-items-cente">
+                                <select class="form-select  rounded-5" id="questions1" data-live-search="true" aria-label="Floating label select example">
+                                    <option>Select a category</option>
+                                    <option>Marketing &amp; Communication</option>
+                                    <option>Software Engineering</option>
+                                    <option>Project Management</option>
+                                    <option>Finance</option>
+                                    <option>Retail</option>
+                                    <option>Sales</option>
+                                    <option>Manufacturing</option>
+                                    <option>IT</option>
+                                    <option>Business Development</option>
+                                    <option>Human Resources</option>
+                                    <option>Customer Service</option>
+                                </select>
+                                <label for="questions1">Screening questions1 ?</label>
+                            </div>
+                            <div class="form-floating mb-1 d-flex align-items-cente">
+                                <select class="form-select  rounded-5" id="questions2" data-live-search="true" aria-label="Floating label select example">
+                                    <option>Select a category</option>
+                                    <option>Marketing &amp; Communication</option>
+                                    <option>Software Engineering</option>
+                                    <option>Project Management</option>
+                                    <option>Finance</option>
+                                    <option>Retail</option>
+                                    <option>Sales</option>
+                                    <option>Manufacturing</option>
+                                    <option>IT</option>
+                                    <option>Business Development</option>
+                                    <option>Human Resources</option>
+                                    <option>Customer Service</option>
+                                </select>
+                                <label for="questions2">Screening questions2 ?</label>
+                            </div>
+                            <div class="form-floating mb-1 d-flex align-items-center">
+                                <input type="text" class="form-control rounded-5" id="questions3" placeholder="Screening questions3 ?">
+                                <label for="questions3">Screening questions3 ?</label>
+                            </div>
+                            <div class="form-floating mb-1 d-flex align-items-center">
+                                <input type="text" class="form-control rounded-5" id="questions4" placeholder="Screening questions4 ?">
+                                <label for="questions4">Screening questions4 ?</label>
+                            </div>
+                            <div class="form-floating mb-1 d-flex align-items-center">
+                                <input type="text" class="form-control rounded-5" id="questions5" placeholder="Screening questions5 ?">
+                                <label for="questions5">Screening questions5 ?</label>
+                            </div>
+                            <div class="d-grid"></div>
+                        </div>
                         <div class="col">
                             <div class="d-flex flex-column h-600" style="padding-right:10%">
                                 <h4 style="text-align:center;font-weight:bold">Screening Questions</h4>
@@ -304,91 +354,40 @@
                                     &nbsp;
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    I accept the <a data-bs-toggle="modal" href=".TermsConditionModal" role="button"><u>Terms and Conditions</u></a></p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        I accept the <a data-bs-toggle="modal" href=".TermsConditionModal" role="button"><u>Terms and Conditions</u></a>
+                                    </p>
 
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-flex flex-column h-600" style="padding-right:10%">
-                                <h4 style="text-align:center;font-weight:bold">Screening Questions</h4>
-                                <div class="form-floating mb-1 d-flex align-items-cente">
-                                    <select class="form-select  rounded-5" id="questions1" data-live-search="true" aria-label="Floating label select example">
-                                        <option>Select a category</option>
-                                        <option>Marketing &amp; Communication</option>
-                                        <option>Software Engineering</option>
-                                        <option>Project Management</option>
-                                        <option>Finance</option>
-                                        <option>Retail</option>
-                                        <option>Sales</option>
-                                        <option>Manufacturing</option>
-                                        <option>IT</option>
-                                        <option>Business Development</option>
-                                        <option>Human Resources</option>
-                                        <option>Customer Service</option>
-                                    </select>
-                                    <label for="questions1">Screening questions1 ?</label>
-                                </div>
-                                <div class="form-floating mb-1 d-flex align-items-cente">
-                                    <select class="form-select  rounded-5" id="questions2" data-live-search="true" aria-label="Floating label select example">
-                                        <option>Select a category</option>
-                                        <option>Marketing &amp; Communication</option>
-                                        <option>Software Engineering</option>
-                                        <option>Project Management</option>
-                                        <option>Finance</option>
-                                        <option>Retail</option>
-                                        <option>Sales</option>
-                                        <option>Manufacturing</option>
-                                        <option>IT</option>
-                                        <option>Business Development</option>
-                                        <option>Human Resources</option>
-                                        <option>Customer Service</option>
-                                    </select>
-                                    <label for="questions2">Screening questions2 ?</label>
-                                </div>
-                                <div class="form-floating mb-1 d-flex align-items-center">
-                                    <input type="text" class="form-control rounded-5" id="questions3" placeholder="Screening questions3 ?">
-                                    <label for="questions3">Screening questions3 ?</label>
-                                </div>
-                                <div class="form-floating mb-1 d-flex align-items-center">
-                                    <input type="text" class="form-control rounded-5" id="questions4" placeholder="Screening questions4 ?">
-                                    <label for="questions4">Screening questions4 ?</label>
-                                </div>
-                                <div class="form-floating mb-1 d-flex align-items-center">
-                                    <input type="text" class="form-control rounded-5" id="questions5" placeholder="Screening questions5 ?">
-                                    <label for="questions5">Screening questions5 ?</label>
-                                </div>
-                                <div class="d-grid"></div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-3 gy-3 m-0">
+                <div class="row">
+                    <div class="col-md-12 applyChange">
+                        <div class="form-floating mb-1">
+                            <a class="btn rounded-pill pxp-modal-cta2" id="btnContinue">Continue</a>
                         </div>
                     </div>
                 </div>
-                <div class="row py-3 gy-3 m-0">
-                    <div class="row" style="padding-left:40%">
-                        <div class="col-md-12 applyChange">
-                            <div class="form-floating mb-1 SignUp">
-                                <a class="btn rounded-pill pxp-modal-cta1" id="btnContinue">Continue</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
+
     </div>
+</div>
 </div>
 <!-- Apply Modal -->
 <!-- Terms & Condition PopUp-->
 <div class="modal fade TermsConditionModal" id="TermsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 p-4 border-0">
-            <div class="modal-header border-0 p-1">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
                 <a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>
-                @*<h4 style="text-align:center;font-weight:bold">Apply</h4>*@
-                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Terms & Conditions</span></h5>
+                <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Terms & Conditions</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
             </div>
 
@@ -412,10 +411,10 @@
 
             </div>
             <div class="row py-3 gy-3 m-0">
-                <div class="row" style="padding-left:40%">
+                <div class="row">
                     <div class="col-md-12 applyChange">
                         <div class="form-floating mb-1 SignUp">
-                            <a class="btn rounded-pill pxp-modal-cta1" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">OK</a>
+                            <a class="btn rounded-pill pxp-modal-cta2" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">I Understand</a>
                         </div>
                     </div>
                 </div>
@@ -425,7 +424,56 @@
     </div>
 </div>
 <!-- Terms & Condition PopUp-->
+<!-- Refer PopUp-->
+<div class="modal fade ReferModal" id="ReferModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="ReferModalHeader">
+        <div class="modal-content rounded-4 p-4 border-0">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 35%;"><span class="md-10">Refer</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row py-3 gy-3 m-0 ReferPannel1">
+                    <div class="form-floating mb-1">
+                        <input type="email" class="form-control rounded-5" id="ReferFullName" placeholder="Full Name">
+                        <label for="ReferFullName" id="ReferFullName_err">Full Name</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="email" class="form-control rounded-5" id="ReferPhone" placeholder="Phone">
+                        <label for="ReferPhone" id="ReferPhone_err">Mobile No</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="email" class="form-control rounded-5" id="Referemail" placeholder="Email">
+                        <label for="Referemail" id="Referemail_err">Email</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input class="form-control rounded-5" type="file" id="ReferResume" />
+                        <label for="ReferResume" id="ReferResume_err">Attach Resume</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <p>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            I have read the <a data-bs-toggle="modal" href=".TermsConditionModal" id="btnReferTerm" role="button"><u>terms</u> </a> of use and I accept.
+                        </p>
+                    </div>
+                </div>
+                <div class="row py-3 gy-3 m-0">
+                    <div class="row">
+                        <div class="col-md-12 ReferChange">
+                            <div class="form-floating mb-1">
+                                <a class="btn rounded-pill pxp-modal-cta2" id="btnContinue">Refer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Refer PopUp-->
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
@@ -477,6 +525,10 @@
 
         });
 
+         $("#btnReferTerm").click(function() {
+             $("#btnTermsOk").attr("href", ".ReferModal");
+             $("#btnTermsback").attr("href", ".ReferModal");
+         });
 
     });
 </script>

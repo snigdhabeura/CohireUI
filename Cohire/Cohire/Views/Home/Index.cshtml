@@ -390,7 +390,7 @@
                                 </div>
                                 <!-- Feeds -->
                                 <div class="feeds">
-                                   @* @Html.Partial("_Feeds",Model.jobFeedList);*@
+                                    @* @Html.Partial("_Feeds",Model.jobFeedList);*@
                                 </div>
                             </div>
                         </div>
@@ -662,83 +662,186 @@
                         <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
                         <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Create Post</span></h5>
 
-                        <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
+                        @*  <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
                             <label class="form-check-label">General Post &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked value="1" />
                             <label class="form-check-label"> Post Job</label>
-                        </div>
+                            </div>*@
                     </div>
-
-                    <div class="row g-2 mb-2 JobPost">
+                    <div class="row g-2 mb-2">
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
-                                <label for="JobTitle">Job Title</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
-                                </select>
-
-
-                                <label for="JobCategory">Category</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-body p-0 mb-2 JobPost">
-                        <div class="form-floating">
-                            <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
-                            <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
-                        </div>
-                    </div>
-                    <div class="row g-2 mb-2 JobPost">
-                        <div class="col-md">
-                            <div class="form-floating">
-
-                                <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
-                                </select>
-
-
-                                <label for="Experience">Experience</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
-
-
-                                @*<select class="form-control selectpicker" id="Location" data-live-search="true" style="background-color:red">
-                                    <option data-tokens="china">China</option>
-                                    <option data-tokens="malayasia">Malayasia</option>
-                                    <option data-tokens="singapore">Singapore</option>
-                                    </select>*@
-
-                                <label for="Location">Location</label>
+                                <ul class="top-osahan-nav-tab nav nav-pills justify-content-center nav-justified mb-2 shadow-sm rounded-4 overflow-hidden bg-white sticky-sidebar2" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation" id="Hire">
+                                        <button class="p-3 nav-link text-muted active" id="btnHire" type="button" role="tab">Hire</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="p-3 nav-link text-muted " id="btnGetHired" type="button" role="tab">GET HIRED</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation" id="GP">
+                                        <button class="p-3 nav-link text-muted" id="btnGeneralPost" type="button" role="tab">GENERAL POST</button>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-body p-0 mb-2 GenralPost d-none">
-                        <div class="form-floating">
-                            <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
-                            <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
-                        </div>
-                    </div>
-                    <div class="row g-2 mb-2 JobPost">
-                        <div class="col-md">
+
+                    <div id="divHire" class="collapse ">
+                        <div class="modal-body p-0 mb-2 GetHired">
                             <div class="form-floating">
-                                <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
-                                </select>
-                                <label for="Employmenttype">Employment type</label>
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtJobReq" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="txtJobReq" class="h6 text-muted mb-0">Please Provide your latest information to place your JOB Request</label>
                             </div>
                         </div>
-                        <div class="col-md">
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Role" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+                                    <label for="Role">Role</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+                                    <label for="Skills">Skills</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="LocationPreference" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="LocationPreference">Location Preference</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Company" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                    </select>
+                                    <label for="Company">Current Company</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-control selectpicker" id="select-country" data-live-search="true">
+                                        <option data-tokens="china">China</option>
+                                        <option data-tokens="malayasia">Malayasia</option>
+                                        <option data-tokens="singapore">Singapore</option>
+                                    </select>
+                                    <label for="Experience">Experience</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="AnnualSalary" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                    <label for="AnnualSalary">Annual Salary</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Qualification" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="Qualification">Qualification</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
                             <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
-                                <label for="SalaryRange">Salary Range</label>
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtnoteRecruiter" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="txtnoteRecruiter" class="h6 text-muted mb-0">Note to Recruiter</label>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <p>
+                                    <input class="form-check-input" type="checkbox" value="" id="chkgetHire">
+                                    Post my JOB Request as ANONYMOUS. Only your masked id will appear. You will receive requests in your feed or your dashboard.
+                                </p>
                             </div>
                         </div>
                     </div>
+                    <div id="divGetHired" class="collapse show">
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
+                                    <label for="JobTitle">Job Title</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+
+
+                                    <label for="JobCategory">Category</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+
+                                    <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                    </select>
+
+
+                                    <label for="Experience">Experience</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
+
+
+                                    @*<select class="form-control selectpicker" id="Location" data-live-search="true" style="background-color:red">
+                                        <option data-tokens="china">China</option>
+                                        <option data-tokens="malayasia">Malayasia</option>
+                                        <option data-tokens="singapore">Singapore</option>
+                                        </select>*@
+
+                                    <label for="Location">Location</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="Employmenttype">Employment type</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                    <label for="SalaryRange">Salary Range</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divGeneralPost" class="collapse">
+                        <div class="modal-body p-0 mb-2">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
+                                <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
                     <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
                         <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
@@ -1190,79 +1293,107 @@
 
 
     <script src="~/vendor/jquery/jquery.min.js"></script>
-
-
     <script>
-
-            $(function () {
-                 var val = '@ViewBag.Msg';
-                if (val == 'Ok') {
-                    $('#postConfirmModal').modal('show');
+                $(function() {
+          $('.selectpicker').selectpicker();
+        });
+                    $(function () {
+                         var val = '@ViewBag.Msg';
+                        if (val == 'Ok') {
+                            $('#postConfirmModal').modal('show');
+                        }
+                           var SignIn = '@ViewBag.SignIn';
+                           if (SignIn == 'SignIn') {
+                            $('#SignIn').modal('show');
+                             $('#pxp-signin-modal').modal('show');
+                        }
+                    });
+                jQuery.fn.center = function () {
+                    this.css("position", "absolute");
+                    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                        $(window).scrollTop()) + "px");
+                    //this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                    //    $(window).scrollLeft()) + "px");
+                    return this;
                 }
-                   var SignIn = '@ViewBag.SignIn';
-                   if (SignIn == 'SignIn') {
-                    $('#SignIn').modal('show');
-                     $('#pxp-signin-modal').modal('show');
-                }
-            });
-        jQuery.fn.center = function () {
-            this.css("position", "absolute");
-            this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
-                $(window).scrollTop()) + "px");
-            this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
-                $(window).scrollLeft()) + "px");
-            return this;
-        }
-            $(document).ready(function () {
-                var val = '@ViewBag.Msg';
-                if (val != null) {
-              /*      $('#postConfirmModal').addClass('show');*/
+                    $(document).ready(function () {
+                        var val = '@ViewBag.Msg';
+                        if (val != null) {
+                      /*      $('#postConfirmModal').addClass('show');*/
 
-                }
+                        }
 
-                $("#ADDQns").click(function () {
-                    /*$(".msg").center();*/
-                    $("#ADDScreeningQuestions").toggle(1000);
-                });
+                        $("#ADDQns").click(function () {
+                            /*$(".msg").center();*/
+                            $("#ADDScreeningQuestions").toggle(1000);
+                        });
 
-                  $(".SignUpBtn").click(function () {
-                       $(".SignUp").addClass('d-none');
-                        $(".SignUpOTP").removeClass('d-none');
-                  });
-                $("#flexSwitchCheckChecked").click(function () {
-                    /* GenralPost JobPost*/
-                    var Value = $("#flexSwitchCheckChecked").val();
-                    /* alert(Value);*/
-                    if (Value == "1") {
-                        $(".JobPost").addClass('d-none');
-                        $(".GenralPost").removeClass('d-none');
-                        $("#flexSwitchCheckChecked").val("0");
-                    } else {
-                        $(".JobPost").removeClass('d-none');
-                        $(".GenralPost").addClass('d-none');
-                        $("#flexSwitchCheckChecked").val("1");
-                    }
-                });
+                          $(".SignUpBtn").click(function () {
+                               $(".SignUp").addClass('d-none');
+                                $(".SignUpOTP").removeClass('d-none');
+                          });
+
+                        //$("#flexSwitchCheckChecked").click(function () {
+                        //    var Value = $("#flexSwitchCheckChecked").val();
+                        //    if (Value == "1") {
+                        //        $(".JobPost").addClass('d-none');
+                        //        $(".GenralPost").removeClass('d-none');
+                        //        $("#flexSwitchCheckChecked").val("0");
+                        //    } else {
+                        //        $(".JobPost").removeClass('d-none');
+                        //        $(".GenralPost").addClass('d-none');
+                        //        $("#flexSwitchCheckChecked").val("1");
+                        //    }
+                        //});
+
+                        $("#btnGetHired").click(function () {
+                            $("#btnGetHired").addClass('active');
+                            $("#btnHire").removeClass('active');
+                            $("#btnGeneralPost").removeClass('active');
+
+                            $("#divHire").addClass('show');
+                            $("#divGetHired, #divGeneralPost").removeClass('show');
 
 
-            });
-            function countChar(val) {
-                var len = val.value.length;
-                //     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
 
-                //}
-                if (len >= 1000) {
-                    $('.TextCount').fadeOut(500);
-                    $('.TextCount').fadeIn(500);
-                    $('.jobPosttextArea').val((val.value).substring(0, len - 1));
 
-                    return false;
-                } else {
-                    //$('.TextCount').fadeIn(500);
-                    $('.TextCount').text(1000 - len + "/1000");
+                        });
+                         $("#btnHire").click(function () {
+                            $("#btnGetHired").removeClass('active');
+                            $("#btnHire").addClass('active');
+                            $("#btnGeneralPost").removeClass('active');
 
-                }
-            };
+                            $("#divGetHired").addClass('show');
+                            $("#divHire, #divGeneralPost").removeClass('show');
+                        });
+                         $("#btnGeneralPost").click(function () {
+                            $("#btnGetHired").removeClass('active');
+                            $("#btnHire").removeClass('active');
+                            $("#btnGeneralPost").addClass('active');
+
+                             $("#divGeneralPost").addClass('show');
+                            $("#divHire, #divGetHired").removeClass('show');
+                        });
+
+
+                    });
+                    function countChar(val) {
+                        var len = val.value.length;
+                        //     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+
+                        //}
+                        if (len >= 1000) {
+                            $('.TextCount').fadeOut(500);
+                            $('.TextCount').fadeIn(500);
+                            $('.jobPosttextArea').val((val.value).substring(0, len - 1));
+
+                            return false;
+                        } else {
+                            //$('.TextCount').fadeIn(500);
+                            $('.TextCount').text(1000 - len + "/1000");
+
+                        }
+                    };
     </script>
 
 
