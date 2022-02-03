@@ -34,14 +34,7 @@ C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Coh
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CopyComplete
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfoInputs.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfo.cs
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Cohire.exe
@@ -149,7 +142,6 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.FileProviders.Composite.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.FileProviders.Physical.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
@@ -416,12 +408,22 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.AssemblyReference.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfoInputs.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfo.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorAssemblyInfo.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\staticwebassets\Cohire.StaticWebAssets.Manifest.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.TagHelpers.input.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.TagHelpers.output.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.RazorCoreGenerate.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\ProfilePage.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\SignUp.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\Apply.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\_ADDScreeningQuestions.cshtml.g.cs
@@ -445,5 +447,3 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.AssemblyReference.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\Apply.cshtml.g.cs

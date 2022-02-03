@@ -50,7 +50,25 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/main.js"></script>
+    <style>
+        .list-inline {
+            list-style: outside none none;
+            margin-left: -5px;
+            padding-left: 0;
+        }
+
+            .list-inline > li {
+                display: inline-block;
+                padding-left: 5px;
+                padding-right: 5px;
+                
+            }
+                .list-inlinei {
+                    font-size: 26px;
+                }
+    </style>
     @RenderSection("Scripts", required: false)
+    
 </head>
 <body>
 
@@ -67,25 +85,26 @@
         }
         @if (!string.IsNullOrEmpty(value))
         {
-          @*  <nav class="pxp-user-nav d-none d-sm-flex">
-               <a href="Javascript:void(0)" class="btn rounded-pill pxp-nav-btn">@value</a>
-                <a class="btn rounded-pill  pxp-nav-btn" href="/Authentication/SignOut" role="button">Sign out</a>
-            </nav>
-*@
+            @*  <nav class="pxp-user-nav d-none d-sm-flex">
+                   <a href="Javascript:void(0)" class="btn rounded-pill pxp-nav-btn">@value</a>
+                    <a class="btn rounded-pill  pxp-nav-btn" href="/Authentication/SignOut" role="button">Sign out</a>
+                </nav>
+            *@
             <nav class="pxp-user-nav pxp-on-light" style="padding-right: 8%;">
-                        
-                        <div class="pxp-user-nav-dropdown"> @*dropdown*@
-                            <a href="index.html" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="pxp-user-nav-avatar pxp-cover" style="background-image: url(images/ph-small.jpg);"></div>
-                                <div class="pxp-user-nav-name d-none d-md-block">@value</div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" style="">
-                                <li><a class="dropdown-item" href="candidate-dashboard.html">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="candidate-dashboard-profile.html">Edit profile</a></li>
-                                <li> <a class="dropdown-item" href="/Authentication/SignOut" role="button">Sign out</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+
+                <div class="pxp-user-nav-dropdown">
+                    @*dropdown*@
+                    <a href="index.html" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="pxp-user-nav-avatar pxp-cover" style="background-image: url(images/ph-small.jpg);"></div>
+                        <div class="pxp-user-nav-name d-none d-md-block">@value</div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" style="">
+                        <li><a class="dropdown-item" href="candidate-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="candidate-dashboard-profile.html">Edit profile</a></li>
+                        <li> <a class="dropdown-item" href="/Authentication/SignOut" role="button">Sign out</a></li>
+                    </ul>
+                </div>
+            </nav>
         }
         else
         {
@@ -96,10 +115,43 @@
 
     </div>
 
-
+    <div class="modal fade pxp-user-modal" id="pxp-share-modal" aria-hidden="true" aria-labelledby="signinModal" tabindex="-1"  data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" aria-label="Close" onclick="$('#pxp-share-modal').modal('hide');"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title text-center mt-4" id="signinModal">Share the Post!!</h5>
+                    <div class="mt-4 text-center pxp-modal-small" style="color:black">
+                        Shareable link :<br /><span id="pxp-share-url" style="color:black;font-weight:bold;font-size:16px;text-align:center"></span>&nbsp;&nbsp;
+                        <a class="fa fa-copy" title="click to copy" style="color:green" id="copy_link" onclick="copyToClipboard()" href="javascript:void(0)"></a>
+                    </div>
+                    <div class="mt-4 text-center pxp-modal-small" style="color:green;display:none" id="link_copy_txt" >Link copied !!!</div>
+                    <div class="mt-4 text-center pxp-modal-small" style="color:black">Social media</div>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        <ul class="list-inline">
+                            <li>
+                                <a target="_blank" id="fbshare"><i class="fa fa-facebook list-inlinei"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank"  id="linkedinshare"><i class="fa fa-linkedin list-inlinei"></i></a>
+                            </li>
+                            <li>
+                                <a  target="_blank"  id="twittershare"><i class="fa fa-twitter list-inlinei"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank" id="whatsappshare" style="color:green"><i class="fa fa-whatsapp list-inlinei"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
-             <div id="SignIn">
+            <div id="SignIn">
                 @Html.Partial("_SignIn");
             </div>
             @RenderBody()

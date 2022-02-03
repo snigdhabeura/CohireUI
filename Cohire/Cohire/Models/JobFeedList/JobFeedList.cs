@@ -36,5 +36,6 @@ namespace Cohire.Models.JobFeedList
         public List<string> Skills { get; set; }
         public List<string> JobQuestions { get; set; }
         public List<JobFile> JobFiles { get; set; }
+        public string shareURL { get; set; }
     }
 }

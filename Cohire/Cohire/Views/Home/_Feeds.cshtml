@@ -6,6 +6,7 @@
     @foreach (var item in Model)
     {
         <!-- Feed Item -->
+        string shareURL = "https://cohyre.com?JD=CHJ39a61f";
         <div class="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
             <div class="d-flex">
                 <img src="~/Img/rmate2.jpg" class="img-fluid rounded-circle user-img" alt="profile-img">
@@ -59,7 +60,7 @@
                                 </div>
 
                                 <div>
-                                    <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('@shareURL')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#commentModal">
@@ -479,4 +480,24 @@
 
 
     });
+    function ShareURL(url)
+    {
+
+        $("#pxp-share-url").text(url);
+        $("#fbshare").attr('href', 'https://facebook.com/sharer.php?u=' + url);
+        $("#linkedinshare").attr('href', 'https://www.linkedin.com/shareArticle/?url=' + url);
+        $("#twittershare").attr('href', 'https://twitter.com/intent/tweet?url=' + url);
+        $("#whatsappshare").attr('href', 'https://wa.me/?text=' + url);
+        $('#pxp-share-modal').modal("show");
+    }
+    function copyToClipboard() {
+        debugger;
+        var $temp = $("<input>");
+        $("#pxp-share-modal").append($temp);
+        $temp.val($("#pxp-share-url").text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $("#link_copy_txt").fadeIn("slow");
+        $("#link_copy_txt").fadeOut("slow");
+    }
 </script>

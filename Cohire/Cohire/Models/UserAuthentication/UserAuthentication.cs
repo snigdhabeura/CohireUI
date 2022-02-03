@@ -128,7 +128,7 @@ namespace Cohire.Models.UserAuthentication
             try
             {
                 passwword = CommonOP.Instance.Encrypt(passwword);
-                   SqlConnection azureSQLDb = null;
+                SqlConnection azureSQLDb = null;
                 SqlCommand cmd;
                 using (azureSQLDb = new SqlConnection(connectionString))
                 {
