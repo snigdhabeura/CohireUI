@@ -51,8 +51,8 @@ namespace Cohire.Model.PostJob
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
                     cmd.Parameters.Add("@city", SqlDbType.VarChar).Value = city;
                     cmd.Parameters.Add("@Is_Job", SqlDbType.Int).Value = viewPostJobModel.Is_Job;
-                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = viewPostJobModel.Ip_Address;
-                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = viewPostJobModel.Device_Type;
+                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value =CommonOP.Instance.GetUserIP() ;
+                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = "D";
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted=await cmd.ExecuteNonQueryAsync();
                     return Is_inserted.ToString();

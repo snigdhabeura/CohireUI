@@ -27,6 +27,9 @@ namespace CohireAPI.PostJobs.Model
         public string Ip_Address { get; set; }
         public string Device_Type { get; set; }
         public List<IFormFile> JobFiles { get; set; }
+        public string NoteTorecruiter { get; set; }
+         public string latestinfojobrequest { get; set; }
+        public int Is_masked_jobrequest { get; set; }
 
     }
 
@@ -54,6 +57,9 @@ namespace CohireAPI.PostJobs.Model
         public string Device_Type { get; set; }
         public List<IFormFile> JobFiles { get; set; }
         public string presentjobfiles { get; set; }
+        public string NoteTorecruiter { get; set; }
+        public string latestinfojobrequest { get; set; }
+        public int Is_masked_jobrequest { get; set; }
     }
     public class ViewPostJobModel
     {
@@ -79,7 +85,14 @@ namespace CohireAPI.PostJobs.Model
         public List<string> Skills { get; set; }
         public List<string> JobQuestions { get; set; }
         public List<PostJobFiles> JobFiles { get; set; }
-
+        public string NoteTorecruiter { get; set; }
+        public string latestinfojobrequest { get; set; }
+        public int Is_masked_jobrequest { get; set; }
+        public string likeCount { get; internal set; }
+        public string comment { get; internal set; }
+        public string applyCount { get; internal set; }
+        public string referCount { get; internal set; }
+        public string commentCount { get; internal set; }
     }
 
     public class PostJobFiles

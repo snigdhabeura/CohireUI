@@ -11,6 +11,12 @@ namespace Cohire.Controllers
 {
     public class Authentication : Controller
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public Authentication(IHttpContextAccessor httpContextAccessor)
+        {
+            this._httpContextAccessor = httpContextAccessor;
+        }
         public IActionResult Index()
         {
             return View();
@@ -224,6 +230,14 @@ namespace Cohire.Controllers
         public JsonResult SendPassword(string Email,string Password)
         {
             return Json(UserAuthentication.Instance.SendTempPassword(Email, Password).Result);
+        }
+        [HttpGet]
+        public List<string> GetCurrentCookie()
+        {
+            List<string> cookies = new List<string>();
+            cookies.Add(Convert.ToString(_httpContextAccessor.HttpContext.Request.Cookies["Username"]));
+            cookies.Add(Convert.ToString(_httpContextAccessor.HttpContext.Request.Cookies["UserID"]));
+            return cookies;
         }
     }
 }

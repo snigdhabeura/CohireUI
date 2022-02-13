@@ -203,26 +203,26 @@ namespace Cohire.Models.CommonOperation
                 ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
                 builder.Append(ch);
             }
-            return Encrypt(builder.ToString());
+            return builder.ToString();
         }
 
         public string GetUserIP()
         {
-            string dataObjects = string.Empty;
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://ipinfo.io/");
-            string urlParameters = "?token=c74e2bd432e4f1";
-            // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            string dataObjects = "Test";
+            //HttpClient client = new HttpClient();
+            //client.BaseAddress = new Uri("https://ipinfo.io/");
+            //string urlParameters = "?token=c74e2bd432e4f1";
+            //// Add an Accept header for JSON format.
+            //client.DefaultRequestHeaders.Accept.Add(
+            //new MediaTypeWithQualityHeaderValue("application/json"));
 
-            // List data response.
-            HttpResponseMessage response = client.GetAsync(urlParameters).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                // Parse the response body.
-                dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll  
-            }
+            //// List data response.
+            //HttpResponseMessage response = client.GetAsync(urlParameters).Result;
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    // Parse the response body.
+            //    dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll  
+            //}
             return dataObjects;
         }
     }

@@ -1,8 +1,8 @@
 ﻿function cancelmodal() {
-    var r = confirm("Are you sure?");
-    if (r == true) {
-        location.reload();
-    }
+    //var r = confirm("Are you sure?");
+    //if (r == true) {
+        $('#pxp-signin-modal').modal("hide");
+    //}
 };
 function ViewSignUp() {
     $("#forget_Password").hide();

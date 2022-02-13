@@ -1,140 +1,158 @@
-﻿@model List<Cohire.Models.JobFeedList.JobFeedList>
+﻿@model List<Cohire.Models.JobFeedListNM.JobFeedList>
 
 
 
 <div class="pt-4 feeds">
-    @foreach (var item in Model)
+    @if (Model != null)
     {
-        <!-- Feed Item -->
-        string shareURL = "https://cohyre.com?JD=CHJ39a61f";
-        <div class="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
-            <div class="d-flex">
-                <img src="~/Img/rmate2.jpg" class="img-fluid rounded-circle user-img" alt="profile-img">
-                <div class="d-flex ms-3 align-items-start w-100">
-                    <div class="w-100">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="profile.html" class="text-decoration-none d-flex align-items-center">
-                                <h6 class="fw-bold mb-0 text-body"><label asp-for="@item.PostedByName">@item.PostedByName</label></h6>
-                                <span class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon">done</span>
-                                <small class="text-muted ms-2">@item.PostedByName</small>
-                            </a>
-                            <div class="d-flex align-items-center small">
-                                <p class="text-muted mb-0"><label asp-for="@item.CreatedDate">@item.CreatedDate</label></p>
-                                <div class="dropdown">
-                                    <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-20 rounded-circle bg-light p-1" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">more_vert</a>
-                                    <ul class="dropdown-menu fs-13 dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">edit</span>Edit</a></li>
-                                        <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">delete</span>Delete</a></li>
-                                        <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1 ltsp-n5">arrow_back_ios arrow_forward_ios</span>Embed Vogel</a></li>
-                                        <li><a class="dropdown-item text-muted d-flex align-items-center" href="#"><span class="material-icons md-13 me-1">share</span>Share via another apps</a></li>
-                                    </ul>
+        foreach (var item in Model)
+        {
+            <!-- Feed Item -->
+            string shareURL = "https://cohyre.com/getjob?JD=" + item.ChJobID;
+            <div class="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
+                <div class="d-flex">
+                    <img src="~/Img/rmate2.jpg" class="img-fluid rounded-circle user-img" alt="profile-img">
+                    <div class="d-flex ms-3 align-items-start w-100">
+                        <div class="w-100">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <a href="profile.html" class="text-decoration-none d-flex align-items-center">
+                                    <h6 class="fw-bold mb-0 text-body"><label asp-for="@item.PostedByName">@item.PostedByName</label></h6>
+                                    <span class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon">done</span>
+                                    <small class="text-muted ms-2">@item.PostedByName</small>
+                                </a>
+                                <div class="d-flex align-items-center small">
+                                    <p class="text-muted mb-0"><label asp-for="@item.CreatedDate">@item.CreatedDate</label></p>
+                                    <div class="dropdown">
+                                        <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-20 rounded-circle bg-light p-1" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">more_vert</a>
+                                        <ul class="dropdown-menu fs-13 dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">edit</span>Edit</a></li>
+                                            <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">delete</span>Delete</a></li>
+                                            <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1 ltsp-n5">arrow_back_ios arrow_forward_ios</span>Embed Vogel</a></li>
+                                            <li><a class="dropdown-item text-muted d-flex align-items-center" href="#"><span class="material-icons md-13 me-1">share</span>Share via another apps</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="my-2">
-                            <p class="mb-3 text-primary"><label asp-for="@item.JobDescription">@item.JobDescription</label></p>
-                            @*  <ul class="list-unstyled mb-3">
-                                <li>1. Follow people you like by clicking on the ’+ Follow’ button to see their posts in your feed.</li>
-                                <li>2. Share your thoughts with others and gain a following.</li>
-                                </ul>
-                                <p class="text-dark">Happy Vogel to you!</p>*@
-                            <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                <img src="~/Img/post1.png" class="img-fluid rounded mb-3" alt="post-img">
-                            </a>
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <div>
-                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".ApplyModal" role="button">Apply</a>
-                                    @*                                <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span>Apply</span></a>
-                                    *@
-                                </div>
-                                <div>
-                                    <a class="btn rounded-5  pxp-nav-btn" data-bs-toggle="modal" href=".ReferModal" role="button">Refer</a>
-                                    @*                                <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span>Refer</span></a>
-                                    *@
-                                </div>
-                                <div>
-                                    <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">thumb_up_off_alt</span><span>30.4k</span></a>
-                                </div>
-                                <div>
-                                    <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">chat_bubble_outline</span><span>4.0k</span></a>
-                                </div>
+                            <div class="my-2">
+                                <p class="mb-3 text-primary"><label asp-for="@item.Jobtitle">@item.Jobtitle</label></p>
+                                <p class="text-dark">@item.JobDescription</p>
+                                @if (item.JobFiles.Count > 0)
+                                {<div class="image-slider">
+    <div id="carouselExampleIndicators_@item.ChJobID" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            @for (int i = 0; i < item.JobFiles.Count(); i++)
+            {
+                 int slied = i + 1; 
+                <button type="button" data-bs-target="#carouselExampleIndicators_@item.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
+            }
+        </div>
 
-                                <div>
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('@shareURL')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                <span class="material-icons bg-white border-0 text-primary pe-2 md-36">account_circle</span>
-                                <input type="text" class="form-control form-control-sm rounded-3 fw-light" placeholder="Write Your comment">
-                            </div>
-                            <div class="comments">
-                                <div class="d-flex mb-2">
-                                    <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                        <img src="~/Img/rmate1.jpg" class="img-fluid rounded-circle" alt="commenters-img">
-                                    </a>
-                                    <div class="ms-2 small">
-                                        <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">Macie Bellis</p>
-                                                <span class="text-muted">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.</span>
-                                            </div>
-                                        </a>
-                                        <div class="d-flex align-items-center ms-2">
-                                            <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <span class="small text-muted">1h</span>
-                                        </div>
+        <div class="carousel-inner">
+            @for (int i = 0; i < item.JobFiles.Count(); i++)
+            {
+                if (item.JobFiles[i].filetype.ToLower() == "jpg" || item.JobFiles[i].filetype.ToLower() == "png" || item.JobFiles[i].filetype.ToLower() == "jpeg" || item.JobFiles[i].filetype.ToLower() == "gif")
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+                            <img src="@item.JobFiles[i].fileurl" class="d-block w-100" alt="...">
+                        </div> }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="@item.JobFiles[i].fileurl" class="d-block w-100" alt="...">
+                        </div>
+                    }
+
+                }
+                else if (item.JobFiles[i].filetype.ToLower() == "mp4")
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+                          <video src="@item.JobFiles[i].fileurl" controls />  
+                        </div> }
+                    else
+                    {
+        <div class="carousel-item">
+            <video src="@item.JobFiles[i].fileurl" controls />
+        </div>
+                    }
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                       <div class="carousel-item active">
+
+          <a href="@item.JobFiles[i].fileurl" target="_blank"> <img src="~/images/filedownload.png" class="d-block w-100" alt="..."></a>
+        </div> 
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <a href="@item.JobFiles[i].fileurl" target="_blank"><img src="~/images/filedownload.png" class="d-block w-100" alt="..."></a>
+</div>
+                    }
+                }
+            }
+        </div>
+        <div>
+            <button class="carousel-control-prev" type="button" >
+                <span class="carousel-control-prev-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@item.ChJobID" data-bs-slide="prev"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" >
+                <span class="carousel-control-next-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@item.ChJobID" data-bs-slide="next"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+    </div>
+</div>
+                                    
+                                }
+
+
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span>@item.applyCount</span></a>
+                                    </div>
+                                    <div>
+                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')"><span class="material-icons md-20 me-2">swap_horiz</span><span id="refer_count_@item.ChJobID">@item.referCount</span></a>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@item.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@item.ChJobID">thumb_up_off_alt</span><span id="likeCount_@item.ChJobID">@item.likeCount</span></a>
+                                    </div>
+                                    <div onclick="LoadComments('@item.ChJobID')">
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">chat_bubble_outline</span><span id="cmnt_count_@item.ChJobID">@item.commentCount</span></a>
+                                    </div>
+
+                                    <div>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('@shareURL')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-2">
-                                    <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                        <img src="~/Img/rmate3.jpg" class="img-fluid rounded-circle" alt="commenters-img">
-                                    </a>
-                                    <div class="ms-2 small">
-                                        <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">John Smith</p>
-                                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span>
-                                            </div>
-                                        </a>
-                                        <div class="d-flex align-items-center ms-2">
-                                            <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <span class="small text-muted">20min</span>
-                                        </div>
+                                @if (item.Comments != null)
+                                {
+                                    <div class="comments ex3" id="cmnt_div_@item.ChJobID">
                                     </div>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                        <img src="~/Img/rmate2.jpg" class="img-fluid rounded-circle" alt="commenters-img">
-                                    </a>
-                                    <div class="ms-2 small">
-                                        <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">Shay Jordon</p>
-                                                <span class="text-muted">With our vastly improved notifications system, users have more control.</span>
-                                            </div>
-                                        </a>
-                                        <div class="d-flex align-items-center ms-2">
-                                            <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                            <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                            <span class="small text-muted">10min</span>
-                                        </div>
+                                }
+                                else
+            {
+                                    <div class="comments" id="cmnt_div_@item.ChJobID">
                                     </div>
+                                }
+                                <div class="d-flex align-items-center mb-3" data-bs-toggle="modal">
+                                    <span class="material-icons bg-white border-0 text-primary pe-2 md-36">account_circle</span>
+                                    <input type="text" id="cmnt_@item.ChJobID" JobAtr="@item.ChJobID" class="form-control form-control-sm rounded-3 fw-light cmnt_box" placeholder="Write Your comment">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Feed Item -->
+            <!-- Feed Item -->
+        }
     }
 
 </div>
@@ -428,128 +446,146 @@
 <!-- Refer PopUp-->
 <div class="modal fade ReferModal" id="ReferModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" id="ReferModalHeader">
-        <div class="modal-content rounded-4 p-4 border-0">
+        <div class="modal-content rounded-4 p-4 border-0" id="referbody">
+            <input type="hidden" id="referbody_hdn" />
             <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
                 <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
                 <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 35%;"><span class="md-10">Refer</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
             </div>
             <div class="modal-body p-0">
-                <div class="row py-3 gy-3 m-0 ReferPannel1">
-                    <div class="form-floating mb-1">
-                        <input type="email" class="form-control rounded-5" id="ReferFullName" placeholder="Full Name">
-                        <label for="ReferFullName" id="ReferFullName_err">Full Name</label>
+                <form id="upload" enctype="multipart/form-data" action="/User/ReferFreind" method="post"> 
+                    <div class="row py-3 gy-3 m-0 ReferPannel1">
+
+                        <div class="form-floating mb-1">
+                            <input type="text" class="form-control rounded-5" id="ReferFullName" placeholder="Full Name">
+                            <label for="ReferFullName" id="ReferFullName_err">Full Name</label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input type="text" class="form-control rounded-5" id="ReferPhone" placeholder="Phone">
+                            <label for="ReferPhone" id="ReferPhone_err">Mobile No</label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input type="email" class="form-control rounded-5" id="Referemail" placeholder="Email">
+                            <label for="Referemail" id="Referemail_err">Email</label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input class="form-control rounded-5" type="file" id="ReferResume" />
+                            <label for="ReferResume" id="ReferResume_err">Attach Resume</label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <p>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault_refer">
+                                I have read the <a href="javscript:void(0)" id="btnReferTerm" onclick="ShowreferTerm()"><u>terms</u> </a> of use and I accept.
+                            </p>
+                            <p id="referecheckbox" style="color:red;">
+
+                            </p>
+                        </div>
                     </div>
-                    <div class="form-floating mb-1">
-                        <input type="email" class="form-control rounded-5" id="ReferPhone" placeholder="Phone">
-                        <label for="ReferPhone" id="ReferPhone_err">Mobile No</label>
-                    </div>
-                    <div class="form-floating mb-1">
-                        <input type="email" class="form-control rounded-5" id="Referemail" placeholder="Email">
-                        <label for="Referemail" id="Referemail_err">Email</label>
-                    </div>
-                    <div class="form-floating mb-1">
-                        <input class="form-control rounded-5" type="file" id="ReferResume" />
-                        <label for="ReferResume" id="ReferResume_err">Attach Resume</label>
-                    </div>
-                    <div class="form-floating mb-1">
-                        <p>
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            I have read the <a data-bs-toggle="modal" href=".TermsConditionModal" id="btnReferTerm" role="button"><u>terms</u> </a> of use and I accept.
-                        </p>
-                    </div>
-                </div>
-                <div class="row py-3 gy-3 m-0">
-                    <div class="row">
-                        <div class="col-md-12 ReferChange">
-                            <div class="form-floating mb-1">
-                                <a class="btn rounded-pill pxp-modal-cta2" id="btnContinue">Refer</a>
+                    <div class="row py-3 gy-3 m-0">
+                        <div class="row">
+                            <div class="col-md-12 ReferChange">
+                                <div class="form-floating mb-1">
+                                   <button class="btn rounded-pill pxp-modal-cta btncohyrec" id="btnContinue">Refer</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="modal-content rounded-4 p-4 border-0" id="refer_term" style="display:none">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                @*<a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>*@
+                <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Terms & Conditions</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
+            </div>
+
+            <div class="modal-body p-0">
+                <div class="row py-3 gy-3 m-0">
+                    <ul class="list-unstyled mb-3 ulBullet">
+                        <li>
+                            <p>I understand and acknowledge that I have read the job posting and I consciously choose to apply for this job. </p>
+                        </li>
+                        <li>
+                            <p> I understand and acknowledge that I am providing my personal details such as full name, email id, phone number and my resume with employment and background information to the person or organisation who has created the job post. </p>
+                        </li>
+                        <li>
+                            <p> I acknowledge that CoHyre.com is providing me a platform and I do not hold CoHyre.com responsible for any type of loss arising from my actions either due to the job application or the information I have shared. </p>
+                        </li>
+                        <li>
+                            <p> I acknowledge and protect CoHyre.com harmless from any losses, damages and costs as a result of me using the services of CoHyre.com. </p>
+                        </li>
+                    </ul>
                 </div>
 
+            </div>
+            <div class="row py-3 gy-3 m-0">
+                <div class="row">
+                    <div class="col-md-12 applyChange">
+                        <div class="form-floating mb-1 SignUp">
+                            <a class="btn rounded-pill pxp-modal-cta" id="btnTermsOk" href="javascript:void(0)" onclick="HidereferTerm()">I Understand</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
     </div>
 </div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="referConfirmation">
+    <div class="modal-dialog">
+        @* modal-lg*@
+        <div class="modal-content">
+            <div class="modal-content rounded-4 overflow-hidden border-0">
+                <div class="modal-body p-0">
+                    <div class="row">
+                        <div class="col-md-12 applyChange">&nbsp;</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 applyChange">&nbsp;</div>
+                    </div>
+                    <div class="row AddHtml" style="text-align:center">
+                        <div class="col-md-12 applyChange" style="text-align:center">
+                            <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                <h4 style="text-align:center;font-weight:bold">Your refer Submitted for approval</h4>
+                                <div class="my-2">
+                                    <p class="mb-3 text-primary"></p>
+                                    <ul class="list-unstyled mb-3">
+                                        <li id="confirm_referID"></li>
+                                        <li>Thank's!!!</li>
+                                    </ul>
+                                    <h6 class="fw-normal ln-25 mb-0">Once the refred user confirm this refer, You can track you refer.</h6>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add Here  -->
+                    </div>
+                    <div class="row" style="padding-left:40%">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-1">
+                                <a class="btn rounded-pill pxp-modal-cta1" href="#" onclick="ReferConfirm()" id="btnApplyOk">Ok</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <!-- Refer PopUp-->
-<div>
+@*<div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 <script src="js/jquery-3.4.1.min.js"></script>
-
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/DataScripts/feed.js"></script>
 <script>
-    $(document).ready(function() {
 
-        $(".Applyctn").click(function() {
-            var Data = '<div class="col-md-6 ApplyNext collapse" id="collapseExample" style="text-align:center"><div class="d-flex flex-column h-600" style="padding-right:10%"><h4 style="text-align:center;font-weight:bold">Screening Questions</h4><div class="form-floating mb-1 d-flex align-items-cente"><select class="form-select  rounded-5" id="questions1" data-live-search="true" aria-label="Floating label select example"><option>Select a category</option>                <option>Marketing &amp; Communication</option>                <option>Software gineering</option>                <option>Project Management</option><option>Finance</option><option>Retail</option><option>Sales</option><option>Manufacturing</option><option>IT</option><option>Business Development</option><option>Human Resources</option><option>Customer Service</option></select><label for="questions1">Screening questions1 ?</label></div><div class="form-floating mb-1 d-flex align-items-cente"><select class="form-select  rounded-5" id="questions2" data-live-search="true" aria-label="Floating label select example"><option>Select a category</option><option>Marketing &amp; Communication</option><option>Software Engineering</option></select><label for="questions2">Screening questions2 ?</label></div><div class="form-floating mb-1 d-flex align-items-center"><input type="text" class="form-control rounded-5" id="questions3" placeholder="Screening questions3 ?"><label for="questions3">Screening questions3 ?</label></div><div class="form-floating mb-1 d-flex align-items-center"><input type="text" class="form-control rounded-5" id="questions4" placeholder="Screening questions4 ?"><label for="questions4">Screening questions4 ?</label></div><div class="form-floating mb-1 d-flex align-items-center"><input type="text" class="form-control rounded-5" id="questions5" placeholder="Screening questions5 ?"><label for="questions5">Screening questions5 ?</label></div><div lass="d-grid"></div></div></div>';
-            if ($(".Applyctn").val() != 'Apply') {
-                $(".applyChange").removeClass('col-md-12').addClass('col-md-6');
-                $(".modelapply").addClass('modal-lg');
-                $(".AddHtml").append(Data);
-                $(".Applyctn").text("Apply");
-                $(".Applyctn").val("Apply");
-            } else {
-                $("#btnApplybtn").modal("hide");
-                $("#ApplyConfirmation").modal("show");
-
-                $("#collapseExample").remove();
-                $(".Applyctn").text('Continue')
-                $(".applyChange").removeClass('col-md-6').addClass('col-md-12');
-                $(".modelapply").removeClass('modal-lg');
-            }
-            $(".ApplyNext").removeClass('d-none');
-        });
-
-
-        $("#btnApplyOk").click(function() {
-            $('.modal').modal('hide');
-
-            $(".modal").removeClass('fade');
-        });
-
-
-        $("#btnContinue").click(function() {
-            $(".ApplyPannel1").addClass('collapse');
-            $(".ApplyPannel2").removeClass('collapse');
-            $("#ApplyModalHeader").addClass('modal-lg');
-            if ($("#btnContinue").text() != 'Apply') {
-                $("#btnContinue").text('Apply');
-            }
-            else
-            {   $(".ApplyModal").modal("hide");
-                $("#ApplyConfirmation").modal("show");
-            }
-
-        });
-
-         $("#btnReferTerm").click(function() {
-             $("#btnTermsOk").attr("href", ".ReferModal");
-             $("#btnTermsback").attr("href", ".ReferModal");
-         });
-
-    });
-    function ShareURL(url)
-    {
-
-        $("#pxp-share-url").text(url);
-        $("#fbshare").attr('href', 'https://facebook.com/sharer.php?u=' + url);
-        $("#linkedinshare").attr('href', 'https://www.linkedin.com/shareArticle/?url=' + url);
-        $("#twittershare").attr('href', 'https://twitter.com/intent/tweet?url=' + url);
-        $("#whatsappshare").attr('href', 'https://wa.me/?text=' + url);
-        $('#pxp-share-modal').modal("show");
-    }
-    function copyToClipboard() {
-        debugger;
-        var $temp = $("<input>");
-        $("#pxp-share-modal").append($temp);
-        $temp.val($("#pxp-share-url").text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-        $("#link_copy_txt").fadeIn("slow");
-        $("#link_copy_txt").fadeOut("slow");
-    }
 </script>

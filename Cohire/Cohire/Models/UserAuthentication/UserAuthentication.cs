@@ -1,4 +1,5 @@
 ﻿using Cohire.Models.CommonOperation;
+using Cohire.Models.JobFeedListNM;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,23 @@ namespace Cohire.Models.UserAuthentication
 {
     public class SigupModel
     {
-        public int ProfileID { get; set; }
+        public int? ProfileID { get; set; }
         public string CHProfileID { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }
         public string OTP { get; set; }
         public string Password { get; set; }
-        public bool Is_Email_Verified { get; set; }
-        public bool Is_Mobile_Verified { get; set; }
-        public bool Is_OTP_Verififed { get; set; }
+        public bool? Is_Email_Verified { get; set; }
+        public bool? Is_Mobile_Verified { get; set; }
+        public bool? Is_OTP_Verififed { get; set; }
         public string OTP_Message { get; set; }
         public string Ip_Address { get; set; }
         public string DeviceType { get; set; }
+        public string Profile_Image { get; set; }
+        public string Comment { get; set; }
+        public string ChJobID { get; set; }
+        public int Countofaction { get; set; }
     }
     public class Sigupresponse
     {
@@ -179,7 +184,7 @@ namespace Cohire.Models.UserAuthentication
                     cmd = new SqlCommand("dbo.SendTemporaryPassword", azureSQLDb);
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(email) ? email : null;
                     cmd.Parameters.Add("@Mobile", SqlDbType.VarChar).Value = !string.IsNullOrEmpty(mobile) ? mobile : null;
-                    cmd.Parameters.Add("@randomString ", SqlDbType.VarChar).Value = paswword;
+                    cmd.Parameters.Add("@randomString ", SqlDbType.VarChar).Value =commonOP.Encrypt(paswword);
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted = await cmd.ExecuteScalarAsync();
                     sigupresponse.Is_error = false;
@@ -235,6 +240,55 @@ namespace Cohire.Models.UserAuthentication
                 sigupresponse.errormsg = "Something went wrong";
             }
             return sigupresponse;
+        }
+
+        public async Task<SigupModel> SetCommentForPost(string ChJobID,string PostedBy_ID,string Comment)
+        {
+            SigupModel model = new SigupModel();
+            try
+            {
+                JobFeedList jobFeedList = new JobFeedList();
+                SqlConnection azureSQLDb = null;
+                SqlCommand cmd;
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
+                    cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = ChJobID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    var Is_Get = await cmd.ExecuteScalarAsync();
+                    if (string.IsNullOrEmpty(Convert.ToString(Is_Get)))
+                    {
+                        model = null;
+                    }
+                    else
+                    {
+                       var JobActionModel = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
+                        jobFeedList= JsonConvert.DeserializeObject<JobFeedList>(JobActionModel.JobJson.ToString());
+                        int current_previouscount = (Convert.ToInt32(jobFeedList.commentCount) + 1);
+                        jobFeedList.commentCount = current_previouscount.ToString();
+                        var jobJson= JsonConvert.SerializeObject(jobFeedList);
+                        cmd = new SqlCommand("UpdatePostJob", azureSQLDb);
+                        cmd.Parameters.Add("@updateType", SqlDbType.VarChar).Value = 'c';
+                        cmd.Parameters.Add("@JobJosn", SqlDbType.VarChar).Value = jobJson;
+                        cmd.Parameters.Add("@CountOfAction", SqlDbType.VarChar).Value = current_previouscount.ToString();
+                        cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = PostedBy_ID;
+                        cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = ChJobID;
+                        cmd.Parameters.Add("@comment", SqlDbType.VarChar).Value = Comment;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        var Is_updtaed = await cmd.ExecuteScalarAsync();
+                        model= JsonConvert.DeserializeObject<SigupModel>(Is_updtaed.ToString());
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                model = null;
+            }
+            return model;
         }
     }
 }

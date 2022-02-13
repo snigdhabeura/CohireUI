@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <link href="~/css/CohyreModification.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="img/logo.png">
     <title>Vogel - Social Network & Community HTML Template</title>
     <meta name="description" content="Vogel - Social Network & Community HTML Template" />
@@ -109,7 +109,7 @@
         else
         {
             <nav class="pxp-user-nav d-none d-sm-flex">
-                <a class="btn rounded-pill  pxp-nav-btn" data-bs-toggle="modal" href="#pxp-signin-modal" role="button">Sign in</a>
+                <a class="btn rounded-pill  pxp-nav-btn" data-bs-toggle="modal" href="javascript:void(0)" onclick="$('#pxp-signin-modal').modal('show')" role="button">Sign in</a>
             </nav>
         }
 
@@ -166,4 +166,59 @@
 
 </body>
 </html>
+<script>
+    function CheckIs_login() {
+        debugger;
+        var LoginDeatisl = '@Convert.ToString(Context.Request.Cookies["Username"])';
+        if (LoginDeatisl != '') { return true; }
+        else { $('#pxp-signin-modal').modal("show");return false;}
+
+    }
+    $(document).ready(function () {
+        GetPeoipleIndex();
+    });
+    function GetPeoipleIndex() {
+        $.ajax({
+            url: '../User/GetPeopleList',
+            type: "Post",
+            success: function (data) {
+                debugger;
+                for (var i = 0; i < data.length; i++) {
+                    var userdata = data[i];
+                    var html = '';
+                    if (i == 0) {
+                        html = html + '<div class="account-item slick-slide slick-current slick-active" data-slick-index="' + i + '" aria-hidden="false" tabindex="0" style="width: 149px;">';
+
+                    } else {
+                        html = html + '<div class="account-item slick-slide slick-active" data-slick-index="' + i + '" aria-hidden="false" tabindex="0" style="width: 149px;">';
+
+                    }
+                    html = html + '<div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">';
+                    html = html + '<div class="text-center">';
+                    html = html + '<div class="position-relative d-flex justify-content-center">';
+                    html = html + '<a href="profile.html" class="text-decoration-none" tabindex="0">';
+                    html = html + '<img src="../images/ProfileImage/' + userdata.profile_Image+'" class="img-fluid rounded-circle mb-3" alt="profile-img">';
+                    html = html + '<div class="position-absolute">';
+                    html = html + '<span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>';
+                    html = html + '</div>';
+                    html = html + '</a>';
+                    html = html + '</div>';
+                    html = html + '<p class="fw-bold text-dark m-0">' + userdata.fullName+'</p>';
+                    html = html + '<p class="small text-muted">' + userdata.profileBio+'</p>';
+                    html = html + '<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">';
+                    html = html + '<input type="checkbox" class="btn-check" id="btncheck1" checked="" tabindex="0">';
+                    html = html + '<label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck1"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>';
+                    html = html + '</div>';
+                    html = html + '</div>';
+                    html = html + '</div>';
+                    html = html + '</div>';
+                    $("#index_account_slider").append(html);
+                }
+            },
+            error: function (xhr, error, status) {
+                console.log(error, status);
+            }
+        });
+    }
+</script>
 

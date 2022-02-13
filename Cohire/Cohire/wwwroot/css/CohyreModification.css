@@ -1,0 +1,8 @@
+﻿.btncohyrec {
+    width: 427px
+}
+@media only screen and (max-width: 600px) {
+    .btncohyrec {
+        width: 317px
+    }
+}
