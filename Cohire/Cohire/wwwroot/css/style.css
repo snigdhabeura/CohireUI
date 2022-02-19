@@ -39,7 +39,14 @@ div.ex3 {
     height: 150px;
     overflow: auto;
 }
-
+div.ex3pop {
+    height: 400px;
+    overflow: auto;
+}
+div.ex3doc {
+    height: 556px;
+    overflow: auto;
+}
 /* FAQ */
 .faq-page .accordion-button {
     font-size: 14px;

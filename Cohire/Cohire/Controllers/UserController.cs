@@ -291,6 +291,7 @@ namespace Cohire.Controllers
             conn.Open();
             cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = jobID;
             cmd.CommandType = CommandType.StoredProcedure;
+            var data = cmd.ExecuteScalar().ToString();
             var get_Comment = JsonConvert.DeserializeObject<List<CommentSectionLit>>(cmd.ExecuteScalar().ToString());
             return Json(get_Comment);
         }

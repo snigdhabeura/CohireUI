@@ -21,6 +21,12 @@ using Cohire.Models.JobFeed;
 using Cohire.Models.Response_Model;
 using Cohire.Model.PostJob;
 using System.IO;
+using System.Data.SqlClient;
+using Cohire.Models.CommonOperation;
+using System.Data;
+using GroupDocs.Viewer;
+using GroupDocs.Viewer.Results;
+using GroupDocs.Viewer.Options;
 
 namespace Cohire.Controllers
 {
@@ -29,15 +35,20 @@ namespace Cohire.Controllers
         private readonly ILogger<PostJobController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
+        private static string connectionString = string.Empty;
         string URL = string.Empty;
-        public HomeController(IWebHostEnvironment webHostEnvironment, ILogger<PostJobController> logger, IHttpContextAccessor httpContextAccessor)
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private string projectRootPath;
+        public HomeController(IHostingEnvironment hostingEnvironment,IWebHostEnvironment webHostEnvironment, ILogger<PostJobController> logger, IHttpContextAccessor httpContextAccessor)
         {
             _webHostEnvironment = webHostEnvironment;
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
             var host = _httpContextAccessor.HttpContext.Request;
             URL = host.Scheme + "://" + host.Host.Value;
+            connectionString = GetConnectionString.Instance.ReturnConnectionString();
+            _hostingEnvironment = hostingEnvironment;
+            projectRootPath = _hostingEnvironment.ContentRootPath;
         }
 
         public async Task<IActionResult> Index()
@@ -132,6 +143,7 @@ namespace Cohire.Controllers
                 Guid jobID = System.Guid.NewGuid();
                 string ChJobID = "CHJ" + jobID.ToString().Substring(0, 6);
                 ViewPostJobModel postJobviewModels = new ViewPostJobModel();
+               
                 postJobviewModels.JobId = jobID;
                 postJobviewModels.ChJobID = ChJobID;
                 postJobviewModels.RoleId = postJobModel.RoleId;
@@ -389,5 +401,49 @@ namespace Cohire.Controllers
         }
        
         #endregion
+        [HttpPost]
+        public async Task<PartialViewResult> GetPostDetails(string JobID)
+        {
+            JobActionModel api_Response =new  JobActionModel();
+            SqlConnection azureSQLDb = null;
+            SqlCommand cmd;
+            using (azureSQLDb = new SqlConnection(connectionString))
+            {
+                if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                    azureSQLDb.Open();
+                cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
+                cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = JobID;
+                cmd.CommandType = CommandType.StoredProcedure;
+                var Is_Get = await cmd.ExecuteScalarAsync();
+                 api_Response = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
+                api_Response.jobFeedList= JsonConvert.DeserializeObject<JobFeedList>(api_Response.JobJson.ToString());
+
+            }
+            return PartialView(api_Response);
+        }
+
+
+        [HttpPost]
+        public IActionResult OnPost(string FileName)
+        {
+            string outputPath = Path.Combine(projectRootPath, "wwwroot/Content");
+            string storagePath = Path.Combine(projectRootPath, "wwwroot/JobFiles");
+            int pageCount = 0;
+            string imageFilesFolder = Path.Combine(outputPath, Path.GetFileName(FileName).Replace(".", "_"));
+            if (!Directory.Exists(imageFilesFolder))
+            {
+                Directory.CreateDirectory(imageFilesFolder);
+            }
+            string imageFilesPath = Path.Combine(imageFilesFolder, "page-{0}.png");
+            using (Viewer viewer = new Viewer(Path.Combine(storagePath, FileName)))
+            {
+                ViewInfo info = viewer.GetViewInfo(ViewInfoOptions.ForPngView(false));
+                pageCount = info.Pages.Count;
+
+                PngViewOptions options = new PngViewOptions(imageFilesPath);
+                viewer.View(options);
+            }
+            return new JsonResult(pageCount);
+        }
     }
 }

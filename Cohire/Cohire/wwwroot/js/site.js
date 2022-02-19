@@ -12,53 +12,55 @@ $("#post_form").submit(function (e) {
         formData.append("JobFiles", files[i]);
     }
     
-    var jobtitle = $("#JobTitle").val();
-    formData.append("Jobtitle", jobtitle);
-
-    var categoryID = $("#JobCategory").val();
-    formData.append("CategoryID", categoryID);
-
-    var categoryName = $("#JobCategory option:selected").text();
-    formData.append("Category_Name", categoryName);
+    
 
     if ($("#hdn_job_type").val() == "1")
     {
+        var jobtitle = $("#JobTitle").val();
+        formData.append("Jobtitle", jobtitle);
+
+        var categoryID = $("#JobCategory").val();
+        formData.append("CategoryID", categoryID);
+
+        var categoryName = $("#JobCategory option:selected").text();
+        formData.append("Category_Name", categoryName);
+
         var Jobdescription = $("#floatingTextarea2").val();
         formData.append("JobDescription", Jobdescription);
+        var ExperienceID = $("#Experience").val();
+        formData.append("ExperienceID", ExperienceID);
+
+        var ExperienceName = $("#Experience option:selected").text();
+        formData.append("Experience_Name", ExperienceName);
+
+        var Location = $("#Location").val();
+        formData.append("city", Location);
+
+        var EmploymenttypeID = $("#Employmenttype").val();
+        formData.append("EmploymenttypeID", EmploymenttypeID);
+
+        var EmploymenttypeName = $("#Employmenttype option:selected").text();
+        formData.append("Employmenttype_Name", EmploymenttypeName);
+
+
+        var SalaryRange = $("#SalaryRange").val();
+
+        formData.append("Salaryrange", SalaryRange);
+        formData.append("Is_Job", $("#hdn_job_type").val());
     }
      else if ($("#hdn_job_type").val() == "2")
     {
         var Jobdescription = $("#txtJobReq").val();
         formData.append("JobDescription", Jobdescription);
+        var jobtitle = $("#JobTitle").val();
+        formData.append("Jobtitle", jobtitle);
+
     }
      else if ($("#hdn_job_type").val() == "3")
     {
         var Jobdescription = $("#PostJobDescription").val();
         formData.append("JobDescription", Jobdescription);
     }
-    
-
-    var ExperienceID = $("#Experience").val();
-    formData.append("ExperienceID", ExperienceID);
-
-    var ExperienceName = $("#Experience option:selected").text();
-    formData.append("Experience_Name", ExperienceName);
-
-    var Location = $("#Location").val();
-    formData.append("city", Location);
-
-    var EmploymenttypeID = $("#Employmenttype").val();
-    formData.append("EmploymenttypeID", EmploymenttypeID);
-
-    var EmploymenttypeName = $("#Employmenttype option:selected").text();
-    formData.append("Employmenttype_Name", EmploymenttypeName);
-
-    
-    var SalaryRange = $("#SalaryRange").val();
-
-    formData.append("Salaryrange", SalaryRange);
-    formData.append("Is_Job", $("#hdn_job_type").val());
-
 
     $.ajax({
         url: '../Home/PostJob',
@@ -76,4 +78,28 @@ $("#post_form").submit(function (e) {
             console.log(error, status);
         }
     });
+
 });
+///Comment Modal Actions
+function OpenCommentModal(id)
+{
+    $("#commentModal").html('');
+    $.ajax({
+        url: "../Home/GetPostDetails",
+        type: "POST",
+        data: { JobID: id },
+        dataType:'html',
+        success: function (data) {
+            debugger;
+           
+            $("#commentModal").append(data);
+            $("#commentModal").modal('show');
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+    debugger;
+    
+}
+

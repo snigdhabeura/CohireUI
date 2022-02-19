@@ -290,5 +290,7 @@ namespace Cohire.Models.UserAuthentication
             }
             return model;
         }
+   
+       
     }
 }

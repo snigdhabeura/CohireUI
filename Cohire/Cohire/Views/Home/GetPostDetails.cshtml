@@ -1,0 +1,242 @@
+﻿@model Cohire.Models.JobFeedListNM.JobActionModel;
+   
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 overflow-hidden border-0">
+            <div class="modal-header d-none">
+                <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row m-0">
+                    <div class="col-sm-7 px-0 m-sm-none">
+                        @if (Model.jobFeedList.JobFiles.Count > 0)
+                        {
+                            <div class="image-slider" onclick="OpenCommentModal('@Model.jobFeedList.ChJobID')">
+                                <div id="carouselExampleIndicators_@Model.jobFeedList.ChJobID" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        @{ int i = 0;}
+                                        @foreach (var v in Model.jobFeedList.JobFiles.ToList().Where(x => x.filetype.ToLower() == "png" || x.filetype.ToLower() == "jpg" || x.filetype.ToLower() == "jpeg" || x.filetype.ToLower() == "gif" || x.filetype.ToLower() == "mp4"))
+                                        {
+
+                                            int slied = i + 1;
+                                            <button type="button" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
+                                            i++;
+                                        }
+
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        @{ i = 0;}
+                                        @foreach (var v in Model.jobFeedList.JobFiles.Where(x => x.filetype.ToLower() == "png" || x.filetype.ToLower() == "jpg" || x.filetype.ToLower() == "jpeg" || x.filetype.ToLower() == "gif" || x.filetype.ToLower() == "mp4").ToList())
+                                        {
+                                            if (v.filetype.ToLower() != "mp4")
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    <div class="carousel-item active">
+                                                        <img src="@v.fileurl" class="d-block w-100" alt="...">
+                                                    </div> }
+                                                else
+                                                {
+                                                    <div class="carousel-item">
+                                                        <img src="@v.fileurl" class="d-block w-100" alt="...">
+                                                    </div>
+                                                }
+                                                i++;
+                                            }
+                                            else if (v.filetype.ToLower() == "mp4")
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    <div class="carousel-item active">
+                                                        <video src="@v.fileurl" controls />
+                                                    </div> }
+                                                else
+                                                {
+                                                    <div class="carousel-item">
+                                                        <video src="@v.fileurl" controls />
+                                                    </div>
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                    </div>
+                                    <div>
+                                        <button class="carousel-control-prev" type="button">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide="prev"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button">
+                                            <span class="carousel-control-next-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide="next"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-sm-5 content-body px-web-0">
+                        <div class="d-flex flex-column h-600">
+                            <div class="d-flex p-3 border-bottom">
+                                <img src="~/Img/rmate4.jpg" class="img-fluid rounded-circle user-img" alt="profile-img">
+                                <div class="d-flex align-items-center justify-content-between w-100">
+                                    <a href="javascript:void(0)" class="text-decoration-none ms-3">
+                                        <div class="d-flex align-items-center">
+                                            <h6 class="fw-bold text-body mb-0">@Model.jobFeedList.PostedByName</h6>
+                                            <p class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon mb-0">done</p>
+                                        </div>
+                                        
+                                        <p class="text-muted mb-0 small">POSTID:<b style="color:black"> @Model.jobFeedList.ChJobID</b>  </p>
+                                        <p>
+                                            @if (Model.jobFeedList.JobFiles.Where(x => x.filetype.ToLower() == "pdf" || x.filetype.ToLower() == "docx").ToList().Count > 0)
+                                            {
+                                                <span style="color:black;font-weight:bold">  Attached Document:</span>
+                                                @for (int i = 0; i < Model.jobFeedList.JobFiles.Count(); i++)
+                                                {
+                                                    if (Model.jobFeedList.JobFiles[i].filetype.ToLower() == "pdf")
+                                                    {
+                                                        <i onclick="ViewDocument('@Model.jobFeedList.JobFiles[i].filename')" title="@Model.jobFeedList.JobFiles[i].filename" class="fa fa-file-pdf-o" aria-hidden="true" style="color:palevioletred"></i>
+                                                    }
+                                                    if (Model.jobFeedList.JobFiles[i].filetype.ToLower() == "docx")
+                                                    {
+
+                                                        <i onclick="ViewDocument('@Model.jobFeedList.JobFiles[i].filename')" title="@Model.jobFeedList.JobFiles[i].filename" class="fa fa-file-word-o" aria-hidden="true" style="color:blue"></i>
+
+                                                    }
+                                                }
+                                            }
+                                        </p>
+                                    </a>
+                                    <div class="small dropdown">
+                                        <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-" data-bs-dismiss="modal">close</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comments p-3" id="cmt_popup">
+
+                            </div>
+                            <div class="border-top p-3 mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
+                                    </div>
+                                    <div>
+                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@Model.jobFeedList.ChJobID')"><span class="material-icons md-20 me-2">swap_horiz</span><span class="refer_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.referCount</span></a>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@Model.jobFeedList.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@Model.jobFeedList.ChJobID">thumb_up_off_alt</span><span class="likeCount_@Model.jobFeedList.ChJobID">@Model.jobFeedList.likeCount</span></a>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">chat_bubble_outline</span><span class="cmnt_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.commentCount</span></a>
+                                    </div>
+
+                                    <div>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('https://cohyre.com/getjob?JD=@Model.jobFeedList.ChJobID')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="material-icons bg-white border-0 text-primary pe-2 md-36">account_circle</span>
+                                    <div class="d-flex align-Models-center border rounded-4 px-3 py-1 w-100">
+                                        <input type="text" id="cmntpop_@Model.jobFeedList.ChJobID" JobAtr="@Model.jobFeedList.ChJobID" class="form-control form-control-sm p-0 rounded-3 fw-light border-0 cmnt_box_popup" placeholder="Write Your comment">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-none">
+            </div>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function () {
+        debugger;
+        var Is_modelFound = '@Model.jobFeedList';
+        if (Is_modelFound!= null) {
+            var jobid = '@Model.jobFeedList.ChJobID';
+            $("#cmt_popup").html('');
+            $.ajax({
+                url: "../User/GetCommentForPost",
+                type: "POST",
+                data: { jobID: jobid },
+                success: function (data) {
+                    debugger;
+                    for (var i = 0; i < data.length; i++) {
+                        var comments = data[i];
+                        var commentHtml = '';
+                        commentHtml = commentHtml + '<div class="d-flex mb-2">';
+                        commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
+                        if (comments.profile_Image == null || comments.profile_Image == '') {
+                            commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
+                        } else {
+                            commentHtml = commentHtml + '<img src="../images/ProfileImage/' + comments.profile_Image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+                        }
+                        commentHtml = commentHtml + '</a>';
+                        commentHtml = commentHtml + '<div class="ms-2 small">';
+                        commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
+                        commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
+                        commentHtml = commentHtml + '<p class="fw-500 mb-0">' + comments.fullName + '</p>';
+                        commentHtml = commentHtml + '<span class="text-muted">' + comments.comment + '</span>';
+                        commentHtml = commentHtml + '</div></a></div></div>';
+
+                        $("#cmt_popup").append(commentHtml);
+                        $("#cmt_popup").addClass('ex3pop');
+
+
+                    }
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+
+    });
+    
+        connection.on("ReceiveMessagepop", function (image, user, message, postID, Countofaction) {
+            debugger;
+            var commentHtml = '';
+            commentHtml = commentHtml + '<div class="d-flex mb-2">';
+            commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
+            debugger;
+            if (image == null || image == '') {
+                commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
+
+            } else {
+                commentHtml = commentHtml + '<img src="../images/ProfileImage/' + image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+
+            }
+            commentHtml = commentHtml + '</a>';
+            commentHtml = commentHtml + '<div class="ms-2 small">';
+            commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none">';
+            commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
+            commentHtml = commentHtml + '<p class="fw-500 mb-0">' + user + '</p>';
+            commentHtml = commentHtml + '<span class="text-muted">' + message + '</span>';
+            commentHtml = commentHtml + '</div></a></div></div>';
+            $("#cmt_popup").append(commentHtml);
+            $("#cmnt_div_" + postID + "").append(commentHtml);
+            $(".cmnt_count_" + postID + "").text(Countofaction);
+        });
+        function Postcommentpop(id) {
+            if (CheckIs_login()) {
+                message = $("#cmntpop_" + id + "").val();
+                postID = id;
+                connection.invoke("SendMessagepop", message, postID).catch(function (err) {
+                    return console.error(err.toString());
+                    event.preventDefault();
+                });
+                $("#cmntpop_" + id + "").val('');
+                //LoadComments(id);
+            }
+        }
+        $(".cmnt_box_popup").keyup(function (event) {
+            debugger;
+            if (event.keyCode === 13) {
+                debugger;
+                Postcommentpop($(this).attr('JobAtr'));
+            }
+        });
+    </script>

@@ -61,14 +61,14 @@
                 display: inline-block;
                 padding-left: 5px;
                 padding-right: 5px;
-                
             }
-                .list-inlinei {
-                    font-size: 26px;
-                }
+
+        .list-inlinei {
+            font-size: 26px;
+        }
     </style>
     @RenderSection("Scripts", required: false)
-    
+
 </head>
 <body>
 
@@ -115,7 +115,16 @@
 
     </div>
 
-    <div class="modal fade pxp-user-modal" id="pxp-share-modal" aria-hidden="true" aria-labelledby="signinModal" tabindex="-1"  data-backdrop="static">
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="SignIn">
+                @Html.Partial("_SignIn");
+            </div>
+            @RenderBody()
+        </main>
+    </div>
+    <div class="modal fade pxp-user-modal" id="pxp-share-modal" aria-hidden="true" aria-labelledby="signinModal" tabindex="-1" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -127,7 +136,7 @@
                         Shareable link :<br /><span id="pxp-share-url" style="color:black;font-weight:bold;font-size:16px;text-align:center"></span>&nbsp;&nbsp;
                         <a class="fa fa-copy" title="click to copy" style="color:green" id="copy_link" onclick="copyToClipboard()" href="javascript:void(0)"></a>
                     </div>
-                    <div class="mt-4 text-center pxp-modal-small" style="color:green;display:none" id="link_copy_txt" >Link copied !!!</div>
+                    <div class="mt-4 text-center pxp-modal-small" style="color:green;display:none" id="link_copy_txt">Link copied !!!</div>
                     <div class="mt-4 text-center pxp-modal-small" style="color:black">Social media</div>
                     <div class="mt-4 text-center pxp-modal-small">
                         <ul class="list-inline">
@@ -135,10 +144,10 @@
                                 <a target="_blank" id="fbshare"><i class="fa fa-facebook list-inlinei"></i></a>
                             </li>
                             <li>
-                                <a target="_blank"  id="linkedinshare"><i class="fa fa-linkedin list-inlinei"></i></a>
+                                <a target="_blank" id="linkedinshare"><i class="fa fa-linkedin list-inlinei"></i></a>
                             </li>
                             <li>
-                                <a  target="_blank"  id="twittershare"><i class="fa fa-twitter list-inlinei"></i></a>
+                                <a target="_blank" id="twittershare"><i class="fa fa-twitter list-inlinei"></i></a>
                             </li>
                             <li>
                                 <a target="_blank" id="whatsappshare" style="color:green"><i class="fa fa-whatsapp list-inlinei"></i></a>
@@ -149,23 +158,479 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            <div id="SignIn">
-                @Html.Partial("_SignIn");
+    <!-- Apply PopUp-->
+    <div class="modal fade bd-example-modal-lg Applybtn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="btnApplybtn">
+        <div class="modal-dialog modelapply">
+            @* modal-lg*@
+            <div class="modal-content">
+                @*  <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal" style="padding-top: 3%;padding-left: 3%;">arrow_back_ios_new</a>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>*@
+                <div class="modal-header border-0 p-1">
+                    <h6 class="modal-title fw-bold text-body fs-6" id="exampleModalLabel">Choose Language</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-content rounded-4 overflow-hidden border-0">
+                    <div class="modal-body p-0">
+
+
+                        <div class="row AddHtml" style="text-align:center">
+                            <div class="col-md-12 applyChange" style="text-align:center">
+                                <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                    <h4 style="text-align:center;font-weight:bold">Apply</h4>
+                                    <div class="form-floating mb-1 SignUp">
+                                        <input type="email" class="form-control rounded-5" id="ApplyFullName" placeholder="Full Name">
+                                        <label for="ApplyFullName" id="ApplyFullName_err">Full Name</label>
+                                    </div>
+                                    <div class="form-floating mb-1 SignUp">
+                                        <input type="email" class="form-control rounded-5" id="ApplyPhone" placeholder="Phone">
+                                        <label for="ApplyPhone" id="ApplyPhone_err">Mobile No</label>
+                                    </div>
+                                    <div class="form-floating mb-1 SignUp">
+                                        <input type="email" class="form-control rounded-5" id="Applyemail" placeholder="Email">
+                                        <label for="Applyemail" id="Applyemail_err">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-1 SignUp">
+                                        <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
+                                        <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
+                                    </div>
+                                    <div class="form-floating mb-1 SignUp d-none">
+                                        <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
+                                        <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Add Here  -->
+                        </div>
+                        <div class="row" style="padding-left:40%">
+                            <div class="col-md-12 applyChange">
+                                <div class="form-floating mb-1 SignUp">
+                                    <a class="btn rounded-pill pxp-modal-cta1 Applyctn" data-toggle="collapse" id="btnApplyConf" href="#collapseExample">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @RenderBody()
-        </main>
+
+        </div>
+
     </div>
 
+    <!-- Apply PopUp-->
+    <!-- Apply Confirmation PopUp-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="ApplyConfirmation">
+        <div class="modal-dialog">
+            @* modal-lg*@
+            <div class="modal-content">
+                <div class="modal-content rounded-4 overflow-hidden border-0">
+                    <div class="modal-body p-0">
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row AddHtml" style="text-align:center">
+                            <div class="col-md-12 applyChange" style="text-align:center">
+                                <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                    <h4 style="text-align:center;font-weight:bold">Your Application Submitted</h4>
+                                    <div class="my-2">
+                                        <p class="mb-3 text-primary"></p>
+                                        <ul class="list-unstyled mb-3">
+                                            <li>ApplicationID: PA12489</li>
+                                            <li>Thank's . !</li>
+                                        </ul>
+                                        <h6 class="fw-normal ln-25 mb-0">Happy Vogel to you!</h6>
+                                        <p class="mb-2"><a href="#" class="text-decoration-none">#SelectricsM12</a> <a href="#" class="text-decoration-none">#supriuasule</a> <a href="#" class="text-decoration-none">#support</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add Here  -->
+                        </div>
+                        <div class="row" style="padding-left:40%">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-1">
+                                    <a class="btn rounded-pill pxp-modal-cta1" href="#" data-bs-dismiss="modal" id="btnApplyOk">Ok</a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Apply Confirmation PopUp-->
+    <!-- Apply Modal -->
+    <div class="modal fade ApplyModal" id="ApplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="ApplyModalHeader">
+            <div class="modal-content rounded-4 p-4 border-0">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 35%;"><span class="md-10"> Apply</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+
+
+                </div>
+                @* <div class="modal-header border-0 p-1">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h4 style="text-align:center;font-weight:bold">Apply</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
+                    </div>*@
+
+                <div class="modal-body p-0">
+                    <div class="row py-3 gy-3 m-0 ApplyPannel1">
+                        <div class="form-floating mb-1 SignUp">
+                            <input type="email" class="form-control rounded-5" id="ApplyFullName" placeholder="Full Name">
+                            <label for="ApplyFullName" id="ApplyFullName_err">Full Name</label>
+                        </div>
+                        <div class="form-floating mb-1 SignUp">
+                            <input type="email" class="form-control rounded-5" id="ApplyPhone" placeholder="Phone">
+                            <label for="ApplyPhone" id="ApplyPhone_err">Mobile No</label>
+                        </div>
+                        <div class="form-floating mb-1 SignUp">
+                            <input type="email" class="form-control rounded-5" id="Applyemail" placeholder="Email">
+                            <label for="Applyemail" id="Applyemail_err">Email</label>
+                        </div>
+                        <div class="form-floating mb-1 SignUp">
+                            <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
+                            <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
+                        </div>
+                        <div class="form-floating mb-1 SignUp d-none">
+                            <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
+                            <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
+                        </div>
+                    </div>
+                    <div class="row py-3 gy-3 m-0 ApplyPannel2 collapse">
+                        <div class="col">
+                            <div class="d-flex flex-column h-600" style="padding-right:10%">
+                                <h4 style="text-align:center;font-weight:bold">Screening Questions</h4>
+                                <div class="form-floating mb-1 d-flex align-items-cente">
+                                    <select class="form-select  rounded-5" id="questions1" data-live-search="true" aria-label="Floating label select example">
+                                        <option>Select a category</option>
+                                        <option>Marketing &amp; Communication</option>
+                                        <option>Software Engineering</option>
+                                        <option>Project Management</option>
+                                        <option>Finance</option>
+                                        <option>Retail</option>
+                                        <option>Sales</option>
+                                        <option>Manufacturing</option>
+                                        <option>IT</option>
+                                        <option>Business Development</option>
+                                        <option>Human Resources</option>
+                                        <option>Customer Service</option>
+                                    </select>
+                                    <label for="questions1">Screening questions1 ?</label>
+                                </div>
+                                <div class="form-floating mb-1 d-flex align-items-cente">
+                                    <select class="form-select  rounded-5" id="questions2" data-live-search="true" aria-label="Floating label select example">
+                                        <option>Select a category</option>
+                                        <option>Marketing &amp; Communication</option>
+                                        <option>Software Engineering</option>
+                                        <option>Project Management</option>
+                                        <option>Finance</option>
+                                        <option>Retail</option>
+                                        <option>Sales</option>
+                                        <option>Manufacturing</option>
+                                        <option>IT</option>
+                                        <option>Business Development</option>
+                                        <option>Human Resources</option>
+                                        <option>Customer Service</option>
+                                    </select>
+                                    <label for="questions2">Screening questions2 ?</label>
+                                </div>
+                                <div class="form-floating mb-1 d-flex align-items-center">
+                                    <input type="text" class="form-control rounded-5" id="questions3" placeholder="Screening questions3 ?">
+                                    <label for="questions3">Screening questions3 ?</label>
+                                </div>
+                                <div class="form-floating mb-1 d-flex align-items-center">
+                                    <input type="text" class="form-control rounded-5" id="questions4" placeholder="Screening questions4 ?">
+                                    <label for="questions4">Screening questions4 ?</label>
+                                </div>
+                                <div class="form-floating mb-1 d-flex align-items-center">
+                                    <input type="text" class="form-control rounded-5" id="questions5" placeholder="Screening questions5 ?">
+                                    <label for="questions5">Screening questions5 ?</label>
+                                </div>
+                                <div class="d-grid"></div>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex flex-column h-600" style="padding-right:10%">
+                                    <h4 style="text-align:center;font-weight:bold">Screening Questions</h4>
+                                    <div class="orm-floating mb-1">
+                                        <textarea class="form-control rounded-5" id="ApplyComment" rows="5" placeholder="Comments"></textarea>
+                                    </div>
+                                    <div class="form-check">
+                                        &nbsp;
+                                    </div>
+                                    <div class="form-check">
+                                        <p>
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            I accept the <a data-bs-toggle="modal" href=".TermsConditionModal" role="button"><u>Terms and Conditions</u></a>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-3 gy-3 m-0">
+                        <div class="row">
+                            <div class="col-md-12 applyChange">
+                                <div class="form-floating mb-1">
+                                    <a class="btn rounded-pill pxp-modal-cta2" id="btnContinue">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Apply Modal -->
+    <!-- Terms & Condition PopUp-->
+    <div class="modal fade TermsConditionModal" id="TermsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 p-4 border-0">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Terms & Conditions</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <div class="row py-3 gy-3 m-0">
+                        <ul class="list-unstyled mb-3 ulBullet">
+                            <li>
+                                <p>I understand and acknowledge that I have read the job posting and I consciously choose to apply for this job. </p>
+                            </li>
+                            <li>
+                                <p> I understand and acknowledge that I am providing my personal details such as full name, email id, phone number and my resume with employment and background information to the person or organisation who has created the job post. </p>
+                            </li>
+                            <li>
+                                <p> I acknowledge that CoHyre.com is providing me a platform and I do not hold CoHyre.com responsible for any type of loss arising from my actions either due to the job application or the information I have shared. </p>
+                            </li>
+                            <li>
+                                <p> I acknowledge and protect CoHyre.com harmless from any losses, damages and costs as a result of me using the services of CoHyre.com. </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="row py-3 gy-3 m-0">
+                    <div class="row">
+                        <div class="col-md-12 applyChange">
+                            <div class="form-floating mb-1 SignUp">
+                                <a class="btn rounded-pill pxp-modal-cta2" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">I Understand</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Terms & Condition PopUp-->
+    <!-- Refer PopUp-->
+    <div class="modal fade ReferModal" id="ReferModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="ReferModalHeader">
+            <div class="modal-content rounded-4 p-4 border-0" id="referbody">
+                <input type="hidden" id="referbody_hdn" />
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 35%;"><span class="md-10">Refer</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <form id="upload" enctype="multipart/form-data" action="/User/ReferFreind" method="post">
+                        <div class="row py-3 gy-3 m-0 ReferPannel1">
+
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-5" id="ReferFullName" placeholder="Full Name">
+                                <label for="ReferFullName" id="ReferFullName_err">Full Name</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-5" id="ReferPhone" placeholder="Phone">
+                                <label for="ReferPhone" id="ReferPhone_err">Mobile No</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="email" class="form-control rounded-5" id="Referemail" placeholder="Email">
+                                <label for="Referemail" id="Referemail_err">Email</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input class="form-control rounded-5" type="file" id="ReferResume" />
+                                <label for="ReferResume" id="ReferResume_err">Attach Resume</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <p>
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault_refer">
+                                    I have read the <a href="javscript:void(0)" id="btnReferTerm" onclick="ShowreferTerm()"><u>terms</u> </a> of use and I accept.
+                                </p>
+                                <p id="referecheckbox" style="color:red;">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row py-3 gy-3 m-0">
+                            <div class="row">
+                                <div class="col-md-12 ReferChange">
+                                    <div class="form-floating mb-1">
+                                        <button class="btn rounded-pill pxp-modal-cta btncohyrec" id="btnContinue">Refer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-content rounded-4 p-4 border-0" id="refer_term" style="display:none">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    @*<a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>*@
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Terms & Conditions</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <div class="row py-3 gy-3 m-0">
+                        <ul class="list-unstyled mb-3 ulBullet">
+                            <li>
+                                <p>I understand and acknowledge that I have read the job posting and I consciously choose to apply for this job. </p>
+                            </li>
+                            <li>
+                                <p> I understand and acknowledge that I am providing my personal details such as full name, email id, phone number and my resume with employment and background information to the person or organisation who has created the job post. </p>
+                            </li>
+                            <li>
+                                <p> I acknowledge that CoHyre.com is providing me a platform and I do not hold CoHyre.com responsible for any type of loss arising from my actions either due to the job application or the information I have shared. </p>
+                            </li>
+                            <li>
+                                <p> I acknowledge and protect CoHyre.com harmless from any losses, damages and costs as a result of me using the services of CoHyre.com. </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="row py-3 gy-3 m-0">
+                    <div class="row">
+                        <div class="col-md-12 applyChange">
+                            <div class="form-floating mb-1 SignUp">
+                                <a class="btn rounded-pill pxp-modal-cta" id="btnTermsOk" href="javascript:void(0)" onclick="HidereferTerm()">I Understand</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="referConfirmation">
+        <div class="modal-dialog">
+            @* modal-lg*@
+            <div class="modal-content">
+                <div class="modal-content rounded-4 overflow-hidden border-0">
+                    <div class="modal-body p-0">
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row AddHtml" style="text-align:center">
+                            <div class="col-md-12 applyChange" style="text-align:center">
+                                <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                    <h4 style="text-align:center;font-weight:bold">Your refer Submitted for approval</h4>
+                                    <div class="my-2">
+                                        <p class="mb-3 text-primary"></p>
+                                        <ul class="list-unstyled mb-3">
+                                            <li id="confirm_referID"></li>
+                                            <li>Thank's!!!</li>
+                                        </ul>
+                                        <h6 class="fw-normal ln-25 mb-0">Once the refred user confirm this refer, You can track you refer.</h6>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add Here  -->
+                        </div>
+                        <div class="row" style="padding-left:40%">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-1">
+                                    <a class="btn rounded-pill pxp-modal-cta1" href="#" onclick="ReferConfirm()" id="btnApplyOk">Ok</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Refer PopUp-->
+    @*<div>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            <a asp-action="Index">Back to List</a>
+        </div>*@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - UI_Cohire - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <div class="modal fade TermsConditionModal" id="docmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 p-4 border-0">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Document Preview</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
+                </div>
 
+                <div class="modal-body p-0">
+                    <div class="row py-3 gy-3 m-0">
+                        @*<div id="slider">
+                            <a href="javscript:void(0)" class="control_next">></a>
+                            <a href="javscript:void(0)" class="control_prev"><</a>
+                            <ul id="contents">
+                                
+                            </ul>
+                        </div>*@
+                        <div id="contents" class="ex3doc">
+
+                        </div>
+                    </div>
+
+                </div>
+                @*<div class="row py-3 gy-3 m-0">
+                    <div class="row">
+                        <div class="col-md-12 applyChange">
+                            <div class="form-floating mb-1 SignUp">
+                                <a class="btn rounded-pill pxp-modal-cta2" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">I Understand</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/DataScripts/feed.js"></script>
 <script>
     function CheckIs_login() {
         debugger;
@@ -222,3 +687,66 @@
     }
 </script>
 
+<script>
+    function ViewDocument(file) {
+        debugger;
+        var data = { FileName: file };
+        $.ajax({
+            type: "POST",
+            url: '/Home/OnPost',
+            data: data,
+            dataType: "text"
+        }).done(function (data) {
+            var folderName = file.replace(".", "_");
+            $("#contents").empty();
+            for (var i = 1; i <= data; i++) {
+                $("#contents").append("<img style='max-width:100%;max-height:100%;margin-top:12px;' src='Content/" + folderName + "/page-" + i + ".png'/></br>");
+
+            //    $("#contents").append("<li><img style='max-width:100%;max-height:100%' src='Content/" + folderName + "/page-" + i + ".png'/></li>");
+            }
+            $("#docmodal").modal('show');
+            CreateSlider()
+        })
+    }
+
+    function CreateSlider() {
+        var slideCount = $('#slider ul li').length;
+        var slideWidth = $('#slider ul li').width();
+        var slideHeight = $('#slider ul li').height();
+        var sliderUlWidth = slideCount * slideWidth;
+
+        $('#slider').css({ width: slideWidth, height: slideHeight });
+
+        $('#slider ul').css({ width: '100%' });
+
+        $('#slider ul li:last-child').prependTo('#slider ul');
+
+        function moveLeft() {
+            $('#slider ul').animate({
+                left: + slideWidth
+            }, 200, function () {
+                $('#slider ul li:last-child').prependTo('#slider ul');
+                $('#slider ul').css('left', '');
+            });
+        };
+
+        function moveRight() {
+            $('#slider ul').animate({
+                left: - slideWidth
+            }, 200, function () {
+                $('#slider ul li:first-child').appendTo('#slider ul');
+                $('#slider ul').css('left', '');
+            });
+        };
+
+        $('a.control_prev').click(function () {
+            moveLeft();
+        });
+
+        $('a.control_next').click(function () {
+            moveRight();
+        });
+
+    }
+    
+</script>

@@ -23,5 +23,12 @@ namespace Cohire.Models.SignalR_Hub
             var Is_CommentInsert =await UserAuthentication.UserAuthentication.Instance.SetCommentForPost(postID, username[1], message);
             await Clients.All.SendAsync("ReceiveMessage", Is_CommentInsert.Profile_Image, Is_CommentInsert.FullName, Is_CommentInsert.Comment, Is_CommentInsert.ChJobID, Is_CommentInsert.Countofaction);
         }
+        public async Task Sendmessagepop(string message, string postID)
+        {
+            Authentication authentication = new Authentication(_httpContextAccessor);
+            var username = authentication.GetCurrentCookie();
+            var Is_CommentInsert = await UserAuthentication.UserAuthentication.Instance.SetCommentForPost(postID, username[1], message);
+            await Clients.All.SendAsync("ReceiveMessagepop", Is_CommentInsert.Profile_Image, Is_CommentInsert.FullName, Is_CommentInsert.Comment, Is_CommentInsert.ChJobID, Is_CommentInsert.Countofaction);
+        }
     }
 }

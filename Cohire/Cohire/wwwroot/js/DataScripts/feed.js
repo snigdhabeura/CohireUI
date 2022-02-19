@@ -98,7 +98,7 @@ function IncreaseLike(id) {
             data: { jobID: id, Is_like: Is_like},
             success: function (data) {
                 
-                $("#likeCount_" + id + "").html(data);
+                $(".likeCount_" + id + "").html(data);
             },
             error: function (xhr, error, status) {
                 console.log(error, status);
@@ -194,8 +194,10 @@ $('#upload').submit(function (e) {
                 $("#confirm_referID").html("ReferID : " + data);
                 $("#ReferModal").modal('hide');
                 $("#referConfirmation").modal('show');
-                var prvrefcount = $("#refer_count_" + $("#referbody_hdn").val() + "").text();
-                $("#refer_count_" + $("#referbody_hdn").val() + "").text(parseInt(prvrefcount)+1);
+                debugger;
+                var prvrefcount = $(".refer_count_" + $("#referbody_hdn").val() + "").text();
+                $(".refer_count_" + $("#referbody_hdn").val() + "").html('');
+                $(".refer_count_" + $("#referbody_hdn").val() + "").text(parseInt(prvrefcount)+1);
             } else {
                 alert("Please try after sometime");
             }
@@ -228,14 +230,22 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 connection.on("ReceiveMessage", function (image, user, message, postID, Countofaction) {
-    debugger;
+    
+    debugger; 
     var commentHtml = '';
     commentHtml = commentHtml + '<div class="d-flex mb-2">';
-    commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
-    commentHtml = commentHtml + '<img src="../images/ProfileImage/' + image+'" class="img-fluid rounded-circle" alt="commenters-img">';
+    commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
+    debugger;
+    if (image == null || image == '') {
+        commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
+
+    } else {
+        commentHtml = commentHtml + '<img src="../images/ProfileImage/' + image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+
+    }
     commentHtml = commentHtml + '</a>';
     commentHtml = commentHtml + '<div class="ms-2 small">';
-    commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
+    commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none">';
     commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
     commentHtml = commentHtml + '<p class="fw-500 mb-0">' + user + '</p>';
     commentHtml = commentHtml + '<span class="text-muted">' + message + '</span>';
@@ -251,8 +261,8 @@ function Postcomment(id) {
             return console.error(err.toString());
             event.preventDefault();
         });
-        $("#cmnt_" + id + "").val('');
-        //LoadComments(id);
+        $("#cmnt_" + id + "").val(''); $("#cmnt_div_" + postID + "").html('');
+        LoadComments(id);
     }
 }
 $(".cmnt_box").keyup(function (event) {
@@ -263,7 +273,10 @@ $(".cmnt_box").keyup(function (event) {
     }
 });
 
-function LoadComments(jobid) {
+
+
+
+function LoadCommentspopup(jobid) {
     $.ajax({
         url: "../User/GetCommentForPost",
         type: "POST",
@@ -275,7 +288,11 @@ function LoadComments(jobid) {
                 var commentHtml = '';
                 commentHtml = commentHtml + '<div class="d-flex mb-2">';
                 commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
-                commentHtml = commentHtml + '<img src="../images/ProfileImage/' + comments.profile_Image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+                if (comments.profile_Image == null || comments.profile_Image == '') {
+                    commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
+                } else {
+                    commentHtml = commentHtml + '<img src="../images/ProfileImage/' + comments.profile_Image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+                }
                 commentHtml = commentHtml + '</a>';
                 commentHtml = commentHtml + '<div class="ms-2 small">';
                 commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
@@ -283,8 +300,49 @@ function LoadComments(jobid) {
                 commentHtml = commentHtml + '<p class="fw-500 mb-0">' + comments.fullName + '</p>';
                 commentHtml = commentHtml + '<span class="text-muted">' + comments.comment + '</span>';
                 commentHtml = commentHtml + '</div></a></div></div>';
-                $("#cmnt_div_" + jobid + "").append(commentHtml);
-                $("#cmnt_div_" + jobid + "").addClass('ex3');
+             
+                $("#cmt_popup").append(commentHtml);
+                $("#cmt_popup").addClass('ex3pop');
+                
+                
+            }
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+}
+function LoadComments(jobid) {
+    $("#cmnt_div_" + jobid + "").html('');
+    $.ajax({
+        url: "../User/GetCommentForPost",
+        type: "POST",
+        data: { jobID: jobid },
+        async:false,
+        success: function (data) {
+            debugger;
+            for (var i = 0; i < data.length; i++) {
+                var comments = data[i];
+                var commentHtml = '';
+                commentHtml = commentHtml + '<div class="d-flex mb-2">';
+                commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
+                if (comments.profile_Image == null || comments.profile_Image == '') {
+                    commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
+                } else {
+                    commentHtml = commentHtml + '<img src="../images/ProfileImage/' + comments.profile_Image + '" class="img-fluid rounded-circle" alt="commenters-img">';
+                }
+                commentHtml = commentHtml + '</a>';
+                commentHtml = commentHtml + '<div class="ms-2 small">';
+                commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#commentModal">';
+                commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
+                commentHtml = commentHtml + '<p class="fw-500 mb-0">' + comments.fullName + '</p>';
+                commentHtml = commentHtml + '<span class="text-muted">' + comments.comment + '</span>';
+                commentHtml = commentHtml + '</div></a></div></div>';
+
+                $("#cmnt_div_" + jobid+"").append(commentHtml);
+                $("#cmnt_div_" + jobid+"").addClass('ex3');
+
+
             }
         },
         error: function (xhr, error, status) {

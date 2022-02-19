@@ -51,5 +51,6 @@ namespace Cohire.Models.JobFeedListNM
         public int Like_Count { get; set; }
         public int Apply_Count { get; set; }
         public int Refer_Count { get; set; }
+        public JobFeedList jobFeedList { get; set; }
     }
 }
