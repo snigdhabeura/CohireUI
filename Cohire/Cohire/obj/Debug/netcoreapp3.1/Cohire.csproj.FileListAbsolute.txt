@@ -34,6 +34,7 @@ C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Coh
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
 C:\Users\Admin\Pictures\New folder (2)\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.CopyComplete
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\libman.json
@@ -260,6 +261,7 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Resources.Reader.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Resources.ResourceManager.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Resources.Writer.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.VisualC.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Runtime.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Runtime.Extensions.dll
@@ -291,6 +293,7 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Security.SecureString.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.ServiceModel.Web.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.ServiceProcess.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.CodePages.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.Extensions.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\System.Text.Encodings.Web.dll
@@ -325,11 +328,12 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\refs\WindowsBase.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Cohire.Views.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Cohire.Views.pdb
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Aspose.Words.Pdf2Word.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Aspose.Words.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
@@ -344,6 +348,7 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\SkiaSharp.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
@@ -405,8 +410,15 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\DocConeverter.exe
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\DocConeverter.pdb
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\DocConeverter.exe.config
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.csproj.AssemblyReference.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.AssemblyInfoInputs.cache
@@ -448,22 +460,3 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\GroupDocs.Viewer.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\SkiaSharp.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\osx\native\libSkiaSharp.dylib
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\libSkiaSharp.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libSkiaSharp.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll

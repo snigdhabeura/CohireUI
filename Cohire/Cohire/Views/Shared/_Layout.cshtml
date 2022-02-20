@@ -594,22 +594,30 @@
             <div class="modal-content rounded-4 p-4 border-0">
                 <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
                     <a id="btnTermsback" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" href=".ApplyModal">arrow_back_ios_new</a>
-                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10"> Document Preview</span></h5>
+                    <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 20%;"><span class="md-10">Document Preview </span> <br /> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top: 2%;"></button>
                 </div>
 
                 <div class="modal-body p-0">
+                    <div class="text-center mt-4">
+                        <span id="totalPages"></span>
+                    </div>
                     <div class="row py-3 gy-3 m-0">
-                        @*<div id="slider">
-                            <a href="javscript:void(0)" class="control_next">></a>
-                            <a href="javscript:void(0)" class="control_prev"><</a>
-                            <ul id="contents">
-                                
-                            </ul>
-                        </div>*@
+
+                        <div class="text-center mt-4 docspin">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mb-0 mt-2">Loading</p>
+                        </div>
                         <div id="contents" class="ex3doc">
 
                         </div>
+                        <object type="application/pdf"
+                                data="~/JobFiles/a266fbea-6e25-44b6-8c90-81fc0eebe04d.pdf"
+                                width="250"
+                                height="200">
+                        </object>
                     </div>
 
                 </div>
@@ -691,62 +699,66 @@
     function ViewDocument(file) {
         debugger;
         var data = { FileName: file };
+        $("#contents").empty(); $("#totalPages").html('');
+        $("#docmodal").modal('show');
         $.ajax({
             type: "POST",
-            url: '/Home/OnPost',
+            url: '../Home/OnPost',
             data: data,
             dataType: "text"
         }).done(function (data) {
+            $("#totalPages").html('Total Page : ' + (data));
             var folderName = file.replace(".", "_");
-            $("#contents").empty();
+            
             for (var i = 1; i <= data; i++) {
+                $(".docspin").hide(); 
                 $("#contents").append("<img style='max-width:100%;max-height:100%;margin-top:12px;' src='Content/" + folderName + "/page-" + i + ".png'/></br>");
-
+                
             //    $("#contents").append("<li><img style='max-width:100%;max-height:100%' src='Content/" + folderName + "/page-" + i + ".png'/></li>");
             }
-            $("#docmodal").modal('show');
-            CreateSlider()
         })
     }
+</script>
+<script>
+    connection.on("ReceiveMessagepop", function (image, user, message, postID, Countofaction) {
+        debugger;
+        var commentHtml = '';
+        commentHtml = commentHtml + '<div class="d-flex mb-2">';
+        commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
+        debugger;
+        if (image == null || image == '') {
+            commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
 
-    function CreateSlider() {
-        var slideCount = $('#slider ul li').length;
-        var slideWidth = $('#slider ul li').width();
-        var slideHeight = $('#slider ul li').height();
-        var sliderUlWidth = slideCount * slideWidth;
+        } else {
+            commentHtml = commentHtml + '<img src="../images/ProfileImage/' + image + '" class="img-fluid rounded-circle" alt="commenters-img">';
 
-        $('#slider').css({ width: slideWidth, height: slideHeight });
-
-        $('#slider ul').css({ width: '100%' });
-
-        $('#slider ul li:last-child').prependTo('#slider ul');
-
-        function moveLeft() {
-            $('#slider ul').animate({
-                left: + slideWidth
-            }, 200, function () {
-                $('#slider ul li:last-child').prependTo('#slider ul');
-                $('#slider ul').css('left', '');
+        }
+        commentHtml = commentHtml + '</a>';
+        commentHtml = commentHtml + '<div class="ms-2 small">';
+        commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none">';
+        commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
+        commentHtml = commentHtml + '<p class="fw-500 mb-0">' + user + '</p>';
+        commentHtml = commentHtml + '<span class="text-muted">' + message + '</span>';
+        commentHtml = commentHtml + '</div></a></div></div>';
+        $("#cmt_popup").append(commentHtml);
+        $("#cmnt_div_" + postID + "").append(commentHtml);
+        $(".cmnt_count_" + postID + "").text(Countofaction);
+    });
+    function Postcommentpop(id, event) {
+        
+        if (CheckIs_login())
+        {
+            if (event.keyCode === 13) {
+            message = $("#cmntpop_" + id + "").val();
+            postID = id;
+            connection.invoke("SendMessagepop", message, postID).catch(function (err) {
+                return console.error(err.toString());
+                event.preventDefault();
             });
-        };
-
-        function moveRight() {
-            $('#slider ul').animate({
-                left: - slideWidth
-            }, 200, function () {
-                $('#slider ul li:first-child').appendTo('#slider ul');
-                $('#slider ul').css('left', '');
-            });
-        };
-
-        $('a.control_prev').click(function () {
-            moveLeft();
-        });
-
-        $('a.control_next').click(function () {
-            moveRight();
-        });
-
+            $("#cmntpop_" + id + "").val('');
+                //LoadComments(id);
+            }
+        }
     }
-    
+    //$(".cmnt_box_popup").keyup(function (event) {if (event.keyCode === 13) {Postcommentpop($(this).attr('JobAtr'));}});
 </script>

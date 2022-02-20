@@ -11,15 +11,15 @@
                     <div class="col-sm-7 px-0 m-sm-none">
                         @if (Model.jobFeedList.JobFiles.Count > 0)
                         {
-                            <div class="image-slider" onclick="OpenCommentModal('@Model.jobFeedList.ChJobID')">
-                                <div id="carouselExampleIndicators_@Model.jobFeedList.ChJobID" class="carousel slide" data-bs-ride="carousel">
+                            <div class="image-slider">
+                                <div id="carouselExampleIndicatorspops_@Model.jobFeedList.ChJobID" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         @{ int i = 0;}
                                         @foreach (var v in Model.jobFeedList.JobFiles.ToList().Where(x => x.filetype.ToLower() == "png" || x.filetype.ToLower() == "jpg" || x.filetype.ToLower() == "jpeg" || x.filetype.ToLower() == "gif" || x.filetype.ToLower() == "mp4"))
                                         {
 
                                             int slied = i + 1;
-                                            <button type="button" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicatorspops_@Model.jobFeedList.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
                                             i++;
                                         }
 
@@ -63,11 +63,11 @@
                                     </div>
                                     <div>
                                         <button class="carousel-control-prev" type="button">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide="prev"></span>
+                                            <span class="carousel-control-prev-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicatorspops_@Model.jobFeedList.ChJobID" data-bs-slide="prev"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button">
-                                            <span class="carousel-control-next-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicators_@Model.jobFeedList.ChJobID" data-bs-slide="next"></span>
+                                            <span class="carousel-control-next-icon" aria-hidden="true" data-bs-target="#carouselExampleIndicatorspops_@Model.jobFeedList.ChJobID" data-bs-slide="next"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
                                     </div>
@@ -138,7 +138,7 @@
                                 <div class="d-flex align-items-center">
                                     <span class="material-icons bg-white border-0 text-primary pe-2 md-36">account_circle</span>
                                     <div class="d-flex align-Models-center border rounded-4 px-3 py-1 w-100">
-                                        <input type="text" id="cmntpop_@Model.jobFeedList.ChJobID" JobAtr="@Model.jobFeedList.ChJobID" class="form-control form-control-sm p-0 rounded-3 fw-light border-0 cmnt_box_popup" placeholder="Write Your comment">
+                                        <input onkeyup="Postcommentpop('@Model.jobFeedList.ChJobID', event)" type="text" id="cmntpop_@Model.jobFeedList.ChJobID" JobAtr="@Model.jobFeedList.ChJobID" class="form-control form-control-sm p-0 rounded-3 fw-light border-0 cmnt_box_popup" placeholder="Write Your comment">
                                         
                                     </div>
                                 </div>
@@ -195,48 +195,4 @@
         }
 
     });
-    
-        connection.on("ReceiveMessagepop", function (image, user, message, postID, Countofaction) {
-            debugger;
-            var commentHtml = '';
-            commentHtml = commentHtml + '<div class="d-flex mb-2">';
-            commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
-            debugger;
-            if (image == null || image == '') {
-                commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
-
-            } else {
-                commentHtml = commentHtml + '<img src="../images/ProfileImage/' + image + '" class="img-fluid rounded-circle" alt="commenters-img">';
-
-            }
-            commentHtml = commentHtml + '</a>';
-            commentHtml = commentHtml + '<div class="ms-2 small">';
-            commentHtml = commentHtml + ' <a href="#" class="text-dark text-decoration-none">';
-            commentHtml = commentHtml + '<div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">';
-            commentHtml = commentHtml + '<p class="fw-500 mb-0">' + user + '</p>';
-            commentHtml = commentHtml + '<span class="text-muted">' + message + '</span>';
-            commentHtml = commentHtml + '</div></a></div></div>';
-            $("#cmt_popup").append(commentHtml);
-            $("#cmnt_div_" + postID + "").append(commentHtml);
-            $(".cmnt_count_" + postID + "").text(Countofaction);
-        });
-        function Postcommentpop(id) {
-            if (CheckIs_login()) {
-                message = $("#cmntpop_" + id + "").val();
-                postID = id;
-                connection.invoke("SendMessagepop", message, postID).catch(function (err) {
-                    return console.error(err.toString());
-                    event.preventDefault();
-                });
-                $("#cmntpop_" + id + "").val('');
-                //LoadComments(id);
-            }
-        }
-        $(".cmnt_box_popup").keyup(function (event) {
-            debugger;
-            if (event.keyCode === 13) {
-                debugger;
-                Postcommentpop($(this).attr('JobAtr'));
-            }
-        });
     </script>

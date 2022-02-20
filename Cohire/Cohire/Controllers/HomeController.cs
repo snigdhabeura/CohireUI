@@ -24,9 +24,7 @@ using System.IO;
 using System.Data.SqlClient;
 using Cohire.Models.CommonOperation;
 using System.Data;
-using GroupDocs.Viewer;
-using GroupDocs.Viewer.Results;
-using GroupDocs.Viewer.Options;
+using Aspose.Words;
 
 namespace Cohire.Controllers
 {
@@ -98,10 +96,10 @@ namespace Cohire.Controllers
 
         public async Task<List<T>> GetMasterDataAsync<T>(string Url)
         {
-            string Baseurl = "https://localhost:44342/";
+            
             var client = new HttpClient();
             //Passing service base url
-            client.BaseAddress = new Uri(Baseurl);
+            client.BaseAddress = new Uri(URL);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -115,10 +113,9 @@ namespace Cohire.Controllers
         }
         public async Task<T> GetMasterDataAsync1<T>(string Url)
         {
-            string Baseurl = "https://localhost:44342/";
             var client = new HttpClient();
             //Passing service base url
-            client.BaseAddress = new Uri(Baseurl);
+            client.BaseAddress = new Uri(URL);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -426,22 +423,22 @@ namespace Cohire.Controllers
         [HttpPost]
         public IActionResult OnPost(string FileName)
         {
+            DocConeverter.Program pro = new DocConeverter.Program();
+            
             string outputPath = Path.Combine(projectRootPath, "wwwroot/Content");
             string storagePath = Path.Combine(projectRootPath, "wwwroot/JobFiles");
             int pageCount = 0;
             string imageFilesFolder = Path.Combine(outputPath, Path.GetFileName(FileName).Replace(".", "_"));
+            
+            var docs = Path.Combine(storagePath, FileName);
             if (!Directory.Exists(imageFilesFolder))
             {
-                Directory.CreateDirectory(imageFilesFolder);
+                pageCount = pro.GetDocumentImage(docs, outputPath, FileName);
             }
-            string imageFilesPath = Path.Combine(imageFilesFolder, "page-{0}.png");
-            using (Viewer viewer = new Viewer(Path.Combine(storagePath, FileName)))
+            else
             {
-                ViewInfo info = viewer.GetViewInfo(ViewInfoOptions.ForPngView(false));
-                pageCount = info.Pages.Count;
-
-                PngViewOptions options = new PngViewOptions(imageFilesPath);
-                viewer.View(options);
+                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(imageFilesFolder);
+                pageCount = dir.GetFiles().Length;
             }
             return new JsonResult(pageCount);
         }

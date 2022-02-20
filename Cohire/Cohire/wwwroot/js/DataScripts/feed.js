@@ -251,7 +251,8 @@ connection.on("ReceiveMessage", function (image, user, message, postID, Countofa
     commentHtml = commentHtml + '<span class="text-muted">' + message + '</span>';
     commentHtml = commentHtml + '</div></a></div></div>';
     $("#cmnt_div_" + postID + "").append(commentHtml);
-    $("#cmnt_count_" + postID + "").text(Countofaction);
+    $("#cmt_popup").append(commentHtml);
+    $(".cmnt_count_" + postID + "").text(Countofaction);
 });
 function Postcomment(id) {
     if (CheckIs_login()) {

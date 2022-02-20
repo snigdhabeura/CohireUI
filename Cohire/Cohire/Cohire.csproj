@@ -660,7 +660,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\JobFiles\" />
     <Folder Include="wwwroot\ApplyJobResume\" />
     <Folder Include="wwwroot\Content\" />
     <Folder Include="wwwroot\Refer_job_Files\" />
@@ -764,11 +763,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GroupDocs.Viewer" Version="22.1.1" />
+    <PackageReference Include="Aspose.Words" Version="22.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocConeverter\DocConeverter.csproj" />
   </ItemGroup>
 
 </Project>
