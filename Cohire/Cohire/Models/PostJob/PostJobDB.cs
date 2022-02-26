@@ -50,9 +50,9 @@ namespace Cohire.Model.PostJob
                     cmd.Parameters.Add("@JobJson", SqlDbType.VarChar).Value = JobJson;
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
                     cmd.Parameters.Add("@city", SqlDbType.VarChar).Value = city;
-                    cmd.Parameters.Add("@Is_Job", SqlDbType.Bit).Value = viewPostJobModel.Is_Job;
-                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = viewPostJobModel.Ip_Address;
-                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = viewPostJobModel.Device_Type;
+                    cmd.Parameters.Add("@Is_Job", SqlDbType.Int).Value = viewPostJobModel.Is_Job;
+                    cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value =CommonOP.Instance.GetUserIP() ;
+                    cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = "D";
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_inserted=await cmd.ExecuteNonQueryAsync();
                     return Is_inserted.ToString();
@@ -70,7 +70,7 @@ namespace Cohire.Model.PostJob
 
         }
 
-        public async Task<string> UpdateJobPublic(string ChJobID, string JobJson, string SearchInstance,string Ip_Address,string Device_Type,bool Is_job,string PostedByID)
+        public async Task<string> UpdateJobPublic(string ChJobID, string JobJson, string SearchInstance,string Ip_Address,string Device_Type,int Is_job,string PostedByID)
         {
             SqlConnection azureSQLDb = null;
             try
@@ -85,7 +85,7 @@ namespace Cohire.Model.PostJob
                     cmd.Parameters.Add("@SearchInstance", SqlDbType.VarChar).Value = SearchInstance;
                     cmd.Parameters.Add("@Ip_Address", SqlDbType.VarChar).Value = Ip_Address;
                     cmd.Parameters.Add("@Device_Type", SqlDbType.VarChar).Value = Device_Type;
-                    cmd.Parameters.Add("@Is_Job", SqlDbType.Bit).Value = Is_job;
+                    cmd.Parameters.Add("@Is_Job", SqlDbType.Int).Value = Is_job;
                     cmd.Parameters.Add("@PostedByID", SqlDbType.VarChar).Value = PostedByID;
                     cmd.CommandType = CommandType.StoredProcedure;
                     var Is_updated = await cmd.ExecuteNonQueryAsync();

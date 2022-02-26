@@ -35,8 +35,18 @@ body {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: 'Gilroy', sans-serif;
 }
-
-
+div.ex3 {
+    height: 150px;
+    overflow: auto;
+}
+div.ex3pop {
+    height: 400px;
+    overflow: auto;
+}
+div.ex3doc {
+    height: 556px;
+    overflow: auto;
+}
 /* FAQ */
 .faq-page .accordion-button {
     font-size: 14px;
@@ -377,7 +387,7 @@ body {
 
 .image-slider img {
     width: 489px;
-    height: 600px;
+    /*height: 600px;*/
     object-fit: cover;
 }
 
@@ -1280,7 +1290,7 @@ a:hover {
     transition-property: background-color;
 }
 .pxp-modal-cta1 {
-    width:50%;
+    width:38%;
     display: block;
     background-color: var(--pxpMainColor);
     color: #fff;

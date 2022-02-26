@@ -1,5 +1,5 @@
 ﻿using Cohire.Models;
-using Cohire.Models.JobFeedList;
+using Cohire.Models.JobFeedListNM;
 using Cohire.Models.MasterData;
 using CohireAPI.PostJobs.Model;
 using System.Collections.Generic;

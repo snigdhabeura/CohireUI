@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cohire.Models.JobFeedList
+namespace Cohire.Models.JobFeedListNM
 {
     public class JobFile
     {
@@ -28,7 +28,7 @@ namespace Cohire.Models.JobFeedList
         public string Employmenttype_Name { get; set; }
         public string Salaryrange { get; set; }
         public string JobDescription { get; set; }
-        public bool Is_Job { get; set; }
+        public int Is_Job { get; set; }
         public string Ip_Address { get; set; }
         public string Device_Type { get; set; }
         public string CreatedDate { get; set; }
@@ -36,5 +36,21 @@ namespace Cohire.Models.JobFeedList
         public List<string> Skills { get; set; }
         public List<string> JobQuestions { get; set; }
         public List<JobFile> JobFiles { get; set; }
+        public string shareURL { get; set; }
+        public List<string> Comments { get; set; }
+        public string applyCount { get; set; }
+        public string referCount { get; set; }
+        public string likeCount { get; set; }
+        public string commentCount { get; set; }
+    }
+
+    public class JobActionModel
+    {
+        public string JobJson { get; set; }
+        public int Comment_Count { get; set; }
+        public int Like_Count { get; set; }
+        public int Apply_Count { get; set; }
+        public int Refer_Count { get; set; }
+        public JobFeedList jobFeedList { get; set; }
     }
 }

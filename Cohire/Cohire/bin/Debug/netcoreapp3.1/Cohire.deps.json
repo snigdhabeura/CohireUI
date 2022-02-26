@@ -31,6 +31,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Cohire/1.0.0": {
         "dependencies": {
+          "Aspose.Words": "22.2.0",
+          "DocConeverter": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
           "Newtonsoft.Json": "13.0.1",
@@ -323,6 +325,29 @@
         },
         "compile": {
           "Cohire.dll": {}
+        }
+      },
+      "Aspose.Words/22.2.0": {
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.7.0",
+          "SkiaSharp": "2.80.1",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Text.Encoding.CodePages": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aspose.Words.Pdf2Word.dll": {
+            "assemblyVersion": "22.2.0.0",
+            "fileVersion": "22.2.0.0"
+          },
+          "lib/netstandard2.0/Aspose.Words.dll": {
+            "assemblyVersion": "22.2.0.0",
+            "fileVersion": "22.2.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Aspose.Words.Pdf2Word.dll": {},
+          "lib/netstandard2.0/Aspose.Words.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -939,6 +964,42 @@
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
           }
+        }
+      },
+      "SkiaSharp/2.80.1": {
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.80.0.0",
+            "fileVersion": "2.80.1.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SkiaSharp.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -1666,6 +1727,14 @@
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
+        }
+      },
+      "DocConeverter/1.0.0": {
+        "runtime": {
+          "DocConeverter.exe": {}
+        },
+        "compile": {
+          "DocConeverter.exe": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3368,6 +3437,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Aspose.Words/22.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jo2Zs2TbaN6T//nuQ6oM06TcdoMA2FKZwTTdWLUWC+bZIzw5PWO41bfDvLN8uiIR7Nt8JbVlw4zXs/T+mGFv0w==",
+      "path": "aspose.words/22.2.0",
+      "hashPath": "aspose.words.22.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3717,6 +3793,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SkiaSharp/2.80.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CiQwnDzG+1JNGzjAN9G/9n/lJgUVA/NPOFgSlEtu6c7qQ0O7P1tMjrXp/+PtWfX0xyyY9ABsFAZK2kW34U7r/A==",
+      "path": "skiasharp/2.80.1",
+      "hashPath": "skiasharp.2.80.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -4200,6 +4283,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "DocConeverter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

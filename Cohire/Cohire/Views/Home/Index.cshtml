@@ -1,5 +1,5 @@
 ﻿@model Cohire.ViewModel.HomeViewModel;
-
+    
 <!doctype html>
 <html lang="en" class="pxp-root">
 <head>
@@ -32,7 +32,7 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-feed" role="tabpanel" aria-labelledby="pills-feed-tab">
                                 <!-- Post Tab -->
-                                <div class="input-group mb-4 shadow-sm rounded-4 overflow-hidden py-2 bg-white" data-bs-toggle="modal" data-bs-target="#postModal">
+                                <div class="input-group mb-4 shadow-sm rounded-4 overflow-hidden py-2 bg-white" onclick="if (CheckIs_login()) { $('#postModal').modal('show') }">
                                     <span class="input-group-text material-icons border-0 bg-white text-primary">account_circle</span>
                                     <input type="text" class="form-control border-0 fw-light ps-1" placeholder="What's on your mind.">
                                     <a href="#" class="text-decoration-none input-group-text bg-white border-0 material-icons text-primary">add_circle</a>
@@ -44,154 +44,8 @@
                                         <a href="#" class="text-dark text-decoration-none material-icons">east</a>
                                     </div>
                                     <!-- Slider Accounts -->
-                                    <div class="account-slider">
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate1.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Anisa Keena</p>
-                                                    <p class="small text-muted">Designer</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck1" checked>
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck1"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate2.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Ima Narcisse</p>
-                                                    <p class="small text-muted">Politician</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck2">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck2"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate3.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">LucileFelmlee</p>
-                                                    <p class="small text-muted">Politician</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck3">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck3"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate4.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Starr Shupp</p>
-                                                    <p class="small text-muted">PMO</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck4">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck4"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate1.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Macie Bellis</p>
-                                                    <p class="small text-muted">Artist</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck5">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck5"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate2.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Shane Crays</p>
-                                                    <p class="small text-muted">Politician</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck6">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck6"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Account Item -->
-                                        <div class="account-item">
-                                            <div class="me-2 bg-white shadow-sm rounded-4 p-3 user-list-item d-flex justify-content-center my-2">
-                                                <div class="text-center">
-                                                    <div class="position-relative d-flex justify-content-center">
-                                                        <a href="profile.html" class="text-decoration-none">
-                                                            <img src="img/rmate3.jpg" class="img-fluid rounded-circle mb-3" alt="profile-img">
-                                                            <div class="position-absolute">
-                                                                <span class="material-icons bg-primary small p-1 fw-bold text-white rounded-circle">done</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <p class="fw-bold text-dark m-0">Shay Jordon</p>
-                                                    <p class="small text-muted">Journalist</p>
-                                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="btncheck7">
-                                                        <label class="btn btn-outline-primary btn-sm px-3 rounded-pill" for="btncheck7"><span class="follow">+ Follow</span><span class="following d-none">Following</span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="account-slider" id="index_account_slider">
+                                       
                                     </div>
                                     <!-- Feeds -->
                                     <div class="pt-4 feeds">
@@ -390,17 +244,17 @@
                                 </div>
                                 <!-- Feeds -->
                                 <div class="feeds">
-                                   @* @Html.Partial("_Feeds",Model.jobFeedList);*@
+                                    @* @Html.Partial("_Feeds",Model.jobFeedList);*@
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mt-4">
+                    @*<div class="text-center mt-4">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                         <p class="mb-0 mt-2">Loading</p>
-                    </div>
+                    </div>*@
                 </main>
                 <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
                     <div class="p-2 bg-light offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample">
@@ -653,7 +507,7 @@
             </div>
         </div>
     </div>
-    <form asp-controller="Home" asp-action="Index" method="post">
+    
         <div class="modal fade" id="postModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-4 p-4 border-0 bg-light">
@@ -662,103 +516,193 @@
                         <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
                         <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Create Post</span></h5>
 
-                        <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
+                        @*  <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
                             <label class="form-check-label">General Post &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked value="1" />
                             <label class="form-check-label"> Post Job</label>
-                        </div>
+                            </div>*@
                     </div>
-
-                    <div class="row g-2 mb-2 JobPost">
+                    <div class="row g-2 mb-2">
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
-                                <label for="JobTitle">Job Title</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
-                                </select>
-
-
-                                <label for="JobCategory">Category</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-body p-0 mb-2 JobPost">
-                        <div class="form-floating">
-                            <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
-                            <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
-                        </div>
-                    </div>
-                    <div class="row g-2 mb-2 JobPost">
-                        <div class="col-md">
-                            <div class="form-floating">
-
-                                <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
-                                </select>
-
-
-                                <label for="Experience">Experience</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
-
-
-                                @*<select class="form-control selectpicker" id="Location" data-live-search="true" style="background-color:red">
-                                    <option data-tokens="china">China</option>
-                                    <option data-tokens="malayasia">Malayasia</option>
-                                    <option data-tokens="singapore">Singapore</option>
-                                    </select>*@
-
-                                <label for="Location">Location</label>
+                                <ul class="top-osahan-nav-tab nav nav-pills justify-content-center nav-justified mb-2 shadow-sm rounded-4 overflow-hidden bg-white sticky-sidebar2" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation" id="Hire">
+                                        <button class="p-3 nav-link text-muted active" id="btnHire" type="button" role="tab">Hire</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="p-3 nav-link text-muted " id="btnGetHired" type="button" role="tab">GET HIRED</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation" id="GP">
+                                        <button class="p-3 nav-link text-muted" id="btnGeneralPost" type="button" role="tab">GENERAL POST</button>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-body p-0 mb-2 GenralPost d-none">
-                        <div class="form-floating">
-                            <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
-                            <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
-                        </div>
-                    </div>
-                    <div class="row g-2 mb-2 JobPost">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
-                                </select>
-                                <label for="Employmenttype">Employment type</label>
+                    <form id="post_form" enctype="multipart/form-data" method="post">
+                        <div id="divHire" class="collapse ">
+                            <div class="modal-body p-0 mb-2 GetHired">
+                                <div class="form-floating">
+                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtJobReq" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                    <label for="txtJobReq" class="h6 text-muted mb-0">Please Provide your latest information to place your JOB Request</label>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Role" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                        </select>
+                                        <label for="Role">Role</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                        </select>
+                                        <label for="Skills">Skills</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="LocationPreference" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"Employment_Type","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                        </select>
+                                        <label for="LocationPreference">Location Preference</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Company" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"Exp_Range","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                        </select>
+                                        <label for="Company">Current Company</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-control selectpicker" id="select-country" data-live-search="true">
+                                            <option data-tokens="china">China</option>
+                                            <option data-tokens="malayasia">Malayasia</option>
+                                            <option data-tokens="singapore">Singapore</option>
+                                        </select>
+                                        <label for="Experience">Experience</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5" id="AnnualSalary" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                        <label for="AnnualSalary">Annual Salary</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Qualification" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                        </select>
+                                        <label for="Qualification">Qualification</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body p-0 mb-2 GetHired">
+                                <div class="form-floating">
+                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtnoteRecruiter" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                    <label for="txtnoteRecruiter" class="h6 text-muted mb-0">Note to Recruiter</label>
+                                </div>
+                            </div>
+                            <div class="modal-body p-0 mb-2 GetHired">
+                                <div class="form-floating">
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="chkgetHire">
+                                        Post my JOB Request as ANONYMOUS. Only your masked id will appear. You will receive requests in your feed or your dashboard.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
-                                <label for="SalaryRange">Salary Range</label>
+                        <div id="divGetHired" class="collapse show">
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
+                                        <label for="JobTitle">Job Title</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                        </select>
+                                        <label for="JobCategory">Category</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body p-0 mb-2 GetHired">
+                                <div class="form-floating">
+                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                    <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                        </select>
+                                        <label for="Experience">Experience</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
+                                        <label for="Location">Location</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                        </select>
+                                        <label for="Employmenttype">Employment type</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                        <label for="SalaryRange">Salary Range</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
-                        <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
-                            <a href="#" class="text-muted text-decoration-none material-icons" placeholder="insert_link">insert_link</a>
-                            <a href="#" class="text-muted text-decoration-none material-icons" placeholder="image">image</a>
-                            <a href="#" class="text-muted text-decoration-none material-icons" placeholder="smart_display">smart_display</a>
-                            <span class="text-muted TextCount">0/1000</span>
+                        <div id="divGeneralPost" class="collapse">
+                            <div class="modal-body p-0 mb-2">
+                                <div class="form-floating">
+                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
+                                    <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
-                            @*<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>*@
-                            <button type="submit" data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2md-16">send</span>Post</button>
-                            @*   data-bs-dismiss="modal"    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16">send</span>Post</a>*@
+                        <input type="hidden" id="hdn_job_type" value="1" />
 
+
+
+                        <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
+                            <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
+                                <input type="file" multiple id="fileupload" />
+                                @*<a href="#" class="text-muted text-decoration-none material-icons" placeholder="insert_link">insert_link</a>
+                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="image">image</a>
+                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="smart_display">smart_display</a>*@
+                                <span class="text-muted TextCount">0/1000</span>
+                            </div>
+                            <div class="ms-auto m-0">
+                                <button  class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center">Post</button>
+                            </div>
                         </div>
-                    </div>
 
+                    </form>
+                   
                 </div>
             </div>
         </div>
-    </form>
+
     <!-- Sign In Modal -->
     <div class="modal fade" id="signModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -767,7 +711,7 @@
                     <h6 class="modal-title fw-bold text-body fs-6" id="exampleModalLabel">Choose Language</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form>
+                
                     <div class="modal-body p-0">
                         <div class="row py-3 gy-3 m-0">
                             <!-- Langauge Item -->
@@ -885,7 +829,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>
@@ -897,7 +841,7 @@
                     <h6 class="modal-title fw-bold text-body fs-6 d-flex justify-content-center" id="exampleModalLabel1">Choose Language</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form>
+                
                     <div class="modal-body pt-0 px-0">
                         <div class="row py-3 gy-3 m-0">
                             <!-- Langauge Item -->
@@ -993,146 +937,12 @@
                     <div class="modal-footer border-0 p-1">
                         <button type="button" class="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0" data-bs-dismiss="modal">Submit</button>
                     </div>
-                </form>
             </div>
         </div>
     </div>
     <!-- Comment Modal -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 overflow-hidden border-0">
-                <div class="modal-header d-none">
-                    <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div class="row m-0">
-                        <div class="col-sm-7 px-0 m-sm-none">
-                            <!-- Image Slider -->
-                            <div class="image-slider">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="~/Img/post-img1.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/Img/post-img2.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/Img/post-img3.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 content-body px-web-0">
-                            <div class="d-flex flex-column h-600">
-                                <div class="d-flex p-3 border-bottom">
-                                    <img src="~/Img/rmate4.jpg" class="img-fluid rounded-circle user-img" alt="profile-img">
-                                    <div class="d-flex align-items-center justify-content-between w-100">
-                                        <a href="profile.html" class="text-decoration-none ms-3">
-                                            <div class="d-flex align-items-center">
-                                                <h6 class="fw-bold text-body mb-0">iamosahan</h6>
-                                                <p class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon mb-0">done</p>
-                                            </div>
-                                            <p class="text-muted mb-0 small">johnsmith</p>
-                                        </a>
-                                        <div class="small dropdown">
-                                            <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-" data-bs-dismiss="modal">close</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comments p-3">
-                                    <div class="d-flex mb-2">
-                                        <img src="~/Img/rmate1.jpg" class="img-fluid rounded-circle" alt="profile-img">
-                                        <div class="ms-2 small">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">Macie Bellis</p>
-                                                <span class="text-muted">Consectetur adipisicing elit.</span>
-                                            </div>
-                                            <div class="d-flex align-items-center ms-2">
-                                                <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <span class="small text-muted">1h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mb-2">
-                                        <img src="~/Img/rmate3.jpg" class="img-fluid rounded-circle" alt="profile-img">
-                                        <div class="ms-2 small">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">John Smith</p>
-                                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span>
-                                            </div>
-                                            <div class="d-flex align-items-center ms-2">
-                                                <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <span class="small text-muted">20min</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mb-2">
-                                        <img src="~/Img/rmate2.jpg" class="img-fluid rounded-circle" alt="profile-img">
-                                        <div class="ms-2 small">
-                                            <div class="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                                <p class="fw-500 mb-0">Shay Jordon</p>
-                                                <span class="text-muted">With our vastly improved notifications system, users have more control.</span>
-                                            </div>
-                                            <div class="d-flex align-items-center ms-2">
-                                                <a href="#" class="small text-muted text-decoration-none">Like</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <a href="#" class="small text-muted text-decoration-none">Reply</a>
-                                                <span class="fs-3 text-muted material-icons mx-1">circle</span>
-                                                <span class="small text-muted">10min</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="border-top p-3 mt-auto">
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div>
-                                            <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">thumb_up_off_alt</span><span>30.4k</span></a>
-                                        </div>
-                                        <div>
-                                            <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">repeat</span><span>617</span></a>
-                                        </div>
-                                        <div>
-                                            <a href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-icons bg-white border-0 text-primary pe-2 md-36">account_circle</span>
-                                        <div class="d-flex align-items-center border rounded-4 px-3 py-1 w-100">
-                                            <input type="text" class="form-control form-control-sm p-0 rounded-3 fw-light border-0" placeholder="Write Your comment">
-                                            <a href="#" class="bg-white border-0 text-primary ps-2 text-decoration-none">Post</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer d-none">
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- post Confirmation Modal -->
@@ -1190,81 +1000,113 @@
 
 
     <script src="~/vendor/jquery/jquery.min.js"></script>
-
-
     <script>
-
-            $(function () {
-                 var val = '@ViewBag.Msg';
-                if (val == 'Ok') {
-                    $('#postConfirmModal').modal('show');
+                $(function() {
+          $('.selectpicker').selectpicker();
+        });
+                    $(function () {
+                         var val = '@ViewBag.Msg';
+                        if (val == 'Ok') {
+                            $('#postConfirmModal').modal('show');
+                        }
+                           var SignIn = '@ViewBag.SignIn';
+                           if (SignIn == 'SignIn') {
+                            $('#SignIn').modal('show');
+                             $('#pxp-signin-modal').modal('show');
+                        }
+                    });
+                jQuery.fn.center = function () {
+                    this.css("position", "absolute");
+                    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                        $(window).scrollTop()) + "px");
+                    //this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                    //    $(window).scrollLeft()) + "px");
+                    return this;
                 }
-                   var SignIn = '@ViewBag.SignIn';
-                   if (SignIn == 'SignIn') {
-                    $('#SignIn').modal('show');
-                     $('#pxp-signin-modal').modal('show');
-                }
-            });
-        jQuery.fn.center = function () {
-            this.css("position", "absolute");
-            this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
-                $(window).scrollTop()) + "px");
-            this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
-                $(window).scrollLeft()) + "px");
-            return this;
-        }
-            $(document).ready(function () {
-                var val = '@ViewBag.Msg';
-                if (val != null) {
-              /*      $('#postConfirmModal').addClass('show');*/
+                    $(document).ready(function () {
+                        var val = '@ViewBag.Msg';
+                        if (val != null) {
+                      /*      $('#postConfirmModal').addClass('show');*/
 
-                }
+                        }
 
-                $("#ADDQns").click(function () {
-                    /*$(".msg").center();*/
-                    $("#ADDScreeningQuestions").toggle(1000);
-                });
+                        $("#ADDQns").click(function () {
+                            /*$(".msg").center();*/
+                            $("#ADDScreeningQuestions").toggle(1000);
+                        });
 
-                  $(".SignUpBtn").click(function () {
-                       $(".SignUp").addClass('d-none');
-                        $(".SignUpOTP").removeClass('d-none');
-                  });
-                $("#flexSwitchCheckChecked").click(function () {
-                    /* GenralPost JobPost*/
-                    var Value = $("#flexSwitchCheckChecked").val();
-                    /* alert(Value);*/
-                    if (Value == "1") {
-                        $(".JobPost").addClass('d-none');
-                        $(".GenralPost").removeClass('d-none');
-                        $("#flexSwitchCheckChecked").val("0");
-                    } else {
-                        $(".JobPost").removeClass('d-none');
-                        $(".GenralPost").addClass('d-none');
-                        $("#flexSwitchCheckChecked").val("1");
-                    }
-                });
+                          $(".SignUpBtn").click(function () {
+                               $(".SignUp").addClass('d-none');
+                                $(".SignUpOTP").removeClass('d-none');
+                          });
+
+                        //$("#flexSwitchCheckChecked").click(function () {
+                        //    var Value = $("#flexSwitchCheckChecked").val();
+                        //    if (Value == "1") {
+                        //        $(".JobPost").addClass('d-none');
+                        //        $(".GenralPost").removeClass('d-none');
+                        //        $("#flexSwitchCheckChecked").val("0");
+                        //    } else {
+                        //        $(".JobPost").removeClass('d-none');
+                        //        $(".GenralPost").addClass('d-none');
+                        //        $("#flexSwitchCheckChecked").val("1");
+                        //    }
+                        //});
+
+                        $("#btnGetHired").click(function () {
+                            $("#hdn_job_type").val("2");
+                            $("#btnGetHired").addClass('active');
+                            $("#btnHire").removeClass('active');
+                            $("#btnGeneralPost").removeClass('active');
+
+                            $("#divHire").addClass('show');
+                            $("#divGetHired, #divGeneralPost").removeClass('show');
 
 
-            });
-            function countChar(val) {
-                var len = val.value.length;
-                //     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
 
-                //}
-                if (len >= 1000) {
-                    $('.TextCount').fadeOut(500);
-                    $('.TextCount').fadeIn(500);
-                    $('.jobPosttextArea').val((val.value).substring(0, len - 1));
 
-                    return false;
-                } else {
-                    //$('.TextCount').fadeIn(500);
-                    $('.TextCount').text(1000 - len + "/1000");
+                        });
+                        $("#btnHire").click(function () {
+                            $("#hdn_job_type").val("1");
+                            $("#btnGetHired").removeClass('active');
+                            $("#btnHire").addClass('active');
+                            $("#btnGeneralPost").removeClass('active');
 
-                }
-            };
+                            $("#divGetHired").addClass('show');
+                            $("#divHire, #divGeneralPost").removeClass('show');
+                        });
+                        $("#btnGeneralPost").click(function () {
+                            $("#hdn_job_type").val("3");
+                            $("#btnGetHired").removeClass('active');
+                            $("#btnHire").removeClass('active');
+                            $("#btnGeneralPost").addClass('active');
+
+                             $("#divGeneralPost").addClass('show');
+                            $("#divHire, #divGetHired").removeClass('show');
+                        });
+
+
+                    });
+                    function countChar(val) {
+                        var len = val.value.length;
+                        //     if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+
+                        //}
+                        if (len >= 1000) {
+                            $('.TextCount').fadeOut(500);
+                            $('.TextCount').fadeIn(500);
+                            $('.jobPosttextArea').val((val.value).substring(0, len - 1));
+
+                            return false;
+                        } else {
+                            //$('.TextCount').fadeIn(500);
+                            $('.TextCount').text(1000 - len + "/1000");
+
+                        }
+                    };
     </script>
 
 
 </body>
 </html>
+<script src="~/js/site.js"></script>

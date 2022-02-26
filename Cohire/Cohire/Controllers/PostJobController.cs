@@ -1,6 +1,6 @@
 ﻿using Cohire.Model.PostJob;
 using Cohire.Models.JobFeed;
-using Cohire.Models.JobFeedList;
+using Cohire.Models.JobFeedListNM;
 using Cohire.Models.MasterData;
 using Cohire.Models.Response_Model;
 using CohireAPI.PostJobs.Model;
@@ -122,6 +122,13 @@ namespace Cohire.Controllers
                 postJobviewModels.Device_Type = postJobModel.Device_Type;
                 postJobviewModels.Ip_Address = postJobModel.Ip_Address;
                 postJobviewModels.CreatedDate = DateTime.Now.ToString("dd MMMM yyyy");
+                postJobviewModels.NoteTorecruiter = postJobModel.NoteTorecruiter;
+                postJobviewModels.latestinfojobrequest = postJobModel.latestinfojobrequest;
+                postJobviewModels.Is_masked_jobrequest = postJobModel.Is_masked_jobrequest;
+                postJobviewModels.commentCount = "0";
+                postJobviewModels.likeCount = "0";
+                postJobviewModels.referCount = "0";
+                postJobviewModels.applyCount = "0";
                 List<string> result;
                 if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
                 {
@@ -229,6 +236,9 @@ namespace Cohire.Controllers
                 postJobviewModels.Is_Job = postJobModel.Is_Job;
                 postJobviewModels.Device_Type = postJobModel.Device_Type;
                 postJobviewModels.Ip_Address = postJobModel.Ip_Address;
+                postJobviewModels.NoteTorecruiter = postJobModel.NoteTorecruiter;
+                postJobviewModels.latestinfojobrequest = postJobModel.latestinfojobrequest;
+                postJobviewModels.Is_masked_jobrequest = postJobModel.Is_masked_jobrequest;
                 List<string> result;
                 if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
                 {
@@ -350,5 +360,7 @@ namespace Cohire.Controllers
             }
         }
         #endregion
+
+        
     }
 }
