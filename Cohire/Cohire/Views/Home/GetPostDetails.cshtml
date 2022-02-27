@@ -119,10 +119,10 @@
                             <div class="border-top p-3 mt-auto">
                                 <div class="d-flex align-items-center justify-content-between mb-2 classMargintop">
                                     <div>
-                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
+                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
                                     </div>
                                     <div>
-                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@Model.jobFeedList.ChJobID')"><span class="material-icons md-20 me-2">swap_horiz</span><span class="refer_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.referCount</span></a>
+                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@Model.jobFeedList.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.referCount</span></a>
                                     </div>
                                     <div>
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@Model.jobFeedList.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@Model.jobFeedList.ChJobID">thumb_up_off_alt</span><span class="likeCount_@Model.jobFeedList.ChJobID">@Model.jobFeedList.likeCount</span></a>

@@ -98,7 +98,7 @@
 
                                 @if (item.JobFiles.Count > 0)
                                 {
-                                    <div class="image-slider" onclick="OpenCommentModal('@item.ChJobID')">
+                                    <div class="image-slider">
                                         <div id="carouselExampleIndicators_@item.ChJobID" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
                                                 @{ int i = 0;}
@@ -121,12 +121,12 @@
                                                         if (i == 0)
                                                         {
                                                             <div class="carousel-item active">
-                                                                <img src="@v.fileurl" class="d-block w-100" alt="...">
+                                                                <img src="@v.fileurl" class="d-block w-100" alt="..." onclick="OpenCommentModal('@item.ChJobID')">
                                                             </div> }
                                                         else
                                                         {
                                                             <div class="carousel-item">
-                                                                <img src="@v.fileurl" class="d-block w-100" alt="...">
+                                                                <img src="@v.fileurl" class="d-block w-100" alt="..." onclick="OpenCommentModal('@item.ChJobID')">
                                                             </div>
                                                         }
                                                         i++;
@@ -135,12 +135,12 @@
                                                     {
                                                         if (i == 0)
                                                         {
-                                                            <div class="carousel-item active">
+                                                            <div class="carousel-item active" onclick="OpenCommentModal('@item.ChJobID')">
                                                                 <video src="@v.fileurl" controls />
                                                             </div> }
                                                         else
                                                         {
-                                                            <div class="carousel-item">
+                                                            <div class="carousel-item" onclick="OpenCommentModal('@item.ChJobID')">
                                                                 <video src="@v.fileurl" controls />
                                                             </div>
                                                         }
@@ -166,10 +166,10 @@
 
                                 <div class="d-flex align-items-center justify-content-between mb-2 classMargintop">
                                     <div>
-                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
+                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
                                     </div>
                                     <div>
-                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')"><span class="material-icons md-20 me-2">swap_horiz</span><span class="refer_count_@item.ChJobID">@item.referCount</span></a>
+                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@item.ChJobID">@item.referCount</span></a>
                                     </div>
                                     <div>
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@item.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@item.ChJobID">thumb_up_off_alt</span><span class="likeCount_@item.ChJobID">@item.likeCount</span></a>
