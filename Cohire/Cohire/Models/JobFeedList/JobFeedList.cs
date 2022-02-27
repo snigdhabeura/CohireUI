@@ -14,6 +14,7 @@ namespace Cohire.Models.JobFeedListNM
 
     public class JobFeedList
     {
+        public string BaseURL { get; set; }
         public string JobId { get; set; }
         public string ChJobID { get; set; }
         public string PostedByID { get; set; }

@@ -1,5 +1,5 @@
 ﻿@model Cohire.ViewModel.HomeViewModel;
-    
+
 <!doctype html>
 <html lang="en" class="pxp-root">
 <head>
@@ -45,11 +45,11 @@
                                     </div>
                                     <!-- Slider Accounts -->
                                     <div class="account-slider" id="index_account_slider">
-                                       
+
                                     </div>
                                     <!-- Feeds -->
                                     <div class="pt-4 feeds">
-                                        @Html.Partial("_Feeds",Model.jobFeedList);
+                                        @Html.Partial("_Feeds", Model.jobFeedList);
                                     </div>
                                 </div>
                             </div>
@@ -250,11 +250,11 @@
                         </div>
                     </div>
                     @*<div class="text-center mt-4">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <p class="mb-0 mt-2">Loading</p>
-                    </div>*@
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mb-0 mt-2">Loading</p>
+                        </div>*@
                 </main>
                 <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
                     <div class="p-2 bg-light offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample">
@@ -507,201 +507,201 @@
             </div>
         </div>
     </div>
-    
-        <div class="modal fade" id="postModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4 p-4 border-0 bg-light">
-                    <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
-                        <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
-                        <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
-                        <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Create Post</span></h5>
 
-                        @*  <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
-                            <label class="form-check-label">General Post &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked value="1" />
-                            <label class="form-check-label"> Post Job</label>
-                            </div>*@
-                    </div>
-                    <div class="row g-2 mb-2">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <ul class="top-osahan-nav-tab nav nav-pills justify-content-center nav-justified mb-2 shadow-sm rounded-4 overflow-hidden bg-white sticky-sidebar2" id="pills-tab" role="tablist">
-                                    <li class="nav-item" role="presentation" id="Hire">
-                                        <button class="p-3 nav-link text-muted active" id="btnHire" type="button" role="tab">Hire</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="p-3 nav-link text-muted " id="btnGetHired" type="button" role="tab">GET HIRED</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation" id="GP">
-                                        <button class="p-3 nav-link text-muted" id="btnGeneralPost" type="button" role="tab">GENERAL POST</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <form id="post_form" enctype="multipart/form-data" method="post">
-                        <div id="divHire" class="collapse ">
-                            <div class="modal-body p-0 mb-2 GetHired">
-                                <div class="form-floating">
-                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtJobReq" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
-                                    <label for="txtJobReq" class="h6 text-muted mb-0">Please Provide your latest information to place your JOB Request</label>
-                                </div>
-                            </div>
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Role" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
-                                        </select>
-                                        <label for="Role">Role</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
-                                        </select>
-                                        <label for="Skills">Skills</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="LocationPreference" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"Employment_Type","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
-                                        </select>
-                                        <label for="LocationPreference">Location Preference</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Company" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"Exp_Range","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
-                                        </select>
-                                        <label for="Company">Current Company</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-control selectpicker" id="select-country" data-live-search="true">
-                                            <option data-tokens="china">China</option>
-                                            <option data-tokens="malayasia">Malayasia</option>
-                                            <option data-tokens="singapore">Singapore</option>
-                                        </select>
-                                        <label for="Experience">Experience</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control  rounded-5" id="AnnualSalary" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
-                                        <label for="AnnualSalary">Annual Salary</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Qualification" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
-                                        </select>
-                                        <label for="Qualification">Qualification</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-body p-0 mb-2 GetHired">
-                                <div class="form-floating">
-                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtnoteRecruiter" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
-                                    <label for="txtnoteRecruiter" class="h6 text-muted mb-0">Note to Recruiter</label>
-                                </div>
-                            </div>
-                            <div class="modal-body p-0 mb-2 GetHired">
-                                <div class="form-floating">
-                                    <p>
-                                        <input class="form-check-input" type="checkbox" value="" id="chkgetHire">
-                                        Post my JOB Request as ANONYMOUS. Only your masked id will appear. You will receive requests in your feed or your dashboard.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="divGetHired" class="collapse show">
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
-                                        <label for="JobTitle">Job Title</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
-                                        </select>
-                                        <label for="JobCategory">Category</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-body p-0 mb-2 GetHired">
-                                <div class="form-floating">
-                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
-                                    <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
-                                </div>
-                            </div>
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
-                                        </select>
-                                        <label for="Experience">Experience</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
-                                        <label for="Location">Location</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-2 mb-2 GetHired">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
-                                        </select>
-                                        <label for="Employmenttype">Employment type</label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
-                                        <label for="SalaryRange">Salary Range</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="divGeneralPost" class="collapse">
-                            <div class="modal-body p-0 mb-2">
-                                <div class="form-floating">
-                                    <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
-                                    <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" id="hdn_job_type" value="1" />
+    <div class="modal fade" id="postModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 p-4 border-0 bg-light">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                    <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Create Post</span></h5>
 
-
-
-                        <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
-                            <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
-                                <input type="file" multiple id="fileupload" />
-                                @*<a href="#" class="text-muted text-decoration-none material-icons" placeholder="insert_link">insert_link</a>
-                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="image">image</a>
-                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="smart_display">smart_display</a>*@
-                                <span class="text-muted TextCount">0/1000</span>
-                            </div>
-                            <div class="ms-auto m-0">
-                                <button  class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center">Post</button>
-                            </div>
-                        </div>
-
-                    </form>
-                   
+                    @*  <div class="form-check form-switch" style="/* float: right !important; */ /* margin-right: 163px !important; padding-left: 275px;*/">
+                        <label class="form-check-label">General Post &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked value="1" />
+                        <label class="form-check-label"> Post Job</label>
+                        </div>*@
                 </div>
+                <div class="row g-2 mb-2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <ul class="top-osahan-nav-tab nav nav-pills justify-content-center nav-justified mb-2 shadow-sm rounded-4 overflow-hidden bg-white sticky-sidebar2" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation" id="Hire">
+                                    <button class="p-3 nav-link text-muted active" id="btnHire" type="button" role="tab">Hire</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="p-3 nav-link text-muted " id="btnGetHired" type="button" role="tab">GET HIRED</button>
+                                </li>
+                                <li class="nav-item" role="presentation" id="GP">
+                                    <button class="p-3 nav-link text-muted" id="btnGeneralPost" type="button" role="tab">GENERAL POST</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <form id="post_form" enctype="multipart/form-data" method="post">
+                    <div id="divHire" class="collapse ">
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtJobReq" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="txtJobReq" class="h6 text-muted mb-0">Please Provide your latest information to place your JOB Request</label>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Role" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+                                    <label for="Role">Role</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+                                    <label for="Skills">Skills</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="LocationPreference" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"Employment_Type","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="LocationPreference">Location Preference</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Company" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"Exp_Range","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                    </select>
+                                    <label for="Company">Current Company</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-control selectpicker" id="select-country" data-live-search="true">
+                                        <option data-tokens="china">China</option>
+                                        <option data-tokens="malayasia">Malayasia</option>
+                                        <option data-tokens="singapore">Singapore</option>
+                                    </select>
+                                    <label for="Experience">Experience</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="AnnualSalary" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                    <label for="AnnualSalary">Annual Salary</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Qualification" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="Qualification">Qualification</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="txtnoteRecruiter" style="height: 100px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="txtnoteRecruiter" class="h6 text-muted mb-0">Note to Recruiter</label>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <p>
+                                    <input class="form-check-input" type="checkbox" value="" id="chkgetHire">
+                                    Post my JOB Request as ANONYMOUS. Only your masked id will appear. You will receive requests in your feed or your dashboard.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divGetHired" class="collapse show">
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
+                                    <label for="JobTitle">Job Title</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                                    </select>
+                                    <label for="JobCategory">Category</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body p-0 mb-2 GetHired">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                                <label for="floatingTextarea2" class="h6 text-muted mb-0">Job description...</label>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                    </select>
+                                    <label for="Experience">Experience</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="Location" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
+                                    <label for="Location">Location</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select  rounded-5" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                                    </select>
+                                    <label for="Employmenttype">Employment type</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5" id="SalaryRange" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                                    <label for="SalaryRange">Salary Range</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divGeneralPost" class="collapse">
+                        <div class="modal-body p-0 mb-2">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 200px" onkeyup="countChar(this)"></textarea>
+                                <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="hdn_job_type" value="1" />
+
+
+
+                    <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
+                        <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
+                            <input type="file" multiple id="fileupload" />
+                            @*<a href="#" class="text-muted text-decoration-none material-icons" placeholder="insert_link">insert_link</a>
+                                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="image">image</a>
+                                <a href="#" class="text-muted text-decoration-none material-icons" placeholder="smart_display">smart_display</a>*@
+                            <span class="text-muted TextCount">0/1000</span>
+                        </div>
+                        <div class="ms-auto m-0">
+                            <button class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center">Post</button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
+    </div>
 
     <!-- Sign In Modal -->
     <div class="modal fade" id="signModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -711,125 +711,125 @@
                     <h6 class="modal-title fw-bold text-body fs-6" id="exampleModalLabel">Choose Language</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
-                    <div class="modal-body p-0">
-                        <div class="row py-3 gy-3 m-0">
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="hindi11">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="hindi11">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">हिंदी</small>
-                                        <small class="ln-18">Hindi</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="english21" checked>
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="english21">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">English</small>
-                                        <small class="ln-18">English</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="kannada31">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="kannada31">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">ಕನ್ನಡ</small>
-                                        <small class="ln-18">kannada</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="tamil41">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="tamil41">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">தமிழ்</small>
-                                        <small class="ln-18">Tamil</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi51">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi51">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">ਪੰਜਾਬੀ</small>
-                                        <small class="ln-18">Punjabi</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi5111">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi5111">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">Türk</small>
-                                        <small class="ln-18">Turkish</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi511">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi511">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">français</small>
-                                        <small class="ln-18">French</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="other1">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="other1">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">Other</small>
-                                        <small class="ln-18">Other</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
+
+                <div class="modal-body p-0">
+                    <div class="row py-3 gy-3 m-0">
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="hindi11">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="hindi11">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">हिंदी</small>
+                                    <small class="ln-18">Hindi</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
                         </div>
-                        <div class="mt-5 login-register" id="number">
-                            <h6 class="fw-bold mx-1 mb-2 text-dark">Register your Mobile Number</h6>
-                            <div class="row mx-0 mb-3">
-                                <div class="col-3 p-1">
-                                    <div class="form-floating">
-                                        <select class="form-select rounded-5" id="floatingSelect" aria-label="Floating label select example">
-                                            <option selected>+91</option>
-                                            <option value="1">+34</option>
-                                            <option value="2">+434</option>
-                                            <option value="3">+343</option>
-                                        </select>
-                                        <label for="floatingSelect">Code</label>
-                                    </div>
-                                </div>
-                                <div class="col-9 p-1">
-                                    <div class="form-floating d-flex align-items-end">
-                                        <input type="text" class="form-control rounded-5" id="floatingName" value="1234567890" placeholder="Enter Mobile Number">
-                                        <label for="floatingName">Enter Mobile Number</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-1">
-                                <button type="button" class="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0" data-bs-dismiss="modal">Send OTP</button>
-                            </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="english21" checked>
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="english21">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">English</small>
+                                    <small class="ln-18">English</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="kannada31">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="kannada31">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">ಕನ್ನಡ</small>
+                                    <small class="ln-18">kannada</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="tamil41">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="tamil41">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">தமிழ்</small>
+                                    <small class="ln-18">Tamil</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi51">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi51">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">ਪੰਜਾਬੀ</small>
+                                    <small class="ln-18">Punjabi</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi5111">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi5111">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">Türk</small>
+                                    <small class="ln-18">Turkish</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi511">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi511">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">français</small>
+                                    <small class="ln-18">French</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="other1">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="other1">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">Other</small>
+                                    <small class="ln-18">Other</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
                         </div>
                     </div>
-                
+                    <div class="mt-5 login-register" id="number">
+                        <h6 class="fw-bold mx-1 mb-2 text-dark">Register your Mobile Number</h6>
+                        <div class="row mx-0 mb-3">
+                            <div class="col-3 p-1">
+                                <div class="form-floating">
+                                    <select class="form-select rounded-5" id="floatingSelect" aria-label="Floating label select example">
+                                        <option selected>+91</option>
+                                        <option value="1">+34</option>
+                                        <option value="2">+434</option>
+                                        <option value="3">+343</option>
+                                    </select>
+                                    <label for="floatingSelect">Code</label>
+                                </div>
+                            </div>
+                            <div class="col-9 p-1">
+                                <div class="form-floating d-flex align-items-end">
+                                    <input type="text" class="form-control rounded-5" id="floatingName" value="1234567890" placeholder="Enter Mobile Number">
+                                    <label for="floatingName">Enter Mobile Number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-1">
+                            <button type="button" class="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0" data-bs-dismiss="modal">Send OTP</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -841,108 +841,108 @@
                     <h6 class="modal-title fw-bold text-body fs-6 d-flex justify-content-center" id="exampleModalLabel1">Choose Language</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
-                    <div class="modal-body pt-0 px-0">
-                        <div class="row py-3 gy-3 m-0">
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="hindi1">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="hindi1">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">हिंदी</small>
-                                        <small class="ln-18">Hindi</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="english2" checked>
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="english2">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">English</small>
-                                        <small class="ln-18">English</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="kannada3">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="kannada3">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">ಕನ್ನಡ</small>
-                                        <small class="ln-18">kannada</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="tamil4">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="tamil4">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">தமிழ்</small>
-                                        <small class="ln-18">Tamil</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi5">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi5">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">ਪੰਜਾਬੀ</small>
-                                        <small class="ln-18">Punjabi</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi511f">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi511f">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">Türk</small>
-                                        <small class="ln-18">Turkish</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="punjabi51f">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi51f">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">français</small>
-                                        <small class="ln-18">French</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
-                            <!-- Langauge Item -->
-                            <div class="langauge-item col-6 col-md-3 px-1 mt-2">
-                                <input type="radio" class="btn-check" name="options-outlined" id="other">
-                                <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="other">
-                                    <span class="text-start d-grid">
-                                        <small class="ln-18">Other</small>
-                                        <small class="ln-18">Other</small>
-                                    </span>
-                                    <span class="material-icons text-muted md-20">check_circle</span>
-                                </label>
-                            </div>
+
+                <div class="modal-body pt-0 px-0">
+                    <div class="row py-3 gy-3 m-0">
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="hindi1">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="hindi1">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">हिंदी</small>
+                                    <small class="ln-18">Hindi</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="english2" checked>
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="english2">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">English</small>
+                                    <small class="ln-18">English</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="kannada3">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="kannada3">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">ಕನ್ನಡ</small>
+                                    <small class="ln-18">kannada</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="tamil4">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between" for="tamil4">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">தமிழ்</small>
+                                    <small class="ln-18">Tamil</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi5">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi5">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">ਪੰਜਾਬੀ</small>
+                                    <small class="ln-18">Punjabi</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi511f">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi511f">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">Türk</small>
+                                    <small class="ln-18">Turkish</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="punjabi51f">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="punjabi51f">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">français</small>
+                                    <small class="ln-18">French</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
+                        </div>
+                        <!-- Langauge Item -->
+                        <div class="langauge-item col-6 col-md-3 px-1 mt-2">
+                            <input type="radio" class="btn-check" name="options-outlined" id="other">
+                            <label class="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between mb-2" for="other">
+                                <span class="text-start d-grid">
+                                    <small class="ln-18">Other</small>
+                                    <small class="ln-18">Other</small>
+                                </span>
+                                <span class="material-icons text-muted md-20">check_circle</span>
+                            </label>
                         </div>
                     </div>
-                    <div class="modal-footer border-0 p-1">
-                        <button type="button" class="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0" data-bs-dismiss="modal">Submit</button>
-                    </div>
+                </div>
+                <div class="modal-footer border-0 p-1">
+                    <button type="button" class="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0" data-bs-dismiss="modal">Submit</button>
+                </div>
             </div>
         </div>
     </div>
     <!-- Comment Modal -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        
+
     </div>
 
     <!-- post Confirmation Modal -->

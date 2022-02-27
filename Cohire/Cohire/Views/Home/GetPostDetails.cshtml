@@ -113,11 +113,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="comments p-3" id="cmt_popup">
+                            <div class="comments p-3 classMargintopnew" id="cmt_popup">
 
                             </div>
                             <div class="border-top p-3 mt-auto">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="d-flex align-items-center justify-content-between mb-2 classMargintop">
                                     <div>
                                         <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
                                     </div>
@@ -132,7 +132,7 @@
                                     </div>
 
                                     <div>
-                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('https://cohyre.com/getjob?JD=@Model.jobFeedList.ChJobID')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
+                                        <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="ShareURL('@Model.jobFeedList.BaseURL+/home/JobDetails?jobId=@Model.jobFeedList.ChJobID')"><span class="material-icons md-18 me-2">share</span><span>Share</span></a>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">

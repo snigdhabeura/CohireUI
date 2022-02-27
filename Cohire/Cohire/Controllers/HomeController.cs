@@ -53,8 +53,13 @@ namespace Cohire.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
 
-
-            homeViewModel.jobFeedList = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            homeViewModel.BaseURL = URL;
+            var data = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            if(data!=null)
+            {
+                data.ForEach(x => { x.BaseURL = URL; });
+            }
+            homeViewModel.jobFeedList = data;
             homeViewModel.job_Category = await GetMasterDataAsync<Job_Category>("api/job/getjobcategory");
             homeViewModel.job_EmploymentType = await GetMasterDataAsync<Job_EmploymentType>("api/job/jobemploymentType");
             homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
@@ -401,20 +406,29 @@ namespace Cohire.Controllers
         [HttpPost]
         public async Task<PartialViewResult> GetPostDetails(string JobID)
         {
-            JobActionModel api_Response =new  JobActionModel();
-            SqlConnection azureSQLDb = null;
-            SqlCommand cmd;
-            using (azureSQLDb = new SqlConnection(connectionString))
+            JobActionModel api_Response = new JobActionModel();
+            try
             {
-                if (azureSQLDb.State == System.Data.ConnectionState.Closed)
-                    azureSQLDb.Open();
-                cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
-                cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = JobID;
-                cmd.CommandType = CommandType.StoredProcedure;
-                var Is_Get = await cmd.ExecuteScalarAsync();
-                 api_Response = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
-                api_Response.jobFeedList= JsonConvert.DeserializeObject<JobFeedList>(api_Response.JobJson.ToString());
+                
+                SqlConnection azureSQLDb = null;
+                SqlCommand cmd;
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
+                    cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = JobID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    var Is_Get = await cmd.ExecuteScalarAsync();
+                    api_Response = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
+                    api_Response.jobFeedList = JsonConvert.DeserializeObject<JobFeedList>(api_Response.JobJson.ToString());
+                    api_Response.jobFeedList.BaseURL = URL;
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw;
             }
             return PartialView(api_Response);
         }
@@ -441,6 +455,25 @@ namespace Cohire.Controllers
                 pageCount = dir.GetFiles().Length;
             }
             return new JsonResult(pageCount);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> JobDetails(string jobId)
+        {
+            HomeViewModel homeViewModel = new HomeViewModel();
+
+            homeViewModel.BaseURL = URL;
+            var data = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            if(data != null)
+            {
+                data = data.Where(x => x.ChJobID == jobId).ToList();
+                data.ForEach(x => { x.BaseURL = URL; });
+            }
+            homeViewModel.jobFeedList = data;
+            homeViewModel.job_Category = await GetMasterDataAsync<Job_Category>("api/job/getjobcategory");
+            homeViewModel.job_EmploymentType = await GetMasterDataAsync<Job_EmploymentType>("api/job/jobemploymentType");
+            homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
+            return View(homeViewModel);
         }
     }
 }

@@ -613,23 +613,18 @@
                         <div id="contents" class="ex3doc">
 
                         </div>
-                        <object type="application/pdf"
-                                data="~/JobFiles/a266fbea-6e25-44b6-8c90-81fc0eebe04d.pdf"
-                                width="250"
-                                height="200">
-                        </object>
                     </div>
 
                 </div>
                 @*<div class="row py-3 gy-3 m-0">
-                    <div class="row">
-                        <div class="col-md-12 applyChange">
-                            <div class="form-floating mb-1 SignUp">
-                                <a class="btn rounded-pill pxp-modal-cta2" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">I Understand</a>
+                        <div class="row">
+                            <div class="col-md-12 applyChange">
+                                <div class="form-floating mb-1 SignUp">
+                                    <a class="btn rounded-pill pxp-modal-cta2" id="btnTermsOk" data-bs-toggle="modal" href=".ApplyModal">I Understand</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
 
             </div>
         </div>
@@ -709,12 +704,12 @@
         }).done(function (data) {
             $("#totalPages").html('Total Page : ' + (data));
             var folderName = file.replace(".", "_");
-            
+
             for (var i = 1; i <= data; i++) {
-                $(".docspin").hide(); 
+                $(".docspin").hide();
                 $("#contents").append("<img style='max-width:100%;max-height:100%;margin-top:12px;' src='Content/" + folderName + "/page-" + i + ".png'/></br>");
-                
-            //    $("#contents").append("<li><img style='max-width:100%;max-height:100%' src='Content/" + folderName + "/page-" + i + ".png'/></li>");
+
+                //    $("#contents").append("<li><img style='max-width:100%;max-height:100%' src='Content/" + folderName + "/page-" + i + ".png'/></li>");
             }
         })
     }
@@ -745,17 +740,16 @@
         $(".cmnt_count_" + postID + "").text(Countofaction);
     });
     function Postcommentpop(id, event) {
-        
-        if (CheckIs_login())
-        {
+
+        if (CheckIs_login()) {
             if (event.keyCode === 13) {
-            message = $("#cmntpop_" + id + "").val();
-            postID = id;
-            connection.invoke("SendMessagepop", message, postID).catch(function (err) {
-                return console.error(err.toString());
-                event.preventDefault();
-            });
-            $("#cmntpop_" + id + "").val('');
+                message = $("#cmntpop_" + id + "").val();
+                postID = id;
+                connection.invoke("SendMessagepop", message, postID).catch(function (err) {
+                    return console.error(err.toString());
+                    event.preventDefault();
+                });
+                $("#cmntpop_" + id + "").val('');
                 //LoadComments(id);
             }
         }
