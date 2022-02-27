@@ -63,7 +63,8 @@ namespace Cohire.Controllers
             homeViewModel.job_Category = await GetMasterDataAsync<Job_Category>("api/job/getjobcategory");
             homeViewModel.job_EmploymentType = await GetMasterDataAsync<Job_EmploymentType>("api/job/jobemploymentType");
             homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
-            //homeViewModel.postJobModel = await GetMasterDataAsync1<PostJobModel>("api/job/getjobs");
+            //homeViewModel.jobFeedList = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            //GetPeopleList
 
             return View(homeViewModel);
         }

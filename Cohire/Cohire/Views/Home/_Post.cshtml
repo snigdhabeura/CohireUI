@@ -1,1 +1,299 @@
 ﻿@model Cohire.ViewModel.HomeViewModel;
+<style>
+
+    .selectpicker {
+        z-index: 99999999 !important;
+    }
+</style>
+<div class="modal fade" id="postModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 p-4 border-0 bg-light">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Create Post</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+            </div>
+            <div class="row g-2 mb-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <ul class="top-osahan-nav-tab nav nav-pills justify-content-center nav-justified mb-2 shadow-sm rounded-4 overflow-hidden bg-white sticky-sidebar2" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation" id="Hire">
+                                <button class="p-3 nav-link text-muted active" id="btnHire" type="button" role="tab">Hire</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="p-3 nav-link text-muted " id="btnGetHired" type="button" role="tab">GET HIRED</button>
+                            </li>
+                            <li class="nav-item" role="presentation" id="GP">
+                                <button class="p-3 nav-link text-muted" id="btnGeneralPost" type="button" role="tab">GENERAL POST</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divHire" class="collapse ">
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control  rounded-5 HiredCtrl" id="HireJobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
+                            <label for="HireJobTitle">Job Title</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5 HiredCtrl" id="HireJobFunction" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="@Model.postJobModel.CategoryID">
+                            </select>
+                            <label for="HireJobCategory">Job Function</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body p-0 mb-2 GetHired">
+                    <div class="form-floating">
+                        <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea HiredCtrl" placeholder="Leave a comment here" id="HireJobRequest" style="height: 120px" onkeyup="countChar(this)" asp-for="@Model.postJobModel.JobDescription"></textarea>
+                        <label for="HireJobRequest" class="h6 text-muted mb-0">Job Request</label>
+                    </div>
+                </div>
+                <div class="row g-2 mb0 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            @*   <select class="form-select  rounded-5" id="HireSkills" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                                    </select>
+                                    <label for="HireSkills">Skills</label>*@
+                            <ul id="HireSkills" class="form-select  rounded-5 HiredCtrl"></ul>
+                            <label for="HireSkills">Skills</label>
+                            @Html.HiddenFor(m => m.postJobModel.Skills, new { @id = "hfSkill" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5 HiredCtrl" id="HireExperience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="@Model.postJobModel.ExperienceID">
+                            </select>
+                            <label for="HireExperience">Experience</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            @*   <input type="text" class="form-control  rounded-5 HiredCtrl" id="HireLocation" placeholder="name@example.com" asp-for="@Model.postJobModel.city">
+                                    <label for="HireLocation">Location</label>*@
+
+                            <ul id="getHireLocation" class="form-select  rounded-5 HiredCtrl"></ul>
+                            <label for="getHireLocation">Location</label>
+                            @Html.HiddenFor(m => m.postJobModel.city, new { @id = "hfCity" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5 HiredCtrl" id="HireEmploymentType" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="@Model.postJobModel.EmploymenttypeID">
+                            </select>
+                            <label for="HireEmploymentType">Employment Type</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control  rounded-5 HiredCtrl" id="HireAnnualSalary" placeholder="name@example.com" asp-for="@Model.postJobModel.Salaryrange">
+                            <label for="HireAnnualSalary">Annual Salary</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired d-none">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control  rounded-5 HiredCtrl" id="HireNotetoRecruiter" placeholder="Note to Recruiter" asp-for="@Model.postJobModel.city">
+                            <label for="HireNotetoRecruiter">Note to Recruiter</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input class="form-check-input" type="checkbox" value="" id="chkANONYMOUS">
+                            Post my JOB Request as ANONYMOUS. Only your masked id will appear. You will receive requests in your feed or your dashboard.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="divGetHired" class="collapse show">
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control  rounded-5 GetHiredCtrl" id="JobTitle" placeholder="Job Title" asp-for="@Model.postJobModel.Jobtitle">
+                            <label for="JobTitle">Job Title</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5 GetHiredCtrl" id="JobCategory" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Category,"CategoryId","Category_Name"))" asp-for="postJobModel.CategoryID">
+                            </select>
+                            <label for="JobCategory">Category</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body p-0 mb-2 GetHired">
+                    <div class="form-floating">
+                        <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea GetHiredCtrl" placeholder="Leave a comment here" id="JobDesc" style="height: 120px" onkeyup="countChar(this)" asp-for="postJobModel.JobDescription"></textarea>
+                        <label for="JobDesc" class="h6 text-muted mb-0">Job description...</label>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+
+                            <select class="form-select  rounded-5 GetHiredCtrl" id="Experience" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_Expernice,"ExperineceId","Exp_Range"))" asp-for="postJobModel.ExperienceID">
+                            </select>
+
+
+                            <label for="Experience">Experience</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <ul id="HireLocation" class="form-select  rounded-5 HiredCtrl"></ul>
+                            <label for="HireLocation">Location</label>
+                            @Html.HiddenFor(m => m.postJobModel.city, new { @id = "hfCity" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2 GetHired">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5 GetHiredCtrl" id="Employmenttype" data-live-search="true" aria-label="Floating label select example" asp-items="@(new SelectList(Model.job_EmploymentType,"EmploymentId","Employment_Type"))" asp-for="postJobModel.EmploymenttypeID">
+                            </select>
+                            <label for="Employmenttype">Employment type</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control  rounded-5 GetHiredCtrl" id="SalaryRange" placeholder="name@example.com" asp-for="postJobModel.Salaryrange">
+                            <label for="SalaryRange">Salary Range</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="divGeneralPost" class="collapse">
+                <div class="modal-body p-0 mb-2">
+                    <div class="form-floating">
+                        <textarea class="form-control rounded-5 border-0 shadow-sm jobPosttextArea" placeholder="Leave a comment here" id="PostJobDescription" style="height: 315px;" onkeyup="countChar(this)"></textarea>
+                        <label for="PostJobDescription" class="h6 text-muted mb-0">What's on your mind...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
+                <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
+                    <a href="#" class="text-muted text-decoration-none material-icons" placeholder="insert_link">insert_link</a>
+                    <a href="#" class="text-muted text-decoration-none material-icons" placeholder="image">image</a>
+                    <a href="#" class="text-muted text-decoration-none material-icons" placeholder="smart_display">smart_display</a>
+                    <span class="text-muted TextCount">0/1000</span>
+                </div>
+                <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
+                    @*<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>*@
+                    <button data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2md-16">send</span>Post</button>
+@*                    <button  type="submit" id="btnPost"  class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center">Post</button>
+*@
+                    @*   data-bs-dismiss="modal"    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16">send</span>Post</a>*@
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+var jQuery_1_1_3 = $.noConflict(true);
+</script>
+<script>
+     
+        $(function () {
+            var Skills = function () {
+                var temp = null;
+                var DataFor;
+                $.ajax({
+                    'async': false,
+                    'global': false,
+                    url: "api/job/getskills",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        temp = data;
+                    }
+                });
+                return temp;
+            }();
+            $('#HireSkills').tagit({
+                availableTags: Skills,
+                allowSpaces: true
+            });
+
+            var Questions = function () {
+                debugger;
+                var temp = null;
+                $.ajax({
+                    'async': false,
+                    'global': false,
+                    url: "api/job/getquestions",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        temp = data;
+                    }
+                });
+
+                return temp;
+            }();
+            for(var i = 0; i < Questions.length; i++){
+            $('#lblScrQus'+i).text(Questions[i]);
+            }
+
+            var City = function () {
+                var temp = null;
+                $.ajax({
+                    'async': false,
+                    'global': false,
+                    url: "api/job/getCity",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        temp = data;
+                    }
+                });
+
+                return temp;
+            }();
+             $('#HireLocation').tagit({
+                availableTags: City,
+                allowSpaces: true
+            });
+            $('#getHireLocation').tagit({
+                availableTags: City,
+                allowSpaces: true
+            });
+
+        });
+    </script>
+<script>   
+    $(document).ready(function () {
+
+        $("#btnPost").click(function () {
+        //Skills
+        var values = $("#HireSkills").tagit("assignedTags");
+        var skills = values.join(",");
+        $("#hfSkill").val(skills);
+        });
+
+        //Location(Hire)
+        //var City = $("#HireLocation").tagit("assignedTags");
+        //var citys = values.City(",");
+        //$("#hfCity").val(citys);
+        });
+
+</script>

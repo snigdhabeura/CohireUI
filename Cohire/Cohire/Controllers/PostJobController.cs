@@ -52,9 +52,9 @@ namespace Cohire.Controllers
         #region------------MasterDataLoad---------------------------------
         [Route("getskills")]
         [HttpGet]
-        public async Task<JsonResult> GetSkills(string prefix)//atleast 2 char
+        public async Task<JsonResult> GetSkills()//atleast 2 char
         {
-            var data =await PostJobDB.Instance.GetSkills(prefix);
+            var data =await PostJobDB.Instance.GetSkills();
             return new JsonResult(data);
         }
 
@@ -85,6 +85,13 @@ namespace Cohire.Controllers
         public async Task<JsonResult> Job_Expernice()
         {
             var data = await Masterdataoperation.Instance.GetMasterDataAsync<Job_Expernice>("GetJob_Expernice");
+            return new JsonResult(data);
+        }
+        [Route("getCity")]
+        [HttpGet]
+        public async Task<JsonResult> GetCity()//atleast 2 char
+        {
+            var data = await PostJobDB.Instance.GetCity();
             return new JsonResult(data);
         }
 

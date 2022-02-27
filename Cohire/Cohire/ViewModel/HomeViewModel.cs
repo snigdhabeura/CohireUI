@@ -14,5 +14,8 @@ namespace Cohire.ViewModel
         public List<Job_Expernice> job_Expernice { get; set; }
         public PostJobModel postJobModel { get; set; }
         public string BaseURL { get; internal set; }
+        public ViewPostJobModel viewPostJobModel { get; set; }
+       
+
     }
 }
