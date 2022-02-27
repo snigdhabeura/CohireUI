@@ -13,8 +13,6 @@ namespace Cohire.ViewModel
         public List<Job_EmploymentType> job_EmploymentType { get; set; }
         public List<Job_Expernice> job_Expernice { get; set; }
         public PostJobModel postJobModel { get; set; }
-
-       
-
+        public ViewPostJobModel viewPostJobModel { get; set; }
     }
 }

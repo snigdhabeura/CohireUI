@@ -104,14 +104,13 @@ namespace Cohire.Model.PostJob
             }
         }
     
-        public async Task <List<string>> GetSkills(string skill)
+        public async Task <List<string>> GetSkills()
         {
             SqlConnection azureSQLDb=null;
             List<string> data=null;
             try
             {
-                if (!string.IsNullOrEmpty(skill))
-                {
+                
                     using (azureSQLDb = new SqlConnection(connectionString))
                     {
                         if (azureSQLDb.State == System.Data.ConnectionState.Closed)
@@ -119,9 +118,9 @@ namespace Cohire.Model.PostJob
                         SqlCommand cmd = new SqlCommand("Select SkillName from [dbo].[Skill_Master]", azureSQLDb);
                         var skilldata = await cmd.ExecuteScalarAsync();
                         data = JsonConvert.DeserializeObject<List<string>>(skilldata.ToString());
-                        data = data.Where(x=> x.Contains(skill,StringComparison.OrdinalIgnoreCase)).ToList();
+                        //data = data.Where(x=> x.Contains(skill,StringComparison.OrdinalIgnoreCase)).ToList();
                     }
-                }
+                
                 return data;
             }
             catch (Exception ex)
@@ -141,7 +140,7 @@ namespace Cohire.Model.PostJob
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
-                    SqlCommand cmd = new SqlCommand("Select Question from [dbo].[Question_Master]", azureSQLDb);
+                    SqlCommand cmd = new SqlCommand("SELECT Question = '['+STUFF(( SELECT ',\"' + Question + '\"'FROM [dbo].[Question_Master]  FOR XML PATH('') ), 1, 1,'')+']'", azureSQLDb);
                     var skilldata = await cmd.ExecuteScalarAsync();
                     data = JsonConvert.DeserializeObject<List<string>>(skilldata.ToString());
                 }
@@ -153,7 +152,33 @@ namespace Cohire.Model.PostJob
             }
             finally { azureSQLDb.Close(); }
         }
-       
-        
+
+        public async Task<List<string>> GetCity()
+        {
+            SqlConnection azureSQLDb = null;
+            List<string> data = null;
+            try
+            {
+
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    SqlCommand cmd = new SqlCommand("Select [CityName] from [dbo].[City_Master]", azureSQLDb);
+                    var CityData = await cmd.ExecuteScalarAsync();
+                    data = JsonConvert.DeserializeObject<List<string>>(CityData.ToString());
+                    //data = data.Where(x=> x.Contains(skill,StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally { azureSQLDb.Close(); }
+        }
+
+
     }
 }

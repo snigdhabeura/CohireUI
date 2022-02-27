@@ -1,32 +1,110 @@
-﻿@model CohireAPI.PostJobs.Model.PostJobModel
-
-<div class="modal-dialog modal-lg" id="postModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 p-4 border-0">
+﻿ @model Cohire.ViewModel.HomeViewModel;
+<div class="modal fade" id="NewpostCnfModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 p-4 border-0 bg-light">
             <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
-                <a href="#" class="text-muted text-decoration-none material-icons" data-bs-toggle="modal" data-bs-target="#postModal">arrow_back_ios_new</a>
-                @*<h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>*@
-                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">your post sucessfully posted </span></h5>
-
+                <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Your Post Submitted.!</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
             </div>
 
+            <div id="divpostCnfMsg" class=" ">
+                <div class="row g-2 mb-2">
+                    <div class="col-md">
+
+                        <h6 class="fw-normal ln-25 mb-0">your ApplicationID :<label id="ChJobID"><b>CHJ00be70</b></label> </h6>
+                        @if (@Model.viewPostJobModel != null)
+                        {
+                            <h6 class="fw-normal ln-25 mb-0">your ApplicationID :<label id="ChJobID">CHJ00be70</label> </h6>
+                        }
+                        <p class="mb-3 text-primary">Welcome to the Vogel family 🙂</p>
+                        <ul class="list-unstyled mb-3">
+                            <li>1. Follow people you like by clicking on the ’+ Follow’ button to see their posts in your feed.</li>
+                            <li>2. Share your thoughts with others and gain a following.</li>
+                        </ul>
+                        <h6 class="fw-normal ln-25 mb-0">Happy Vogel to you!</h6>
+                        <p class="mb-2"><a href="#" class="text-decoration-none">#SelectricsM12</a> <a href="#" class="text-decoration-none">#supriuasule</a> <a href="#" class="text-decoration-none">#support</a></p>
+                        <p>
+                            <input class="form-check-input" type="checkbox" value="" id="chkPostTermsDefault">
+                            I have read the <a data-bs-toggle="modal" href=".TermsConditionModal" id="btnPostTerm" role="button"><u>terms</u> </a> of use and I accept.
+                        </p>
+                        @*  <ul id="AddScreeningQuestions" class="form-select  rounded-5"></ul>
+                            <label for="AddScreeningQuestions">ADD Screening Questions ?</label>*@
+                    </div>
+                    <div class="col-md" id="ScrQus">
+
+                        <h4 class="fw-normal ln-25 mb-2"><b>ADD Screening Questions ?</b></h4>
 
 
-            <div class="modal-footer justify-content-start px-1 py-1 bg-white shadow-sm rounded-5">
-                <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75">
-                </div>
-                <div class="rounded-4 m-0 px-3 py-2 d-flex align-items-center justify-content-between w-75" data-bs-dismiss="modal">
-                    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16"></span>Cancel</a>
-                </div>
-                <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#commentModal1">
-                    <a data-bs-dismiss="modal" href="#" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center"><span class="material-icons me-2 md-16">send</span>Post</a>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus1">
+                                    <label for="ScrQus1" id="lblScrQus0" class="Ques">Screening questions1 ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    @*<select class="form-select  rounded-5" id="ScrQus2" data-live-search="true" aria-label="Floating label select example">
+                                        </select>*@
+                                    <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus2">
+                                    <label for="ScrQus2" id="lblScrQus1" class="Ques">Screening questions2 ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus3">
+                                    <label for="ScrQus3" id="lblScrQus2" class="Ques">Screening questions3 ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus4">
+                                    <label for="ScrQus4" id="lblScrQus3" class="Ques">Screening questions4 ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-2 GetHired">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus5">
+                                    <label for="ScrQus5" id="lblScrQus4" class="Ques">Screening questions5 ?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <div class="row g-2 mb-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        @*                        <a class="btn rounded-pill pxp-modal-cta2" id="btnPostCnfADDScr">Add Screening Questions</a>
+                        *@
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <a class="btn rounded-pill pxp-modal-cta3" id="btnPostCnfADDScr" style="width: 49%;">Skip</a>
+                        <a class="btn rounded-pill pxp-modal-cta3" id="btnPostCnfOK" data-bs-dismiss="modal" aria-label="Close" style="width: 49%;">Save</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+<script>
+     $(document).ready(function () {
+     $("#btnPostTerm").click(function() {
+             $("#btnTermsOk").attr("href", ".NewpostCnfModal");
+             $("#btnTermsback").attr("href", ".NewpostCnfModal");
+         });
+     });
+</script>
