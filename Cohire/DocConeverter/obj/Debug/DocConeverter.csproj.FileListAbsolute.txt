@@ -5,3 +5,11 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocCo
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.exe
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.AssemblyReference.cache
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\bin\Debug\DocConeverter.exe.config
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\bin\Debug\DocConeverter.exe
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\bin\Debug\DocConeverter.pdb
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.AssemblyReference.cache
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.CoreCompileInputs.cache
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\obj\Debug\DocConeverter.exe
+C:\Users\Lucky\source\repos\Application\Cohire\DocConeverter\obj\Debug\DocConeverter.pdb

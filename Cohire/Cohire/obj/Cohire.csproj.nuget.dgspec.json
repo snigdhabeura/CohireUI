@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj": {}
+    "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj": {
+    "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj",
+        "projectUniqueName": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj",
         "projectName": "Cohire",
-        "projectPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\obj\\",
+        "projectPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj",
+        "packagesPath": "C:\\Users\\Lucky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lucky\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj": {
-                "projectPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj"
+              "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj": {
+                "projectPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj"
               }
             }
           }
@@ -87,11 +87,11 @@
         }
       }
     },
-    "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj": {
+    "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj",
+        "projectUniqueName": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj",
         "projectName": "DocConeverter",
-        "projectPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj",
+        "projectPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
