@@ -466,3 +466,6 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.dll
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.pdb
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Cohire.genruntimeconfig.cache
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\SignIn.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Home\_NewFeed.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutBefore.cshtml.g.cs

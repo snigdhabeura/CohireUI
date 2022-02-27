@@ -139,120 +139,121 @@ namespace Cohire.Controllers
         public async Task<JsonResult> PostJob(PostJobModel postJobModel)
         {
             Api_Response<ViewPostJobModel> api_Response = new Api_Response<ViewPostJobModel>();
-            try
-            {
+            //try
+            //{
 
-                string serachInstance = String.Empty;
-                Guid jobID = System.Guid.NewGuid();
-                string ChJobID = "CHJ" + jobID.ToString().Substring(0, 6);
-                ViewPostJobModel postJobviewModels = new ViewPostJobModel();
+            //    string serachInstance = String.Empty;
+            //    Guid jobID = System.Guid.NewGuid();
+            //    string ChJobID = "CHJ" + jobID.ToString().Substring(0, 6);
+            //    ViewPostJobModel postJobviewModels = new ViewPostJobModel();
                
-                postJobviewModels.JobId = jobID;
-                postJobviewModels.ChJobID = ChJobID;
-                postJobviewModels.RoleId = postJobModel.RoleId;
-                postJobviewModels.PostedByID =Convert.ToString(Request.Cookies["UserID"]);
-                postJobviewModels.PostedByName = Convert.ToString(Request.Cookies["Username"]);
-                postJobviewModels.Jobtitle = postJobModel.Jobtitle;
-                postJobviewModels.CategoryID = postJobModel.CategoryID;
-                postJobviewModels.Category_Name = postJobModel.Category_Name;
-                postJobviewModels.ExperienceID = postJobModel.ExperienceID;
-                postJobviewModels.Experience_Name = postJobModel.Experience_Name;
-                postJobviewModels.EmploymenttypeID = postJobModel.EmploymenttypeID;
-                postJobviewModels.Employmenttype_Name = postJobModel.Employmenttype_Name;
-                postJobviewModels.Salaryrange = postJobModel.Salaryrange;
-                postJobviewModels.JobDescription = postJobModel.JobDescription;
-                postJobviewModels.Is_Job = postJobModel.Is_Job;
-                postJobviewModels.Device_Type = postJobModel.Device_Type;
-                postJobviewModels.Ip_Address = postJobModel.Ip_Address;
-                postJobviewModels.CreatedDate = DateTime.Now.ToString("dd MMMM yyyy");
-                postJobviewModels.NoteTorecruiter = postJobModel.NoteTorecruiter;
-                postJobviewModels.latestinfojobrequest = postJobModel.latestinfojobrequest;
-                postJobviewModels.Is_masked_jobrequest = postJobModel.Is_masked_jobrequest;
-                postJobviewModels.likeCount = "0";
-                postJobviewModels.commentCount = "0";
-                postJobviewModels.applyCount = "0";
-                postJobviewModels.referCount = "0";
-                List<string> result;
-                if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
-                {
-                    result = new List<string>();
-                    string[] Questions = postJobModel.JobQuestions.Split(',');
-                    Questions.ToList().ForEach(x =>
-                    {
-                        result.Add(x);
-                    });
-                    postJobviewModels.JobQuestions = result;
-                }
-                if (!string.IsNullOrEmpty(postJobModel.Skills))
-                {
-                    result = new List<string>();
-                    string[] skills = postJobModel.Skills.Split(',');
-                    skills.ToList().ForEach(x =>
-                    {
-                        result.Add(x);
-                    });
-                    postJobviewModels.Skills = result;
-                }
-                if (!string.IsNullOrEmpty(postJobModel.city))
-                {
-                    result = new List<string>();
-                    string[] city = postJobModel.city.Split(',');
-                    city.ToList().ForEach(x =>
-                    {
-                        serachInstance = serachInstance + "-" + x;
-                        result.Add(x);
-                    });
-                    postJobviewModels.city = result;
-                }
-                if (postJobModel.JobFiles != null)
-                {
-                    List<PostJobFiles> Filesresult = new List<PostJobFiles>();
-                    foreach (var file in postJobModel.JobFiles)
-                    {
-                        var uploadDirecotroy = "JobFiles\\";
-                        var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
-                        if (!Directory.Exists(uploadPath))
-                            Directory.CreateDirectory(uploadPath);
-                        var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                        var filePath = Path.Combine(uploadPath, fileName);
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await file.CopyToAsync(stream);
-                        }
-                        Filesresult.Add(new PostJobFiles
-                        {
-                            filetype = fileName.Split('.')[1],
-                            fileurl = URL + "/JobFiles/" + fileName,
-                            filename = fileName
-                        });
-                    }
-                    postJobviewModels.JobFiles = Filesresult;
-                }
-                var json = JsonConvert.SerializeObject(postJobviewModels);
-                serachInstance = serachInstance + "-" + postJobModel.Jobtitle.ToLower() + "-" + postJobModel.JobDescription.ToLower();
-                var Is_insert = await PostJobDB.Instance.CreateJobPublic(postJobviewModels, json, serachInstance, postJobModel.city);
-                if (!string.IsNullOrEmpty(Is_insert))
-                {
-                    api_Response.Is_Error = false;
-                    api_Response.Status_Code = StatusCodes.Status200OK;
-                    api_Response.data = postJobviewModels;
-                    return new JsonResult(api_Response);
-                }
-                else
-                {
-                    api_Response.Is_Error = true;
-                    api_Response.Status_Code = StatusCodes.Status500InternalServerError;
-                    api_Response.data = null;
-                    return new JsonResult(api_Response);
-                }
-            }
-            catch (Exception ex)
-            {
-                api_Response.Is_Error = true;
-                api_Response.Status_Code = StatusCodes.Status400BadRequest;
-                api_Response.data = null;
-                return new JsonResult(api_Response);
-            }
+            //    postJobviewModels.JobId = jobID;
+            //    postJobviewModels.ChJobID = ChJobID;
+            //    postJobviewModels.RoleId = postJobModel.RoleId;
+            //    postJobviewModels.PostedByID =Convert.ToString(Request.Cookies["UserID"]);
+            //    postJobviewModels.PostedByName = Convert.ToString(Request.Cookies["Username"]);
+            //    postJobviewModels.Jobtitle = postJobModel.Jobtitle;
+            //    postJobviewModels.CategoryID = postJobModel.CategoryID;
+            //    postJobviewModels.Category_Name = postJobModel.Category_Name;
+            //    postJobviewModels.ExperienceID = postJobModel.ExperienceID;
+            //    postJobviewModels.Experience_Name = postJobModel.Experience_Name;
+            //    postJobviewModels.EmploymenttypeID = postJobModel.EmploymenttypeID;
+            //    postJobviewModels.Employmenttype_Name = postJobModel.Employmenttype_Name;
+            //    postJobviewModels.Salaryrange = postJobModel.Salaryrange;
+            //    postJobviewModels.JobDescription = postJobModel.JobDescription;
+            //    postJobviewModels.Is_Job = postJobModel.Is_Job;
+            //    postJobviewModels.Device_Type = postJobModel.Device_Type;
+            //    postJobviewModels.Ip_Address = postJobModel.Ip_Address;
+            //    postJobviewModels.CreatedDate = DateTime.Now.ToString("dd MMMM yyyy");
+            //    postJobviewModels.NoteTorecruiter = postJobModel.NoteTorecruiter;
+            //    postJobviewModels.latestinfojobrequest = postJobModel.latestinfojobrequest;
+            //    postJobviewModels.Is_masked_jobrequest = postJobModel.Is_masked_jobrequest;
+            //    postJobviewModels.likeCount = "0";
+            //    postJobviewModels.commentCount = "0";
+            //    postJobviewModels.applyCount = "0";
+            //    postJobviewModels.referCount = "0";
+            //    List<string> result;
+            //    if (!string.IsNullOrEmpty(postJobModel.JobQuestions))
+            //    {
+            //        result = new List<string>();
+            //        string[] Questions = postJobModel.JobQuestions.Split(',');
+            //        Questions.ToList().ForEach(x =>
+            //        {
+            //            result.Add(x);
+            //        });
+            //        postJobviewModels.JobQuestions = result;
+            //    }
+            //    if (!string.IsNullOrEmpty(postJobModel.Skills))
+            //    {
+            //        result = new List<string>();
+            //        string[] skills = postJobModel.Skills.Split(',');
+            //        skills.ToList().ForEach(x =>
+            //        {
+            //            result.Add(x);
+            //        });
+            //        postJobviewModels.Skills = result;
+            //    }
+            //    if (!string.IsNullOrEmpty(postJobModel.city))
+            //    {
+            //        result = new List<string>();
+            //        string[] city = postJobModel.city.Split(',');
+            //        city.ToList().ForEach(x =>
+            //        {
+            //            serachInstance = serachInstance + "-" + x;
+            //            result.Add(x);
+            //        });
+            //        postJobviewModels.city = result;
+            //    }
+            //    if (postJobModel.JobFiles != null)
+            //    {
+            //        List<PostJobFiles> Filesresult = new List<PostJobFiles>();
+            //        foreach (var file in postJobModel.JobFiles)
+            //        {
+            //            var uploadDirecotroy = "JobFiles\\";
+            //            var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
+            //            if (!Directory.Exists(uploadPath))
+            //                Directory.CreateDirectory(uploadPath);
+            //            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            //            var filePath = Path.Combine(uploadPath, fileName);
+            //            using (var stream = new FileStream(filePath, FileMode.Create))
+            //            {
+            //                await file.CopyToAsync(stream);
+            //            }
+            //            Filesresult.Add(new PostJobFiles
+            //            {
+            //                filetype = fileName.Split('.')[1],
+            //                fileurl = URL + "/JobFiles/" + fileName,
+            //                filename = fileName
+            //            });
+            //        }
+            //        postJobviewModels.JobFiles = Filesresult;
+            //    }
+            //    var json = JsonConvert.SerializeObject(postJobviewModels);
+            //    serachInstance = serachInstance + "-" + postJobModel.Jobtitle.ToLower() + "-" + postJobModel.JobDescription.ToLower();
+            //    var Is_insert = await PostJobDB.Instance.CreateJobPublic(postJobviewModels, json, serachInstance, postJobModel.city);
+            //    if (!string.IsNullOrEmpty(Is_insert))
+            //    {
+            //        api_Response.Is_Error = false;
+            //        api_Response.Status_Code = StatusCodes.Status200OK;
+            //        api_Response.data = postJobviewModels;
+                    
+            //    }
+            //    else
+            //    {
+            //        api_Response.Is_Error = true;
+            //        api_Response.Status_Code = StatusCodes.Status500InternalServerError;
+            //        api_Response.data = null;
+                    
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    api_Response.Is_Error = true;
+            //    api_Response.Status_Code = StatusCodes.Status400BadRequest;
+            //    api_Response.data = null;
+                
+            //}
+            return new JsonResult(api_Response);
         }
         
         [HttpPost]
