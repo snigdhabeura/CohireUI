@@ -60,9 +60,9 @@ namespace Cohire.Controllers
 
         [Route("getquestions")]
         [HttpGet]
-        public async Task<JsonResult> GetQuestions()
+        public async Task<JsonResult> GetQuestions(string jobID)
         {
-            var data = await PostJobDB.Instance.GetQuestion();
+            var data = await PostJobDB.Instance.GetQuestion(jobID);
             return new JsonResult(data);
         }
 

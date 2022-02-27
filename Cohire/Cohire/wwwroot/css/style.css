@@ -1300,6 +1300,26 @@ a:hover {
     transition: var(--pxpHoverTransition);
     transition-property: background-color;
 }
+.pxp-modal-cta2 {
+    display: block;
+    background-color: var(--pxpMainColor);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 14px 20px;
+    transition: var(--pxpHoverTransition);
+    transition-property: background-color;
+}
+
+.pxp-modal-cta3 {
+    background-color: var(--pxpMainColor);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 14px 20px;
+    transition: var(--pxpHoverTransition);
+    transition-property: background-color;
+}
 
 .pxp-modal-cta:hover {
     color: #fff;

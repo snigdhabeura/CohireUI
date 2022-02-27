@@ -129,7 +129,7 @@ namespace Cohire.Model.PostJob
             }
             finally { azureSQLDb.Close(); }
         }
-        public async Task<List<string>> GetQuestion()
+        public async Task<List<string>> GetQuestion(string jobID)
         {
             SqlConnection azureSQLDb = null;
             List<string> data = null;
@@ -140,7 +140,7 @@ namespace Cohire.Model.PostJob
                 {
                     if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                         azureSQLDb.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT Question = '['+STUFF(( SELECT ',\"' + Question + '\"'FROM [dbo].[Question_Master]  FOR XML PATH('') ), 1, 1,'')+']'", azureSQLDb);
+                    SqlCommand cmd = new SqlCommand("SELECT JSON_QUERY([JobJson], '$.JobQuestions') AS 'Result'  FROM [dbo].[JobPost] Where ChJobID = '"+ jobID + "';", azureSQLDb);                                             
                     var skilldata = await cmd.ExecuteScalarAsync();
                     data = JsonConvert.DeserializeObject<List<string>>(skilldata.ToString());
                 }

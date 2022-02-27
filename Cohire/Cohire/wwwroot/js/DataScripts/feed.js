@@ -114,6 +114,36 @@ function GetReferModel(id) {
         $("#ReferModal").modal('show');
     }
 }
+function GetApplyModel(id) {
+    debugger;
+    if (CheckIs_login()) {
+        $("#Apply_hdn").val(id);     
+            var temp = null;
+            $.ajax({
+                url: "api/job/getquestions",
+                dataType: "json",
+                type: "GET",
+                data: { jobID: id },
+                success: function (data) {
+                    debugger;
+                    temp = data;
+                    if ($.trim(data)) {
+                        for (var i = 0; i < temp.length; i++) {
+                            $('#lblApplyScrQus' + i).text(temp[i]);
+                        }
+                        
+                    }
+                    else {
+                       
+                    }
+                }
+            });
+        $("#NewApplyModal").modal('show');
+        
+
+        
+    }
+}
 function ShowreferTerm() {
     debugger;
     $("#refer_term").show();

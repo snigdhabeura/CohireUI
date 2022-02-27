@@ -234,25 +234,25 @@ var jQuery_1_1_3 = $.noConflict(true);
                 allowSpaces: true
             });
 
-            var Questions = function () {
-                debugger;
-                var temp = null;
-                $.ajax({
-                    'async': false,
-                    'global': false,
-                    url: "api/job/getquestions",
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        temp = data;
-                    }
-                });
+            //var Questions = function () {
+            //    debugger;
+            //    var temp = null;
+            //    $.ajax({
+            //        'async': false,
+            //        'global': false,
+            //        url: "api/job/getquestions",
+            //        type: "GET",
+            //        dataType: "json",
+            //        success: function (data) {
+            //            temp = data;
+            //        }
+            //    });
 
-                return temp;
-            }();
-            for(var i = 0; i < Questions.length; i++){
-            $('#lblScrQus'+i).text(Questions[i]);
-            }
+            //    return temp;
+            //}();
+            //for(var i = 0; i < Questions.length; i++){
+            //$('#lblScrQus'+i).text(Questions[i]);
+            //}
 
             var City = function () {
                 var temp = null;
