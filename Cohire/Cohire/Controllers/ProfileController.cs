@@ -37,29 +37,37 @@ namespace Cohire.Controllers
             SqlConnection azureSQLDb = null;
             SqlCommand cmd;
             ProfileModelList profilemodel = new ProfileModelList();
-            try
+            if (!string.IsNullOrEmpty(Convert.ToString(Request.Cookies["UserID"])))
             {
-                using (azureSQLDb = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString()))
+                try
                 {
-                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
-                        azureSQLDb.Open();
-                    cmd = new SqlCommand("Get_user_Profile_Json", azureSQLDb);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = Convert.ToString(Request.Cookies["UserID"]);
-                    var getuserProfileJson = cmd.ExecuteScalar().ToString();
-                    if (!String.IsNullOrEmpty(getuserProfileJson))
+                    using (azureSQLDb = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString()))
                     {
+                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                            azureSQLDb.Open();
+                        cmd = new SqlCommand("Get_user_Profile_Json", azureSQLDb);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = Convert.ToString(Request.Cookies["UserID"]);
+                        var getuserProfileJson = cmd.ExecuteScalar().ToString();
+                        if (!String.IsNullOrEmpty(getuserProfileJson))
+                        {
 
-                        profilemodel = JsonConvert.DeserializeObject<ProfileModelList>(getuserProfileJson.ToString());
+                            profilemodel = JsonConvert.DeserializeObject<ProfileModelList>(getuserProfileJson.ToString());
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { azureSQLDb.Close(); }
+                return View(profilemodel);
             }
-            catch (Exception ex)
+            else
             {
-                throw;
+                return RedirectToAction("Index", "Home");
             }
-            finally { azureSQLDb.Close(); }
-            return View(profilemodel);
+            
         }
 
         [HttpGet]
