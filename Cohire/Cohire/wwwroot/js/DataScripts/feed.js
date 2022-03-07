@@ -61,7 +61,7 @@ function ShareURL(url) {
     }
 }
 function copyToClipboard() {
-    debugger;
+    
     var $temp = $("<input>");
     $("#pxp-share-modal").append($temp);
     $temp.val($("#pxp-share-url").text()).select();
@@ -73,7 +73,7 @@ function copyToClipboard() {
 
 //Like Function
 function IncreaseLike(id) {
-    debugger;
+    
     var Is_like = 0;
     
     if (CheckIs_login()) {
@@ -112,22 +112,158 @@ function GetReferModel(id) {
     if (CheckIs_login()) {
         $("#referbody_hdn").val(id);
         $("#ReferModal").modal('show');
+        $("#btnApplyContinue").attr('onclick', 'ApplyJob(' + id + ')');
     }
 }
+function GetApplyModel(id) {
+    
+    if (CheckIs_login()) {
+        $("#NewApplyModal").modal('show');
+        $("#applyjob_hdn_id").val(id);
+        //var retval = JobQuestions(id)
+        //    ;
+        //if (retval.length > 0) {
+        //    for (var i = 0; i < retval.length; i++) {
+        //        $('#lblApplyScrQus' + i).text(retval[i]);
+        //    }
+        //}
+    }
+}
+
+function ApplyJob() {
+    
+    var id = $("#applyjob_hdn_id").val();
+    if ($("#btnApplyContinue").text() === 'Continue') {
+        var retval = JobQuestions(id);
+        if (retval.length > 0) {
+            for (var i = 0; i < retval.length; i++) {
+                $('#lblApplyScrQus' + i).text(retval[i]);
+            }
+            $("#divApplyPannel2").addClass('show');
+            $("#divApplyPannel1").removeClass('show');
+            $("#btnApplyContinue").text('Apply');
+        } else {
+            ApplyJobCnf();
+
+            $("#divApplyPannel3").addClass('show');
+            $("#divApplyPannel1 , #divApplyPannel2").removeClass('show');
+            $("#btnApplyContinue").text('OK');
+            $("#btnApplyContinue").attr("data-bs-dismiss", "modal");
+        }
+    }
+    else if ($("#btnApplyContinue").text() === 'Apply') {
+        ApplyJobCnf();
+        $("#divApplyPannel3").addClass('show');
+        $("#divApplyPannel1 , #divApplyPannel2").removeClass('show');
+        $("#btnApplyContinue").text('OK');
+        $("#btnApplyContinue").attr("data-bs-dismiss", "modal");
+    }
+    else if ($("#btnApplyContinue").text() === 'OK') {
+        $("#divApplyPannel3 , #divApplyPannel2").removeClass('show');
+        $("#divApplyPannel1").addClass('show');
+        $("#btnApplyContinue").text('Continue');
+    }
+}
+function ApplyJobCnf() {
+    
+    var PostID = $("#applyjob_hdn_id").val(); // $("#PostID").text();
+
+    var formData = new FormData();
+    var ApplyFullName = $("#ApplyFullName").val();
+    var ApplyPhone = $("#ApplyPhone").val();
+    var Applyemail = $("#Applyemail").val();
+
+    var input = document.getElementById('ApplyResume');
+    var files = input.files;
+    for (var i = 0; i != files.length; i++) {
+        formData.append("ResumeFile", files[i]);
+    }
+
+    var ScrQus1 = $("#ScrQus1").val();
+    var ScrQus2 = $("#ScrQus2").val();
+    var ScrQus3 = $("#ScrQus3").val();
+    var ScrQus4 = $("#ScrQus4").val();
+    var ScrQus5 = $("#ScrQus5").val();
+
+    var ScrAns1 = $("#lblApplyScrQus0").text();
+    var ScrAns2 = $("#lblApplyScrQus1").text();
+    var ScrAns3 = $("#lblApplyScrQus2").text();
+    var ScrAns4 = $("#lblApplyScrQus3").text();
+    var ScrAns5 = $("#lblApplyScrQus4").text();
+
+    var PostQuestions = $('.ApplyQues').map(function (i, opt) {
+        return $(opt).text();
+    }).toArray();
+
+    var Response = $('.QuesAResp').map(function (i, opt) {
+        return $(opt).val();
+    }).toArray();
+
+    var ScrQues = []
+
+    for (var i = 0; i < PostQuestions.length; i++) {
+        var data = {};
+        var question = PostQuestions[i];
+        var answer = Response[i]
+
+        data.Question = question;
+        data.Answer = answer;
+
+
+        ScrQues.push(data);
+    }
+    var jsonString = JSON.stringify(ScrQues);
+
+    formData.append("FullName", ApplyFullName);
+    formData.append("Email", Applyemail);
+    formData.append("Mobile", ApplyPhone);
+    formData.append("ChJobID", PostID);
+    formData.append("applyJobQuestions", jsonString);
+
+    $.ajax({
+        url: '../User/ApplyJobpost',
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        async: false,
+        success: function (data) {
+
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+}
+function JobQuestions(id) {
+    var Questions;
+    $.ajax({
+        url: "api/job/getquestions",
+        dataType: "json",
+        type: "GET",
+        async: false,
+        data: { jobID: id },
+        success: function (data) {
+            
+            Questions = data;
+        }
+    });
+    return Questions;
+}
 function ShowreferTerm() {
-    debugger;
+    
     $("#refer_term").show();
     $("#referbody").hide();
 }
 function HidereferTerm() {
-    debugger;
+    
     $("#refer_term").hide();
     $("#referbody").show();
 }
 
 
 $('#upload').submit(function (e) {
-    debugger;
+    
     var Is_error = 0;
     if ($("#ReferFullName").val() == '') {
         $("#ReferFullName_err").css('color', 'red');
@@ -166,7 +302,7 @@ $('#upload').submit(function (e) {
     } else {
 
     }
-    debugger;
+    
     var formData = new FormData();
     var input = document.getElementById('ReferResume');
     var files = input.files;
@@ -194,8 +330,11 @@ $('#upload').submit(function (e) {
                 $("#confirm_referID").html("ReferID : " + data);
                 $("#ReferModal").modal('hide');
                 $("#referConfirmation").modal('show');
-                debugger;
+                
                 var prvrefcount = $(".refer_count_" + $("#referbody_hdn").val() + "").text();
+                if (prvrefcount == '') {
+                    prvrefcount = 0;
+                }
                 $(".refer_count_" + $("#referbody_hdn").val() + "").html('');
                 $(".refer_count_" + $("#referbody_hdn").val() + "").text(parseInt(prvrefcount)+1);
             } else {
@@ -231,11 +370,11 @@ connection.start().then(function () {
 });
 connection.on("ReceiveMessage", function (image, user, message, postID, Countofaction) {
     
-    debugger; 
+     
     var commentHtml = '';
     commentHtml = commentHtml + '<div class="d-flex mb-2">';
     commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
-    debugger;
+    
     if (image == null || image == '') {
         commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
 
@@ -269,7 +408,7 @@ function Postcomment(id) {
 $(".cmnt_box").keyup(function (event) {
     if (event.keyCode === 13)
     {
-        debugger;
+        
         Postcomment($(this).attr('JobAtr'));
     }
 });
@@ -283,7 +422,7 @@ function LoadCommentspopup(jobid) {
         type: "POST",
         data: { jobID: jobid},
         success: function (data) {
-            debugger;
+            
             for (var i = 0; i < data.length; i++) {
                 var comments = data[i];
                 var commentHtml = '';
@@ -321,7 +460,7 @@ function LoadComments(jobid) {
         data: { jobID: jobid },
         async:false,
         success: function (data) {
-            debugger;
+            
             for (var i = 0; i < data.length; i++) {
                 var comments = data[i];
                 var commentHtml = '';

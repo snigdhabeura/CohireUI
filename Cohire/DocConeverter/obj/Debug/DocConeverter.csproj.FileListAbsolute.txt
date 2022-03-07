@@ -1,12 +1,13 @@
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\DocConeverter.exe.config
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\DocConeverter.exe
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\DocConeverter.pdb
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Pdf.dll
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Pdf.xml
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Html.dep
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Tools.dep
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.AssemblyReference.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.CopyComplete
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.exe
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.pdb
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\DocConeverter.exe.config
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\DocConeverter.exe
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\DocConeverter.pdb
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\Select.Pdf.dll
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\Select.Pdf.xml
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\Select.Html.dep
+C:\Users\Admin\Music\Cohire_New\DocConeverter\bin\Debug\Select.Tools.dep
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.csproj.AssemblyReference.cache
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.csproj.CopyComplete
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.exe
+C:\Users\Admin\Music\Cohire_New\DocConeverter\obj\Debug\DocConeverter.pdb

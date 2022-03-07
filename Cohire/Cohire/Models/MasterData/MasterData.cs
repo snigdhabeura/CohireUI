@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
@@ -74,6 +75,80 @@ namespace Cohire.Models.MasterData
             }
             finally 
             { 
+                azureSQLDb.Close();
+            }
+        }
+
+
+        public async Task<string> GetMasterDataAsync<T>(int refMasterID,int Is_option)
+        {
+            SqlConnection azureSQLDb = null;
+            try
+            {
+                string result = "<option value='0'>Select</option>";
+                if (refMasterID!=0)
+                {
+                    using (azureSQLDb = new SqlConnection(connectionString))
+                    {
+                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                            azureSQLDb.Open();
+                        SqlCommand cmd = new SqlCommand("Get_Master_Data_Common", azureSQLDb);
+                        cmd.Parameters.Add("@master_key_Id", SqlDbType.Int).Value = refMasterID;
+                        cmd.Parameters.Add("@Is_Get_Option", SqlDbType.Int).Value = Is_option;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        var data = (string)await cmd.ExecuteScalarAsync();
+                        result = result+data.Replace("&lt;", "<").Replace("&gt;", ">").Replace(",", "");
+                        return result;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                azureSQLDb.Close();
+            }
+        }
+
+        public async Task<List<T>> GetMasterDataAsync<T>(int refMasterID)
+        {
+            SqlConnection azureSQLDb = null;
+            try
+            {
+                if (refMasterID != 0)
+                {
+                    using (azureSQLDb = new SqlConnection(connectionString))
+                    {
+                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                            azureSQLDb.Open();
+                        SqlCommand cmd = new SqlCommand("Get_Master_Data_Common", azureSQLDb);
+                        cmd.Parameters.Add("@master_key_Id", SqlDbType.Int).Value = refMasterID;
+                        cmd.Parameters.Add("@Is_Get_Option", SqlDbType.Int).Value = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        var data = (string)await cmd.ExecuteScalarAsync();
+                        
+                            var result = JsonConvert.DeserializeObject<List<T>>(data);
+                            return result;
+
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
                 azureSQLDb.Close();
             }
         }

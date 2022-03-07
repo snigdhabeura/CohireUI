@@ -4,7 +4,7 @@
 // Write your JavaScript code.$('#upload').submit(function (e) {})
 
 $("#post_form").submit(function (e) {
-    e.preventDefault(); debugger;
+    e.preventDefault(); 
     var formData = new FormData();
     var input = document.getElementById('fileupload');
     var files = input.files;
@@ -12,8 +12,8 @@ $("#post_form").submit(function (e) {
         formData.append("JobFiles", files[i]);
     }
     
-    
-
+    var Job_type = $("#hdn_job_type").val();
+    formData.append("Is_Job", $("#hdn_job_type").val());
     if ($("#hdn_job_type").val() == "1")
     {
         var jobtitle = $("#JobTitle").val();
@@ -34,7 +34,7 @@ $("#post_form").submit(function (e) {
         formData.append("Experience_Name", ExperienceName);
 
        
-        var getHireloc = $("#HireLocation").find('input[type="hidden"]').val();
+        var getHireloc = $("#HireLocation").find('input[type="hidden"]');
         var getHireLocation = '';
         for (var i = 0; i < getHireloc.length; i++) {
             if (getHireloc.length == (i + 1)) {
@@ -55,7 +55,7 @@ $("#post_form").submit(function (e) {
         var SalaryRange = $("#SalaryRange").val();
 
         formData.append("Salaryrange", SalaryRange);
-        formData.append("Is_Job", $("#hdn_job_type").val());
+        
     }
      else if ($("#hdn_job_type").val() == "2")
     {
@@ -88,7 +88,7 @@ $("#post_form").submit(function (e) {
         var ExperienceName = $("#HireExperience option:selected").text();
         formData.append("Experience_Name", ExperienceName);
 
-        var getHireloc = $("#getHireLocation").find('input[type="hidden"]').val();
+        var getHireloc = $("#getHireLocation").find('input[type="hidden"]');
         var getHireLocation = '';
         for (var i = 0; i < getHireloc.length; i++) {
             if (getHireloc.length == (i + 1)) {
@@ -130,9 +130,24 @@ $("#post_form").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-            debugger;
-            if (data.is_Error != true) {
-                location.reload();
+            
+            if (data.is_Error != true)
+            {
+                if (Job_type == 1)
+                {
+                    $("#postModal").modal('hide');
+                    $("#job_postID_suc").val(data.data.chJobID);
+                    $("#Post_Success_jobID").text(data.data.chJobID);
+                    $("#NewpostCnfModal").modal('show');
+                }
+                else
+                {
+                    $("#postModal").modal('hide');
+                    $("#simp_postid").text(data.data.chJobID);
+                    $("#simplepost_Confirmation").modal('show');
+                }
+                
+                //var getqsns = $("#ScrQus").find('input[type="text"]');
             }
         },
         error: function (xhr, error, status) {
@@ -141,6 +156,31 @@ $("#post_form").submit(function (e) {
     });
 
 });
+
+function SaveScreenQuestion()
+{
+    
+    var jobId = $("#job_postID_suc").val();
+    var getqsns = $("#ScrQus").find('input[type="text"]');
+    var question = [];
+    for (var i = 0; i < getqsns.length; i++) {
+        if (getqsns[i].value != '') {
+            question.push(getqsns[i].value);
+        }
+    }
+    $.ajax({
+        url: "../Home/UpdateScreenQuestion",
+        type: "POST",
+        data: { chjobId: jobId, question: question },
+        dataType: 'json',
+        success: function (data) {
+            $("#NewpostCnfModal").modal('hide'); location.reload(true);
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+}
 ///Comment Modal Actions
 function OpenCommentModal(id)
 {
@@ -151,7 +191,7 @@ function OpenCommentModal(id)
         data: { JobID: id },
         dataType:'html',
         success: function (data) {
-            debugger;
+            
            
             $("#commentModal").append(data);
             $("#commentModal").modal('show');
@@ -160,7 +200,7 @@ function OpenCommentModal(id)
             console.log(error, status);
         }
     });
-    debugger;
+    
     
 }
 

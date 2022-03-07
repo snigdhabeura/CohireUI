@@ -49,12 +49,13 @@
                                 <a href="javascript:void(0)" class="text-decoration-none d-flex align-items-center">
                                     <h6 class="fw-bold mb-0 text-body"><label asp-for="@item.PostedByName">@item.PostedByName</label></h6>
                                     <span class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon">done</span>
-                                    <small class="text-muted ms-2">POSTID:<b style="color:black"> @item.ChJobID</b> </small>
-
-
                                 </a>
                                 <div class="d-flex align-items-center small">
-                                    <p class="text-muted mb-0"><label asp-for="@item.CreatedDate">@item.CreatedDate</label></p>
+                                    <p class="text-muted mb-0">
+                                        <label asp-for="@item.CreatedDate">@item.CreatedDate</label>
+                                        <br />
+                                        <label asp-for="@item.ChJobID">PostID:<b style="color: #004eff" id="PostID">&nbsp; @item.ChJobID</b> </label>
+                                    </p>
                                     <div class="dropdown">
                                         <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-20 rounded-circle bg-light p-1" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">more_vert</a>
                                         <ul class="dropdown-menu fs-13 dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
@@ -67,49 +68,62 @@
                                 </div>
                             </div>
                             <div class="my-2">
-                                <p class="mb-3 text-primary"><b><label asp-for="@item.Jobtitle">@item.Jobtitle</label></b></p>
+                                @if (item.Is_Job != 3)
+                                {<p class="mb-3 text-primary"><b><label asp-for="@item.Jobtitle">@item.Jobtitle</label></b></p>
+                            }
                                 <p class="text-dark comment more">
                                     @item.JobDescription
                                     <br />
-                                    <b> Category: @item.Category_Name</b><br />
-                                    <b>Location: @string.Join(",", item.city.Select(student => student))</b><br />
-                                    <b> Salary: @item.Salaryrange</b><br />
-                                    <b> Emplyment Type: @item.Employmenttype_Name</b>
+                                    @if (item.Is_Job != 3)
+                                    {
+                                        <b> Category: @item.Category_Name</b><br />
+                                        <b>Location: @string.Join(",", item.city.Select(student => student))</b><br />
+                                        <b> Salary: @item.Salaryrange</b><br />
+                                        <b> Emplyment Type: @item.Employmenttype_Name<br /></b>
+                                        @if (item.Is_Job == 2)
+                                        {
+                                            <b style="color: #004eff"> Skills: @string.Join(",", item.Skills.Select(student => student))</b>
+                                        }
+                                    }
+
                                 </p>
                                 <p>
-                                    @if (item.JobFiles.Where(x=>x.filetype.ToLower()=="pdf"|| x.filetype.ToLower()=="docx").ToList().Count > 0)
+                                    @if (item.JobFiles != null)
                                     {
-                                    <span style="color:black;font-weight:bold">  Attached Document:</span> 
-                                        @for (int i = 0; i < item.JobFiles.Count(); i++)
+                                        @if (item.JobFiles.Where(x => x.filetype.ToLower() == "pdf" || x.filetype.ToLower() == "docx").ToList().Count > 0)
                                         {
-                                            if (item.JobFiles[i].filetype.ToLower() == "pdf")
+                                            <span style="color:black;font-weight:bold">  Attached Document:</span>
+                                            @for (int i = 0; i < item.JobFiles.Count(); i++)
                                             {
-                                                <i onclick="ViewDocument('@item.JobFiles[i].filename')" title="@item.JobFiles[i].filename" class="fa fa-file-pdf-o" aria-hidden="true" style="color:palevioletred"></i>
-                                            }
-                                            if (item.JobFiles[i].filetype.ToLower() == "docx")
-                                            {
-                                
-                                             <i onclick="ViewDocument('@item.JobFiles[i].filename')" title="@item.JobFiles[i].filename" class="fa fa-file-word-o" aria-hidden="true" style="color:blue"></i>
-                                
+                                                if (item.JobFiles[i].filetype.ToLower() == "pdf")
+                                                {
+                                                    <i onclick="ViewDocument('@item.JobFiles[i].filename')" title="@item.JobFiles[i].filename" class="fa fa-file-pdf-o" aria-hidden="true" style="color:palevioletred"></i>
+                                                }
+                                                if (item.JobFiles[i].filetype.ToLower() == "docx")
+                                                {
+
+                                                    <i onclick="ViewDocument('@item.JobFiles[i].filename')" title="@item.JobFiles[i].filename" class="fa fa-file-word-o" aria-hidden="true" style="color:blue"></i>
+
+                                                }
                                             }
                                         }
                                     }
                                 </p>
 
-                                @if (item.JobFiles.Count > 0)
+                                @if (item.JobFiles != null)
                                 {
                                     <div class="image-slider">
                                         <div id="carouselExampleIndicators_@item.ChJobID" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
                                                 @{ int i = 0;}
-                                                @foreach (var v in item.JobFiles.ToList().Where(x=>x.filetype.ToLower()== "png" ||x.filetype.ToLower() == "jpg"|| x.filetype.ToLower() == "jpeg" || x.filetype.ToLower() == "gif" ||x.filetype.ToLower() == "mp4"))
+                                                @foreach (var v in item.JobFiles.ToList().Where(x => x.filetype.ToLower() == "png" || x.filetype.ToLower() == "jpg" || x.filetype.ToLower() == "jpeg" || x.filetype.ToLower() == "gif" || x.filetype.ToLower() == "mp4"))
                                                 {
 
                                                     int slied = i + 1;
-                                                        <button type="button" data-bs-target="#carouselExampleIndicators_@item.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
+                                                    <button type="button" data-bs-target="#carouselExampleIndicators_@item.ChJobID" data-bs-slide-to="@i" class="active" aria-label="Slide @slied" aria-current="true"></button>
                                                     i++;
                                                 }
-                                                
+
                                             </div>
 
                                             <div class="carousel-inner">
@@ -165,12 +179,16 @@
 
 
                                 <div class="d-flex align-items-center justify-content-between mb-2 classMargintop">
-                                    <div>
-                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
-                                    </div>
-                                    <div>
-                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@item.ChJobID">@item.referCount</span></a>
-                                    </div>
+                                    <input type="hidden" id="apply_hdn" />
+                                    @if (item.Is_Job == 1)
+                                    {
+                                        <div>
+                                            <a title="Apply" onclick="GetApplyModel('@item.ChJobID')" href="javscript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
+                                        </div>
+                                        <div>
+                                            <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@item.ChJobID">@item.referCount</span></a>
+                                        </div>
+                                    }
                                     <div>
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@item.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@item.ChJobID">thumb_up_off_alt</span><span class="likeCount_@item.ChJobID">@item.likeCount</span></a>
                                     </div>
@@ -241,6 +259,26 @@
             $(this).parent().prev().toggle();
             $(this).prev().toggle();
             return false;
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#btnCloseApply").click(function () {
+            $("#divApplyPannel1").addClass('show');
+            $("#divApplyPannel2").removeClass('show');
+        });
+
+        $("#btnNewReferTerm").click(function () {
+            $("#btnTermsOk").attr("href", ".NewReferPannel1");
+            $("#btnTermsback").attr("href", ".NewReferPannel1");
+        });
+        $("#btnApplyTerm").click(function () {
+            $("#btnTermsOk").attr("href", ".NewApplyModal");
+            $("#btnTermsback").attr("href", ".NewApplyModal");
         });
     });
 </script>

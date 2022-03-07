@@ -131,7 +131,7 @@ namespace CohireAPI.PostJobs.Model
         public string  ResumeFileUrl { get; set; }
         public List<ApplyJobQuestionAnswer> applyJobQuestionAnswers { get; set; }
         public bool Is_termAccept { get; set; }
-
+        public string applyJobQuestions { get; set; }
     }
     public class ApplyJobSubMitinsert
     {

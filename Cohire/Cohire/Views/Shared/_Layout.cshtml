@@ -33,13 +33,13 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-     <!-- Required CSS Files -->
+    <!-- Required CSS Files -->
     <link href="~/css/jquery.tagit.css" rel="stylesheet">
     <link href="~/css/tagit.ui-zendesk.css" rel="stylesheet">
 
 
-        <!-- load jQuery 1.1.3 -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>   
+    <!-- load jQuery 1.1.3 -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <!-- Custom Js -->
@@ -53,25 +53,28 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/tag-it.min.js"></script>
+    <script src="~/js/DataScripts/ApplyPost.js"></script>
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    @*
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
 
-@*
-   <script src="~/lib/jquery/dist/jquery.min.js"></script>
-   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="~/js/site.js" asp-append-version="true"></script>
+         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Custom Js -->
+         <script src="js/custom.js"></script>
+         <!-- Slick Js -->
+         <script src="vendor/slick/slick/slick.min.js"></script>
 
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Js -->
-    <script src="js/custom.js"></script>
-    <!-- Slick Js -->
-    <script src="vendor/slick/slick/slick.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+         <script src="js/owl.carousel.min.js"></script>
+         <script src="js/nav.js"></script>
+         <script src="js/main.js"></script>
 
-   <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/main.js"></script>
-
-    <script src="~/js/jquery-ui.min.js"></script>
-    <script src="~/js/tag-it.min.js"></script>*@
+         <script src="~/js/jquery-ui.min.js"></script>
+         <script src="~/js/tag-it.min.js"></script>*@
 
 
     <style>
@@ -183,69 +186,146 @@
         </div>
     </div>
     <!-- Apply PopUp-->
-    <div class="modal fade bd-example-modal-lg Applybtn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="btnApplybtn">
-        <div class="modal-dialog modelapply">
-            @* modal-lg*@
-            <div class="modal-content">
-                @*  <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
-                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal" style="padding-top: 3%;padding-left: 3%;">arrow_back_ios_new</a>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>*@
-                <div class="modal-header border-0 p-1">
-                    <h6 class="modal-title fw-bold text-body fs-6" id="exampleModalLabel">Choose Language</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade NewApplyModal" id="NewApplyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <input type="hidden" id="applyjob_hdn_id" />
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 p-4 border-0 bg-light">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                    <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Apply</span></h5>
+                    <button type="button" class="btn-close" id="btnCloseApply" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
                 </div>
-                <div class="modal-content rounded-4 overflow-hidden border-0">
-                    <div class="modal-body p-0">
-
-
-                        <div class="row AddHtml" style="text-align:center">
-                            <div class="col-md-12 applyChange" style="text-align:center">
-                                <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
-                                    <h4 style="text-align:center;font-weight:bold">Apply</h4>
-                                    <div class="form-floating mb-1 SignUp">
-                                        <input type="email" class="form-control rounded-5" id="ApplyFullName" placeholder="Full Name">
-                                        <label for="ApplyFullName" id="ApplyFullName_err">Full Name</label>
-                                    </div>
-                                    <div class="form-floating mb-1 SignUp">
-                                        <input type="email" class="form-control rounded-5" id="ApplyPhone" placeholder="Phone">
-                                        <label for="ApplyPhone" id="ApplyPhone_err">Mobile No</label>
-                                    </div>
-                                    <div class="form-floating mb-1 SignUp">
-                                        <input type="email" class="form-control rounded-5" id="Applyemail" placeholder="Email">
-                                        <label for="Applyemail" id="Applyemail_err">Email</label>
-                                    </div>
-                                    <div class="form-floating mb-1 SignUp">
-                                        <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
-                                        <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
-                                    </div>
-                                    <div class="form-floating mb-1 SignUp d-none">
-                                        <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
-                                        <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
-                                    </div>
-
-                                </div>
+                <div id="divApplyPannel1" class="collapse show">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control rounded-5" id="ApplyFullName" placeholder="Full Name" required>
+                                <label for="ApplyFullName" id="ApplyFullName_err">Full Name</label>
                             </div>
-
-                            <!-- Add Here  -->
                         </div>
-                        <div class="row" style="padding-left:40%">
-                            <div class="col-md-12 applyChange">
-                                <div class="form-floating mb-1 SignUp">
-                                    <a class="btn rounded-pill pxp-modal-cta1 Applyctn" data-toggle="collapse" id="btnApplyConf" href="#collapseExample">Continue</a>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control rounded-5" id="ApplyPhone" placeholder="Phone" required>
+                                <label for="ApplyPhone" id="ApplyPhone_err">Mobile No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control rounded-5" id="Applyemail" placeholder="Email" required>
+                                <label for="Applyemail" id="Applyemail_err">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                @*                            <input class="form-control rounded-5" type="file" id="ApplyResume" disabled />
+                                *@                            <input class="form-control rounded-5" type="file" id="ApplyResume" />
+                                <label for="ApplyResume" id="ApplyResume_err">Attach Resume</label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divApplyPannel2" class="collapse">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus1">
+                                <label for="ScrQus1" id="lblApplyScrQus0" class="ApplyQues"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus2">
+                                <label for="ScrQus2" id="lblApplyScrQus1" class="ApplyQues"></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus3">
+                                <label for="ScrQus3" id="lblApplyScrQus2" class="ApplyQues"></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus4">
+                                <label for="ScrQus4" id="lblApplyScrQus3" class="ApplyQues"></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus5">
+                                <label for="ScrQus5" id="lblApplyScrQus4" class="ApplyQues"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <textarea class="form-control rounded-5" id="Comments" rows="5" placeholder="Comments"></textarea>
+                                <label for="Comments">Comments</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <p>
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    I have read the <a data-bs-toggle="modal" href=".TermsConditionModal" id="btnApplyTerm" role="button"><u>terms</u> </a> of use and I accept.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divApplyPannel3" class="collapse">
+                    <div class="row" style="text-align:center">
+                        <div class="col-md-12 applyChange" style="text-align:center">
+                            <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                <h4 style="text-align:center;font-weight:bold">Your Application Submitted</h4>
+                                <div class="my-2">
+                                    <p class="mb-3 text-primary"></p>
+                                    <ul class="list-unstyled mb-3">
+                                        <li>ApplicationID:  @ViewBag.ApplyID</li>
+                                        <li>Thank's . !</li>
+                                    </ul>
+                                    <h6 class="fw-normal ln-25 mb-0">Happy Vogel to you!</h6>
+                                    <p class="mb-2"><a href="#" class="text-decoration-none">#SelectricsM12</a> <a href="#" class="text-decoration-none">#supriuasule</a> <a href="#" class="text-decoration-none">#support</a></p>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="divApplyPannel4" class="collapse show">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-1">
+                                <a class="btn rounded-pill pxp-modal-cta2" id="btnApplyContinue" href="javascript:void(0)" onclick="ApplyJob()">Continue</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
-
     <!-- Apply PopUp-->
     <!-- Apply Confirmation PopUp-->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="ApplyConfirmation">
@@ -473,6 +553,7 @@
         <div class="modal-dialog modal-dialog-centered" id="ReferModalHeader">
             <div class="modal-content rounded-4 p-4 border-0" id="referbody">
                 <input type="hidden" id="referbody_hdn" />
+                <input type="hidden" id="apply_hdn" />
                 <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
                     <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
                     <h5 class="modal-title text-muted ms-3 ln-0" style="padding-left: 35%;"><span class="md-10">Refer</span></h5>
@@ -608,6 +689,47 @@
             @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
             <a asp-action="Index">Back to List</a>
         </div>*@
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="simplepost_Confirmation">
+        <div class="modal-dialog">
+            @* modal-lg*@
+            <div class="modal-content">
+                <div class="modal-content rounded-4 overflow-hidden border-0">
+                    <div class="modal-body p-0">
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 applyChange">&nbsp;</div>
+                        </div>
+                        <div class="row AddHtml" style="text-align:center">
+                            <div class="col-md-12 applyChange" style="text-align:center">
+                                <div class="d-flex flex-column h-600" style="padding-left:10%;padding-right: 10%;">
+                                    <h4 style="text-align:center;font-weight:bold">Your post ID: <b id="simp_postid"></b> Submitted for approval</h4>
+                                    <div class="my-2">
+                                        <p class="mb-3 text-primary"></p>
+                                        <ul class="list-unstyled mb-3">
+                                            <li id="confirm_referID"></li>
+                                            <li>Thank's!!!</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add Here  -->
+                        </div>
+                        <div class="row" style="padding-left:40%">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-1">
+                                    <a class="btn rounded-pill pxp-modal-cta1" href="#" onclick="location.reload(true)" id="btnApplyOk">Ok</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - UI_Cohire - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -653,6 +775,109 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="NewpostCnfModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 p-4 border-0 bg-light">
+                <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-3">
+                    <a href="#" class="text-muted text-decoration-none material-icons" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                    <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                    <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Your Post Submitted.!</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+                </div>
+
+                <div id="divpostCnfMsg" class=" ">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md">
+
+                            <h6 class="fw-normal ln-25 mb-0">your ApplicationID :<label><b id="Post_Success_jobID"></b></label> </h6>
+                            @*<p class="mb-3 text-primary">Welcome to the Vogel family 🙂</p>
+                                <ul class="list-unstyled mb-3">
+                                    <li>1. Follow people you like by clicking on the ’+ Follow’ button to see their posts in your feed.</li>
+                                    <li>2. Share your thoughts with others and gain a following.</li>
+                                </ul>
+                                <h6 class="fw-normal ln-25 mb-0">Happy Vogel to you!</h6>
+                                <p class="mb-2"><a href="#" class="text-decoration-none">#SelectricsM12</a> <a href="#" class="text-decoration-none">#supriuasule</a> <a href="#" class="text-decoration-none">#support</a></p>*@
+
+                            <p>
+                                <input class="form-check-input" type="checkbox" value="" id="chkPostTermsDefault">
+                                I have read the <a data-bs-toggle="modal" href=".TermsConditionModal" id="btnPostTerm" role="button"><u>terms</u> </a> of use and I accept.
+                            </p>
+                        </div>
+                        <div class="col-md" id="ScrQus">
+                            <input type="hidden" id="job_postID_suc" />
+                            <h4 class="fw-normal ln-25 mb-2"><b>ADD Screening Questions ?</b></h4>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus1">
+                                        <label for="ScrQus1" id="lblScrQus0" class="Ques">Screening questions1 ?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        @*<select class="form-select  rounded-5" id="ScrQus2" data-live-search="true" aria-label="Floating label select example">
+                                            </select>*@
+                                        <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus2">
+                                        <label for="ScrQus2" id="lblScrQus1" class="Ques">Screening questions2 ?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus3">
+                                        <label for="ScrQus3" id="lblScrQus2" class="Ques">Screening questions3 ?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus4">
+                                        <label for="ScrQus4" id="lblScrQus3" class="Ques">Screening questions4 ?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2 GetHired">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus5">
+                                        <label for="ScrQus5" id="lblScrQus4" class="Ques">Screening questions5 ?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2 mb-2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            @*                        <a class="btn rounded-pill pxp-modal-cta2" id="btnPostCnfADDScr">Add Screening Questions</a>
+                            *@
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <a class="btn rounded-pill pxp-modal-cta3" id="btnPostCnfADDScr" style="width: 49%;">Skip</a>
+                            <button class="btn rounded-pill pxp-modal-cta3" type="button" id="btnPostCnfOK" aria-label="Close" style="width: 49%;" onclick="SaveScreenQuestion()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#btnPostTerm").click(function () {
+                $("#btnTermsOk").attr("href", ".NewpostCnfModal");
+                $("#btnTermsback").attr("href", ".NewpostCnfModal");
+            });
+        });
+    </script>
 </body>
 </html>
 @*<script src="js/jquery-3.4.1.min.js"></script>
@@ -660,7 +885,7 @@
 <script src="~/js/DataScripts/feed.js"></script>
 <script>
     function CheckIs_login() {
-        debugger;
+        
         var LoginDeatisl = '@Convert.ToString(Context.Request.Cookies["Username"])';
         if (LoginDeatisl != '') { return true; }
         else { $('#pxp-signin-modal').modal("show");return false;}
@@ -674,7 +899,7 @@
             url: '../User/GetPeopleList',
             type: "Post",
             success: function (data) {
-                debugger;
+                
                 for (var i = 0; i < data.length; i++) {
                     var userdata = data[i];
                     var html = '';
@@ -714,7 +939,7 @@
 
 <script>
     function ViewDocument(file) {
-        debugger;
+        
         var data = { FileName: file };
         $("#contents").empty(); $("#totalPages").html('');
         $("#docmodal").modal('show');
@@ -738,11 +963,11 @@
 </script>
 <script>
     connection.on("ReceiveMessagepop", function (image, user, message, postID, Countofaction) {
-        debugger;
+        
         var commentHtml = '';
         commentHtml = commentHtml + '<div class="d-flex mb-2">';
         commentHtml = commentHtml + '<a href="#" class="text-dark text-decoration-none">';
-        debugger;
+        
         if (image == null || image == '') {
             commentHtml = commentHtml + '<img src="../images/customer-1.png" class="img-fluid rounded-circle" alt="commenters-img">';
 

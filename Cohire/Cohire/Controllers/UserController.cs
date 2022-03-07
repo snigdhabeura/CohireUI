@@ -21,6 +21,8 @@ using Microsoft.Extensions.Hosting;
 using System.Net.Http.Headers;
 using Cohire.Models.JobFeedListNM;
 using Cohire.Models.UserAuthentication;
+using Cohire.Models.Response_Model;
+using Cohire.Models.MasterData;
 
 namespace Cohire.Controllers
 {
@@ -91,7 +93,11 @@ namespace Cohire.Controllers
         [HttpPost]
         public JsonResult ApplyJobpost(ApplyJobSubMit model)
         {
+            Api_Response<ViewPostJobModel> api_Response = new Api_Response<ViewPostJobModel>();
+
             bool isNumeric = true;
+            string PostedByID = Convert.ToString(Request.Cookies["UserID"]);
+            string PostedByName = Convert.ToString(Request.Cookies["Username"]);
             string serachInstance = String.Empty;
             Guid jobID = System.Guid.NewGuid();
             string ApllyJobID = "CHJ" + jobID.ToString().Substring(0, 6);
@@ -106,7 +112,7 @@ namespace Cohire.Controllers
                 model.ResumeFile.CopyToAsync(stream);
             }
             string ResumeFileUrl = URL + "/ApplyJobResume/" + fileName;
-            var json = JsonConvert.SerializeObject(model.applyJobQuestionAnswers);
+            var json = JsonConvert.SerializeObject(model.applyJobQuestions);
             string ins_applyJobQuestionAnswers = json.ToString();
             SqlConnection azureSQLDb = null;
             try
@@ -119,17 +125,22 @@ namespace Cohire.Controllers
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@CH_ApllyJobID", SqlDbType.VarChar).Value = ApllyJobID;
                     cmd.Parameters.Add("@ChJobID", SqlDbType.VarChar).Value = model.ChJobID;
-                    cmd.Parameters.Add("@CHProfileID", SqlDbType.VarChar).Value = model.CHProfileID;
+                    cmd.Parameters.Add("@CHProfileID", SqlDbType.VarChar).Value = PostedByID;
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = model.Email;
                     cmd.Parameters.Add("@Mobile", SqlDbType.VarChar).Value = model.Mobile;
                     cmd.Parameters.Add("@FullName", SqlDbType.VarChar).Value = model.FullName;
                     cmd.Parameters.Add("@Is_termAccept", SqlDbType.Bit).Value = model.Is_termAccept;
                     cmd.Parameters.Add("@ResumeFileUrl", SqlDbType.VarChar).Value = ResumeFileUrl;
-                    cmd.Parameters.Add("@applyJobQuestionAnswers", SqlDbType.VarChar).Value = ins_applyJobQuestionAnswers;
+                    cmd.Parameters.Add("@applyJobQuestionAnswers", SqlDbType.VarChar).Value = model.applyJobQuestions;
                     cmd.Parameters.Add("@datetimeofApply", SqlDbType.VarChar).Value = DateTime.Now.ToString("0:ddd, MMM d, yyyy");
                     var skilldata = cmd.ExecuteScalar();
                     int n;
                     isNumeric = int.TryParse(skilldata.ToString(), out n);
+                    if (!string.IsNullOrEmpty(isNumeric.ToString()))
+                    {
+                        ViewBag.ApplyID = ApllyJobID;
+                    }
+                    else { ViewBag.ApplyID = "Failed"; }
                 }
             }
             catch (Exception ex)
@@ -137,7 +148,7 @@ namespace Cohire.Controllers
                 throw;
             }
             finally { azureSQLDb.Close(); }
-            return Json(isNumeric);
+            return Json(ApllyJobID);
         }
 
         #region---------------------Refer User for Job-------------------
@@ -313,6 +324,22 @@ namespace Cohire.Controllers
             var getUser = JsonConvert.DeserializeObject<List<GetUser>>(data);
             conn.Close();
             return Json(getUser);
+        }
+        [HttpPost]
+        public async Task<JsonResult> GetMasterData(int masterId,int is_options)
+        {
+            Masterdataoperation masterdataoperation = new Masterdataoperation();
+            
+            if (is_options==1)
+            {
+                var data = masterdataoperation.GetMasterDataAsync<string>(masterId, is_options).Result;
+                return Json(data);
+            }
+            else
+            {
+                var data = masterdataoperation.GetMasterDataAsync<List<MasterDataList>>(masterId, is_options).Result;
+                return Json(data);
+            }
         }
     }
 }

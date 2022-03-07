@@ -1,0 +1,334 @@
+﻿@model Cohire.Models.Profile.ProfileModelList
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /* Experiences */
+    ul.experiences {
+        padding-left: 15px;
+        margin-top: -1px;
+    }
+
+        ul.experiences li {
+            padding-left: 33px;
+            margin-bottom: 2.5em;
+            list-style: none;
+            background: url('../img/misc/list-bullet-darkgray.png') no-repeat;
+        }
+
+            ul.experiences li.green {
+                background: url('../img/misc/list-bullet-green.png') no-repeat;
+            }
+
+            ul.experiences li.blue {
+                background: url('../img/misc/list-bullet-blue.png') no-repeat;
+            }
+
+            ul.experiences li.pink {
+                background: url('../img/misc/list-bullet-pink.png') no-repeat;
+            }
+
+    .where {
+        font-size: 1.2857em; /* 18/16 -> 18px */
+         color: black;
+        font-weight: bold;
+        display: inline;
+        margin-right: 0.5em;
+    }
+
+    .what {
+        font-size: 0.75em; /* 12/16 -> 12px */
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: #444444;
+        display: inline-block;
+        padding: 0 12px;
+        margin: -5px 0.5em 0 0 !important;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+        .what.green {
+            background-color: #c4df9b;
+        }
+
+        .what.blue {
+            background-color: #6dcff6;
+        }
+
+        .what.pink {
+            background-color: #f06eaa;
+        }
+
+    .when {
+        float: right;
+        font-style: italic;
+        color: black;
+        font-weight: bold
+    }
+
+    .description {
+        display: block;
+        margin-top: 0.5em;
+    }
+
+
+    /* BORDERS AND BULLETS */
+
+    p {
+        /*CSS reset*/
+        margin-bottom: 0;
+    }
+
+    ul.experiences li {
+        position: relative; /* so that pseudoelements are positioned relatively to their "li"s*/
+        /* use padding-bottom instead of margin-bottom.*/
+        margin-bottom: 0; /* This overrides previously specified margin-bottom */
+        padding-bottom: 2.5em;
+    }
+
+        ul.experiences li:after {
+            /* bullets */
+            content: url('http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/RedDisc.svg/20px-RedDisc.svg.png');
+            position: absolute;
+            left: -26px; /*adjust manually*/
+            top: 0px;
+        }
+
+        ul.experiences li:before {
+            /* lines */
+            content: "";
+            position: absolute;
+            left: -16px; /* adjust manually */
+            border-left: 1px solid black;
+            height: 100%;
+            width: 1px;
+        }
+
+        ul.experiences li:first-child:before {
+            /* first li's line */
+            top: 6px; /* moves the line down so that it disappears under the bullet. Adjust manually */
+        }
+
+        ul.experiences li:last-child:before {
+            /* last li's line */
+            height: 6px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
+        }
+
+</style>
+<div class="pxp-container bg-light">
+    <div class="pxp-single-candidate-container pxp-has-columns">
+        <div class="row">
+            <div class="col-lg-7 col-xl-8 col-xxl-9">
+                <div class="pxp-single-candidate-hero pxp-cover pxp-boxed" style="background-image: url(images/ph-big.jpg);">
+                    <div class="d-flex align-items-center small" style="padding-left: 90%;">
+                        <div class="dropdown">
+                            <a href="#" class="text-muted text-decoration-none material-icons ms-2 md-20 rounded-circle bg-light p-1" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">more_vert</a>
+                            <ul class="dropdown-menu fs-13 dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">edit</span>Edit</a></li>
+                                <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1">delete</span>Delete</a></li>
+                                <li><a class="dropdown-item text-muted" href="#"><span class="material-icons md-13 me-1 ltsp-n5">arrow_back_ios arrow_forward_ios</span>Embed Vogel</a></li>
+                                <li><a class="dropdown-item text-muted d-flex align-items-center" href="#"><span class="material-icons md-13 me-1">share</span>Share via another apps</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pxp-hero-opacity"></div>
+                    <div class="pxp-single-candidate-hero-caption">
+                        <div class="pxp-container">
+
+                            <div class="pxp-single-candidate-hero-content">
+                                <div class="pxp-single-candidate-hero-avatar" style="background-image: url(/images/ProfileImage/CHPF3981.jpg);"></div>
+                                <div class="pxp-single-candidate-hero-name">
+                                    <h1>Rebecca Eason</h1>
+                                    <div class="pxp-single-candidate-hero-title">UX/UI Designer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2" style="padding-left: 72%;padding-top: 1%;">
+                    <div class="col-md">
+                        <div class="">
+                            @*form-floating*@
+                            @* <div class="form-floating" style="padding-left: 72%;padding-top: 1%;">*@
+                            <select id="AddProfile" class="form-select  rounded-5" style="width: 200px;">
+                                <option>Add Profile Section</option>
+                                <option onclick="LoadModalWorkexp('aboutModal')">Work Experience</option>
+                                <option>Skills</option>
+                                <option>Certifications</option>
+                                <option>Education</option>
+                                <option>Language</option>
+                            </select>
+                            @*                            <label for="HireJobTitle">Add Profile Section</label>
+                            *@
+                        </div>
+                    </div>
+                </div>
+                <section class="mt-4 mt-lg-5">
+                    <div class="pxp-single-candidate-content">
+                        <h2>About Shiva</h2>
+                        <p>Lorem Ipsum is also known as: Greeked text, blind text, placeholder text, dummy content, filler text, lipsum, and mock-content. In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation.</p>
+                        <p>In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text. </p>
+
+                        <div class="mt-4 mt-lg-5 ">
+                            <h2>Skills</h2>
+                            <div class="pxp-single-candidate-skills">
+                                <ul class="list-unstyled">
+                                    <li>Work from home</li>
+                                    <li>Part-time</li>
+                                    <li>Administration</li>
+                                    <li>Finance</li>
+                                    <li>Retail</li>
+                                    <li>IT</li>
+                                    <li>Engineering</li>
+                                    <li>Sales</li>
+                                    <li>Manufacturing</li>
+                                </ul>
+                            </div>
+                        </div>
+                       @if(Model.WorkExperience!=null)
+            {
+                    <div class="mt-4 mt-lg-5">
+                        <h2>Work Experience</h2>
+                        @foreach (var exp in Model.WorkExperience.OrderByDescending(x=>x.CompanyStartDate))
+                        {
+                            <div class="pxp-single-candidate-timeline">
+
+                                <div class="pxp-single-candidate-timeline-item">
+                                    <div class="pxp-single-candidate-timeline-dot"></div>
+                                    <div class="pxp-single-candidate-timeline-info ms-3">
+                                        @*<div class="pxp-single-candidate-timeline-time">
+            @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
+            {
+                <span class="me-3"> @exp.CompanyStartDate - Present</span>
+            }
+            else
+            {
+                <span class="me-3">@exp.CompanyStartDate - @exp.CompanyEndDate</span>
+            }
+        </div>*@
+                                        @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
+                                        {
+                                            <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@exp.CompanyStartDate to Present) &nbsp;&nbsp;<a href="javascript:void(0)" title="Delete"><i class="fa fa-trash-o" style="color:red" title="Add New Position"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')"><i class="fa fa-plus"></i></a> </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@exp.CompanyStartDate to @exp.CompanyEndDate) &nbsp;&nbsp;<a href="javascript:void(0)" title="Delete"><i class="fa fa-trash-o" style="color:red" title="Add New Position"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')"><i class="fa fa-plus"></i></a> </div>
+                                        }
+                                        <ul class="experiences">
+                                                @foreach (var desg in exp.designatioexp.OrderBy(x=>x.DesignationStartDate))
+                                            {
+                                                <li class="green">
+                                                    <div class="where">@desg.DesignationName  &nbsp;<a href="javascript:void(0)" title="Edit Postion" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')"><i class="fa fa-edit"></i></a></div>
+                                                    @if (string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)))
+                                                    {
+                                                <div class="when">@desg.DesignationStartDate - Present  &nbsp;(@desg.EmploymentTypeName)</div>
+                                                    }
+                                                    else
+                                                    {
+                                                <div class="when">@desg.DesignationStartDate - @desg.DesignationEndDate &nbsp;(@desg.EmploymentTypeName)</div>
+                                                    }
+                                                    <p class="description">@desg.JobProfile</p>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+            }
+                        
+                         
+                        
+
+                        <div class="mt-4 mt-lg-5">
+                            <h2>Education & Training</h2>
+                            <div class="pxp-single-candidate-timeline">
+                                <div class="pxp-single-candidate-timeline-item">
+                                    <div class="pxp-single-candidate-timeline-dot"></div>
+                                    <div class="pxp-single-candidate-timeline-info ms-3">
+                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2011 - 2017</span></div>
+                                        <div class="pxp-single-candidate-timeline-position mt-2">Architecure</div>
+                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Politehnica University of Timisoara: Bachelor of Architecture</div>
+                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-single-candidate-timeline-item">
+                                    <div class="pxp-single-candidate-timeline-dot"></div>
+                                    <div class="pxp-single-candidate-timeline-info ms-3">
+                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2020 - 2020</span></div>
+                                        <div class="pxp-single-candidate-timeline-position mt-2">Front End Web Developer</div>
+                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Udacity Nanodegree Program</div>
+                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-single-candidate-timeline-item">
+                                    <div class="pxp-single-candidate-timeline-dot"></div>
+                                    <div class="pxp-single-candidate-timeline-info ms-3">
+                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2021 - 2021</span></div>
+                                        <div class="pxp-single-candidate-timeline-position mt-2">Build Responsive Real World Websites with HTML5 and CSS3</div>
+                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Udemy</div>
+                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-5 col-xl-4 col-xxl-3">
+                <div class="pxp-single-candidate-side-panel mt-5 mt-lg-0">
+                    <div>
+                        <div class="pxp-single-candidate-side-info-label pxp-text-light">Email</div>
+                        <div class="pxp-single-candidate-side-info-data">rebecca@pixelprime.co</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-candidate-side-info-label pxp-text-light">Location</div>
+                        <div class="pxp-single-candidate-side-info-data">San Francisco, CA</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-candidate-side-info-label pxp-text-light">Phone</div>
+                        <div class="pxp-single-candidate-side-info-data">(+123) 456 7890</div>
+                    </div>
+                </div>
+
+                <div class="pxp-single-candidate-side-panel mt-4 mt-lg-5">
+                    <h3>Contact Rebecca</h3>
+                    <form class="mt-4">
+                        <div class="mb-3">
+                            <label for="contact-candidate-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="contact-candidate-name" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-candidate-email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="contact-candidate-email" placeholder="Enter your email address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-candidate-message" class="form-label">Message</label>
+                            <textarea class="form-control" id="contact-candidate-message" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <a href="#" class="btn rounded-pill pxp-section-cta d-block">Send Message</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<partial name="_About" />
+<partial name="_Certifications" />
+<partial name="_Education" />
+<partial name="_Language" />
+<partial name="_Skills" />
+
+<script src="~/js/DataScripts/Profile.js"></script>
+
+
+
+

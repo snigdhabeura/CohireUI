@@ -24,7 +24,7 @@ function viewforgetpassword() {
     $("#forget_Password").show();
 }
 function VerifySignUp() {
-    debugger;
+    
     $("#signup_body").hide();
     $("#modal_loader").show();
     var Is_error = 0;
@@ -73,7 +73,7 @@ function VerifySignUp() {
         var Ip_Address = '';
         var Is_Mobile = '';
         //$.get("https://ipinfo.io?token=c74e2bd432e4f1", function (response) {
-        //    debugger;
+        //    
         //    Ip_Address = response.ip;
         //}, "json");
         if (window.matchMedia("(max-width: 767px)").matches) {
@@ -87,7 +87,7 @@ function VerifySignUp() {
             data: { FullName: FullName, Email: Email, Mobile: Mobile, Password: Password, Ip_Address: Ip_Address, DeviceType: Is_Mobile },
             dataType: "json",
             success: function (resultData) {
-                debugger;
+                
                 if (resultData.is_error == true) {
                     $("#SignUp_err_msg").addClass('errClass');
                     $("#SignUp_err_msg").html(resultData.errormsg); $("#modal_loader").hide(); $("#signup_body").show();
@@ -140,7 +140,7 @@ function VerifyOTP() {
         data: { CHProfileID: $("#hdn_profileId").val(), OTP: $("#pxp-signup-otp").val() },
         dataType: "json",
         success: function (resultData) {
-            debugger;
+            
             if (resultData.is_error == true) {
                 $("#SignUpOTP").removeClass("sucClass");
                 $("#SignUpOTP").addClass("errClass");
@@ -180,7 +180,7 @@ function ResendOTP() {
         data: { Email: Email, Mobile: Mobile, CHProfileID: $("#hdn_profileId").val() },
         dataType: "json",
         success: function (resultData) {
-            debugger;
+            
             if (resultData.is_error == true) {
                 $("#SignUpOTP").addClass('errClass');
                 $("#SignUpOTP").html(resultData.errormsg); $("#signup_OTP").show();
@@ -202,7 +202,7 @@ function ResendOTP() {
 }
 
 function SendPassword() {
-    debugger;
+    
     $("#forget_Password").hide();
     $("#modal_loader").show();
     var Is_email = validateEmail($("#pxp-forgot-email").val());
@@ -222,7 +222,7 @@ function SendPassword() {
             data: { Email: Email, Mobile: Mobile },
             dataType: "json",
             success: function (resultData) {
-                debugger;
+                
                 if (resultData.is_error == true) {
                     $("#forgot-email").removeClass("sucClass");
                     $("#forgot-email").addClass("errClass");
@@ -249,7 +249,7 @@ function SendPassword() {
 }
 
 function VerifySignIn() {
-    debugger;
+    
     var Is_error = 0;
     if ($("#pxp-signin-email").val() == '') {
         $("#pxp-signin-email_err").addClass("errClass");
@@ -291,7 +291,7 @@ function VerifySignIn() {
             data: { Email: Email, Mobile: Mobile, Password: Password, Ip_Address: Ip_Address, DeviceType: Is_Mobile },
             dataType: "json",
             success: function (resultData) {
-                debugger;
+                
                 if (resultData != '0') {
                     location.reload(true);
                 } else {
@@ -319,7 +319,7 @@ function checkdigit(value) {
 
 function validatePassword()
 {
-    debugger;
+    
     var password = $("#pxp-signup-password").val();
     var Is_PasswordValid = true;
 

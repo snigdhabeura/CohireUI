@@ -62,7 +62,7 @@
                                 </p>
                                 @if (item.JobFiles.Count > 0)
                                 {
-                                    <div class="image-slider" onclick="OpenCommentModal('@item.ChJobID')">
+                                    <div class="image-slider  mb-3" onclick="OpenCommentModal('@item.ChJobID')">
                                         <div id="carouselExampleIndicators_@item.ChJobID" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
                                                 @{
@@ -134,7 +134,7 @@
                                 }
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <div>
-                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
+                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light"><span class="material-icons md-20 me-2">work</span><span class="apply_count_@item.ChJobID">@item.applyCount</span></a>
                                     </div>
                                     <div>
                                         <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@item.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@item.ChJobID">@item.referCount</span></a>
@@ -310,66 +310,43 @@
                 <div class="row g-2 mb-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select rounded-5" id="questions1" data-live-search="true" aria-label="Floating label select example">
-                                <option>Select a category</option>
-                                <option>Marketing &amp; Communication</option>
-                                <option>Software Engineering</option>
-                                <option>Project Management</option>
-                                <option>Finance</option>
-                                <option>Retail</option>
-                                <option>Sales</option>
-                                <option>Manufacturing</option>
-                                <option>IT</option>
-                                <option>Business Development</option>
-                                <option>Human Resources</option>
-                                <option>Customer Service</option>
-                            </select>
-                            <label for="questions1">Screening questions1 ?</label>
+                            <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus1">
+                            <label for="ScrQus1" id="lblApplyScrQus0" class="Ques"></label>
                         </div>
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="questions2" data-live-search="true" aria-label="Floating label select example">
-                                <option>Select a category</option>
-                                <option>Marketing &amp; Communication</option>
-                                <option>Software Engineering</option>
-                                <option>Project Management</option>
-                                <option>Finance</option>
-                                <option>Retail</option>
-                                <option>Sales</option>
-                                <option>Manufacturing</option>
-                                <option>IT</option>
-                                <option>Business Development</option>
-                                <option>Human Resources</option>
-                                <option>Customer Service</option>
-                            </select>
-                            <label for="questions2">Screening questions2 ?</label>
+                            <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus2">
+                            <label for="ScrQus2" id="lblApplyScrQus1" class="Ques"></label>
+
                         </div>
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control rounded-5" id="questions3" placeholder="Screening questions3 ?">
-                            <label for="questions3">Screening questions3 ?</label>
+                            <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus3">
+                            <label for="ScrQus3" id="lblApplyScrQus2" class="Ques"></label>
+
                         </div>
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control rounded-5" id="Newquestions4" placeholder="Screening questions4 ?">
-                            <label for="Newquestions4">Screening questions4 ?</label>
+                            <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus4">
+                            <label for="ScrQus4" id="lblApplyScrQus3" class="Ques"></label>
+
                         </div>
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control rounded-5" id="questions4" placeholder="Screening questions4 ?">
-                            <label for="questions4">Screening questions5 ?</label>
+                            <input type="text" class="form-control  rounded-5 QuesAResp" id="ScrQus5">
+                            <label for="ScrQus5" id="lblApplyScrQus4" class="Ques"></label>
                         </div>
                     </div>
                 </div>
@@ -516,19 +493,25 @@
          });
 
         $("#btnApplyContinue").click(function() {
+            debugger;
 
             if ($("#btnApplyContinue").text() === 'Continue')
             {
+                 
                 $("#divApplyPannel2").addClass('show');
                 $("#divApplyPannel1").removeClass('show');
                 $("#btnApplyContinue").text('Apply');
+                
             }
             else if ($("#btnApplyContinue").text() === 'Apply')
             {
+
+
                 $("#divApplyPannel3").addClass('show');
                 $("#divApplyPannel1 , #divApplyPannel2").removeClass('show');
                 $("#btnApplyContinue").text('OK');
                 $("#btnApplyContinue").attr("data-bs-dismiss", "modal");
+
             }
             else if ($("#btnApplyContinue").text() === 'OK')
             {
@@ -576,5 +559,12 @@
             $(this).prev().toggle();
             return false;
         });
+    });
+</script>
+
+<script>
+    $(function () {
+
+
     });
 </script>

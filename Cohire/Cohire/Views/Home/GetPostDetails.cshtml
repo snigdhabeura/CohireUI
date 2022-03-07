@@ -87,7 +87,7 @@
                                             <p class="ms-2 material-icons bg-primary p-0 md-16 fw-bold text-white rounded-circle ov-icon mb-0">done</p>
                                         </div>
                                         
-                                        <p class="text-muted mb-0 small">POSTID:<b style="color:black"> @Model.jobFeedList.ChJobID</b>  </p>
+                                        <p class="text-muted mb-0 small">POSTID:<b style="color: #004eff">&nbsp; @Model.jobFeedList.ChJobID</b>  </p>
                                         <p>
                                             @if (Model.jobFeedList.JobFiles.Where(x => x.filetype.ToLower() == "pdf" || x.filetype.ToLower() == "docx").ToList().Count > 0)
                                             {
@@ -118,12 +118,15 @@
                             </div>
                             <div class="border-top p-3 mt-auto">
                                 <div class="d-flex align-items-center justify-content-between mb-2 classMargintop">
-                                    <div>
-                                        <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
-                                    </div>
-                                    <div>
-                                        <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@Model.jobFeedList.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.referCount</span></a>
-                                    </div>
+                                    @if (Model.jobFeedList.Is_Job == 1)
+                                    {
+                                        <div>
+                                            <a title="Apply" href="#" class="text-muted text-decoration-none d-flex align-items-start fw-light">Apply &nbsp;&nbsp;<span class="apply_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.applyCount</span></a>
+                                        </div>
+                                        <div>
+                                            <a title="Refer" href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="GetReferModel('@Model.jobFeedList.ChJobID')">Refer &nbsp;&nbsp;<span class="refer_count_@Model.jobFeedList.ChJobID">@Model.jobFeedList.referCount</span></a>
+                                        </div>
+                                    }
                                     <div>
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none d-flex align-items-start fw-light" onclick="IncreaseLike('@Model.jobFeedList.ChJobID')"><span class="material-icons md-20 me-2" id="likebtns_@Model.jobFeedList.ChJobID">thumb_up_off_alt</span><span class="likeCount_@Model.jobFeedList.ChJobID">@Model.jobFeedList.likeCount</span></a>
                                     </div>
@@ -153,7 +156,7 @@
     </div>
     <script>
     $(document).ready(function () {
-        debugger;
+        
         var Is_modelFound = '@Model.jobFeedList';
         if (Is_modelFound!= null) {
             var jobid = '@Model.jobFeedList.ChJobID';
@@ -163,7 +166,7 @@
                 type: "POST",
                 data: { jobID: jobid },
                 success: function (data) {
-                    debugger;
+                    
                     for (var i = 0; i < data.length; i++) {
                         var comments = data[i];
                         var commentHtml = '';
