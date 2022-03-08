@@ -59,6 +59,9 @@ function LoadMasterData(controlid, masterId, is_options) {
             
             if (is_options == 1) {
                 $("#" + controlid + "").append(data);
+                if (controlid == 'CompanyName') {
+                    $("#CertiReceived").append(data);
+                }
             }
         },
         error: function (xhr, error, status) {
@@ -183,4 +186,44 @@ function EditPostions(id, startdate, endate, is_current, DesignationId, Employme
     $("#DesigEndDate").val(DesigEndDate);
     $("#JobProfile").val(JobProfile); $("#aboutModal").modal('show');
 
+}
+
+
+function AddCertifications()
+{
+    var formData = new FormData();
+    debugger; 
+    formData.append("certification", $("#Certification").val());
+    formData.append("certificationid", $("#certificationid").val());
+    formData.append("certiIDNo", $("#CertiIDNo").val());
+    formData.append("certiReceived", $("#CertiReceived").val());
+    formData.append("certiReceivedname", $("#CertiReceived option:selected").text());
+    formData.append("certiValidTill", $("#CertiValidTill").val());
+    formData.append("certiAttach", $("#CertiAttach").val());
+    $.ajax({
+        url: "../Profile/AddUpdateCertifications",
+        type: "POST",
+        data: formData, processData: false,
+        contentType: false,
+        async: false,
+        success: function (data) {
+            if (data == "1") {
+                location.reload(true);
+            }
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+}
+function Editcertification(certificationid, certification, certiIDNo, certiValidTill, certiReceived, CertiAttach)
+{
+    LoadMasterData('CompanyName', '7', '1');
+    $("#Certification").val(certification);
+    $("#certificationid").val(certificationid);
+    $("#CertiIDNo").val(certiIDNo);
+    $("#CertiReceived").val(certiReceived);
+    $("#CertiValidTill").val(certiValidTill);
+    $("#CertiAttach").val(CertiAttach);
+    $("#AddCertificationsModal").modal('show');
 }

@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Cohire.Models.Profile
 {
     public class ProfileModel
     {
-       public List<WorkExperience> WorkExperience { get; set; }
+        public List<WorkExperience> WorkExperience { get; set; }
+        public List<Certifications> certifications { get; set; }
     }
     public class ProfileModelList
     {
-        public List<WorkExperience> WorkExperience { get; set; }
+        public List<WorkExperienceList> WorkExperience { get; set; }
+        public List<Certifications> certifications { get; set; }
     }
     public class WorkExperienceRequest
     {
@@ -19,7 +22,7 @@ namespace Cohire.Models.Profile
         public string CompanyEndDate { get; set; }
         public int Is_currentCompany { get; set; }
         public int EmploymentType { get; set; }
-        public string EmploymentTypeName{ get; set; }
+        public string EmploymentTypeName { get; set; }
         public int DesignationId { get; set; }
         public string DesignationName { get; set; }
         public string DesignationStartDate { get; set; }
@@ -47,7 +50,7 @@ namespace Cohire.Models.Profile
         public string CompanyStartDate { get; set; }
         public object CompanyEndDate { get; set; }
         public int Is_currentCompany { get; set; }
-       
+
         public List<Designatioexp> designatioexp { get; set; }
     }
 
@@ -75,4 +78,17 @@ namespace Cohire.Models.Profile
 
         public List<DesignatioexpList> designatioexp { get; set; }
     }
+
+    #region--------------Certifications--------------------
+    public class Certifications
+    {
+        public string certificationid { get; set; }
+        public string certification { get; set; }
+        public string certiIDNo { get; set; }
+        public string certiReceived { get; set; }
+        public string certiReceivedname { get; set; }
+        public DateTime? certiValidTill { get; set; }
+        public string certiAttach { get; set; }
+    }
+    #endregion
 }

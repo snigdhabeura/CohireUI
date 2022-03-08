@@ -11,8 +11,8 @@
                 <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="Certification" data-live-search="true" aria-label="Floating label select example">
-                            </select>
+                            <input type="hidden" id="certificationid" />
+                          <input type="text"  class="form-control  rounded-5 input-append" id="Certification" style="background-color: #FFFFFF">
                             <label for="Certification">Certification</label>
                         </div>
                     </div>
@@ -20,8 +20,8 @@
                 <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="CertiIDNo" data-live-search="true" aria-label="Floating label select example">
-                            </select>
+                                                    <input type="text"  class="form-control  rounded-5 input-append" id="CertiIDNo" style="background-color: #FFFFFF">
+
                             <label for="CertiIDNo">ID No</label>
                         </div>
                     </div>
@@ -36,23 +36,21 @@
                  <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="CertiValidTill" data-live-search="true" aria-label="Floating label select example">
-                            </select>
+                          <input type="text" readonly="readonly" name="date" class="form-control  rounded-5 input-append date datePicker" id="CertiValidTill" style="cursor:pointer; background-color: #FFFFFF">
                             <label for="CertiValidTill">Valid Till</label>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="CertiAttach" data-live-search="true" aria-label="Floating label select example">
-                            </select>
-                            <label for="CertiAttach">Attach</label>
+                        <input type="text"  class="form-control  rounded-5 input-append" id="CertiAttach" style="background-color: #FFFFFF">
+                        <label for="CertiAttach">URL</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer px-1 py-1 rounded-5">
-                    <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
-                        <button data-bs-dismiss="modal" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="AddSkill()"><span class="material-icons me-2md-16">send</span>Save</button>
+                    <div class="ms-auto m-0">
+                        <button  class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="AddCertifications()"><span class="material-icons me-2md-16">send</span>Save</button>
                     </div>
                 </div>
 

@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
+    .fa-clora{
+        color:#333333;
+    }
     /* Experiences */
     ul.experiences {
         padding-left: 15px;
@@ -31,7 +34,7 @@
 
     .where {
         font-size: 1.2857em; /* 18/16 -> 18px */
-         color: black;
+        color: black;
         font-weight: bold;
         display: inline;
         margin-right: 0.5em;
@@ -64,7 +67,7 @@
         }
 
     .when {
-        float: right;
+        /*float: right;*/
         font-style: italic;
         color: black;
         font-weight: bold
@@ -189,64 +192,121 @@
                                 </ul>
                             </div>
                         </div>
-                       @if(Model.WorkExperience!=null)
-            {
-                    <div class="mt-4 mt-lg-5">
-                        <h2>Work Experience</h2>
-                        @foreach (var exp in Model.WorkExperience.OrderByDescending(x=>x.CompanyStartDate))
+                        @if (Model.WorkExperience != null)
                         {
-                            <div class="pxp-single-candidate-timeline">
+                            <div class="mt-4 mt-lg-5">
+                                <h2>Work Experience</h2>
+                                @foreach (var exp in Model.WorkExperience.OrderByDescending(x => x.CompanyStartDate))
+                                {
+                                    <div class="pxp-single-candidate-timeline">
 
-                                <div class="pxp-single-candidate-timeline-item">
-                                    <div class="pxp-single-candidate-timeline-dot"></div>
-                                    <div class="pxp-single-candidate-timeline-info ms-3">
-                                        @*<div class="pxp-single-candidate-timeline-time">
-            @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
-            {
-                <span class="me-3"> @exp.CompanyStartDate - Present</span>
-            }
-            else
-            {
-                <span class="me-3">@exp.CompanyStartDate - @exp.CompanyEndDate</span>
-            }
-        </div>*@
-                                        @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
-                                        {
-                                            <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@exp.CompanyStartDate to Present) &nbsp;&nbsp;<a href="javascript:void(0)" title="Delete"><i class="fa fa-trash-o" style="color:red" title="Add New Position"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')"><i class="fa fa-plus"></i></a> </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@exp.CompanyStartDate to @exp.CompanyEndDate) &nbsp;&nbsp;<a href="javascript:void(0)" title="Delete"><i class="fa fa-trash-o" style="color:red" title="Add New Position"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')"><i class="fa fa-plus"></i></a> </div>
-                                        }
-                                        <ul class="experiences">
-                                                @foreach (var desg in exp.designatioexp.OrderBy(x=>x.DesignationStartDate))
-                                            {
-                                                <li class="green">
-                                                    <div class="where">@desg.DesignationName  &nbsp;<a href="javascript:void(0)" title="Edit Postion" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')"><i class="fa fa-edit"></i></a></div>
-                                                    @if (string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)))
+                                        <div class="pxp-single-candidate-timeline-item">
+                                            <div class="pxp-single-candidate-timeline-dot"></div>
+                                            <div class="pxp-single-candidate-timeline-info ms-3">
+                                                @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
+                                                {
+                                                    if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
                                                     {
-                                                <div class="when">@desg.DesignationStartDate - Present  &nbsp;(@desg.EmploymentTypeName)</div>
+                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@Convert.ToDateTime(exp.CompanyStartDate).ToString("MMM-yyyy") to Present) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
+
                                                     }
                                                     else
                                                     {
-                                                <div class="when">@desg.DesignationStartDate - @desg.DesignationEndDate &nbsp;(@desg.EmploymentTypeName)</div>
+                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
+
                                                     }
-                                                    <p class="description">@desg.JobProfile</p>
-                                                </li>
-                                            }
+                                                }
+                                                else
+                                                {
+                                                    if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
+                                                    {
+                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@Convert.ToDateTime(exp.CompanyStartDate).ToString("MMM-yyyy") to @Convert.ToDateTime(exp.CompanyEndDate).ToString("MMM-yyyy")) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company" ></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName  &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
+
+                                                    }
+                                                }
+                                                <ul class="experiences">
+                                                    @foreach (var desg in exp.designatioexp.OrderByDescending(x => x.DesignationStartDate))
+                                                    {
+                                                        <li class="green">
+                                                            <div class="where">@desg.DesignationName</div>
+                                                            @if (string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)))
+                                                            {
+                                                                if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
+                                                                {
+                                                                    <div class="when">@Convert.ToDateTime(desg.DesignationStartDate).ToString("MMM-yyyy") to Present  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o "  data-title="Delete Position"></i></a></div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o "  data-title="Delete Position"></i></a></div>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
+                                                                {
+                                                                    <div class="when">@Convert.ToDateTime(desg.DesignationStartDate).ToString("MMM-yyyy") to @Convert.ToDateTime(desg.DesignationEndDate).ToString("MMM-yyyy")  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora" ><i class="fa fa-edit " data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o"  data-title="Delete Position"></i></a></div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Position"></i></a></div>
+                                                                }
+                                                            }
+                                                            <p class="description">@desg.JobProfile</p>
+                                                        </li>
+                                                    }
 
 
-                                        </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                </div>
-
+                                }
                             </div>
                         }
-                    </div>
-            }
-                        
-                         
-                        
+
+                        @if (Model.certifications != null)
+                        {
+                            <div class="mt-4 mt-lg-5">
+                                <h2>Certifications</h2>
+                                @foreach (var exp in Model.certifications)
+                                {
+                                    <div class="pxp-single-candidate-timeline">
+
+                                        <div class="pxp-single-candidate-timeline-item">
+                                            <div class="pxp-single-candidate-timeline-dot"></div>
+                                            <div class="pxp-single-candidate-timeline-info ms-3">
+                                                       @* <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.certiReceivedname &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=3"><i class="fa fa-trash-o" style="color:red" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('3', '01-01-2018 12.00.00 AM', '01-12-2019 12.00.00 AM', '0')"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>*@
+                                                <ul class="experiences">
+                                                        <li class="green">
+                                                            <div class="where">@exp.certiReceivedname  <br><a href="@exp.certiAttach" target="_blank">@exp.certification</a>  &nbsp;<a href="javascript:void(0)" onclick="Editcertification('@exp.certificationid','@exp.certification','@exp.certiIDNo','@exp.certiValidTill','@exp.certiReceived','@exp.certiAttach')" class="fa-clora"><i class="fa fa-edit" data-title="Edit"></i></a> &nbsp;<a href="/profile/DeleteCertifications?id=@exp.certificationid" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete"></i></a></div>
+                                                           @if(!string.IsNullOrEmpty(Convert.ToString(@exp.certiValidTill)))
+                                                        {
+                                                            <div class="when">ValidTill: @Convert.ToDateTime(exp.certiValidTill).ToString("MMM-yyyy") </div>
+                                                        }else
+                                                        {
+                                                            <div class="when">No Expiary </div>
+                                                        }
+
+                                                        
+                                                        </li>
+                                                        
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+                            </div>
+                        }
+
 
                         <div class="mt-4 mt-lg-5">
                             <h2>Education & Training</h2>
