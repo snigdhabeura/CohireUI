@@ -18,7 +18,41 @@ Version: 1.0
 -- Profile
 -- Media
 */
+/*title design*/
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
 
+[data-title]:after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -1.6em;
+    left: 100%;
+    padding: 4px 4px 4px 8px;
+    color: #222;
+    white-space: nowrap;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 4px #222;
+    -webkit-box-shadow: 0px 0px 4px #222;
+    box-shadow: 0px 0px 4px #222;
+    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f8f8f8),color-stop(1, #cccccc));
+    background-image: -webkit-linear-gradient(top, #f8f8f8, #cccccc);
+    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
+    background-image: -ms-linear-gradient(top, #f8f8f8, #cccccc);
+    background-image: -o-linear-gradient(top, #f8f8f8, #cccccc);
+    opacity: 0;
+    z-index: 99999;
+    visibility: hidden;
+}
+
+[data-title] {
+    position: relative;
+}
 /* Fonts */
 @import url('fonts/dm-sans/dm-sans.css');
 @import url('fonts/gilroy/Gilroy.css');
@@ -1271,6 +1305,7 @@ a:hover {
 }
 .pxp-user-modal .form-floating > label {
     padding: 1rem 1.3rem;
+    font-size:20px;
 }
 .pxp-user-modal .form-floating > span {
     position: absolute;
@@ -1348,3 +1383,212 @@ a:hover {
     overflow:scroll;
     -webkit-overflow-scrolling: touch;*/
 }
+/**
+ * 24.0 - Single candidate
+ */
+
+.pxp-single-candidate-hero {
+    background-color: var(--pxpMainColorLight);
+    height: 300PX;
+    position: relative;
+}
+
+    .pxp-single-candidate-hero.pxp-boxed {
+        border-radius: 30px;
+        overflow: hidden;
+    }
+
+.pxp-single-candidate-hero-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    z-index: 2;
+}
+
+.pxp-single-candidate-hero.pxp-boxed .pxp-single-candidate-hero-caption {
+    bottom: 30px;
+    left: 30px;
+}
+
+.pxp-single-candidate-hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+.pxp-single-candidate-hero-content {
+    display: flex;
+    align-items: center;
+}
+
+.pxp-single-candidate-hero-name {
+    margin-left: 20px;
+}
+
+    .pxp-single-candidate-hero-name h1 {
+        font-weight: 700;
+        font-size: 34px;
+        letter-spacing: -1px;
+        color: #fff;
+    }
+
+.pxp-single-candidate-hero-title {
+    color: #fff;
+}
+
+.pxp-single-candidate-content {
+    font-size: 14px;
+}
+
+    .pxp-single-candidate-content h2 {
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: -1px;
+        margin-bottom: 30px;
+    }
+
+    .pxp-single-candidate-content p {
+        line-height: 1.7;
+    }
+
+.pxp-single-candidate-side-panel {
+    background-color: var(--pxpSecondaryColorLight);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.pxp-single-candidate-side-info-label {
+    font-size: 13px;
+}
+
+.pxp-single-candidate-side-info-data {
+    font-weight: 500;
+}
+
+.pxp-single-candidate-skills ul {
+    margin-bottom: 0;
+}
+
+    .pxp-single-candidate-skills ul li {
+        background-color: lightgray;
+        color: var(--pxpMainColorDark);
+        font-size: 13px;
+        display: inline-block;
+        border-radius: 50px;
+        padding: 7px 17px;
+        text-decoration: none;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+
+.pxp-single-candidate-timeline-item {
+    display: flex;
+    position: relative;
+}
+
+.pxp-single-candidate-timeline-dot {
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    border: 4px solid var(--pxpMainColor);
+    border-radius: 50%;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
+
+    .pxp-single-candidate-timeline-dot::before {
+        content: "";
+        width: 1px;
+        position: absolute;
+        top: -1px;
+        height: 7px;
+        left: 5px;
+        border-right: 1px dotted var(--pxpMainColor);
+    }
+
+    .pxp-single-candidate-timeline-dot::after {
+        content: "";
+        width: 1px;
+        bottom: 0;
+        position: absolute;
+        top: 15px;
+        left: 5px;
+        border-right: 1px dotted var(--pxpMainColor);
+    }
+
+.pxp-single-candidate-timeline-item:first-child .pxp-single-candidate-timeline-dot:before {
+    content: none;
+}
+
+.pxp-single-candidate-timeline-item:last-child .pxp-single-candidate-timeline-dot:after {
+    content: none;
+}
+
+.pxp-single-candidate-timeline-position {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.pxp-single-candidate-timeline-time span {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    background-color: var(--pxpMainColorLight);
+    color: var(--pxpMainColorDark);
+    padding: 2px 8px;
+    border-radius: 20px;
+    width: 96px;
+    text-align: center;
+}
+
+.pxp-single-candidate-timeline-company {
+    font-weight: 500;
+}
+
+.pxp-single-candidate-side-panel h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pxp-single-candidate-side-panel .form-control,
+.pxp-single-candidate-side-panel .form-select {
+    border: 1px solid rgba(0,0,0,.2);
+    font-weight: 300;
+    color: var(--pxpTextColor);
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 1rem;
+}
+
+.pxp-single-candidate-side-panel .form-select {
+    background-position: right 20px center;
+}
+
+    .pxp-single-candidate-side-panel .form-control:focus,
+    .pxp-single-candidate-side-panel .form-select:focus {
+        box-shadow: none;
+        border: 1px solid rgba(0,0,0,.4);
+    }
+
+.pxp-single-candidate-side-panel .form-label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.pxp-single-candidate-side-panel textarea {
+    height: 200px;
+}
+
+.pxp-single-candidate-container {
+    margin-top: 120px;
+}
+
+    .pxp-single-candidate-container.pxp-has-columns {
+        margin-top: 0px;
+    }

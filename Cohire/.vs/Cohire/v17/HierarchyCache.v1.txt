@@ -1,0 +1,990 @@
+﻿++Solution 'Cohire' ‎(2 of 2 projects)
+i:{00000000-0000-0000-0000-000000000000}:Cohire.sln
+++DocConeverter
+i:{00000000-0000-0000-0000-000000000000}:DocConeverter
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\bin\debug\docconeverter.exe
+++Properties
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\properties\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\properties\
+++References
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++App.config
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\app.config
+++packages.config
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\packages.config
+++Program.cs
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\program.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\program.cs
+++TiffImage.cs
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\tiffimage.cs
+++AssemblyInfo.cs
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:c:\users\admin\pictures\new folder\cohireui\cohire\docconeverter\properties\assemblyinfo.cs
+++Microsoft.CSharp
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++Microsoft.Office.Interop.Word
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++Select.Pdf
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Core
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Data
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Data.DataSetExtensions
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Drawing
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Net.Http
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Xml
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++System.Xml.Linq
+i:{a564e346-0f1f-4bf5-b867-2aea8d304a13}:
+++Cohire
+i:{00000000-0000-0000-0000-000000000000}:Cohire
+++Connected Services 
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2123
+++Dependencies
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2122
+++wwwroot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\
+++ApplyJobResume
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\applyjobresume\
+++Content
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\
+++css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\css\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\
+++fonts
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\fonts\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\fonts\
+++images
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\
+++Img
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\
+++JobFiles
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\
+++js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\
+++DataScripts
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\datascripts\
+++signalr
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\signalr\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\microsoft\signalr\
+++.DS_Store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\.ds_store
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\.ds_store
+++bootstrap.bundle.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\bootstrap.bundle.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++Chart.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\chart.min.js
+++custom.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\custom.js
+++jquery-3.4.1.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\jquery-3.4.1.min.js
+++jquery-ui.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\jquery-ui.min.js
+++main.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\main.js
+++nav.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\nav.js
+++owl.carousel.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\owl.carousel.min.js
+++site.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\site.js
+++tag-it.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\tag-it.min.js
+++lib
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\
+++ProfileImages
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\profileimages\
+++Refer_job_Files
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\refer_job_files\
+++vendor
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\
+++favicon.ico
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\favicon.ico
+++Controllers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\controllers\
+++Authentication.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\controllers\authentication.cs
+++HomeController.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\controllers\homecontroller.cs
+++PostJobController.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\controllers\postjobcontroller.cs
+++UserController.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\controllers\usercontroller.cs
+++DB_Scripts
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\db_scripts\
+++Models
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\
+++CommonOperation
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\commonoperation\
+++JobFeed
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\jobfeed\
+++JobFeeds.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\jobfeed\jobfeeds.cs
+++JobFeedList
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\jobfeedlist\
+++JobFeedList.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\jobfeedlist\jobfeedlist.cs
+++MasterData
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\masterdata\
+++MasterData.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\masterdata\masterdata.cs
+++PostJob
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\postjob\
+++PostJobDB.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\postjob\postjobdb.cs
+++PostJobModel.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\postjob\postjobmodel.cs
+++Response_Model
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\response_model\
+++SignalR_Hub
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\signalr_hub\
+++UserAuthentication
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\userauthentication\
+++UserAuthentication.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\userauthentication\userauthentication.cs
+++ErrorViewModel.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\errorviewmodel.cs
+++ViewModel
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\viewmodel\
+++Views
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\
+++Authentication
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\authentication\
+++Home
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\
+++_ADDScreeningQuestions.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_addscreeningquestions.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\_addscreeningquestions.cshtml
+++_Feeds.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_feeds.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\_feeds.cshtml
+++_NewFeed.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_newfeed.cshtml
+++_Post.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_post.cshtml
+++_PostSuccessPopUp.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_postsuccesspopup.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\_postsuccesspopup.cshtml
+++_SignIn.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\_signin.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\_signin.cshtml
+++Apply.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\apply.cshtml
+++GetPostDetails.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\getpostdetails.cshtml
+++Index.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\index.cshtml
+++JobDetails.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\jobdetails.cshtml
+++Privacy.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\privacy.cshtml
+++SignIn.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\home\signin.cshtml
+++Shared
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\shared\
+++User
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\
+++_ViewImports.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\_viewstart.cshtml
+++appsettings.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\appsettings.json
+++libman.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\libman.json
+++page_0.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\page_0.png
+++page_1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\page_1.png
+++Startup.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\startup.cs
+++No service dependencies discovered
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2124
+++Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:analyzers
+++Frameworks
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:frameworks
+++Packages
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:packages
+++Projects
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:projects
+++launchSettings.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\properties\launchsettings.json
+++504cdbde-b973-4693-9fbb-9984f72672d9_docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\
+++85ac86bf-0d39-4902-81b3-31b4fe2c911a_pdf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\85ac86bf-0d39-4902-81b3-31b4fe2c911a_pdf\
+++c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\
+++animate.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\animate.css
+++bootstrap.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\bootstrap.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++CohyreModification.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\cohyremodification.css
+++font-awesome.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\font-awesome.min.css
+++jquery.tagit.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\jquery.tagit.css
+++owl.carousel.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\owl.carousel.min.css
+++owl.theme.default.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\owl.theme.default.min.css
+++site.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\site.css
+++style.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\style.css
+++tagit.ui-zendesk.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\tagit.ui-zendesk.css
+++FontAwesome.otf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome.otf
+++fontawesome-webfont.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome-webfont.eot
+++fontawesome-webfont.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome-webfont.svg
+++fontawesome-webfont.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome-webfont.ttf
+++fontawesome-webfont.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome-webfont.woff
+++fontawesome-webfont.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\fonts\fontawesome-webfont.woff2
+++ProfileImage
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\profileimage\
+++404.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\404.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\404.png
+++check.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\check.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\check.svg
+++check-light.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\check-light.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\check-light.svg
+++company-logo-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-1.png
+++company-logo-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-2.png
+++company-logo-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-3.png
+++company-logo-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-4.png
+++company-logo-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-5.png
+++company-logo-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-6.png
+++company-logo-7.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\company-logo-7.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\company-logo-7.png
+++customer-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-1.png
+++customer-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-2.png
+++customer-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-3.png
+++customer-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-4.png
+++customer-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-5.png
+++customer-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\customer-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\customer-6.png
+++favicon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\favicon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\favicon.png
+++filedownload.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\filedownload.png
+++folder-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\folder-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\folder-icon.png
+++hero-illustration.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-illustration.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-illustration.png
+++hero-logo-1.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-1.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-1.svg
+++hero-logo-2.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-2.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-2.svg
+++hero-logo-3.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-3.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-3.svg
+++hero-logo-4.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-4.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-4.svg
+++hero-logo-5.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-5.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-5.svg
+++hero-logo-6.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-6.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-6.svg
+++hero-logo-7.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\hero-logo-7.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\hero-logo-7.svg
+++index-1-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-1-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-1-nav-icon@2x.png
+++index-2-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-2-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-2-nav-icon@2x.png
+++index-3-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-3-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-3-nav-icon@2x.png
+++index-4-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-4-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-4-nav-icon@2x.png
+++index-5-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-5-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-5-nav-icon@2x.png
+++index-6-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-6-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-6-nav-icon@2x.png
+++index-7-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\index-7-nav-icon@2x.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\index-7-nav-icon@2x.png
+++paper-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\paper-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\paper-icon.png
+++ph-big.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\ph-big.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\ph-big.jpg
+++ph-medium.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\ph-medium.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\ph-medium.jpg
+++ph-small.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\ph-small.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\ph-small.jpg
+++service-1-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\service-1-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\service-1-icon.png
+++service-2-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\service-2-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\service-2-icon.png
+++service-3-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\service-3-icon.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\service-3-icon.png
+++signin-big-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\signin-big-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\signin-big-fig.png
+++signin-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\signin-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\signin-fig.png
+++signup-big-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\signup-big-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\signup-big-fig.png
+++signup-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\signup-fig.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\signup-fig.png
+++subscribe.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\subscribe.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\subscribe.png
+++404.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\404.svg
+++logo.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\logo.png
+++Logo1.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\logo1.jpg
+++post1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\post1.png
+++post2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\post2.png
+++post-img1.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\post-img1.jpg
+++post-img2.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\post-img2.jpg
+++post-img3.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\post-img3.jpg
+++rmate1.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate1.jpg
+++rmate2.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate2.jpg
+++rmate3.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate3.jpg
+++rmate4.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate4.jpg
+++rmate5.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate5.jpg
+++rmate6.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\rmate6.jpg
+++trend1.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\img\trend1.jpg
+++~$d678bf-ade8-4cdc-a406-d2738d774ec4.pdf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\~$d678bf-ade8-4cdc-a406-d2738d774ec4.pdf
+++~$fcfdd4-ed11-464b-a0eb-54c78619d186.docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\~$fcfdd4-ed11-464b-a0eb-54c78619d186.docx
+++4f2a85d2-fa9a-4392-8776-1322bc2dc613.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\4f2a85d2-fa9a-4392-8776-1322bc2dc613.png
+++504cdbde-b973-4693-9fbb-9984f72672d9.docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\504cdbde-b973-4693-9fbb-9984f72672d9.docx
+++85ac86bf-0d39-4902-81b3-31b4fe2c911a.pdf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\85ac86bf-0d39-4902-81b3-31b4fe2c911a.pdf
+++92dce374-c916-442f-8b69-63f32a06735c.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\92dce374-c916-442f-8b69-63f32a06735c.png
+++98c1a7cd-8a99-43c4-8e2d-4822f0aa1f81.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\98c1a7cd-8a99-43c4-8e2d-4822f0aa1f81.jpg
+++c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c.docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c.docx
+++dc81595f-ca79-4228-a56e-e868f4b00ba9.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\dc81595f-ca79-4228-a56e-e868f4b00ba9.jpg
+++ef95cea5-27eb-4f12-a8a7-42dd7cb179da.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\jobfiles\ef95cea5-27eb-4f12-a8a7-42dd7cb179da.jpg
+++feed.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\datascripts\feed.js
+++UserAuth.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\datascripts\userauth.js
+++dist
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\signalr\dist\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\dist\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\dist\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\microsoft\signalr\dist\
+++bootstrap.bundle.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\bootstrap.bundle.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\
+++jquery
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\
+++jquery-validation
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation-unobtrusive\
+++microsoft
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\microsoft\
+++34AD2.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\profileimages\34ad2.jpg
+++pp.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\profileimages\pp.jpg
+++CIS-SSP-API (1).docx
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\refer_job_files\cis-ssp-api (1).docx
+++icofont
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\
+++icons
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\
+++slick
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\
+++cohire_backup_new_20_02_2022
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\db_scripts\cohire_backup_new_20_02_2022
+++CommonOP.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\commonoperation\commonop.cs
+++Api_Response.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\response_model\api_response.cs
+++SignalRHubcs.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\models\signalr_hub\signalrhubcs.cs
+++HomeViewModel.cs
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\viewmodel\homeviewmodel.cs
+++ProfilePage.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\authentication\profilepage.cshtml
+++SignUp.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\authentication\signup.cshtml
+++_Layout.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\shared\_layout.cshtml
+++_LayoutBefore.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\shared\_layoutbefore.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\shared\_validationscriptspartial.cshtml
+++Error.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\shared\error.cshtml
+++UserHome.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\userhome.cshtml
+++ValidRef.cshtml
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\views\user\validref.cshtml
+++appsettings.Development.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\appsettings.development.json
+++Microsoft.AspNetCore.Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.CodeAnalysis.Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\.nuget\packages\microsoft.codeanalysis.analyzers\2.9.4\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.Analyzers
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\.nuget\packages\microsoft.codeanalysis.analyzers\2.9.4\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+++Microsoft.AspNetCore.App
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\microsoft.netcore.app
+++Aspose.Words (22.2.0)
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2137
+++Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation (3.0.0)
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2135
+++Microsoft.VisualStudio.Web.CodeGeneration.Design (3.1.5)
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2139
+++Newtonsoft.Json (13.0.1)
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2136
+++System.Data.SqlClient (4.8.3)
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:>2138
+++page-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-1.png
+++page-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-2.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-2.png
+++page-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-3.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-3.png
+++page-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-4.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-4.png
+++page-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-5.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-5.png
+++page-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-6.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-6.png
+++page-7.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-7.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-7.png
+++page-8.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\504cdbde-b973-4693-9fbb-9984f72672d9_docx\page-8.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-8.png
+++Page-1.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\85ac86bf-0d39-4902-81b3-31b4fe2c911a_pdf\page-1.png
+++page-9.png
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\content\c6ca36e6-2b0a-4ccc-ada6-7f0fcb44f84c_docx\page-9.png
+++dm-sans
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\
+++gilroy
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\
+++bootstrap.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\bootstrap.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++CHPF3981.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\profileimage\chpf3981.jpg
+++CHPF96ce.jpg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\images\profileimage\chpf96ce.jpg
+++browser
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\signalr\dist\browser\
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\microsoft\signalr\dist\browser\
+++LICENSE
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\license
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\license
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\license
+++LICENSE.txt
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\license.txt
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++demo.html
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\demo.html
+++icofont.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\icofont.css
+++.github
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\.github\
+++scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\
+++package.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\package.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\package.json
+++preview.html
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\preview.html
+++README.md
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\readme.md
+++jquery.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\dist\jquery.js
+++.gitignore
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\.gitignore
+++bower.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\bower.json
+++component.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\component.json
+++CONTRIBUTING.markdown
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\contributing.markdown
+++index.html
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\index.html
+++ISSUE_TEMPLATE.md
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\issue_template.md
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\.github\issue_template.md
+++Makefile
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\makefile
+++README.markdown
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\readme.markdown
+++slick.jquery.json
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick.jquery.json
+++dm-sans.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans.css
+++dm-sans-v6-latin-500.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-500.eot
+++dm-sans-v6-latin-500.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-500.svg
+++dm-sans-v6-latin-500.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-500.ttf
+++dm-sans-v6-latin-500.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-500.woff
+++dm-sans-v6-latin-500.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-500.woff2
+++dm-sans-v6-latin-700.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-700.eot
+++dm-sans-v6-latin-700.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-700.svg
+++dm-sans-v6-latin-700.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-700.ttf
+++dm-sans-v6-latin-700.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-700.woff
+++dm-sans-v6-latin-700.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-700.woff2
+++dm-sans-v6-latin-regular.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-regular.eot
+++dm-sans-v6-latin-regular.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-regular.svg
+++dm-sans-v6-latin-regular.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-regular.ttf
+++dm-sans-v6-latin-regular.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-regular.woff
+++dm-sans-v6-latin-regular.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\dm-sans\dm-sans-v6-latin-regular.woff2
+++Gilroy.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy.css
+++Gilroy-Black.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-black.eot
+++Gilroy-Black.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-black.ttf
+++Gilroy-Black.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-black.woff
+++Gilroy-BlackItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-blackitalic.eot
+++Gilroy-BlackItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-blackitalic.ttf
+++Gilroy-BlackItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-blackitalic.woff
+++Gilroy-Bold.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bold.eot
+++Gilroy-Bold.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bold.ttf
+++Gilroy-Bold.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bold.woff
+++Gilroy-BoldItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bolditalic.eot
+++Gilroy-BoldItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bolditalic.ttf
+++Gilroy-BoldItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-bolditalic.woff
+++Gilroy-Extrabold.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabold.eot
+++Gilroy-Extrabold.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabold.ttf
+++Gilroy-Extrabold.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabold.woff
+++Gilroy-ExtraboldItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabolditalic.eot
+++Gilroy-ExtraboldItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabolditalic.ttf
+++Gilroy-ExtraboldItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-extrabolditalic.woff
+++Gilroy-Heavy.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavy.eot
+++Gilroy-Heavy.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavy.ttf
+++Gilroy-Heavy.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavy.woff
+++Gilroy-HeavyItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavyitalic.eot
+++Gilroy-HeavyItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavyitalic.ttf
+++Gilroy-HeavyItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-heavyitalic.woff
+++Gilroy-Light.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-light.eot
+++Gilroy-Light.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-light.ttf
+++Gilroy-Light.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-light.woff
+++Gilroy-LightItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-lightitalic.eot
+++Gilroy-LightItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-lightitalic.ttf
+++Gilroy-LightItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-lightitalic.woff
+++Gilroy-Medium.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-medium.eot
+++Gilroy-Medium.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-medium.ttf
+++Gilroy-Medium.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-medium.woff
+++Gilroy-MediumItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-mediumitalic.eot
+++Gilroy-MediumItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-mediumitalic.ttf
+++Gilroy-MediumItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-mediumitalic.woff
+++Gilroy-Regular.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regular.eot
+++Gilroy-Regular.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regular.ttf
+++Gilroy-Regular.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regular.woff
+++Gilroy-RegularItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regularitalic.eot
+++Gilroy-RegularItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regularitalic.ttf
+++Gilroy-RegularItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-regularitalic.woff
+++Gilroy-Semibold.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibold.eot
+++Gilroy-Semibold.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibold.ttf
+++Gilroy-Semibold.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibold.woff
+++Gilroy-SemiboldItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibolditalic.eot
+++Gilroy-SemiboldItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibolditalic.ttf
+++Gilroy-SemiboldItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-semibolditalic.woff
+++Gilroy-Thin.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thin.eot
+++Gilroy-Thin.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thin.ttf
+++Gilroy-Thin.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thin.woff
+++Gilroy-ThinItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thinitalic.eot
+++Gilroy-ThinItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thinitalic.ttf
+++Gilroy-ThinItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-thinitalic.woff
+++Gilroy-UltraLight.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-ultralight.ttf
+++Gilroy-UltraLight.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-ultralight.woff
+++Gilroy-UltraLightItalic.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-ultralightitalic.eot
+++Gilroy-UltraLightItalic.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-ultralightitalic.ttf
+++Gilroy-UltraLightItalic.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\css\fonts\gilroy\gilroy-ultralightitalic.woff
+++signalr.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\js\signalr\dist\browser\signalr.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\microsoft\signalr\dist\browser\signalr.js
+++additional-methods.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.css
+++bootstrap.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++icofont.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\icofont.eot
+++icofont.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\icofont.svg
+++icofont.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\icofont.ttf
+++icofont.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\icofont.woff
+++icofont.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\fonts\icofont.woff2
+++icofont.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icofont\icofont.min.css
+++materialdesignicons.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\css\materialdesignicons.css
+++materialdesignicons-webfont.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\fonts\materialdesignicons-webfont.eot
+++materialdesignicons-webfont.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\fonts\materialdesignicons-webfont.ttf
+++materialdesignicons-webfont.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\fonts\materialdesignicons-webfont.woff
+++materialdesignicons-webfont.woff2
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\fonts\materialdesignicons-webfont.woff2
+++_animated.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_animated.scss
+++_core.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_core.scss
+++_extras.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_extras.scss
+++_functions.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_functions.scss
+++_icons.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_icons.scss
+++_path.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_path.scss
+++_variables.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\_variables.scss
+++materialdesignicons.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\scss\materialdesignicons.scss
+++jquery.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\dist\jquery.min.js
+++jquery.slim.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.slim.js
+++ajax-loader.gif
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\ajax-loader.gif
+++config.rb
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\config.rb
+++slick.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick.js
+++slick.less
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick.less
+++slick.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick.scss
+++slick-theme.less
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick-theme.less
+++slick-theme.scss
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick-theme.scss
+++additional-methods.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.rtl.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.bundle.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++materialdesignicons.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\css\materialdesignicons.css.map
+++materialdesignicons.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\css\materialdesignicons.min.css
+++jquery.min.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.min.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\jquery\dist\jquery.min.map
+++jquery.slim.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.slim.min.js
+++slick.eot
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\fonts\slick.eot
+++slick.svg
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\fonts\slick.svg
+++slick.ttf
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\fonts\slick.ttf
+++slick.woff
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\fonts\slick.woff
+++slick.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick.min.js
+++slick.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick.css
+++slick-theme.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\slick\slick\slick-theme.css
+++bootstrap.rtl.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.bundle.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.esm.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++materialdesignicons.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\icons\css\materialdesignicons.min.css.map
+++jquery.slim.min.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\jquery\jquery.slim.min.map
+++bootstrap.rtl.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.esm.min.js.map
+i:{fc13e40f-4ca8-453f-aaa0-54dcfff45e49}:c:\users\admin\pictures\new folder\cohireui\cohire\cohire\wwwroot\vendor\bootstrap\js\bootstrap.esm.min.js.map

@@ -6779,19 +6779,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lucky\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj",
       "projectName": "Cohire",
-      "projectPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\Cohire.csproj",
-      "packagesPath": "C:\\Users\\Lucky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\Cohire\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\Cohire.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\Cohire\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lucky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6805,8 +6805,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj": {
-              "projectPath": "C:\\Users\\Lucky\\source\\repos\\Application\\Cohire\\DocConeverter\\DocConeverter.csproj"
+            "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Pictures\\New folder\\CohireUI\\Cohire\\DocConeverter\\DocConeverter.csproj"
             }
           }
         }

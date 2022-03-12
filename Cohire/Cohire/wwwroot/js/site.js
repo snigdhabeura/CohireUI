@@ -4,7 +4,7 @@
 // Write your JavaScript code.$('#upload').submit(function (e) {})
 
 $("#post_form").submit(function (e) {
-    e.preventDefault(); debugger;
+    e.preventDefault(); 
     var formData = new FormData();
     var input = document.getElementById('fileupload');
     var files = input.files;
@@ -12,8 +12,8 @@ $("#post_form").submit(function (e) {
         formData.append("JobFiles", files[i]);
     }
     
-    
-
+    var Job_type = $("#hdn_job_type").val();
+    formData.append("Is_Job", $("#hdn_job_type").val());
     if ($("#hdn_job_type").val() == "1")
     {
         var jobtitle = $("#JobTitle").val();
@@ -25,7 +25,7 @@ $("#post_form").submit(function (e) {
         var categoryName = $("#JobCategory option:selected").text();
         formData.append("Category_Name", categoryName);
 
-        var Jobdescription = $("#floatingTextarea2").val();
+        var Jobdescription = $("#JobDesc").val();
         formData.append("JobDescription", Jobdescription);
         var ExperienceID = $("#Experience").val();
         formData.append("ExperienceID", ExperienceID);
@@ -33,8 +33,17 @@ $("#post_form").submit(function (e) {
         var ExperienceName = $("#Experience option:selected").text();
         formData.append("Experience_Name", ExperienceName);
 
-        var Location = $("#Location").val();
-        formData.append("city", Location);
+       
+        var getHireloc = $("#HireLocation").find('input[type="hidden"]');
+        var getHireLocation = '';
+        for (var i = 0; i < getHireloc.length; i++) {
+            if (getHireloc.length == (i + 1)) {
+                getHireLocation = getHireLocation + getHireloc[i].value;
+            } else {
+                getHireLocation = getHireLocation + getHireloc[i].value + ",";
+            }
+
+        } formData.append("city", getHireLocation);
 
         var EmploymenttypeID = $("#Employmenttype").val();
         formData.append("EmploymenttypeID", EmploymenttypeID);
@@ -46,15 +55,67 @@ $("#post_form").submit(function (e) {
         var SalaryRange = $("#SalaryRange").val();
 
         formData.append("Salaryrange", SalaryRange);
-        formData.append("Is_Job", $("#hdn_job_type").val());
+        
     }
      else if ($("#hdn_job_type").val() == "2")
     {
-        var Jobdescription = $("#txtJobReq").val();
-        formData.append("JobDescription", Jobdescription);
-        var jobtitle = $("#JobTitle").val();
+        var jobtitle = $("#HireJobTitle").val();
         formData.append("Jobtitle", jobtitle);
 
+        var categoryID = $("#HireJobFunction").val();
+        formData.append("CategoryID", categoryID);
+
+        var categoryName = $("#HireJobFunction option:selected").text();
+        formData.append("Category_Name", categoryName);
+
+        var Jobdescription = $("#HireJobRequest").val();
+        formData.append("JobDescription", Jobdescription);
+        var skills = $("#HireSkills").find('input[type="hidden"]');
+        var getallSkills = '';
+        for (var i = 0; i < skills.length; i++) {
+            if (skills.length == (i + 1)) {
+                getallSkills = getallSkills + skills[i].value;
+            } else {
+                getallSkills = getallSkills + skills[i].value + ",";
+            }
+            
+        }
+        formData.append("Skills", getallSkills);
+
+        var ExperienceID = $("#HireExperience").val();
+        formData.append("ExperienceID", ExperienceID);
+
+        var ExperienceName = $("#HireExperience option:selected").text();
+        formData.append("Experience_Name", ExperienceName);
+
+        var getHireloc = $("#getHireLocation").find('input[type="hidden"]');
+        var getHireLocation = '';
+        for (var i = 0; i < getHireloc.length; i++) {
+            if (getHireloc.length == (i + 1)) {
+                getHireLocation = getHireLocation + getHireloc[i].value;
+            } else {
+                getHireLocation = getHireLocation + getHireloc[i].value + ",";
+            }
+
+        } formData.append("city", getHireLocation);
+
+        var EmploymenttypeID = $("#HireEmploymentType").val();
+        formData.append("EmploymenttypeID", EmploymenttypeID);
+
+        var EmploymenttypeName = $("#HireEmploymentType option:selected").text();
+        formData.append("Employmenttype_Name", EmploymenttypeName);
+
+        var SalaryRange = $("#HireAnnualSalary").val();
+
+        formData.append("Salaryrange", SalaryRange);
+
+        let isChecked = $('#chkANONYMOUS').prop('checked');
+        if (isChecked == true) {
+            formData.append("Is_masked_jobrequest", 1);
+        } else {
+            formData.append("Is_masked_jobrequest", 0);
+        }
+        
     }
      else if ($("#hdn_job_type").val() == "3")
     {
@@ -69,9 +130,24 @@ $("#post_form").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-            debugger;
-            if (data.is_Error != true) {
-                location.reload();
+            
+            if (data.is_Error != true)
+            {
+                if (Job_type == 1)
+                {
+                    $("#postModal").modal('hide');
+                    $("#job_postID_suc").val(data.data.chJobID);
+                    $("#Post_Success_jobID").text(data.data.chJobID);
+                    $("#NewpostCnfModal").modal('show');
+                }
+                else
+                {
+                    $("#postModal").modal('hide');
+                    $("#simp_postid").text(data.data.chJobID);
+                    $("#simplepost_Confirmation").modal('show');
+                }
+                
+                //var getqsns = $("#ScrQus").find('input[type="text"]');
             }
         },
         error: function (xhr, error, status) {
@@ -80,6 +156,31 @@ $("#post_form").submit(function (e) {
     });
 
 });
+
+function SaveScreenQuestion()
+{
+    
+    var jobId = $("#job_postID_suc").val();
+    var getqsns = $("#ScrQus").find('input[type="text"]');
+    var question = [];
+    for (var i = 0; i < getqsns.length; i++) {
+        if (getqsns[i].value != '') {
+            question.push(getqsns[i].value);
+        }
+    }
+    $.ajax({
+        url: "../Home/UpdateScreenQuestion",
+        type: "POST",
+        data: { chjobId: jobId, question: question },
+        dataType: 'json',
+        success: function (data) {
+            $("#NewpostCnfModal").modal('hide'); location.reload(true);
+        },
+        error: function (xhr, error, status) {
+            console.log(error, status);
+        }
+    });
+}
 ///Comment Modal Actions
 function OpenCommentModal(id)
 {
@@ -90,7 +191,7 @@ function OpenCommentModal(id)
         data: { JobID: id },
         dataType:'html',
         success: function (data) {
-            debugger;
+            
            
             $("#commentModal").append(data);
             $("#commentModal").modal('show');
@@ -99,7 +200,7 @@ function OpenCommentModal(id)
             console.log(error, status);
         }
     });
-    debugger;
+    
     
 }
 

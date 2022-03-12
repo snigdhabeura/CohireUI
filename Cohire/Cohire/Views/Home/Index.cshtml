@@ -47,10 +47,11 @@
                                     </div>
                                     <!-- Slider Accounts -->
                                     <div class="account-slider" id="index_account_slider">
+
                                     </div>
                                     <!-- Feeds -->
                                     <div class="pt-4 feeds">
-                                        @Html.Partial("_NewFeed",Model.jobFeedList);
+                                        @Html.Partial("_Feeds",Model.jobFeedList);
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +274,7 @@
                                     <a href="index.html" class="nav-link"><span class="material-icons me-3">house</span> <span>MY Post</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="profile.html" class="nav-link"><span class="material-icons me-3">account_circle</span> <span>Profile</span></a>
+                                    <a asp-controller="Profile" asp-action="Index" class="nav-link"><span class="material-icons me-3">account_circle</span> <span>Profile</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="explore.html" class="nav-link"><span class="material-icons me-3">explore</span> <span>Explore</span></a>
@@ -318,7 +319,7 @@
                                     <a href="index.html" class="nav-link"><span class="material-icons me-3">house</span> <span>MY Post</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="profile.html" class="nav-link"><span class="material-icons me-3">account_circle</span> <span>Profile</span></a>
+                                    <a asp-controller="Profile" asp-action="Index" class="nav-link"><span class="material-icons me-3">account_circle</span> <span>Profile</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="explore.html" class="nav-link"><span class="material-icons me-3">explore</span> <span>Explore</span></a>

@@ -52,7 +52,14 @@ namespace Cohire.Controllers
         public async Task<IActionResult> Index()
         {
             HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.jobFeedList = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+
+            homeViewModel.BaseURL = URL;
+            var data = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            if(data!=null)
+            {
+                data.ForEach(x => { x.BaseURL = URL; });
+            }
+            homeViewModel.jobFeedList = data;
             homeViewModel.job_Category = await GetMasterDataAsync<Job_Category>("api/job/getjobcategory");
             homeViewModel.job_EmploymentType = await GetMasterDataAsync<Job_EmploymentType>("api/job/jobemploymentType");
             homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
@@ -139,11 +146,11 @@ namespace Cohire.Controllers
                 Guid jobID = System.Guid.NewGuid();
                 string ChJobID = "CHJ" + jobID.ToString().Substring(0, 6);
                 ViewPostJobModel postJobviewModels = new ViewPostJobModel();
-               
+
                 postJobviewModels.JobId = jobID;
                 postJobviewModels.ChJobID = ChJobID;
                 postJobviewModels.RoleId = postJobModel.RoleId;
-                postJobviewModels.PostedByID =Convert.ToString(Request.Cookies["UserID"]);
+                postJobviewModels.PostedByID = Convert.ToString(Request.Cookies["UserID"]);
                 postJobviewModels.PostedByName = Convert.ToString(Request.Cookies["Username"]);
                 postJobviewModels.Jobtitle = postJobModel.Jobtitle;
                 postJobviewModels.CategoryID = postJobModel.CategoryID;
@@ -222,21 +229,24 @@ namespace Cohire.Controllers
                     postJobviewModels.JobFiles = Filesresult;
                 }
                 var json = JsonConvert.SerializeObject(postJobviewModels);
-                serachInstance = serachInstance + "-" + postJobModel.Jobtitle.ToLower() + "-" + postJobModel.JobDescription.ToLower();
+                if(postJobviewModels.Is_Job==1)
+                {
+                    serachInstance = serachInstance + "-" + postJobModel.Jobtitle.ToLower() + "-" + postJobModel.JobDescription.ToLower();
+                }
                 var Is_insert = await PostJobDB.Instance.CreateJobPublic(postJobviewModels, json, serachInstance, postJobModel.city);
                 if (!string.IsNullOrEmpty(Is_insert))
                 {
                     api_Response.Is_Error = false;
                     api_Response.Status_Code = StatusCodes.Status200OK;
                     api_Response.data = postJobviewModels;
-                    return new JsonResult(api_Response);
+
                 }
                 else
                 {
                     api_Response.Is_Error = true;
                     api_Response.Status_Code = StatusCodes.Status500InternalServerError;
                     api_Response.data = null;
-                    return new JsonResult(api_Response);
+
                 }
             }
             catch (Exception ex)
@@ -244,10 +254,48 @@ namespace Cohire.Controllers
                 api_Response.Is_Error = true;
                 api_Response.Status_Code = StatusCodes.Status400BadRequest;
                 api_Response.data = null;
-                return new JsonResult(api_Response);
+
             }
+            return new JsonResult(api_Response);
         }
         
+
+        [HttpPost]
+        public async Task<JsonResult>UpdateScreenQuestion(string chjobId,List<string> question)
+        {
+            Api_Response<ViewPostJobModel> api_Response = new Api_Response<ViewPostJobModel>();
+            ViewPostJobModel postJobModel = new ViewPostJobModel();
+            List<string> result;
+            
+            var data = JobFeeds.Instance.GetJobFeeds(chjobId);
+            postJobModel = JsonConvert.DeserializeObject<ViewPostJobModel>(data);
+            if (question.Count > 0)
+            {
+                postJobModel.JobQuestions = question;
+            }
+            string skills = string.Empty;
+            if(postJobModel.Skills!=null)
+            {
+                if (postJobModel.Skills.Count > 0)
+                {
+                    skills = String.Join(",", postJobModel.Skills);
+                }
+            }
+            var json = JsonConvert.SerializeObject(postJobModel);
+            var Is_update = await PostJobDB.Instance.UpdateJobPublic(postJobModel.ChJobID, json, "", postJobModel.Ip_Address, postJobModel.Device_Type, postJobModel.Is_Job, postJobModel.PostedByID);
+            if (!string.IsNullOrEmpty(Is_update))
+            {
+                api_Response.Is_Error = false;
+                api_Response.Status_Code = StatusCodes.Status200OK;
+                
+            }
+            else
+            {
+                api_Response.Is_Error = true;
+                api_Response.Status_Code = StatusCodes.Status500InternalServerError;
+            }
+            return new JsonResult(api_Response);
+        }
         [HttpPost]
         public async Task<JsonResult> UpdateJob([FromForm] UpdatePostJobModel postJobModel)
         {
@@ -400,20 +448,29 @@ namespace Cohire.Controllers
         [HttpPost]
         public async Task<PartialViewResult> GetPostDetails(string JobID)
         {
-            JobActionModel api_Response =new  JobActionModel();
-            SqlConnection azureSQLDb = null;
-            SqlCommand cmd;
-            using (azureSQLDb = new SqlConnection(connectionString))
+            JobActionModel api_Response = new JobActionModel();
+            try
             {
-                if (azureSQLDb.State == System.Data.ConnectionState.Closed)
-                    azureSQLDb.Open();
-                cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
-                cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = JobID;
-                cmd.CommandType = CommandType.StoredProcedure;
-                var Is_Get = await cmd.ExecuteScalarAsync();
-                 api_Response = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
-                api_Response.jobFeedList= JsonConvert.DeserializeObject<JobFeedList>(api_Response.JobJson.ToString());
+                
+                SqlConnection azureSQLDb = null;
+                SqlCommand cmd;
+                using (azureSQLDb = new SqlConnection(connectionString))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    cmd = new SqlCommand("[dbo].[Get_Job_Post_Josn]", azureSQLDb);
+                    cmd.Parameters.Add("@JobId", SqlDbType.VarChar).Value = JobID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    var Is_Get = await cmd.ExecuteScalarAsync();
+                    api_Response = JsonConvert.DeserializeObject<JobActionModel>(Is_Get.ToString());
+                    api_Response.jobFeedList = JsonConvert.DeserializeObject<JobFeedList>(api_Response.JobJson.ToString());
+                    api_Response.jobFeedList.BaseURL = URL;
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw;
             }
             return PartialView(api_Response);
         }
@@ -442,6 +499,23 @@ namespace Cohire.Controllers
             return new JsonResult(pageCount);
         }
 
-      
+        [HttpGet]
+        public async Task<IActionResult> JobDetails(string jobId)
+        {
+            HomeViewModel homeViewModel = new HomeViewModel();
+
+            homeViewModel.BaseURL = URL;
+            var data = await GetMasterDataAsync<JobFeedList>("api/job/getjobs");
+            if(data != null)
+            {
+                data = data.Where(x => x.ChJobID == jobId).ToList();
+                data.ForEach(x => { x.BaseURL = URL; });
+            }
+            homeViewModel.jobFeedList = data;
+            homeViewModel.job_Category = await GetMasterDataAsync<Job_Category>("api/job/getjobcategory");
+            homeViewModel.job_EmploymentType = await GetMasterDataAsync<Job_EmploymentType>("api/job/jobemploymentType");
+            homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
+            return View(homeViewModel);
+        }
     }
 }

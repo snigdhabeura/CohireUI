@@ -65,7 +65,7 @@
 
 <script>
     function VerifySignUp() {
-        debugger;
+        
         var Is_error = 0;
         if ($("#fullname").val() == '') {
             $("#fullname_err").html("Full name required"); Is_error = 1;
@@ -110,7 +110,7 @@
                 data: { FullName: FullName, Email: Email, Mobile: Mobile, Password: Password },
                 dataType: "json",
                 success: function (resultData) {
-                    debugger;
+                    
                     if (resultData.is_error == true) {
                         alert(resultData.errormsg);
                     } else {
@@ -124,7 +124,7 @@
     }
 
     function verifyPassword() {
-        debugger;
+        
         if ($("#password").val() != $("#cpassword").val()) {
             $("#cpassword_err").html("Password does not match");
         } else {
@@ -167,7 +167,7 @@
             data: { CHProfileID: $("#hdn_profileId").val(), OTP: $("#signup_otp").val() },
             dataType: "json",
             success: function (resultData) {
-                debugger;
+                
                 if (resultData.is_error == true) {
                     $("#signup_otp_err").html(resultData.errormsg);
                 } else {
@@ -197,7 +197,7 @@
             data: { Email: Email, Mobile: Mobile, CHProfileID: $("#hdn_profileId").val() },
             dataType: "json",
             success: function (resultData) {
-                debugger;
+                
                 if (resultData.is_error == true) {
                     $("#signup_otp_err").html(resultData.errormsg);
                 } else {

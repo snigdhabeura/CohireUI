@@ -1,0 +1,133 @@
+﻿<div class="modal fade pxp-user-modal" id="pxp-signin-modal" aria-hidden="true" aria-labelledby="signinModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <input type="hidden" id="hdn_profileId" />
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close"  aria-label="Close" onclick="cancelmodal()"></button>
+            </div>
+            <div class="modal-body" id="signin_body">
+                <div class="pxp-user-modal-fig text-center">
+                    <img src="~/images/signin-fig.png" alt="Sign in">
+                </div>
+                <h5 class="modal-title text-center mt-4" id="signinModal">Welcome back!</h5>
+                <form class="mt-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="pxp-signin-email" placeholder="Email/Phone">
+                        <label for="pxp-signin-email" id="pxp-signin-email_err">Email/Phone</label>
+                        <span class="fa fa-envelope-o"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="pxp-signin-password" placeholder="Password">
+                        <label for="pxp-signin-password" id="pxp-signin-password_err">Password</label>
+                        <span class="fa fa-lock"></span>
+                    </div>
+                    <a href="javascript:void(0)" class="btn rounded-pill pxp-modal-cta" onclick="VerifySignIn()">Continue</a>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        <a href="#" onclick="viewforgetpassword()" class="pxp-modal-link">Forgot password</a>
+                    </div>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        New to Cohyre? <a role="button" href="javascript:void(0)" onclick="ViewSignUp()">Create an account</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-body" id="signup_body" style="display:none">
+                <div class="pxp-user-modal-fig text-center">
+                    <img src="~/images/signup-fig.png" alt="Sign up">
+                </div>
+                <h5 class="modal-title text-center mt-4" id="signupModal">Create an account</h5>
+                <form class="mt-4">
+                    <div class="mt-4 text-center pxp-modal-small"><span id="SignUp_err_msg" class="text-center"></span></div>
+                    <div class="form-floating mb-2 SignUp">
+                        <input type="email" class="form-control" id="pxp-signup-FullName" placeholder="Full Name">
+                        <label for="pxp-signup-FullName" id="pxp-signup-FullName_err">Full Name</label>
+                        <span class="fa fa-user"></span>
+                    </div>
+                    <div class="form-floating mb-2 SignUp">
+                        <input type="email" class="form-control" id="pxp-signup-email" placeholder="Email/Phone">
+                        <label for="pxp-signup-email" id="pxp-signup-email_err">Email/Phone</label>
+                        <span class="fa fa-envelope-o"></span>
+                    </div>
+                    <div class="form-floating mb-2 SignUp">
+                        <input type="password" class="form-control" id="pxp-signup-password" placeholder="Password" oninput="validatePassword()">
+                        <label for="pxp-signup-password" id="pxp-signup-password_err">Password</label>
+                        <span class="fa fa-lock"></span>
+                    </div>
+                    @*<div class="mt-4 pxp-modal-small d-none SignUpOTP" style="color: green;font-weight:bold;padding-left: 5%;">
+            OTP has been send to your email
+        </div>
+        <div class="form-floating mb-2 d-none SignUpOTP">
+            <input type="email" class="form-control" id="pxp-signup-Otp" placeholder="Enter OTP">
+            <label for="pxp-signup-Otp">Enter OTP</label>
+            <span class="fa fa-envelope-o"></span>
+        </div>*@
+                    <a class="btn rounded-pill pxp-modal-cta" onclick="VerifySignUp()" href="javascript:void(0)">Continue</a>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        Already have an account? <a role="button" href="javascript:void(0)" onclick="ViewSignin()">Sign in</a>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="modal-body" id="signup_OTP" style="display:none">
+                <div class="pxp-user-modal-fig text-center">
+                    <img src="~/images/signup-fig.png" alt="Verify account">
+                </div>
+                <h5 class="modal-title text-center mt-4" id="signupModal">Verify account</h5>
+                <form class="mt-4">
+                    <div class="mt-4 text-center pxp-modal-small"><span id="SignUpOTP" class="text-center"></span></div>
+                    <div class="form-floating mb-2 SignUp">
+                        <input type="text" class="form-control" id="pxp-signup-otp" placeholder="OTP">
+                        <label for="pxp-signup-otp" id="pxp-signup-otp_err">OTP</label>
+                        <span class="fa fa-lock"></span>
+                    </div>
+
+                    <a type="button" class="btn rounded-pill pxp-modal-cta" onclick="VerifyOTP()" href="javascript:void(0)">SignUp</a>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        Did not recived OTP? <a onclick="ResendOTP()" href="javascript:void(0)" class="pxp-modal-link">Resend OTP</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-body" id="forget_Password" style="display:none">
+                <div class="pxp-user-modal-fig text-center">
+                    <img src="~/images/signup-fig.png" alt="Forgot Password">
+                </div>
+                <h5 class="modal-title text-center mt-4" id="signupModal">Forgot Password</h5>
+                <form class="mt-4">
+                    <div class="mt-4 text-center pxp-modal-small"><span id="forgot-email" class="text-center"></span></div>
+                    <div class="form-floating mb-2 SignUp">
+                        <input type="text" class="form-control" id="pxp-forgot-email" placeholder="Email/Mobile">
+                        <label for="pxp-signup-otp" id="pxp-forgot-email_err">Email/Mobile</label>
+                        <span class="fa fa-lock"></span>
+                    </div>
+
+                    <a type="button" class="btn rounded-pill pxp-modal-cta" onclick="SendPassword()" href="javascript:void(0)">Send Password</a>
+                    <div class="mt-4 text-center pxp-modal-small">
+                        Sign in? <a role="button" href="javascript:void(0)" onclick="ViewSignin()">Sign in</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body" id="modal_loader" style="display:none">
+                <div class="text-center mt-4">
+                    <div class="spinner-border" role="status">
+                    </div>
+                    <p class="mb-0 mt-2">Please wait..</p>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+<script src="~/js/DataScripts/UserAuth.js"></script>
+        
+        <style>
+            .errClass{
+                color:red
+            }
+            .sucClass {
+                color: green
+            }
+        </style>
+        

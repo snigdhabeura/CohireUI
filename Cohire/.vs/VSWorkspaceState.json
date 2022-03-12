@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Cohire",
+    "\\Cohire\\Models",
+    "\\Cohire\\Models\\JobFeed",
+    "\\Cohire\\Models\\JobFeedList",
+    "\\Cohire\\Models\\PostJob",
+    "\\Cohire\\Models\\Response_Model",
+    "\\Cohire\\wwwroot",
+    "\\Cohire\\wwwroot\\js",
+    "\\Cohire\\wwwroot\\js\\DataScripts"
+  ],
+  "SelectedNode": "\\Cohire\\Views\\Home\\_Feeds.cshtml",
+  "PreviewInSolutionExplorer": false
+}

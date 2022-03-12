@@ -1,0 +1,62 @@
+﻿<style>
+        .selectpicker {
+            z-index: 99999999 !important;
+        }
+    </style>
+<div class="modal fade" id="AddSkillModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 p-4 border-0 bg-light">
+            <div class="modal-header d-flex align-items-center justify-content-start border-0 p-0 mb-2">
+                <a href="#" class="text-muted text-decoration-none material-icons back" data-bs-dismiss="modal">arrow_back_ios_new</a>
+                <h5 class="modal-title text-muted ms-3 ln-0" id="staticBackdropLabel"><span class="material-icons md-32">account_circle</span></h5>
+                <h5 class="modal-title text-muted ms-3 ln-0"><span class="md-10">Add Skills</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="padding-top:1%;"></button>
+            </div>
+            <div id="divAddSkill" class="collapse show">
+                <div class="row g-2 mb-1">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            @*<select class="form-select  rounded-5" id="skillCategory" data-live-search="true" aria-label="Floating label select example">
+                            </select>
+                            <label for="skillCategory">Category</label>*@
+                            <select class="form-select  rounded-5 selectpicker" id="Skills" data-live-search="true">
+                                <option data-tokens="Net">.Net</option>
+                                <option data-tokens="c#">C#</option>
+                                <option data-tokens="Java">Java</option>
+                                <option data-tokens="Angular">Angular</option>
+                                <option data-tokens="AWS">AWS</option>
+                                <option data-tokens="Bootstrap">Bootstrap</option>
+                            </select>
+                            <label for="Skills">Skills</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-1">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5" id="skillCategory" data-live-search="true" aria-label="Floating label select example">
+                            </select>
+                            <label for="skillCategory">Category</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select  rounded-5" id="SkillSelfRating" data-live-search="true" aria-label="Floating label select example">
+                            </select>
+                            <label for="SkillSelfRating">Self Rating</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer px-1 py-1 rounded-5">
+                    <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
+                        <button data-bs-dismiss="modal" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="AddSkill()"><span class="material-icons me-2md-16">send</span>Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1737,6 +1737,14 @@
           "DocConeverter.exe": {}
         }
       },
+      "Select.Pdf/21.2.0.0": {
+        "runtime": {
+          "Select.Pdf.dll": {
+            "assemblyVersion": "21.2.0.0",
+            "fileVersion": "21.2.0.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -4286,6 +4294,11 @@
     },
     "DocConeverter/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Select.Pdf/21.2.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
