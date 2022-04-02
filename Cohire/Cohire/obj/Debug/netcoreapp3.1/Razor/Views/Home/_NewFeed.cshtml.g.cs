@@ -28,7 +28,9 @@ using Cohire.Models;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a109db78f5ba8e44bdf07bee6674943a0deef483", @"/Views/Home/_NewFeed.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6ea59a34af991f172abef7c894b4ab93a398505a", @"/Views/_ViewImports.cshtml")]
+    #nullable restore
     public class Views_Home__NewFeed : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Cohire.Models.JobFeedListNM.JobFeedList>>
+    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/Img/rmate2.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("img-fluid rounded-circle user-img"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -87,7 +89,7 @@ using Cohire.Models;
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"bg-white p-3 feed-item rounded-4 mb-3 shadow-sm\">\r\n                <div class=\"d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a109db78f5ba8e44bdf07bee6674943a0deef4835714", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a109db78f5ba8e44bdf07bee6674943a0deef4835760", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -108,7 +110,7 @@ using Cohire.Models;
                             <div class=""d-flex align-items-center justify-content-between"">
                                 <a href=""profile.html"" class=""text-decoration-none d-flex align-items-center"">
                                     <h6 class=""fw-bold mb-0 text-body"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef4837314", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef4837360", async() => {
 #nullable restore
 #line 17 "C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\Views\Home\_NewFeed.cshtml"
                                                                                                       Write(item.PostedByName);
@@ -144,7 +146,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
 #line hidden
 #nullable disable
             WriteLiteral("</b> </small>\r\n                                </a>\r\n                                <div class=\"d-flex align-items-center small\">\r\n                                    <p class=\"text-muted mb-0\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef4839826", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef4839872", async() => {
 #nullable restore
 #line 22 "C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\Views\Home\_NewFeed.cshtml"
                                                                                              Write(item.CreatedDate);
@@ -186,7 +188,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
                             </div>
                             <div class=""my-2"">
                                 <p class=""mb-3 text-primary""><b>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef48313063", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef48313109", async() => {
 #nullable restore
 #line 35 "C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\Views\Home\_NewFeed.cshtml"
                                                                                            Write(item.Jobtitle);
@@ -1128,7 +1130,7 @@ Write(Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }));
 #line hidden
 #nullable disable
             WriteLiteral(" |\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef48362457", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a109db78f5ba8e44bdf07bee6674943a0deef48362503", async() => {
                 WriteLiteral("Back to List");
             }
             );
@@ -1243,16 +1245,26 @@ Write(Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }));
 </script>");
         }
         #pragma warning restore 1998
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<List<Cohire.Models.JobFeedListNM.JobFeedList>> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<List<Cohire.Models.JobFeedListNM.JobFeedList>> Html { get; private set; } = default!;
+        #nullable disable
     }
 }
 #pragma warning restore 1591

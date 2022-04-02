@@ -19,7 +19,6 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Selec
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Html.dep
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\bin\Debug\Select.Tools.dep
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.AssemblyReference.cache
-C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.SuggestedBindingRedirects.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.csproj.CopyComplete
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\DocConeverter\obj\Debug\DocConeverter.exe

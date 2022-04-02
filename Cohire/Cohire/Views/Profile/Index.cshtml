@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
     .fa-clora{
         color:#333333;
@@ -120,8 +121,111 @@
             /* last li's line */
             height: 6px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
         }
-
+    textarea {
+        /* box-sizing: padding-box; */
+        overflow: hidden;
+        padding: 10px;
+        width: 100%;
+        height:auto;
+        font-size: 14px;
+        margin: 50px auto;
+        display: block;
+        border-radius: 10px;
+        border: 6px solid #556677;
+    }
 </style>
+<style>
+    .LineChart #tip {
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  position: absolute;
+  left: -200px;
+  top: 30px;
+}
+
+.down-triangle {
+  width: 0;
+  height: 0;
+  border-top: 10px solid #d0d0d0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  position: absolute;
+  left: -200px;
+}
+
+.LineChart #highlighter {
+  position: absolute;
+  left: -200px;
+}
+
+.-line-chart-holder {
+  float: left;
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #cecece;/*padding: 6px;*/
+}
+
+.LineChart .legendsli { list-style: none; }
+
+.LineChart .legendsli span {
+  float: left;
+  vertical-align: middle;
+}
+
+.LineChart .legendsli span.legendindicator {
+  position: relative;
+  top: 5px;
+}
+
+.LineChart .legendsli span.legendindicator .line {
+  width: 30px;
+  height: 3px;
+}
+
+.LineChart .legendsli span.legendindicator .circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 20px;
+  position: relative;
+  top: -5px;
+  right: 20px;
+}
+
+.line-chart-legends {
+  background: #E7E7E7;
+  border: 1px solid #d6d7dd;
+  padding: 5px;
+  margin: 2px 0px;
+}
+
+.line-chart-legends ul { }
+
+.line-chart-legends ul li {
+  display: inline;
+  border-right: 1px solid #d6d7dd;
+  float: left;
+  padding: 10px;
+}
+
+.line-chart-legends ul li:last-child { border-right: 0px; }
+
+.line-chart-legends.vertical { margin: 0px 10px; }
+
+.line-chart-legends.vertical ul li {
+  display: block;
+  border: 0px;
+  border-bottom: 1px solid #d6d7dd;
+}
+
+.line-chart-legends.vertical ul li:last-child { border-bottom: 0px; }
+
+.line-chart-Header {
+  position: absolute;
+  font-size: 16px;
+}
+</style>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div class="pxp-container bg-light">
     <div class="pxp-single-candidate-container pxp-has-columns">
         <div class="row">
@@ -172,175 +276,280 @@
                 </div>
                 <section class="mt-4 mt-lg-5">
                     <div class="pxp-single-candidate-content">
-                        <h2>About Shiva</h2>
-                        <p>Lorem Ipsum is also known as: Greeked text, blind text, placeholder text, dummy content, filler text, lipsum, and mock-content. In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation.</p>
-                        <p>In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text. </p>
-
+                        <h2>About <a href="javascript:void(0)" onclick="Editaboutyou()" class="fa-clora"><i class="fa fa-edit" data-title="Edit About info"></i></a></h2>
+                        <p id="about_section" style="display:none">
+                            <textarea rows='10' placeholder='type something about you' id="txt_about" style="height:auto"></textarea>
+                            <button class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" onclick="saveaboutyou()">Save</button>
+                        </p>
+                        <p id="about_section_txt">
+@Model.AboutProfile
+                        </p>
                         <div class="mt-4 mt-lg-5 ">
-                            <h2>Skills</h2>
-                            <div class="pxp-single-candidate-skills">
-                                <ul class="list-unstyled">
-                                    <li>Work from home</li>
-                                    <li>Part-time</li>
-                                    <li>Administration</li>
-                                    <li>Finance</li>
-                                    <li>Retail</li>
-                                    <li>IT</li>
-                                    <li>Engineering</li>
-                                    <li>Sales</li>
-                                    <li>Manufacturing</li>
-                                </ul>
+                            <div id="chartContainer" style="height: 300px; width: 100%;">
+
                             </div>
-                        </div>
-                        @if (Model.WorkExperience != null)
-                        {
-                            <div class="mt-4 mt-lg-5">
-                                <h2>Work Experience</h2>
-                                @foreach (var exp in Model.WorkExperience.OrderByDescending(x => x.CompanyStartDate))
+                            @if (Model.skills != null)
+                            {
+                                if (Model.skills.Count > 0)
                                 {
-                                    <div class="pxp-single-candidate-timeline">
-
-                                        <div class="pxp-single-candidate-timeline-item">
-                                            <div class="pxp-single-candidate-timeline-dot"></div>
-                                            <div class="pxp-single-candidate-timeline-info ms-3">
-                                                @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
+                                    <div class="mt-4 mt-lg-5 ">
+                                        <h2>Skills</h2>
+                                        <div class="pxp-single-candidate-skills">
+                                            <ul class="list-unstyled">
+                                                @foreach (var v in Model.skills)
                                                 {
-                                                    if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
-                                                    {
-                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@Convert.ToDateTime(exp.CompanyStartDate).ToString("MMM-yyyy") to Present) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
-
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
-
-                                                    }
+                                                    <li>
+                                                        <b>@v.skill &nbsp;&nbsp;</b>
+                                                        @if (v.selfrating == "0")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                        }
+                                                        @if (v.selfrating == "1")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                        }
+                                                        @if (v.selfrating == "2")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                        }
+                                                        @if (v.selfrating == "3")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                        }
+                                                        @if (v.selfrating == "4")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                        }
+                                                        @if (v.selfrating == "5")
+                                                        {
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','1')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','2')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','3')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','4')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                            <a href="javascript:void(0)" onclick="updateSkill('@v.id','5')"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                        }
+                                                        &nbsp;&nbsp;<a href="/profile/DeleteSkills?skill=@v.id" class="fa-clora"><i class="fa fa-times" data-title="Delete Skill"></i></a>
+                                                    </li>
                                                 }
-                                                else
-                                                {
-                                                    if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
-                                                    {
-                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@Convert.ToDateTime(exp.CompanyStartDate).ToString("MMM-yyyy") to @Convert.ToDateTime(exp.CompanyEndDate).ToString("MMM-yyyy")) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company" ></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
 
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName  &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
-
-                                                    }
+                            }
+                            @if (Model.WorkExperience != null)
+                            {
+                                if (Model.WorkExperience.Count > 0)
+                                {
+                                    <div class="mt-4 mt-lg-5">
+                                        <h2>Work Experience</h2>
+                                        @foreach (var exp in Model.WorkExperience.OrderByDescending(x => x.CompanyStartDate))
+                                        {
+                                            <div class="pxp-single-candidate-timeline">
+                                                @{
+                                                    string CompanyStartDate = !string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)) ? Convert.ToDateTime(exp.CompanyStartDate).ToString("MMM-yyyy") : "";
+                                                    string CompanyEndDate = !string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)) ? Convert.ToDateTime(exp.CompanyEndDate).ToString("MMM-yyyy") : ""; ;
                                                 }
-                                                <ul class="experiences">
-                                                    @foreach (var desg in exp.designatioexp.OrderByDescending(x => x.DesignationStartDate))
-                                                    {
-                                                        <li class="green">
-                                                            <div class="where">@desg.DesignationName</div>
-                                                            @if (string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)))
+                                                <div class="pxp-single-candidate-timeline-item">
+                                                    <div class="pxp-single-candidate-timeline-dot"></div>
+                                                    <div class="pxp-single-candidate-timeline-info ms-3">
+                                                        @if (string.IsNullOrEmpty(Convert.ToString(exp.CompanyEndDate)))
+                                                        {
+                                                            if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
                                                             {
-                                                                if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
-                                                                {
-                                                                    <div class="when">@Convert.ToDateTime(desg.DesignationStartDate).ToString("MMM-yyyy") to Present  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o "  data-title="Delete Position"></i></a></div>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o "  data-title="Delete Position"></i></a></div>
-                                                                }
+                                                                <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@CompanyStartDate to Present) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
+
                                                             }
                                                             else
                                                             {
-                                                                if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
-                                                                {
-                                                                    <div class="when">@Convert.ToDateTime(desg.DesignationStartDate).ToString("MMM-yyyy") to @Convert.ToDateTime(desg.DesignationEndDate).ToString("MMM-yyyy")  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')" class="fa-clora" ><i class="fa fa-edit " data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o"  data-title="Delete Position"></i></a></div>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@exp.CompanyStartDate', '@exp.CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '@desg.JobProfile', '@desg.Is_currentDesignation', '@desg.DesignationStartDate', '@desg.DesignationEndDate')"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Position"></i></a></div>
-                                                                }
+                                                                <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
+
                                                             }
-                                                            <p class="description">@desg.JobProfile</p>
-                                                        </li>
-                                                    }
-
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                }
-                            </div>
-                        }
-
-                        @if (Model.certifications != null)
-                        {
-                            <div class="mt-4 mt-lg-5">
-                                <h2>Certifications</h2>
-                                @foreach (var exp in Model.certifications)
-                                {
-                                    <div class="pxp-single-candidate-timeline">
-
-                                        <div class="pxp-single-candidate-timeline-item">
-                                            <div class="pxp-single-candidate-timeline-dot"></div>
-                                            <div class="pxp-single-candidate-timeline-info ms-3">
-                                                       @* <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.certiReceivedname &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=3"><i class="fa fa-trash-o" style="color:red" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('3', '01-01-2018 12.00.00 AM', '01-12-2019 12.00.00 AM', '0')"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>*@
-                                                <ul class="experiences">
-                                                        <li class="green">
-                                                            <div class="where">@exp.certiReceivedname  <br><a href="@exp.certiAttach" target="_blank">@exp.certification</a>  &nbsp;<a href="javascript:void(0)" onclick="Editcertification('@exp.certificationid','@exp.certification','@exp.certiIDNo','@exp.certiValidTill','@exp.certiReceived','@exp.certiAttach')" class="fa-clora"><i class="fa fa-edit" data-title="Edit"></i></a> &nbsp;<a href="/profile/DeleteCertifications?id=@exp.certificationid" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete"></i></a></div>
-                                                           @if(!string.IsNullOrEmpty(Convert.ToString(@exp.certiValidTill)))
-                                                        {
-                                                            <div class="when">ValidTill: @Convert.ToDateTime(exp.certiValidTill).ToString("MMM-yyyy") </div>
-                                                        }else
-                                                        {
-                                                            <div class="when">No Expiary </div>
                                                         }
+                                                        else
+                                                        {
+                                                            if (!string.IsNullOrEmpty(Convert.ToString(exp.CompanyStartDate)))
+                                                            {
+                                                                <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName (@CompanyStartDate to @CompanyEndDate) &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus " data-title="Add New Position"></i></a> </div>
 
-                                                        
-                                                        </li>
-                                                        
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.CompanyName  &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId"><i class="fa fa-trash-o" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany')" class="fa-clora"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>
+
+                                                            }
+                                                        }
+                                                        <ul class="experiences">
+                                                            @foreach (var desg in exp.designatioexp.OrderByDescending(x => x.DesignationStartDate))
+                                                            {
+
+                                                                <li class="green">
+                                                                    @{
+                                                                        string DesignationStartDate = !string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)) ? Convert.ToDateTime(desg.DesignationStartDate).ToString("MMM-yyyy") : "";
+                                                                        string DesignationEndDate = !string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)) ? Convert.ToDateTime(desg.DesignationEndDate).ToString("MMM-yyyy") : ""; ;
+                                                                    }
+                                                                    <div class="where">@desg.DesignationName</div>
+                                                                    @if (string.IsNullOrEmpty(Convert.ToString(desg.DesignationEndDate)))
+                                                                    {
+                                                                        if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
+                                                                        {
+                                                                            <div class="when">@DesignationStartDate to Present  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '', '@desg.Is_currentDesignation', '@DesignationStartDate', '@DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Position"></i></a></div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '', '@desg.Is_currentDesignation', '@DesignationStartDate', '@DesignationEndDate')" class="fa-clora"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o " data-title="Delete Position"></i></a></div>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (!string.IsNullOrEmpty(Convert.ToString(desg.DesignationStartDate)))
+                                                                        {
+                                                                            <div class="when">@DesignationStartDate to @DesignationEndDate  &nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '', '@desg.Is_currentDesignation', '@DesignationStartDate', '@DesignationEndDate')" class="fa-clora"><i class="fa fa-edit " data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Position"></i></a></div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="when">&nbsp;(@desg.EmploymentTypeName)  &nbsp;<a href="javascript:void(0)" onclick="EditPostions('@exp.CompanyId', '@CompanyStartDate', '@CompanyEndDate', '@exp.Is_currentCompany', '@desg.DesignationId', '@desg.EmploymentType', '', '@desg.Is_currentDesignation', '@DesignationStartDate', '@DesignationEndDate')"><i class="fa fa-edit" data-title="Edit Position"></i></a> &nbsp;<a href="/profile/DeleteWorkExp?com=@exp.CompanyId&exp=@desg.DesignationId" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete Position"></i></a></div>
+                                                                        }
+                                                                    }
+                                                                    @{
+                                                                        string jobdesc = @exp.CompanyId + "_" + @desg.DesignationId;
+                                                                    }
+                                                                    <p class="description" id="@jobdesc">@desg.JobProfile</p>
+                                                                </li>
+                                                            }
 
 
-                                                </ul>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
                                             </div>
+                                        }
+                                    </div>
+                                }
+
+                            }
+
+                            @if (Model.certifications != null)
+                            {
+                                <div class="mt-4 mt-lg-5">
+                                    <h2>Certifications</h2>
+                                    @foreach (var exp in Model.certifications)
+                                    {
+                                        <div class="pxp-single-candidate-timeline">
+
+                                            <div class="pxp-single-candidate-timeline-item">
+                                                <div class="pxp-single-candidate-timeline-dot"></div>
+                                                <div class="pxp-single-candidate-timeline-info ms-3">
+                                                    @* <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.certiReceivedname &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=3"><i class="fa fa-trash-o" style="color:red" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('3', '01-01-2018 12.00.00 AM', '01-12-2019 12.00.00 AM', '0')"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>*@
+                                                    <ul class="experiences">
+                                                        <li class="green">
+                                                            <div class="where"><a href="@exp.certiAttach" target="_blank">@exp.certification</a>, @exp.certiReceivedname &nbsp;<a href="javascript:void(0)" onclick="Editcertification('@exp.certificationid','@exp.certification','@exp.certiIDNo','@exp.certiValidTill','@exp.certiReceived','@exp.certiAttach')" class="fa-clora"><i class="fa fa-edit" data-title="Edit"></i></a> &nbsp;<a href="/profile/DeleteCertifications?id=@exp.certificationid" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete"></i></a></div>
+                                                            @if (!string.IsNullOrEmpty(Convert.ToString(@exp.certiValidTill)))
+                                                            {
+                                                                <div class="when">ValidTill: @Convert.ToDateTime(exp.certiValidTill).ToString("MMM-yyyy") </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="when">No Expiary </div>
+                                                            }
+
+
+                                                        </li>
+
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                                         </div>
+                                    }
+                                </div>
+                            }
+                            @if (Model.education != null)
+                            {
+                                <div class="mt-4 mt-lg-5">
+                                    <h2>Education</h2>
+                                    @foreach (var exp in Model.education)
+                                    {
+                                        <div class="pxp-single-candidate-timeline">
+
+                                            <div class="pxp-single-candidate-timeline-item">
+                                                <div class="pxp-single-candidate-timeline-dot"></div>
+                                                <div class="pxp-single-candidate-timeline-info ms-3">
+                                                    @* <div class="pxp-single-candidate-timeline-position mt-2" style="color:black;font-weight:bold">@exp.certiReceivedname &nbsp;&nbsp;<a href="/profile/DeleteWorkExp?com=3"><i class="fa fa-trash-o" style="color:red" data-title="Delete Company"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddNewPostion('3', '01-01-2018 12.00.00 AM', '01-12-2019 12.00.00 AM', '0')"><i class="fa fa-plus" data-title="Add New Position"></i></a> </div>*@
+                                                    <ul class="experiences">
+                                                        <li class="green">
+                                                            <div class="where">
+                                                                @exp.degreename, @exp.universityname, @exp.edulocationname
+                                                                &nbsp;<a href="javascript:void(0)" onclick="Editeducation('@exp.educationid','@exp.degree','@exp.university','@exp.edustDate','@exp.eduEndDate','@exp.edulocation')" class="fa-clora"><i class="fa fa-edit" data-title="Edit"></i></a> &nbsp;<a href="/profile/Deleteeducation?id=@exp.educationid" class="fa-clora"><i class="fa fa-trash-o" data-title="Delete"></i></a>
+                                                                @if (!string.IsNullOrEmpty(Convert.ToString(@exp.eduEndDate)) && !string.IsNullOrEmpty(Convert.ToString(@exp.edustDate)))
+                                                                {
+                                                                    <br />
+                                                                    <span>@Convert.ToDateTime(exp.edustDate).ToString("MMM-yyyy") to @Convert.ToDateTime(exp.eduEndDate).ToString("MMM-yyyy") </span>
+                                                                }
+                                                            </div>
+                                                        </li>
+
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            }
+
+                            @if (Model.languages != null)
+                            {
+
+                                if (Model.languages.Count > 0)
+                                {
+
+                                    <div class="mt-4 mt-lg-5">
+                                        <h2>Language</h2>
+                                        @foreach (var v in Model.languages)
+                                        {
+                                            <div class="pxp-single-candidate-timeline">
+                                                <div class="pxp-single-candidate-timeline-item">
+                                                    <div class="pxp-single-candidate-timeline-position mt-2">@v.language - @v.selfrating</div>
+                                                </div>
+                                            </div>
+                                        }
+
 
                                     </div>
                                 }
-                            </div>
-                        }
 
 
-                        <div class="mt-4 mt-lg-5">
-                            <h2>Education & Training</h2>
-                            <div class="pxp-single-candidate-timeline">
-                                <div class="pxp-single-candidate-timeline-item">
-                                    <div class="pxp-single-candidate-timeline-dot"></div>
-                                    <div class="pxp-single-candidate-timeline-info ms-3">
-                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2011 - 2017</span></div>
-                                        <div class="pxp-single-candidate-timeline-position mt-2">Architecure</div>
-                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Politehnica University of Timisoara: Bachelor of Architecture</div>
-                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
-                                    </div>
-                                </div>
-                                <div class="pxp-single-candidate-timeline-item">
-                                    <div class="pxp-single-candidate-timeline-dot"></div>
-                                    <div class="pxp-single-candidate-timeline-info ms-3">
-                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2020 - 2020</span></div>
-                                        <div class="pxp-single-candidate-timeline-position mt-2">Front End Web Developer</div>
-                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Udacity Nanodegree Program</div>
-                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
-                                    </div>
-                                </div>
-                                <div class="pxp-single-candidate-timeline-item">
-                                    <div class="pxp-single-candidate-timeline-dot"></div>
-                                    <div class="pxp-single-candidate-timeline-info ms-3">
-                                        <div class="pxp-single-candidate-timeline-time"><span class="me-3">2021 - 2021</span></div>
-                                        <div class="pxp-single-candidate-timeline-position mt-2">Build Responsive Real World Websites with HTML5 and CSS3</div>
-                                        <div class="pxp-single-candidate-timeline-company pxp-text-light">Udemy</div>
-                                        <div class="pxp-single-candidate-timeline-about mt-2 pb-4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Lorem Ipsum is also known as: Greeked text.</div>
-                                    </div>
-                                </div>
-                            </div>
+                            }
+
                         </div>
-                    </div>
+
+
                 </section>
             </div>
             <div class="col-lg-5 col-xl-4 col-xxl-3">
@@ -386,8 +595,66 @@
 <partial name="_Education" />
 <partial name="_Language" />
 <partial name="_Skills" />
-
 <script src="~/js/DataScripts/Profile.js"></script>
+<script>
+    var textarea = document.querySelector('textarea');
+
+    textarea.addEventListener('keydown', autosize);
+
+    function autosize() {
+        var el = this;
+        setTimeout(function () {
+            el.style.cssText = 'height:auto;';
+            el.style.cssText = 'height:' + el.scrollHeight + 'px';
+        }, 0);
+    }
+</script>
+<script type="text/javascript">
+   
+    window.onload = function () {
+        
+        $.ajax({
+            url: "../Profile/LoadChartData",
+            type: "POST",
+            async: false,
+            success: function (data)
+            {
+                debugger;
+                var datapoint = [];
+                datapoint.push(data);
+
+                var chart = new CanvasJS.Chart("chartContainer",
+                    {
+
+                        title: {
+                            text: "Career Tragectory"
+                        },
+                        data: [
+                            {
+                                type: "line",
+                                dataPoints: data
+                            }
+                        ],
+                        axisX: {
+                            gridThickness: 0,
+                            tickLength: 0,
+                            lineThickness: 0,
+                            labelFormatter: function () {
+                                return " ";
+                            }
+                        }
+                    });
+
+                chart.render();
+            },
+            error: function (xhr, error, status) {
+                console.log(error, status);
+            }
+        });
+
+       
+    }
+</script>
 
 
 

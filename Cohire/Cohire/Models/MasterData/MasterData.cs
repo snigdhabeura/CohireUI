@@ -85,7 +85,16 @@ namespace Cohire.Models.MasterData
             SqlConnection azureSQLDb = null;
             try
             {
-                string result = "<option value='0'>Select</option>";
+                string result = string.Empty;
+                if (Is_option != 3)
+                {
+                    if(refMasterID== 9) result = "<option selected>Type of employment</option>";
+                    else if(refMasterID == 12) result = "<option selected>Job categories</option>";
+                    else if (refMasterID == 13) result = "<option selected>Experience level</option>";
+                    else if(refMasterID == 15) result = "<option selected>Salary range</option>";
+                    else if (refMasterID == 7) result = "<option selected>Company</option>";
+                    else result = "<option value='0'>Select</option>";
+                }
                 if (refMasterID!=0)
                 {
                     using (azureSQLDb = new SqlConnection(connectionString))

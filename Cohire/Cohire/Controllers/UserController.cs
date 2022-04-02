@@ -23,6 +23,7 @@ using Cohire.Models.JobFeedListNM;
 using Cohire.Models.UserAuthentication;
 using Cohire.Models.Response_Model;
 using Cohire.Models.MasterData;
+using Cohire.Models.Profile;
 
 namespace Cohire.Controllers
 {
@@ -251,6 +252,7 @@ namespace Cohire.Controllers
             return View();
         }
         #endregion
+
         [HttpPost]
         public async  Task<JsonResult> InserLikeCount(string jobID, int Is_like)
         {
@@ -316,14 +318,20 @@ namespace Cohire.Controllers
         [HttpPost]
         public async Task<JsonResult> GetPeopleList()
         {
-            SqlConnection conn = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString());
+            List<GetUser> getUser = new List<GetUser>();
+               SqlConnection conn = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString());
             SqlCommand cmd = new SqlCommand("getPeople", conn);
             conn.Open();
             cmd.CommandType = CommandType.StoredProcedure;
-            var data = cmd.ExecuteScalar().ToString();
-            var getUser = JsonConvert.DeserializeObject<List<GetUser>>(data);
+            var data = cmd.ExecuteScalar();
+            if(data!=null)
+            {
+                getUser = JsonConvert.DeserializeObject<List<GetUser>>(data.ToString());
+                
+            }
             conn.Close();
             return Json(getUser);
+
         }
         [HttpPost]
         public async Task<JsonResult> GetMasterData(int masterId,int is_options)
@@ -335,12 +343,151 @@ namespace Cohire.Controllers
                 var data = masterdataoperation.GetMasterDataAsync<string>(masterId, is_options).Result;
                 return Json(data);
             }
+            else if (is_options == 3)
+            {
+                var data = masterdataoperation.GetMasterDataAsync<string>(masterId, is_options).Result;
+                return Json(data);
+            }
             else
             {
                 var data = masterdataoperation.GetMasterDataAsync<List<MasterDataList>>(masterId, is_options).Result;
                 return Json(data);
             }
         }
+
+        #region------ Search Job ------------------------
+        [HttpGet]
+        public async Task<IActionResult> SearchPageJob(string t,string s)
+        {
+            Jobcard jobcard = new Jobcard();
+               SqlConnection conn = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString());
+            SqlCommand cmd = new SqlCommand("serachJobCard", conn); 
+            cmd.Parameters.Add("@textsearch", SqlDbType.VarChar).Value = s.ToLower();
+            //cmd.Parameters.Add("@skip", SqlDbType.Int).Value = 0;
+            //cmd.Parameters.Add("@take", SqlDbType.Int).Value = 10;
+            if(t.ToLower()=="j")
+            {
+                jobcard.Searchfor = "jobs";
+                jobcard.searchtype = t.ToLower();
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = t.ToLower();
+            }
+            else if(t.ToLower() == "p")
+            {
+                jobcard.Searchfor = "posts";
+                jobcard.searchtype = t.ToLower();
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = t.ToLower();
+            }
+            else if (t.ToLower() == "pe")
+            {
+                jobcard.Searchfor = "peoples";
+                jobcard.searchtype = t.ToLower();
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = t.ToLower();
+            }
+            else
+            {
+                jobcard.Searchfor = "jobs";
+                jobcard.searchtype = "j";
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = "j";
+            }
+            //cmd.Parameters.Add("@is_new", SqlDbType.Bit).Value = true;
+            conn.Open();
+            cmd.CommandType = CommandType.StoredProcedure;
+            var data = cmd.ExecuteScalar().ToString();
+            if(!string.IsNullOrEmpty(data))
+            {
+                var jobs = JsonConvert.DeserializeObject<List<JobJsonRoot>>(data.ToString());
+                var liststring = "["+string.Join(",", jobs.Select(x=>x.jsonstring))+"]";
+                if(jobcard.searchtype == "pe")
+                {
+                    List<ProfileModel> profileModels= JsonConvert.DeserializeObject<List<ProfileModel>>(liststring).Skip(0).Take(10).ToList();
+                    jobcard.profileModels = profileModels;
+                    jobcard.totalresultfound = profileModels.Count().ToString();
+                }
+                else
+                {
+                    List<postjobsearch> listofjob = JsonConvert.DeserializeObject<List<postjobsearch>>(liststring).Skip(0).Take(10).ToList(); ;
+                    jobcard.listofjob = listofjob;
+                    jobcard.totalresultfound = listofjob.Count().ToString();
+                }
+                
+            }
+            jobcard.Searchtext = s;
+            return View(jobcard);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> GetsearchResult(string jobcategory, string typeofemplymemnt,
+        string experineceleve, string salaryrange, string company, string skip, string take,
+        string searchtext, string location,string serachtype
+        )
+        {
+            Jobcard jobcard = new Jobcard();
+            SqlConnection conn = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString());
+            SqlCommand cmd = new SqlCommand("serachJobCard", conn);
+            cmd.Parameters.Add("@textsearch", SqlDbType.VarChar).Value = searchtext.ToLower();
+            if (string.IsNullOrEmpty(skip) || string.IsNullOrEmpty(take))
+            {
+                skip = "0";
+                take = "10";
+            }
+            if (serachtype.ToLower() == "j" || string.IsNullOrEmpty(serachtype))
+            {
+                jobcard.Searchfor = "jobs";
+                jobcard.searchtype = "j";
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = serachtype.ToLower();
+            }
+            else if (serachtype.ToLower() == "p")
+            {
+                jobcard.Searchfor = "posts";
+                jobcard.searchtype = serachtype.ToLower();
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = serachtype.ToLower();
+            }
+            else if (serachtype.ToLower() == "pe")
+            {
+                jobcard.Searchfor = "peoples";
+                jobcard.searchtype = serachtype.ToLower();
+                cmd.Parameters.Add("@Searchtype", SqlDbType.VarChar).Value = serachtype.ToLower();
+            }
+            conn.Open();
+            cmd.CommandType = CommandType.StoredProcedure;
+            var data = cmd.ExecuteScalar().ToString();
+            if (!string.IsNullOrEmpty(data))
+            {
+                var jobs = JsonConvert.DeserializeObject<List<JobJsonRoot>>(data.ToString());
+                var liststring = "[" + string.Join(",", jobs.Select(x => x.jsonstring)) + "]";
+                if (jobcard.searchtype == "pe")
+                {
+                    List<ProfileModel> profileModels = JsonConvert.DeserializeObject<List<ProfileModel>>(liststring);
+                    jobcard.totalresultfound = profileModels.Count().ToString();
+                    jobcard.profileModels = profileModels.Skip(Convert.ToInt32(skip)).Take(Convert.ToInt32(take)).ToList();
+                }
+                else
+                {
+                    List<postjobsearch> listofjob = JsonConvert.DeserializeObject<List<postjobsearch>>(liststring);
+                    if (!string.IsNullOrEmpty(jobcategory) && jobcategory.ToLower() != "Job categories".ToLower())
+                    {
+                        listofjob = listofjob.Where(x => x.Category_Name == jobcategory).ToList();
+                    }
+                    if (!string.IsNullOrEmpty(typeofemplymemnt) && typeofemplymemnt.ToLower() != "Type of employment".ToLower())
+                    {
+                        listofjob = listofjob.Where(x => x.Employmenttype_Name == typeofemplymemnt).ToList();
+                    }
+                    if (!string.IsNullOrEmpty(experineceleve) && experineceleve.ToLower() != "Experience level".ToLower())
+                    {
+                        listofjob = listofjob.Where(x => x.Experience_Name == experineceleve).ToList();
+                    }
+                    if (!string.IsNullOrEmpty(salaryrange) && salaryrange.ToLower() != "Salary range".ToLower())
+                    {
+                        listofjob = listofjob.Where(x => x.Salaryrange == salaryrange).ToList();
+                    }
+                    jobcard.totalresultfound = listofjob.Count().ToString();
+                    jobcard.listofjob = listofjob.Skip(Convert.ToInt32(skip)).Take(Convert.ToInt32(take)).ToList();
+                }
+
+            }
+            return new JsonResult(jobcard);
+        }
+        #endregion
     }
 }
 

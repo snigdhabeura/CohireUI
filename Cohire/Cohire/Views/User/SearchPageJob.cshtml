@@ -1,0 +1,629 @@
+﻿@model Cohire.Models.JobFeedListNM.Jobcard
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en" class="pxp-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="~/jobster/images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/jobster/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/jobster/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/jobster/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/jobster/css/animate.css">
+    <link rel="stylesheet" href="~/jobster/css/style.css">
+
+    <title>Jobster - Jobs list v8</title>
+</head>
+<body>
+    <div class="pxp-preloader"><span>Loading...</span></div>
+
+    <section class="pxp-page-header-simple">
+        <div class="pxp-container">
+            <h1>Search</h1>
+            <div class="pxp-hero-form pxp-hero-form-round pxp-large mt-3 mt-lg-4 pxp-has-border ">
+                <form class="row gx-3 align-items-center">
+                    <div class="col-12 col-lg">
+                        <div class="input-group mb-3 mb-lg-0">
+                            <span class="input-group-text"><span class="fa fa-search"></span></span>
+                            <input type="text" class="form-control" placeholder="Job Title / People / Keyword" id="job_keyword" value="@Model.Searchtext">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg pxp-has-left-border">
+                        <div class="input-group mb-3 mb-lg-0">
+                            <span class="input-group-text"><span class="fa fa-globe"></span></span>
+                            <input type="text" class="form-control" placeholder="Location" id="job_location">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                        <button type="button" onclick="LoadSearchResult('0','10')">Find</button>
+                    </div>
+                </form>
+            </div>
+            <div class="pxp-hero-form-filter mt-3 mt-lg-4 pxp-has-bg-color">
+                <div class="row justify-content-start">
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <input type="hidden" id="job_searchtypes" value="@Model.searchtype" />
+                            @if (Model.searchtype.ToLower() == "j")
+                            {
+                                <a href="#" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0 joba">Job</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn rounded-pill mt-3 mt-sm-0 joba" onclick="searchbybutton('j')">Job</a>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            @if (Model.searchtype.ToLower() == "pe")
+                            {
+                                <a href="#" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0 peoplea">People</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn rounded-pill mt-3 mt-sm-0 peoplea" onclick="searchbybutton('pe')">People</a>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            @if (Model.searchtype.ToLower() == "p")
+                            {
+                                <a href="#" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0 posta">Post</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn rounded-pill mt-3 mt-sm-0 posta" onclick="searchbybutton('p')">Post</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-start" id="job_search_filter">
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select" id="job_type" onchange="LoadSearchResult('0','10')">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select" id="job_exp" onchange="LoadSearchResult('0','10')">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select" id="job_salary" onchange="LoadSearchResult('0','10')">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select" id="job_category" onchange="LoadSearchResult('0','10')">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-start" id="people_search_filter">
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select" id="people_company" onchange="LoadSearchResult('0','10')">
+                                <option selected>Select Company</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-4 mt-lg-5 pt-100 pb-100" style="background-color: var(--pxpSecondaryColorLight);">
+        <div class="pxp-container">
+            <div class="pxp-jobs-list-top">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-auto">
+
+                        <h2><span class="pxp-text-light">Showing</span> <span id="totalfound">@Model.totalresultfound </span>  <span class="pxp-text-light" id="searchfors">@Model.Searchfor</span></h2>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select">
+                            <option value="1" selected>Newest</option>
+                            <option value="2">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="partial_search">
+                @if (Model.listofjob != null)
+                {
+                    @foreach (var job in Model.listofjob)
+                    {
+                        if (Model.searchtype == "j")
+                        {
+                            <div class="col-xl-6 pxp-jobs-card-2-container">
+                                <div class="pxp-jobs-card-2 pxp-has-shadow">
+                                    <div class="pxp-jobs-card-2-top">
+                                        <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>
+                                        <div class="pxp-jobs-card-2-info">
+                                            <a href="single-job-1.html" class="pxp-jobs-card-2-title">@job.Jobtitle</a>
+                                            <div class="pxp-jobs-card-2-details">
+                                                <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                                    <span class="fa fa-globe"></span>@string.Join(",", @job.city)
+                                                </a>
+                                                <div class="pxp-jobs-card-2-type">@job.Employmenttype_Name</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pxp-jobs-card-2-bottom">
+                                        <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                            <div class="pxp-jobs-card-2-category-label">@job.Category_Name</div>
+                                        </a>
+                                        <div class="pxp-jobs-card-2-bottom-right">
+                                            <span class="pxp-jobs-card-2-date pxp-text-light">on @job.CreatedDate by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">@job.PostedByName</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (Model.searchtype == "p")
+                        {
+                            <div class="col-xl-6 pxp-jobs-card-2-container">
+                                <div class="pxp-jobs-card-2 pxp-has-shadow">
+                                    <div class="pxp-jobs-card-2-top">
+                                        <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>
+                                        <div class="pxp-jobs-card-2-info">
+                                            <a href="single-job-1.html" class="pxp-jobs-card-2-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 607px; ">@job.JobDescription</a>
+                                        </div>
+                                    </div>
+                                    <div class="pxp-jobs-card-2-bottom">
+                                        <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                            <div class="pxp-jobs-card-2-category-label">&nbsp;&nbsp;&nbsp;</div>
+                                        </a>
+                                        <div class="pxp-jobs-card-2-bottom-right">
+                                            <span class="pxp-jobs-card-2-date pxp-text-light">on @job.CreatedDate by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">@job.PostedByName</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                @if (Model.profileModels != null)
+                {
+                    foreach (var person in Model.profileModels)
+                    {
+                        <div class="col-xl-3 pxp-jobs-card-2-container">
+                            <div class="pxp-jobs-card-2 pxp-has-shadow">
+                                <div class="pxp-jobs-card-2-top">
+                                    <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(../images/ProfileImage/@person.profilegeneral.image );"></a>
+                                    <div class="pxp-jobs-card-2-info">
+                                        <a href="single-job-1.html" class="pxp-jobs-card-2-title">@person.profilegeneral.name</a>
+                                        <div class="pxp-jobs-card-2-details">
+                                            @*<a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                            <span class="fa fa-globe"></span>@string.Join(",", @job.city)
+                                        </a>*@
+                                            <div class="">@person.profilegeneral.profilebio</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @if (Convert.ToInt32(Model.totalresultfound) > 10)
+            {
+                <div class="row mt-4 mt-lg-5 justify-content-between align-items-center" id="showmore_div">
+                    <div class="col-auto" id="load_more_link">
+                        <a href="javascript:void(0)" onclick="LoadSearchResultBySkip('', '@Model.skip', '@Model.take')" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0">Show me more<span class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </section>
+    <script src="~/jobster/js/jquery-3.4.1.min.js"></script>
+    <script src="~/jobster/js/bootstrap.bundle.min.js"></script>
+    <script src="~/jobster/js/owl.carousel.min.js"></script>
+    <script src="~/jobster/js/nav.js"></script>
+    <script src="~/jobster/js/main.js"></script>
+</body>
+</html>
+<script>
+    function LoadMasterData(controlid, masterId, is_options) {
+        $("#" + controlid + "").html('');
+        $.ajax({
+            url: "../User/GetMasterData",
+            type: "POST",
+            data: { masterId: masterId, is_options: is_options },
+            async: false,
+            success: function (data) {
+
+                if (is_options == 1) {
+                    $("#" + controlid + "").append(data);
+                    if (controlid == 'CompanyName') {
+                        $("#CertiReceived").html('');
+                        $("#CertiReceived").append(data);
+                    }
+                }
+                if (is_options == 3) {
+                    $("#" + controlid + "").append(data);
+                }
+            },
+            error: function (xhr, error, status) {
+                console.log(error, status);
+            }
+        });
+    }
+    $(document).ready(function () {
+        LoadMasterData('job_category', '12', '1');
+        LoadMasterData('job_type', '9', '1');
+        LoadMasterData('job_exp', '13', '1');
+        LoadMasterData('job_salary', '15', '1');
+        LoadMasterData('people_company', '7', '1');
+    });
+
+    function LoadSearchResult(skip,take)
+    {
+        var jobcategory = $("#job_category option:selected").text();
+        var typeofemplymemnt = $("#job_type option:selected").text();
+        var experineceleve = $("#job_exp option:selected").text();
+        var salaryrange = $("#job_salary option:selected").text();
+        var company = $("#people_company option:selected").text();
+
+        var skips = parseInt(skip);
+        var takes = parseInt(take);
+        var searchtext = $("#job_keyword").val();
+        var location = $("#job_location").val();
+        var serachtype = $("#job_searchtypes").val();
+
+        if (serachtype == 'j' || serachtype == '')
+        {
+           
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".joba").addClass('pxp-section-cta');
+            $("#searchfors").text("jobs");
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    } $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.listofjob.length; i++)
+                    {
+                        var job = data.listofjob[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title">' + job.jobtitle+'</a>';
+                        html = html + '<div class="pxp-jobs-card-2-details">';
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-location">';
+                        html = html + '<span class="fa fa-globe"></span>' + job.city.join();
+                        html = html + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-type">' + job.employmenttype_Name+'</div>';
+                        html = html + '</div></div></div>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom">';
+
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-category">';
+                        html = html + '<div class="pxp-jobs-card-2-category-label">' + job.category_Name+'</div>';
+                        html = html + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom-right">';
+                        html = html + '<span class="pxp-jobs-card-2-date pxp-text-light">on ' + job.createdDate + ' by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">' + job.postedByName+'</a>';
+                        html = html + '</div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        if (serachtype == 'p')
+        {
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".posta").addClass('pxp-section-cta'); $("#searchfors").text("posts");
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    }
+                    $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.listofjob.length; i++)
+                    {
+                        var job = data.listofjob[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 607px; ">' + job.jobDescription+'</a>';
+                        html = html + '</div></div>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom">';
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-category">';
+                        html = html + '<div class="pxp-jobs-card-2-category-label">&nbsp;&nbsp;&nbsp;</div></a>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom-right">';
+                        html = html + '<span class="pxp-jobs-card-2-date pxp-text-light">on ' + job.createdDate + ' by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">' + job.postedByName+'</a>';
+                        html = html + '</div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        if (serachtype == 'pe')
+        {
+            $("#searchfors").text("people");
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".peoplea").addClass('pxp-section-cta');
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    }
+                    $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.profileModels.length; i++) {
+                        var person = data.profileModels[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(../images/ProfileImage/' + person.profilegeneral.image+');"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title">' + person.profilegeneral.name+'</a>';
+                        html = html + '<div class="pxp-jobs-card-2-details">';
+                        html = html + '<div class="">' + person.profilegeneral.profilebio+'</div>';
+                        html = html + '</div></div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        $("#load_more_link").html('');
+        $("#load_more_link").html('<a href="javascript:void(0)" onclick="LoadSearchResult("","' + skips + '","' + takes +'")" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0">Show me more<span class="fa fa-angle-right"></span></a>');
+
+    }
+
+    function searchbybutton(serachtype) {
+        $("#job_searchtypes").val(serachtype);
+        LoadSearchResult(0, 10);
+    }
+
+    function LoadSearchResultBySkip(vals, skip, take) {
+        var jobcategory = $("#job_category option:selected").text();
+        var typeofemplymemnt = $("#job_type option:selected").text();
+        var experineceleve = $("#job_exp option:selected").text();
+        var salaryrange = $("#job_salary option:selected").text();
+        var company = $("#people_company option:selected").text();
+
+        var skips = parseInt(skip);
+        var takes = parseInt(take)+10;
+        var searchtext = $("#job_keyword").val();
+        var location = $("#job_location").val();
+        var serachtype = $("#job_searchtypes").val();
+
+        if (serachtype == 'j' || serachtype == '') {
+
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".joba").addClass('pxp-section-cta');
+            $("#searchfors").text("jobs");
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    }
+                    $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.listofjob.length; i++) {
+                        var job = data.listofjob[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title">' + job.jobtitle + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-details">';
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-location">';
+                        html = html + '<span class="fa fa-globe"></span>' + job.city.join();
+                        html = html + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-type">' + job.employmenttype_Name + '</div>';
+                        html = html + '</div></div></div>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom">';
+
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-category">';
+                        html = html + '<div class="pxp-jobs-card-2-category-label">' + job.category_Name + '</div>';
+                        html = html + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom-right">';
+                        html = html + '<span class="pxp-jobs-card-2-date pxp-text-light">on ' + job.createdDate + ' by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">' + job.postedByName + '</a>';
+                        html = html + '</div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        if (serachtype == 'p') {
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".posta").addClass('pxp-section-cta'); $("#searchfors").text("posts");
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    }
+                    $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.listofjob.length; i++) {
+                        var job = data.listofjob[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 607px; ">' + job.jobDescription + '</a>';
+                        html = html + '</div></div>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom">';
+                        html = html + '<a href="jobs-list-1.html" class="pxp-jobs-card-2-category">';
+                        html = html + '<div class="pxp-jobs-card-2-category-label">&nbsp;&nbsp;&nbsp;</div></a>';
+                        html = html + '<div class="pxp-jobs-card-2-bottom-right">';
+                        html = html + '<span class="pxp-jobs-card-2-date pxp-text-light">on ' + job.createdDate + ' by</span>  <a href="single-company-1.html" class="pxp-jobs-card-2-company">' + job.postedByName + '</a>';
+                        html = html + '</div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        if (serachtype == 'pe') {
+            $("#searchfors").text("people");
+            $(".peoplea").removeClass('pxp-section-cta');
+            $(".posta").removeClass('pxp-section-cta');
+            $(".joba").removeClass('pxp-section-cta');
+            $(".peoplea").addClass('pxp-section-cta');
+            $.ajax({
+                url: "../User/GetsearchResult",
+                type: "POST",
+                data: {
+                    jobcategory: jobcategory, typeofemplymemnt: typeofemplymemnt, experineceleve: experineceleve,
+                    salaryrange: salaryrange, company: company,
+                    skip: skips, take: takes, searchtext: searchtext, location: location,
+                    serachtype: serachtype
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    if (parseInt(data.totalresultfound) < 10) {
+                        $("#showmore_div").hide();
+                    }
+                    if (parseInt(data.totalresultfound) == parseInt(takes)) {
+                        $("#showmore_div").hide();
+                    }
+                    $("#totalfound").text(data.totalresultfound);
+                    $("#partial_search").html('');
+                    for (var i = 0; i < data.profileModels.length; i++) {
+                        var person = data.profileModels[i];
+                        var html = '<div class="col-xl-6 pxp-jobs-card-2-container">';
+                        html = html + '<div class="pxp-jobs-card-2 pxp-has-shadow">';
+                        html = html + '<div class="pxp-jobs-card-2-top">';
+                        html = html + '<a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(../images/ProfileImage/' + person.profilegeneral.image + ');"></a>';
+                        html = html + '<div class="pxp-jobs-card-2-info">';
+                        html = html + '<a href="single-job-1.html" class="pxp-jobs-card-2-title">' + person.profilegeneral.name + '</a>';
+                        html = html + '<div class="pxp-jobs-card-2-details">';
+                        html = html + '<div class="">' + person.profilegeneral.profilebio + '</div>';
+                        html = html + '</div></div></div></div></div>';
+                        $("#partial_search").append(html);
+                    }
+                },
+                error: function (xhr, error, status) {
+                    console.log(error, status);
+                }
+            });
+        }
+        $("#load_more_link").html('');
+        $("#load_more_link").html('<a href="javascript:void(0)" onclick="LoadSearchResult("","' + skips + '","' + takes + '")" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0">Show me more<span class="fa fa-angle-right"></span></a>');
+
+    }
+</script>

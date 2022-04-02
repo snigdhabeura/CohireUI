@@ -356,8 +356,16 @@
                             <div class="sticky-sidebar2 mb-3">
                                 <div class="input-group mb-4 shadow-sm rounded-4 overflow-hidden py-2 bg-white">
                                     <span class="input-group-text material-icons border-0 bg-white text-primary">search</span>
-                                    <input type="text" class="form-control border-0 fw-light ps-1" placeholder="Search Vogel">
+                                    <input type="text" class="form-control border-0 fw-light ps-1" id="search_val" placeholder="Search" oninput="Searchcohyre()" />
+                                
+                                    <div class="container" style="background-color:#cde0f5;display:none" id="searchbar_contain">
+                                       
+                                    </div>
                                 </div>
+                                @*<div class="input-group mb-4 shadow-sm rounded-4 overflow-hidden py-2 bg-white">
+                                    
+                                                                  
+                                </div>*@
                                 <div class="bg-white rounded-4 overflow-hidden shadow-sm mb-4">
                                     <h6 class="fw-bold text-body p-3 mb-0 border-bottom">What's happening</h6>
                                     <!-- Trending Item -->
@@ -916,10 +924,8 @@
                             $('.TextCount').text(1000 - len + "/1000");
 
                         }
-                    };
-    </script>
-
-
+    };
+</script>
 </body>
 </html>
 <script src="~/js/site.js"></script>

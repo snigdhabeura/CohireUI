@@ -11,9 +11,9 @@
                 <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="Language" data-live-search="true" aria-label="Floating label select example">
-                            </select>
-                            <label for="Language">Language</label>
+                            <input list="language" type="text" id="txt_language" class="form-control  rounded-5 HiredCtrl" name="txt_language" placeholder="Start typing language" size="45">
+                            <datalist id="language">
+                            </datalist>
                         </div>
                     </div>
                 </div>
@@ -21,22 +21,25 @@
                     <div class="col-md">
                         <div class="form-floating">
                             <select class="form-select  rounded-5" id="Proficiency" data-live-search="true" aria-label="Floating label select example">
+                                <option vlaue="Beginner"> Beginner</option>
+                                <option vlaue="Intermediate "> Intermediate </option>
+                                <option vlaue="Fluent"> Fluent</option>
                             </select>
                             <label for="Proficiency">Proficiency</label>
                         </div>
                     </div>
-                    <div class="col-md">
+                    @*<div class="col-md">
                         <div class="form-floating">
                             <select class="form-select  rounded-5" id="LaungSelfRating" data-live-search="true" aria-label="Floating label select example">
                             </select>
                             <label for="LaungSelfRating">Self Rating</label>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
                 <div class="modal-footer px-1 py-1 rounded-5">
-                    <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
-                        <button data-bs-dismiss="modal" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="AddSkill()"><span class="material-icons me-2md-16">send</span>Save</button>
+                    <div class="ms-auto m-0">
+                        <button  class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="Addlanguage()"><span class="material-icons me-2md-16">send</span>Save</button>
                     </div>
                 </div>
 

@@ -11,48 +11,47 @@
                 <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="skillCategory" data-live-search="true" aria-label="Floating label select example">
+                            <input type="hidden" id="educationid" />
+                            <select class="form-select  rounded-5" id="degree" data-live-search="true" aria-label="Floating label select example">
                             </select>
-                            <label for="skillCategory">Degree & Specialization</label>
+                            <label for="degree">Degree & Specialization</label>
                         </div>
                     </div>
                 </div>
                 <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example">
+                            <select class="form-select  rounded-5" id="university" data-live-search="true" aria-label="Floating label select example">
                             </select>
-                            <label for="Skills">College /University Name</label>
+                            <label for="university">College /University Name</label>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="SkillSelfRating" data-live-search="true" aria-label="Floating label select example">
+                            <select class="form-select  rounded-5" id="edulocation" data-live-search="true" aria-label="Floating label select example">
                             </select>
-                            <label for="SkillSelfRating">Location</label>
+                            <label for="edulocation">Location</label>
                         </div>
                     </div>
                 </div>
                   <div class="row g-2 mb-1">
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="Skills" data-live-search="true" aria-label="Floating label select example">
-                            </select>
-                            <label for="Skills">Start date</label>
+                            <input type="text" readonly="readonly" name="date" class="form-control  rounded-5 input-append date EndDate datePicker" id="edustDate" style="cursor:pointer; background-color: #FFFFFF">
+                            <label for="edustDate">Start Date</label>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select  rounded-5" id="SkillSelfRating" data-live-search="true" aria-label="Floating label select example">
-                            </select>
-                            <label for="SkillSelfRating">End Date</label>
+                            <input type="text" readonly="readonly" name="date" class="form-control  rounded-5 input-append date EndDate datePicker" id="eduEndDate" style="cursor:pointer; background-color: #FFFFFF">
+                            <label for="eduEndDate">End Date</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer px-1 py-1 rounded-5">
-                    <div class="ms-auto m-0" data-bs-toggle="modal" data-bs-target="#postModal1">
-                        <button data-bs-dismiss="modal" class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="AddSkill()"><span class="material-icons me-2md-16">send</span>Save</button>
+                    <div class="ms-auto m-0">
+                        <button class="btn btn-primary rounded-5 fw-bold px-3 py-2 fs-6 mb-0 d-flex align-items-center" href="javascript:void(0)" onclick="SaveEducations()"><span class="material-icons me-2md-16">send</span>Save</button>
                     </div>
                 </div>
 

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,8 +33,9 @@ namespace Cohire.Controllers
             var host = _httpContextAccessor.HttpContext.Request;
             URL = host.Scheme + "://" + host.Host.Value;
         }
-        public IActionResult Index()
+        public IActionResult Index(string profileid)
         {
+            ViewBag.ProfileName = Convert.ToString(Request.Cookies["Username"]);
             SqlConnection azureSQLDb = null;
             SqlCommand cmd;
             ProfileModelList profilemodel = new ProfileModelList();
@@ -48,6 +50,32 @@ namespace Cohire.Controllers
                         cmd = new SqlCommand("Get_user_Profile_Json", azureSQLDb);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = Convert.ToString(Request.Cookies["UserID"]);
+                        var getuserProfileJson = cmd.ExecuteScalar().ToString();
+                        if (!String.IsNullOrEmpty(getuserProfileJson))
+                        {
+
+                            profilemodel = JsonConvert.DeserializeObject<ProfileModelList>(getuserProfileJson.ToString());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { azureSQLDb.Close(); }
+                return View(profilemodel);
+            }
+            else if(!string.IsNullOrEmpty(Convert.ToString(profileid)))
+            {
+                try
+                {
+                    using (azureSQLDb = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString()))
+                    {
+                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                            azureSQLDb.Open();
+                        cmd = new SqlCommand("Get_user_Profile_Json", azureSQLDb);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = Convert.ToString(profileid);
                         var getuserProfileJson = cmd.ExecuteScalar().ToString();
                         if (!String.IsNullOrEmpty(getuserProfileJson))
                         {
@@ -103,12 +131,18 @@ namespace Cohire.Controllers
                     if (!String.IsNullOrEmpty(getuserProfileJson))
                     {
                         
-                           profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getuserProfileJson.ToString());
-
+                        profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getuserProfileJson.ToString());
                         workExperience = profilemodel.WorkExperience;
                         var Is_companyFound = profilemodel.WorkExperience.Where(x => x.CompanyId == model.CompanyId).FirstOrDefault();
                         if (Is_companyFound!=null)
                         {
+                            //Update company first
+                            Is_companyFound.CompanyId = model.CompanyId;
+                            Is_companyFound.CompanyName = model.CompanyName;
+                            Is_companyFound.CompanyStartDate = model.CompanyStartDate;
+                            Is_companyFound.CompanyEndDate = model.CompanyEndDate;
+                            Is_companyFound.Is_currentCompany = model.Is_currentCompany;
+                            //the update designation
                             var Is_desgnationFound = Is_companyFound.designatioexp.Where(x => x.DesignationId == model.DesignationId).FirstOrDefault();
                             if (Is_desgnationFound != null)
                             {
@@ -174,7 +208,7 @@ namespace Cohire.Controllers
                     {
                             int company;
                             bool success = int.TryParse(com, out company);
-                            if(success && company != 0)
+                            if(success)
                             {
                                 if (azureSQLDb.State == System.Data.ConnectionState.Closed)
                                     azureSQLDb.Open();
@@ -225,8 +259,10 @@ namespace Cohire.Controllers
             return RedirectToAction("Index", "Profile");
         }
 
+
+
         [HttpPost]
-        public async Task<JsonResult> AddUpdateCertifications(Certifications model)
+        public async Task<JsonResult> AddUpdateCertifications(Certifications model, IFormFile Attachments)
         {
             ProfileModel profilemodel = new ProfileModel();
             List<Certifications> certifications = new List<Certifications>();
@@ -237,8 +273,25 @@ namespace Cohire.Controllers
                 profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
                 if (string.IsNullOrEmpty(model.certificationid))
                 {
-                    certifications.AddRange(profilemodel.certifications);
+                    if(profilemodel.certifications!=null)
+                    {
+                        certifications.AddRange(profilemodel.certifications);
+                    }
                     model.certificationid=Guid.NewGuid().ToString();
+                    if(Attachments!=null)
+                    {
+                        var uploadDirecotroy = "ApplyJobResume\\";
+                        var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
+                        if (!Directory.Exists(uploadPath))
+                            Directory.CreateDirectory(uploadPath);
+                        var fileName = Guid.NewGuid() + Path.GetExtension(Attachments.FileName);
+                        var filePath = Path.Combine(uploadPath, fileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            Attachments.CopyTo(stream);
+                        }
+                        model.certiAttach = URL + "/ApplyJobResume/" + fileName;
+                    }
                 }
                 else
                 {
@@ -276,6 +329,69 @@ namespace Cohire.Controllers
                     certifications.AddRange(profilemodel.certifications);
                 }
                 profilemodel.certifications = certifications;
+                jsonModel = JsonConvert.SerializeObject(profilemodel);
+                UserProfile = InsertProfileJsinstring(jsonModel);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return RedirectToAction("Index", "Profile");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AddUpdateEducation(Education model)
+        {
+            ProfileModel profilemodel = new ProfileModel();
+            List<Education> educations = new List<Education>();
+            string jsonModel = string.Empty; var UserProfile = "1";
+            try
+            {
+                var getprofileJson = GetProfileString();
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (string.IsNullOrEmpty(model.educationid))
+                {   if(profilemodel.education!=null)
+                    {
+                        educations.AddRange(profilemodel.education);
+                    }
+                    model.educationid = Guid.NewGuid().ToString();
+                }
+                else
+                {
+                    var getcertification = profilemodel.education.Where(x => x.educationid == model.educationid).FirstOrDefault();
+                    profilemodel.education.Remove(getcertification);
+                    educations.AddRange(profilemodel.education);
+                }
+                educations.Add(model);
+                profilemodel.education = educations;
+                jsonModel = JsonConvert.SerializeObject(profilemodel);
+                UserProfile = InsertProfileJsinstring(jsonModel);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Deleteeducation(string id)
+        {
+            ProfileModel profilemodel = new ProfileModel();
+            List<Education> education = new List<Education>();
+            string jsonModel = string.Empty; var UserProfile = "1";
+            try
+            {
+                var getprofileJson = GetProfileString();
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+
+                if (!string.IsNullOrEmpty(id))
+                {
+                    var getcertification = profilemodel.education.Where(x => x.educationid == id).FirstOrDefault();
+                    profilemodel.education.Remove(getcertification);
+                    education.AddRange(profilemodel.education);
+                }
+                profilemodel.education = education;
                 jsonModel = JsonConvert.SerializeObject(profilemodel);
                 UserProfile = InsertProfileJsinstring(jsonModel);
             }
@@ -336,6 +452,295 @@ namespace Cohire.Controllers
             }
             finally { azureSQLDb.Close(); }
             return Is_profileUpdate;
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> InsertSkills(string skills)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                List<Profileskills> skillmdoel = new List<Profileskills>();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty; 
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(skills))
+                {
+                    List<string> TagIds = skills.Split(',').Select(x => x).Distinct().ToList();
+                    TagIds.ForEach(x =>
+                    {
+                        skillmdoel.Add(new Profileskills
+                        {
+                            id = Guid.NewGuid().ToString(),
+                            selfrating = "0",
+                            skill = x
+                        });
+
+                    });
+                    if(profilemodel.skills!=null)
+                    {
+                        var getskills = profilemodel.skills.ToList();
+                        getskills.AddRange(skillmdoel);
+                        profilemodel.skills = getskills;
+                    }
+                    else
+                    {
+                        profilemodel.skills = skillmdoel;
+                    }
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> DeleteSkills(string skill)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                List<Profileskills> skillmdoel = new List<Profileskills>();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty;
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(skill))
+                {
+                    var getskills = profilemodel.skills.ToList();
+                    getskills.Remove(getskills.Where(x=>x.id==skill).FirstOrDefault());
+                    profilemodel.skills = getskills;
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return RedirectToAction("Index", "Profile");
+        }
+        [HttpPost]
+        public async Task<JsonResult> UpdateSkillSelfrating(string skill, string count)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                Profileskills skillmdoel = new Profileskills();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty;
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(skill))
+                {
+                    if (profilemodel.skills != null)
+                    {
+                        var getskills = profilemodel.skills.ToList();
+                        var removeskills = getskills.Where(x => x.id == skill).FirstOrDefault();
+
+                        skillmdoel.id = Guid.NewGuid().ToString();
+                        skillmdoel.skill = removeskills.skill;
+                        skillmdoel.selfrating = count;
+
+                        getskills.Remove(removeskills);
+                        getskills.Add(skillmdoel);
+                        profilemodel.skills = getskills;
+                    }
+                    else
+                    {
+                        List<Profileskills>skillmdoellist = new List<Profileskills>();
+                        skillmdoellist.Add(skillmdoel);
+                        profilemodel.skills = skillmdoellist;
+                    }
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+        [HttpPost]
+        public async Task<JsonResult> Insertlanguages(string langugae,string rating)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                List<Language> skillmdoel = new List<Language>();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty;
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(langugae) && !string.IsNullOrEmpty(rating))
+                {
+                    
+                    if (profilemodel.languages != null)
+                    {
+                        if(profilemodel.languages.Count()>0)
+                        {
+                            var getskills = profilemodel.languages.ToList();
+                            var deletlang = getskills.Where(x => x.language == langugae).FirstOrDefault();
+                            if (deletlang != null)
+                            {
+                                skillmdoel.Add(new Language
+                                {
+                                    language = langugae,
+                                    selfrating = rating
+                                });
+                                getskills.AddRange(skillmdoel);
+                                profilemodel.languages = getskills;
+                            }
+                            else
+                            {
+                                getskills.Remove(deletlang);
+                                skillmdoel.Add(new Language
+                                {
+                                    language = langugae,
+                                    selfrating = rating
+                                });
+                                getskills.AddRange(skillmdoel);
+                                profilemodel.languages = getskills;
+                            }
+                        }
+                        else
+                        {
+                            skillmdoel.Add(new Language
+                            {
+                                language = langugae,
+                                selfrating = rating
+                            });
+                            profilemodel.languages = skillmdoel;
+                        }
+
+                    }
+                    else
+                    {
+                        profilemodel.languages = skillmdoel;
+                    }
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Deletelanguage(string skill)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                List<Profileskills> skillmdoel = new List<Profileskills>();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty;
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(skill))
+                {
+                    var getskills = profilemodel.languages.ToList();
+                    getskills.Remove(getskills.Where(x => x.language == skill).FirstOrDefault());
+                    profilemodel.languages = getskills;
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> InsertAboutProfile(string message)
+        {
+            var UserProfile = "1";
+            try
+            {
+                ProfileModel profilemodel = new ProfileModel();
+                List<Language> skillmdoel = new List<Language>();
+                var getprofileJson = GetProfileString();
+                string jsonModel = string.Empty;
+                profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+                if (!string.IsNullOrEmpty(message))
+                {
+                    profilemodel.AboutProfile = message;
+                    jsonModel = JsonConvert.SerializeObject(profilemodel);
+                    UserProfile = InsertProfileJsinstring(jsonModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return new JsonResult(UserProfile);
+        }
+
+        public class chartpoint
+        {
+            public int y { get; set; }
+            public string label { get; set; }
+        }
+        [HttpPost]
+        public async Task<JsonResult>LoadChartData()
+        {
+            List<chartpoint> chartpoints = new List<chartpoint>();
+            ProfileModel profilemodel = new ProfileModel();
+            var getprofileJson = GetProfileString();
+            profilemodel = JsonConvert.DeserializeObject<ProfileModel>(getprofileJson.ToString());
+            int count = 0;
+            if (profilemodel!=null)
+            {
+                if(profilemodel.education!=null)
+                {
+                    if(profilemodel.education.Count>0)
+                    {
+                        foreach(var v in profilemodel.education)
+                        {
+                            
+                            chartpoints.Add(new chartpoint {y=count, label=v.degreename+"-"+v.universityname });
+                            count++;
+                        }
+                        
+                    }
+                }
+                if (profilemodel.WorkExperience != null)
+                {
+                    if (profilemodel.WorkExperience.Count > 0)
+                    {
+                        foreach (var v in profilemodel.WorkExperience)
+                        {
+
+                            foreach(var ex in v.designatioexp)
+                            {
+                                count++;
+                                chartpoints.Add(new chartpoint { y = count, label =v.CompanyName+" - "+ex.DesignationName+" - "+ ex.EmploymentTypeName });
+
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return new JsonResult(chartpoints);
         }
     }
 }

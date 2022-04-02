@@ -666,6 +666,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Jobster\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\Jobster\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Jobster\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Jobster\images\check-light.svg" />
+    <None Include="wwwroot\Jobster\images\check.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-1.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-2.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-3.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-4.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-5.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-6.svg" />
+    <None Include="wwwroot\Jobster\images\hero-logo-7.svg" />
+    <None Include="wwwroot\Jobster\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\Jobster\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\Jobster\js\Chart.min.js" />
+    <None Include="wwwroot\Jobster\js\jquery-3.4.1.min.js" />
+    <None Include="wwwroot\Jobster\js\main.js" />
+    <None Include="wwwroot\Jobster\js\nav.js" />
+    <None Include="wwwroot\Jobster\js\owl.carousel.min.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />

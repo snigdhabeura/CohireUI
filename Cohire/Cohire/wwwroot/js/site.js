@@ -204,3 +204,29 @@ function OpenCommentModal(id)
     
 }
 
+function Searchcohyre() {
+    var searchtext = $("#search_val").val();
+    debugger;
+    if (searchtext.length >= 3) {
+        $.ajax({
+            url: "../Home/SearchPrefix",
+            type: "POST",
+            data: { prefix: searchtext },
+            dataType: 'json',
+            success: function (data) {
+                debugger;
+
+                $("#searchbar_contain").html('');
+                $("#searchbar_contain").html(data);
+                $("#searchbar_contain").show();
+            },
+            error: function (xhr, error, status) {
+                console.log(error, status);
+            }
+        });
+    } else {
+        $("#searchbar_contain").html('');
+    }
+    
+}
+

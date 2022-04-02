@@ -25,6 +25,7 @@ using System.Data.SqlClient;
 using Cohire.Models.CommonOperation;
 using System.Data;
 using Aspose.Words;
+using Cohire.Models.Profile;
 
 namespace Cohire.Controllers
 {
@@ -517,5 +518,100 @@ namespace Cohire.Controllers
             homeViewModel.job_Expernice = await GetMasterDataAsync<Job_Expernice>("api/job/getjobexpernice");
             return View(homeViewModel);
         }
+
+        #region------- Seacrh result instance---------------------
+       
+        [HttpPost]
+        public async Task<JsonResult>SearchPrefix(string prefix)
+        {
+            SqlConnection azureSQLDb = null;
+            SqlCommand cmd;
+            StringBuilder searchstring = new StringBuilder();
+                try
+                {
+                    using (azureSQLDb = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString()))
+                    {
+                        if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                            azureSQLDb.Open();
+                        cmd = new SqlCommand("Search_Instance_FeedPage", azureSQLDb);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@prefix", SqlDbType.VarChar).Value = prefix;
+                    var getresult = cmd.ExecuteScalar().ToString();
+                        if (!string.IsNullOrEmpty(getresult))
+                        {
+                        
+                            List<Searchresult>myDeserializedClass = JsonConvert.DeserializeObject<List<Searchresult>>(getresult);
+                            int jobcount = myDeserializedClass.Where(x=>x.tp==1 ||x.tp==2).Count();
+                            int peoplecount = myDeserializedClass.Where(x => x.tp == 0).Count();
+                            int postcount = myDeserializedClass.Where(x => x.tp == 3).Count();
+                        if (jobcount == 0 && peoplecount == 0 && postcount==0)
+                        {
+                            searchstring.Append("<div class='row'><ul class='autocomplete-result-list'><li>No reult found</li></ul></div>");
+                        }
+                        else
+                        {
+                            int count = 0;
+                            searchstring.Append("<div class='row'>");
+                            searchstring.Append("<ul>");
+                            myDeserializedClass.Where(x => x.tp == 0).Take(3).ToList().ForEach(x =>
+                            {
+                                count++;
+                                var person = JsonConvert.DeserializeObject<ProfileModel>(x.jsonstring.ToString());
+                                searchstring.Append("<li><img style='height:55px;' src='" + URL + "/images/ProfileImage/"+ person.profilegeneral.image+ "' class='img-fluid rounded-circle mb-3' alt='profile-img'><a href='" + URL + "/Profile/Index?profileid="+ person.profilegeneral.profileid + "'>" + person.profilegeneral.name+ "</a></li>");
+                                if (count== peoplecount)
+                                {
+                                    searchstring.Append("<li><a href='" + URL + "/User/SearchPageJob?s=" + prefix + "&t=pe'>View more People</a></li>");
+                                }
+                               
+                            });
+                            searchstring.Append("</ul>");
+                            searchstring.Append("</div>");
+
+                            searchstring.Append("<div class='row'>");
+                            searchstring.Append("<ul>"); count = 0;
+                            myDeserializedClass.Where(x => x.tp == 1 || x.tp == 2).Take(3).ToList().ForEach(x =>
+                            {
+                                count++;
+                                var jobs = JsonConvert.DeserializeObject<postjobsearch>(x.jsonstring.ToString());
+                                searchstring.Append("<li><a href='Javascript:void(0)'>" + jobs.Jobtitle  + " ("+ jobs.ChJobID + ")</a></li>");
+                                if (count == jobcount)
+                                {
+                                    searchstring.Append("<li><a href='" + URL + "/User/SearchPageJob?s="+ prefix + "&t=j'>View more jobs</a></li>");
+                                }
+                            });
+                            searchstring.Append("</ul>");
+                            searchstring.Append("</div>");
+
+                            searchstring.Append("<div class='row'>");
+                            searchstring.Append("<ul>"); count = 0;
+                            myDeserializedClass.Where(x => x.tp == 3).Take(3).ToList().ForEach(x =>
+                            {
+                                count++;
+                                var post = JsonConvert.DeserializeObject<postjobsearch>(x.jsonstring.ToString());
+                                searchstring.Append("<li><a href='Javascript:void(0)'>" + prefix + ".... (" + post.ChJobID + ")</a></li>");
+                                if (count == postcount)
+                                {
+                                    searchstring.Append("<li><a href='" + URL + "/User/SearchPageJob?s=" + prefix + "&t=p'>View more post</a></li>");
+                                }
+                            });
+                            searchstring.Append("</ul>");
+                            searchstring.Append("</div>");
+                        }
+                            
+                        
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { azureSQLDb.Close(); }
+
+            return new JsonResult(searchstring.ToString());
+        }
+
+        #endregion
     }
 }

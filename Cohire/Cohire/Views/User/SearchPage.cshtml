@@ -1,0 +1,511 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en" class="pxp-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="~/jobster/images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/jobster/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/jobster/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/jobster/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/jobster/css/animate.css">
+    <link rel="stylesheet" href="~/jobster/css/style.css">
+
+    <title>Jobster - Jobs list v8</title>
+</head>
+<body>
+    <div class="pxp-preloader"><span>Loading...</span></div>
+
+    <section class="pxp-page-header-simple">
+        <div class="pxp-container">
+            <h1>Search Jobs</h1>
+            <div class="pxp-hero-subtitle pxp-text-ligh">Search your career opportunity through <strong>12,800</strong> jobs</div>
+            <div class="pxp-hero-form pxp-hero-form-round pxp-large mt-3 mt-lg-4 pxp-has-border">
+                <form class="row gx-3 align-items-center">
+                    <div class="col-12 col-lg">
+                        <div class="input-group mb-3 mb-lg-0">
+                            <span class="input-group-text"><span class="fa fa-search"></span></span>
+                            <input type="text" class="form-control" placeholder="Job Title or Keyword">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg pxp-has-left-border">
+                        <div class="input-group mb-3 mb-lg-0">
+                            <span class="input-group-text"><span class="fa fa-globe"></span></span>
+                            <input type="text" class="form-control" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg pxp-has-left-border">
+                        <div class="input-group mb-3 mb-lg-0">
+                            <span class="input-group-text"><span class="fa fa-folder-o"></span></span>
+                            <select class="form-select">
+                                <option selected="">All categories</option>
+                                <option>Business Development</option>
+                                <option>Construction</option>
+                                <option>Customer Service</option>
+                                <option>Finance</option>
+                                <option>Healthcare</option>
+                                <option>Human Resources</option>
+                                <option>Marketing &amp; Communication</option>
+                                <option>Project Management</option>
+                                <option>Software Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                        <button>Find Jobs</button>
+                    </div>
+                </form>
+            </div>
+            <div class="pxp-hero-form-filter mt-3 mt-lg-4 pxp-has-bg-color">
+                <div class="row justify-content-start">
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select">
+                                <option selected>Type of employment</option>
+                                <option value="1">Full Time</option>
+                                <option value="2">Part Time</option>
+                                <option value="3">Remote</option>
+                                <option value="4">Internship</option>
+                                <option value="5">Contract</option>
+                                <option value="6">Training</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select">
+                                <option selected>Experience level</option>
+                                <option value="1">No Experience</option>
+                                <option value="2">Entry-Level</option>
+                                <option value="3">Mid-Level</option>
+                                <option value="4">Senior-Level</option>
+                                <option value="5">Manager / Executive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-auto">
+                        <div class="mb-3 mb-lg-0">
+                            <select class="form-select">
+                                <option selected>Salary range</option>
+                                <option value="1">$700 - $1000</option>
+                                <option value="2">$1000 - $1200</option>
+                                <option value="3">$1200 - $1400</option>
+                                <option value="4">$1500 - $1800</option>
+                                <option value="5">$2000 - $3000</option>
+                                <option value="5">More than $3000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-4 mt-lg-5 pt-100 pb-100" style="background-color: var(--pxpSecondaryColorLight);">
+        <div class="pxp-container">
+            <div class="pxp-jobs-list-top">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-auto">
+                        <h2><span class="pxp-text-light">Showing</span> 8,536 <span class="pxp-text-light">jobs</span></h2>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select">
+                            <option value="0" selected>Most relevant</option>
+                            <option value="1">Newest</option>
+                            <option value="2">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Senior Editor</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>San Francisco, CA
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Marketing & Communication</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Artistre Studio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-2.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Software Engineering Team Leader</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>Los Angeles, CA
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Project Management</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Craftgenics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-3.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Techincal Support Engineer</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>Paris, France
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Customer Service</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Illuminate Studio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-4.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Javascript Developer</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>London, UK
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Software Engineering</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Syspresoft</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-5.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Technical Writer</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>London, UK
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Business Development</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Gramware</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-6.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Human Resources Coordinator</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>San Francisco, CA
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Human Resources</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Bitbytech</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-7.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Fullstack Web Developer</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>New York, NY
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Software Engineering</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">CoderBotics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pxp-jobs-card-2-container">
+                    <div class="pxp-jobs-card-2 pxp-has-shadow">
+                        <div class="pxp-jobs-card-2-top">
+                            <a href="single-company-1.html" class="pxp-jobs-card-2-company-logo" style="background-image: url(images/company-logo-1.png);"></a>
+                            <div class="pxp-jobs-card-2-info">
+                                <a href="single-job-1.html" class="pxp-jobs-card-2-title">Social Media Expert</a>
+                                <div class="pxp-jobs-card-2-details">
+                                    <a href="jobs-list-1.html" class="pxp-jobs-card-2-location">
+                                        <span class="fa fa-globe"></span>San Francisco, CA
+                                    </a>
+                                    <div class="pxp-jobs-card-2-type">Full-time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-2-bottom">
+                            <a href="jobs-list-1.html" class="pxp-jobs-card-2-category">
+                                <div class="pxp-jobs-card-2-category-label">Marketing & Communication</div>
+                            </a>
+                            <div class="pxp-jobs-card-2-bottom-right">
+                                <span class="pxp-jobs-card-2-date pxp-text-light">3 days ago by</span> <a href="single-company-1.html" class="pxp-jobs-card-2-company">Artistre Studio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4 mt-lg-5 justify-content-between align-items-center">
+                <div class="col-auto">
+                    <nav class="mt-3 mt-sm-0" aria-label="Jobs list pagination">
+                        <ul class="pagination pxp-pagination">
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-auto">
+                    <a href="#" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0">Show me more<span class="fa fa-angle-right"></span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pxp-main-footer">
+        <div class="pxp-main-footer-top pt-100 pb-100" style="background-color: var(--pxpMainColorLight);">
+            <div class="pxp-container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-5 col-xxl-4 mb-4">
+                        <div class="pxp-footer-logo">
+                            <a href="index.html" class="pxp-animate"><span style="color: var(--pxpMainColor)">j</span>obster</a>
+                        </div>
+                        <div class="pxp-footer-section mt-3 mt-md-4">
+                            <h3>Call us</h3>
+                            <div class="pxp-footer-phone">(123) 456-7890</div>
+                        </div>
+                        <div class="mt-3 mt-md-4 pxp-footer-section">
+                            <div class="pxp-footer-text">
+                                90 Fifth Avenue, 3rd Floor<br>
+                                San Francisco, CA 1980<br>
+                                office@jobster.com
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-7 col-xxl-8">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4 col-xxl-3 mb-4">
+                                <div class="pxp-footer-section">
+                                    <h3>For Candidates</h3>
+                                    <ul class="pxp-footer-list">
+                                        <li><a href="jobs-list-1.html">Find Jobs</a></li>
+                                        <li><a href="candidate-dashboard.html">Candidate Dashboard</a></li>
+                                        <li><a href="candidate-dashboard-applications.html">My Applications</a></li>
+                                        <li><a href="candidate-dashboard-fav-jobs.html">Favourite Jobs</a></li>
+                                        <li><a href="candidate-dashboard-inbox.html">My inbox</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4 col-xxl-3 mb-4">
+                                <div class="pxp-footer-section">
+                                    <h3>For Employers</h3>
+                                    <ul class="pxp-footer-list">
+                                        <li><a href="candidates-list-1.html">Find Candidates</a></li>
+                                        <li><a href="company-dashboard.html">Company Dashboard</a></li>
+                                        <li><a href="company-dashboard-new-job.html">Post a Job</a></li>
+                                        <li><a href="company-dashboard-jobs.html">Manage Jobs</a></li>
+                                        <li><a href="company-dashboard-candidates.html">Candidates</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4 col-xxl-3 mb-4">
+                                <div class="pxp-footer-section">
+                                    <h3>About Us</h3>
+                                    <ul class="pxp-footer-list">
+                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="pricing.html">Pricing</a></li>
+                                        <li><a href="blog-list-1.html">Blog</a></li>
+                                        <li><a href="blog-list-1.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4 col-xxl-3 mb-4">
+                                <div class="pxp-footer-section">
+                                    <h3>Helpful Resources</h3>
+                                    <ul class="pxp-footer-list">
+                                        <li><a href="faqs.html">FAQs</a></li>
+                                        <li><a href="sign-in.html">Sign In</a></li>
+                                        <li><a href="sign-up.html">Sign Up</a></li>
+                                        <li><a href="404.html">404 Page</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pxp-main-footer-bottom" style="background-color: var(--pxpSecondaryColor);">
+            <div class="pxp-container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-auto">
+                        <div class="pxp-footer-copyright pxp-text-light">© 2021 Jobster. All Right Reserved.</div>
+                    </div>
+                    <div class="col-lg-auto">
+                        <div class="pxp-footer-social mt-3 mt-lg-0">
+                            <ul class="list-unstyled">
+                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade pxp-user-modal" id="pxp-signin-modal" aria-hidden="true" aria-labelledby="signinModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="pxp-user-modal-fig text-center">
+                        <img src="images/signin-fig.png" alt="Sign in">
+                    </div>
+                    <h5 class="modal-title text-center mt-4" id="signinModal">Welcome back!</h5>
+                    <form class="mt-4">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="pxp-signin-email" placeholder="Email address">
+                            <label for="pxp-signin-email">Email address</label>
+                            <span class="fa fa-envelope-o"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="pxp-signin-password" placeholder="Password">
+                            <label for="pxp-signin-password">Password</label>
+                            <span class="fa fa-lock"></span>
+                        </div>
+                        <a href="#" class="btn rounded-pill pxp-modal-cta">Continue</a>
+                        <div class="mt-4 text-center pxp-modal-small">
+                            <a href="#" class="pxp-modal-link">Forgot password</a>
+                        </div>
+                        <div class="mt-4 text-center pxp-modal-small">
+                            New to Jobster? <a role="button" class="" data-bs-target="#pxp-signup-modal" data-bs-toggle="modal" data-bs-dismiss="modal">Create an account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade pxp-user-modal" id="pxp-signup-modal" aria-hidden="true" aria-labelledby="signupModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="pxp-user-modal-fig text-center">
+                        <img src="images/signup-fig.png" alt="Sign up">
+                    </div>
+                    <h5 class="modal-title text-center mt-4" id="signupModal">Create an account</h5>
+                    <form class="mt-4">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="pxp-signup-email" placeholder="Email address">
+                            <label for="pxp-signup-email">Email address</label>
+                            <span class="fa fa-envelope-o"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="pxp-signup-password" placeholder="Create password">
+                            <label for="pxp-signup-password">Create password</label>
+                            <span class="fa fa-lock"></span>
+                        </div>
+                        <a href="#" class="btn rounded-pill pxp-modal-cta">Continue</a>
+                        <div class="mt-4 text-center pxp-modal-small">
+                            Already have an account? <a role="button" class="" data-bs-target="#pxp-signin-modal" data-bs-toggle="modal">Sign in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/jobster/js/jquery-3.4.1.min.js"></script>
+    <script src="~/jobster/js/bootstrap.bundle.min.js"></script>
+    <script src="~/jobster/js/owl.carousel.min.js"></script>
+    <script src="~/jobster/js/nav.js"></script>
+    <script src="~/jobster/js/main.js"></script>
+</body>
+</html>

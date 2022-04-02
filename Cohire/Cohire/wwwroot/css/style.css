@@ -110,9 +110,13 @@ div.ex3doc {
 }
 
 .slick-slider {
-    margin-bottom: 0px !important;
+    margin-bottom: 143px !important;
 }
-
+@media (max-width: 576px) {
+    .slick-slider {
+        margin-bottom: -45px !important;
+    }
+}
 .slick-dots {
     bottom: 11px;
 }

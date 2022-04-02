@@ -1,9 +1,13 @@
 ﻿using Cohire.Models.CommonOperation;
+using Cohire.Models.Profile;
 using Cohire.Models.UserAuthentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,22 +29,31 @@ namespace Cohire.Controllers
         [HttpPost]
         public JsonResult SignUp(SigupModel sigupModel)
         {
-            Sigupresponse sigupresponse = new Sigupresponse();
+            ProfileModel mdoel = new ProfileModel();
+               Sigupresponse sigupresponse = new Sigupresponse();
+            ProfileGeneraldetails profilemodel = new ProfileGeneraldetails();
             try
             {
                 sigupModel.Ip_Address = CommonOP.Instance.GetUserIP();
-               Guid jobID = System.Guid.NewGuid();
+                Guid jobID = System.Guid.NewGuid();
                 string OTP = "VF" + jobID.ToString().Substring(0, 4);
                 string ProfileID = "CHPF" + jobID.ToString().Substring(0, 4);
                 sigupresponse.ProfileID = ProfileID;
                 sigupresponse.Is_error = false;
                 string message = "";
+
                 if (!string.IsNullOrEmpty(sigupModel.Email))
                 {
                     message = "Your verififcation OTP: <b>" + OTP + "</b>";
                     if (sigupresponse.Is_error == false)
                     {
-                        var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message, sigupModel.Ip_Address, sigupModel.DeviceType);
+                        profilemodel.profileid = ProfileID;
+                        profilemodel.name = sigupModel.FullName;
+                        profilemodel.email = sigupModel.Email;
+                        profilemodel.mobilenumber = sigupModel.Mobile;
+                        profilemodel.image = "noprofilr.png";
+                        mdoel.profilegeneral = profilemodel;
+                           var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message, sigupModel.Ip_Address, sigupModel.DeviceType);
                         if(data.Result.ToString()=="-1")
                         {
                             sigupresponse.Is_error = true;
@@ -61,6 +74,7 @@ namespace Cohire.Controllers
                             }
                             else
                             {
+                                InsertProfileJson(mdoel, ProfileID);
                                 sigupresponse.errormsg = "OTP has been sent to your email";
                             }
                         }
@@ -72,6 +86,13 @@ namespace Cohire.Controllers
                     message = "Hi, Your verififcation OTP : " + OTP + "";
                     if (sigupresponse.Is_error == false)
                     {
+                        profilemodel.profileid = ProfileID;
+                        profilemodel.name = sigupModel.FullName;
+                        profilemodel.email = sigupModel.Email;
+                        profilemodel.mobilenumber = sigupModel.Mobile;
+                        profilemodel.image = "noprofilr.png";
+                        mdoel.profilegeneral = profilemodel;
+
                         var data = UserAuthentication.Instance.UserRegistarionAsync(ProfileID, sigupModel.FullName, sigupModel.Email, sigupModel.Mobile, OTP, sigupModel.Password, message, sigupModel.Ip_Address, sigupModel.DeviceType);
                         if (data.Result.ToString() == "-1")
                         {
@@ -93,6 +114,7 @@ namespace Cohire.Controllers
                             }
                             else
                             {
+                                InsertProfileJson(mdoel, ProfileID);
                                 sigupresponse.errormsg = "OTP has been sent to your mobile";
                             }
                         }
@@ -238,6 +260,34 @@ namespace Cohire.Controllers
             cookies.Add(Convert.ToString(_httpContextAccessor.HttpContext.Request.Cookies["Username"]));
             cookies.Add(Convert.ToString(_httpContextAccessor.HttpContext.Request.Cookies["UserID"]));
             return cookies;
+        }
+
+        public void InsertProfileJson(ProfileModel profilemodel,string ProfileId)
+        {
+           string jsonModel = JsonConvert.SerializeObject(profilemodel);
+            SqlConnection azureSQLDb = null;
+            SqlCommand cmd;
+            string Is_profileUpdate = string.Empty;
+            try
+            {
+
+                using (azureSQLDb = new SqlConnection(GetConnectionString.Instance.ReturnConnectionString()))
+                {
+                    if (azureSQLDb.State == System.Data.ConnectionState.Closed)
+                        azureSQLDb.Open();
+                    cmd = new SqlCommand("Insert_user_Profile_Json", azureSQLDb);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ProfileId", SqlDbType.VarChar).Value = ProfileId;
+                    cmd.Parameters.Add("@Profilejson", SqlDbType.VarChar).Value = jsonModel;
+                    Is_profileUpdate = cmd.ExecuteScalar().ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally { azureSQLDb.Close(); }
         }
     }
 }

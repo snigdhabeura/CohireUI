@@ -6,13 +6,22 @@ namespace Cohire.Models.Profile
 {
     public class ProfileModel
     {
+       public ProfileGeneraldetails profilegeneral { get; set; }
         public List<WorkExperience> WorkExperience { get; set; }
         public List<Certifications> certifications { get; set; }
+        public List<Education> education { get; set; }
+        public List<Profileskills> skills { get; set; }
+        public List<Language> languages { get; set; }
+        public string AboutProfile { get; set; }
     }
     public class ProfileModelList
     {
         public List<WorkExperienceList> WorkExperience { get; set; }
         public List<Certifications> certifications { get; set; }
+        public List<Education> education { get; set; }
+        public List<Profileskills> skills { get; set; }
+        public List<Language> languages { get; set; }
+        public string AboutProfile { get; set; }
     }
     public class WorkExperienceRequest
     {
@@ -91,4 +100,45 @@ namespace Cohire.Models.Profile
         public string certiAttach { get; set; }
     }
     #endregion
+    #region-------- Education--------------------
+    public class Education
+    {
+        public string educationid { get; set; }
+        public string degree { get; set; }
+        public string degreename { get; set; }
+        public string university { get; set; }
+        public string universityname { get; set; }
+        public string edulocation { get; set; }
+        public string edulocationname { get; set; }
+        public DateTime? edustDate { get; set; }
+        public DateTime? eduEndDate { get; set; }
+    }
+    #endregion
+
+    #region------Skills-----------
+    public class Profileskills
+    {
+        public string id { get; set; }
+        public string skill { get; set; }
+        public string selfrating { get; set; }
+    }
+
+    public class Language
+    {
+        public string language { get; set; }
+        public string selfrating { get; set; }
+    }
+    #endregion
+
+
+    public class ProfileGeneraldetails
+    {
+        public string profileid { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string mobilenumber { get; set; }
+        public string profilebio { get; set; }
+        public string profileabout { get; set; }
+        public string image { get; set; }
+    }
 }

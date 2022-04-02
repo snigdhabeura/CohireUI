@@ -867,6 +867,9 @@ C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutBefore.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SignIn.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\Getsearchpartialview.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\SearchPage.cshtml.g.cs
+C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\SearchPageJob.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\UserHome.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\ValidRef.cshtml.g.cs
 C:\Users\Admin\Pictures\New folder\CohireUI\Cohire\Cohire\obj\Debug\netcoreapp3.1\Razor\Views\User\_ADDScreeningQuestions.cshtml.g.cs
